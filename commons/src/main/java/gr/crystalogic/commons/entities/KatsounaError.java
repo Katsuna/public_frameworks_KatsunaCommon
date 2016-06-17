@@ -1,7 +1,5 @@
 package gr.crystalogic.commons.entities;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 public class KatsounaError extends BaseObject {
 
     public static final String TABLE_NAME = "katsouna_error";
@@ -39,7 +37,7 @@ public class KatsounaError extends BaseObject {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return String.format("KatsounaError[application=%s, message=%s, time=%s]", application, message, time);
     }
 }
 
