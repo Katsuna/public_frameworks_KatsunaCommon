@@ -16,6 +16,10 @@ public class ExceptionLogger {
         values.put(KatsounaError.COL_APPLICATION, application);
         values.put(KatsounaError.COL_MESSAGE, message);
 
-        context.getContentResolver().insert(ErrorProvider.URI_ERRORS, values);
+        try {
+            context.getContentResolver().insert(ErrorProvider.URI_ERRORS, values);
+        } catch (Exception ex) {
+            Log.w(ExceptionLogger.class, ex.getMessage());
+        }
     }
 }
