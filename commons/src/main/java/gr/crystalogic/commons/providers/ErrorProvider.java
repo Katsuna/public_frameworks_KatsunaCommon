@@ -8,6 +8,5 @@ public class ErrorProvider {
 
     public static final String ERRORS = SCHEME + AUTHORITY + "/error";
     public static final Uri URI_ERRORS = Uri.parse(ERRORS);
-    // Used for a single person, just add the id to the end
     public static final String ERROR_BASE = ERRORS + "/";
 }
