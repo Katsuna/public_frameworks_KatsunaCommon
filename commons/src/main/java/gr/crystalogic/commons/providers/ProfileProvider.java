@@ -3,6 +3,9 @@ package gr.crystalogic.commons.providers;
 import android.net.Uri;
 
 public class ProfileProvider {
+
+    public static final long MAIN_PROFILE_ID = 1;
+
     public static final String AUTHORITY = "gr.crystalogic.datastore.providers.ProfileProvider";
     public static final String SCHEME = "content://";
 
