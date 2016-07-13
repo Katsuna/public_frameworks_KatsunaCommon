@@ -1,7 +1,7 @@
 package gr.crystalogic.commons.entities;
 
 public enum ProfileType {
-    DEFAULT(1), V1(2), V2(3);
+    AUTO(0), SIMPLE(1), INTERMEDIATE(2), ADVANCED(3);
 
     private int numVal;
 
