@@ -1,13 +1,13 @@
-package gr.crystalogic.commons.utils;
+package com.katsuna.commons.utils;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
-import gr.crystalogic.commons.entities.Profile;
-import gr.crystalogic.commons.providers.ProfileProvider;
+import com.katsuna.commons.entities.Profile;
+import com.katsuna.commons.providers.ProfileProvider;
 
-import static gr.crystalogic.commons.providers.ProfileProvider.MAIN_PROFILE_ID;
+import static com.katsuna.commons.providers.ProfileProvider.MAIN_PROFILE_ID;
 
 public class ProfileReader {
 

@@ -1,12 +1,12 @@
-package gr.crystalogic.commons.utils;
+package com.katsuna.commons.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
 
 import org.joda.time.DateTime;
 
-import gr.crystalogic.commons.entities.KatsounaError;
-import gr.crystalogic.commons.providers.ErrorProvider;
+import com.katsuna.commons.entities.KatsounaError;
+import com.katsuna.commons.providers.ErrorProvider;
 
 public class ExceptionLogger {
 

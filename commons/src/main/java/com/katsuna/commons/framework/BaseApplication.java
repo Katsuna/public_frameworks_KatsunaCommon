@@ -1,4 +1,4 @@
-package gr.crystalogic.commons.framework;
+package com.katsuna.commons.framework;
 
 import android.app.Application;
 

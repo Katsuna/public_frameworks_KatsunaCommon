@@ -1,4 +1,4 @@
-package gr.crystalogic.commons.entities;
+package com.katsuna.commons.entities;
 
 public class Profile extends BaseObject {
 

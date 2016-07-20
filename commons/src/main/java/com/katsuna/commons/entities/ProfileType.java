@@ -1,4 +1,4 @@
-package gr.crystalogic.commons.entities;
+package com.katsuna.commons.entities;
 
 public enum ProfileType {
     AUTO(0), SIMPLE(1), INTERMEDIATE(2), ADVANCED(3);

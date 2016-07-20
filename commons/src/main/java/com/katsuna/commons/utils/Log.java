@@ -1,4 +1,4 @@
-package gr.crystalogic.commons.utils;
+package com.katsuna.commons.utils;
 
 import android.content.Context;
 
