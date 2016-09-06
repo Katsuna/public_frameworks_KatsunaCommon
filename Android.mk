@@ -3,6 +3,7 @@ include $(CLEAR_VARS)
 
 LOCAL_STATIC_JAVA_LIBRARIES += picasso
 LOCAL_STATIC_JAVA_LIBRARIES += jodatime
+LOCAL_STATIC_JAVA_AAR_LIBRARIES += roundedimageview
 
 LOCAL_MODULE := KatsunaCommon
 LOCAL_CERTIFICATE := platform
@@ -15,5 +16,6 @@ include $(CLEAR_VARS)
 
 LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := picasso:commons/libs/picasso-2.5.2.jar
 LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES += jodatime:commons/libs/jodatime-2.9.2.jar
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES += roundedimageview:commons/libs/roundedimageview-2.2.1.aar
 
 include $(BUILD_MULTI_PREBUILT)
