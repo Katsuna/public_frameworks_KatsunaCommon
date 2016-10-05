@@ -1,9 +1,9 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_STATIC_JAVA_LIBRARIES += picasso
+# Add here only the libs (.jar) that the KatsunaCommon itself needs, to be built
+LOCAL_STATIC_JAVA_LIBRARIES := picasso
 LOCAL_STATIC_JAVA_LIBRARIES += jodatime
-LOCAL_STATIC_JAVA_AAR_LIBRARIES += roundedimageview
 
 LOCAL_MODULE := KatsunaCommon
 LOCAL_CERTIFICATE := platform
@@ -16,6 +16,9 @@ include $(CLEAR_VARS)
 
 LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := picasso:commons/libs/picasso-2.5.2.jar
 LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES += jodatime:commons/libs/jodatime-2.9.2.jar
+
+# This is a definition!
+# Add here all the libs (jar, aar) that are needed in all Katsuna Apps but not necessarily in KatsunaCommon
 LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES += roundedimageview:commons/libs/roundedimageview-2.2.1.aar
 
 include $(BUILD_MULTI_PREBUILT)
