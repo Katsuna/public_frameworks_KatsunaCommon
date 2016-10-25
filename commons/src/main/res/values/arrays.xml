@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="common_array_profiles">
+        <item>@string/common_profile_auto</item>
+        <item>@string/common_profile_simple</item>
+        <item>@string/common_profile_intermediate</item>
+        <item>@string/common_profile_advanced</item>
+    </string-array>
+
+    <string-array name="common_array_profiles_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+</resources>
