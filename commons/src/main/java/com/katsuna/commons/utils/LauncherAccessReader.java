@@ -39,10 +39,11 @@ public class LauncherAccessReader {
     public static HashMap<String, Integer> getLauncherStatsPerApp(Context context) {
         HashMap<String, Integer> output = new HashMap<>();
         String[] projection = new String[]{"count(" + LauncherAccess.COL_USER + ") as launch_count", LauncherAccess.COL_USER};
-        String selection = "(0 == 0) GROUP BY (" + LauncherAccess.COL_USER + ")";
-
-        Cursor cursor = context.getContentResolver().query(LauncherProvider.URI_LAUNCHER_ACCESS, projection, selection, null,
-                null);
+        String selection = LauncherAccess.COL_TIME + ">? GROUP BY (" + LauncherAccess.COL_USER + ")";
+        DateTime oneMonthAgo = new DateTime().minusMonths(1);
+        String[] selectionArgs = new String[]{ oneMonthAgo.toString() };
+        Cursor cursor = context.getContentResolver().query(LauncherProvider.URI_LAUNCHER_ACCESS,
+                projection, selection, selectionArgs, null);
 
         if (cursor != null) {
             if (cursor.moveToFirst()) {
