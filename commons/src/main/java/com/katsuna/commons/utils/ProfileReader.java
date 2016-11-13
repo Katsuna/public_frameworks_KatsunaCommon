@@ -7,14 +7,16 @@ import android.net.Uri;
 import com.katsuna.commons.entities.Profile;
 import com.katsuna.commons.providers.ProfileProvider;
 
-import static com.katsuna.commons.providers.ProfileProvider.MAIN_PROFILE_ID;
-
 public class ProfileReader {
 
     public static Profile getProfile(Context context) {
+        return getProfileById(context, Profile.OPTICAL_SIZE_PROFILE);
+    }
+
+    public static Profile getProfileById(Context context, long profileId) {
         Profile profile = null;
         Cursor cursor = context.getContentResolver().query(
-                Uri.withAppendedPath(ProfileProvider.URI_PROFILES, String.valueOf(MAIN_PROFILE_ID)),
+                Uri.withAppendedPath(ProfileProvider.URI_PROFILES, String.valueOf(profileId)),
                 null, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
@@ -28,5 +30,4 @@ public class ProfileReader {
         }
         return profile;
     }
-
 }

@@ -6,10 +6,6 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Interval;
 
-/**
- * Created by alkis on 30/10/2016.
- */
-
 public class DateFormatter {
 
     /**

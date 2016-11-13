@@ -2,6 +2,12 @@ package com.katsuna.commons.entities;
 
 public class Profile extends BaseObject {
 
+    public static final int OPTICAL_SIZE_PROFILE = 1;
+    public static final int OPTICAL_CONTRAST_PROFILE = 2;
+    public static final int OPTICAL_COLOR_PROFILE = 3;
+    public static final int COGNITIVE_PROFILE = 4;
+    public static final int MEMORY_PROFILE = 5;
+
     public static final String TABLE_NAME = "profile";
     public static final String COL_TYPE = "type";
 

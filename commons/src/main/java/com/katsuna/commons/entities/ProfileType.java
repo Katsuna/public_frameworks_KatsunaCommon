@@ -3,7 +3,7 @@ package com.katsuna.commons.entities;
 public enum ProfileType {
     AUTO(0), SIMPLE(1), INTERMEDIATE(2), ADVANCED(3);
 
-    private int numVal;
+    private final int numVal;
 
     ProfileType(int numVal) {
         this.numVal = numVal;
