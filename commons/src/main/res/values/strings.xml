@@ -15,7 +15,7 @@
     <string name="common_search_contacts">Search for contacts</string>
     <string name="common_no_contacts">No contacts found.</string>
 
-    <string name="common_select_profile">Select profile</string>
+    <string name="common_select_profile">Set accessibility profile</string>
     <string name="common_profile_auto">Auto</string>
     <string name="common_profile_simple">Simple</string>
     <string name="common_profile_intermediate">Intermediate</string>
