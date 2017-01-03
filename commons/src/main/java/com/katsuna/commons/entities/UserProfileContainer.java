@@ -37,6 +37,22 @@ public class UserProfileContainer {
         }
     }
 
+    /**
+     * Katsuna services setting override app setting.
+     * @return right hand setting.
+     */
+    public boolean isRightHanded() {
+        if (profileFromKatsunaServices != null) {
+            return profileFromKatsunaServices.isRightHanded;
+        } else {
+            return profileFromAppSettings.isRightHanded;
+        }
+    }
+
+    public boolean hasKatsunaServices() {
+        return profileFromKatsunaServices != null;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;

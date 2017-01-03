@@ -108,7 +108,7 @@ public class ProfileReader {
         preferences.add(memory);
 
         Preference rightHand = new Preference(PreferenceKey.RIGHT_HAND,
-                SettingsManager.readSetting(context, PreferenceKey.RIGHT_HAND, String.valueOf(true)));
+                String.valueOf(SettingsManager.readSetting(context, PreferenceKey.RIGHT_HAND, true)));
         preferences.add(rightHand);
 
         return getUserProfileFromPreferences(preferences);

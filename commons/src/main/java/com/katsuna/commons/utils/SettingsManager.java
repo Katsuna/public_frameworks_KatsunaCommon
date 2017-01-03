@@ -30,4 +30,16 @@ public class SettingsManager {
         return settings.getString(key, defaultValue);
     }
 
+    public static void setSetting(Context context, String key, boolean value) {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    public static boolean readSetting(Context context, String key, boolean defaultValue) {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        return settings.getBoolean(key, defaultValue);
+    }
+
 }
