@@ -3,6 +3,8 @@ include $(CLEAR_VARS)
 
 # Add here only the libs (.jar) that the KatsunaCommon itself needs, to be built
 LOCAL_STATIC_JAVA_LIBRARIES := jodatime
+LOCAL_STATIC_JAVA_LIBRARIES += android-support-v4
+LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-appcompat
 
 LOCAL_MODULE := KatsunaCommon
 LOCAL_CERTIFICATE := platform
