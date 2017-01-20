@@ -8,6 +8,8 @@ import org.joda.time.Interval;
 
 public class DateFormatter {
 
+    public final static String KATSUNA_DATE_FORMAT = "dd/MM/YYYY HH:mm";
+
     /**
      * Returns relative localized description of the time provided.
      * Time must be no more than 7 days ago to return a value like Today, Yesterday, 2 days ago etc.
