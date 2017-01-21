@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
+import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.Preference;
 import com.katsuna.commons.entities.PreferenceKey;
 import com.katsuna.commons.entities.Profile;
@@ -92,9 +93,9 @@ public class ProfileReader {
                         String.valueOf(ProfileType.INTERMEDIATE.getNumVal())));
         preferences.add(opticalContrast);
 
-        Preference opticalColor = new Preference(PreferenceKey.OPTICAL_COLOR_PROFILE,
-                SettingsManager.readSetting(context, PreferenceKey.OPTICAL_COLOR_PROFILE,
-                        String.valueOf(ProfileType.INTERMEDIATE.getNumVal())));
+        String value = SettingsManager.readSetting(context, PreferenceKey.COLOR_PROFILE,
+                ColorProfile.MAIN.name());
+        Preference opticalColor = new Preference(PreferenceKey.COLOR_PROFILE, value);
         preferences.add(opticalColor);
 
         Preference cognitive = new Preference(PreferenceKey.COGNITIVE_PROFILE,
@@ -129,10 +130,8 @@ public class ProfileReader {
                             ProfileType.values()[prefValue];
                     break;
                 }
-                case PreferenceKey.OPTICAL_COLOR_PROFILE: {
-                    int prefValue = Integer.parseInt(pref.getValue());
-                    userProfile.opticalColorProfile =
-                            ProfileType.values()[prefValue];
+                case PreferenceKey.COLOR_PROFILE: {
+                    userProfile.colorProfile = ColorProfile.valueOf(pref.getValue());
                     break;
                 }
                 case PreferenceKey.COGNITIVE_PROFILE: {

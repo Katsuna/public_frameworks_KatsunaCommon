@@ -10,7 +10,7 @@ public class UserProfile {
 
     public ProfileType opticalSizeProfile;
     public ProfileType opticalContrastProfile;
-    public ProfileType opticalColorProfile;
+    public ColorProfile colorProfile;
     public ProfileType cognityProfile;
     public ProfileType memoryProfile;
     public boolean isRightHanded;
@@ -25,7 +25,7 @@ public class UserProfile {
         UserProfile userProfile = (UserProfile) obj;
         return opticalSizeProfile == userProfile.opticalSizeProfile &&
                 opticalContrastProfile == userProfile.opticalContrastProfile &&
-                opticalColorProfile == userProfile.opticalColorProfile &&
+                colorProfile == userProfile.colorProfile &&
                 cognityProfile == userProfile.cognityProfile &&
                 memoryProfile == userProfile.memoryProfile &&
                 isRightHanded == userProfile.isRightHanded;
@@ -33,7 +33,7 @@ public class UserProfile {
 
     @Override
     public int hashCode() {
-        return Objects.hash(opticalSizeProfile, opticalContrastProfile, opticalColorProfile,
+        return Objects.hash(opticalSizeProfile, opticalContrastProfile, colorProfile,
                 cognityProfile, memoryProfile, isRightHanded);
     }
 }
