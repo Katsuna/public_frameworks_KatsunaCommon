@@ -21,4 +21,9 @@
     <string name="common_profile_intermediate">Intermediate</string>
     <string name="common_profile_advanced">Advanced</string>
 
+    <string name="common_profile_color_main">Main</string>
+    <string name="common_profile_color_contrast">Optimized for contrast</string>
+    <string name="common_profile_color_impairement">Optimized for color impairement</string>
+    <string name="common_profile_color_impairement_contrast">Optimized for color impairement and contrast</string>
+
 </resources>
