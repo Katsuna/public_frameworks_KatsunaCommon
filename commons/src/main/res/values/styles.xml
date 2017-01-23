@@ -9,4 +9,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- ToolBar -->
+    <style name="CommonToolBarStyle" parent="Theme.AppCompat">
+        <item name="android:colorPrimary">@color/common_grey300</item>
+        <item name="android:textColorPrimary">@color/common_black87</item>
+        <item name="android:textColorSecondary">@color/common_black87</item>
+        <item name="android:actionMenuTextColor">@color/common_black87</item>
+        <item name="android:textColorHint">@color/common_black87</item>
+    </style>
+
 </resources>

@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- primary colors -->
+    <color name="common_blue_tinted">#a4a4a4</color>
+    <color name="common_pink_tinted">#eeede9</color>
+
+    <!-- profile colors -->
     <color name="common_white">#FFFFFF</color>
     <color name="common_grey50">#FAFAFA</color>
     <color name="common_grey100">#F5F5F5</color>
-    <color name="common_grey300">#F0F0F0</color>
+    <color name="common_grey300">#E0E0E0</color>
+    <color name="common_grey600">#757575</color>
+    <color name="common_grey900">#212121</color>
 
-    <color name="common_blue">#134a9a</color>
-    <color name="common_blue_tinted">#a4a4a4</color>
-    <color name="common_pink">#ffcdd0</color>
-    <color name="common_pink_tinted">#eeede9</color>
+    <color name="common_blue900">#0D47A1</color>
+    <color name="common_indigo900">#1A237E</color>
+    <color name="common_red500">#f44336</color>
+    <color name="common_redA100">#ff8a80</color>
+    <color name="common_sundown">#FFA6A6</color>
+    <color name="common_yellow400">#FFEE58</color>
+    <color name="common_yellowA400">#FFFF8D</color>
+
+    <color name="common_black">#000000</color>
+    <color name="common_black87">#DE000000</color>
+    <color name="common_black70">#B2000000</color>
+    <color name="common_black54">#8A000000</color>
+    <color name="common_black50">#80000000</color>
+    <color name="common_black38">#61000000</color>
+    <color name="common_black12">#1F000000</color>
+
 </resources>

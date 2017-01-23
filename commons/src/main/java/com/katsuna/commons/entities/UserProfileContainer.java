@@ -38,6 +38,26 @@ public class UserProfileContainer {
     }
 
     /**
+     * App settings override the one from katsuna services if not set to auto.
+     * Default profile setting set to Main.
+     * @return profile type for optical size
+     */
+    public ColorProfile getColorProfile() {
+        if (profileFromAppSettings.colorProfile == ColorProfile.AUTO) {
+            if (profileFromKatsunaServices != null) {
+                // katsuna services value
+                return profileFromKatsunaServices.colorProfile;
+            } else {
+                // Default value
+                return ColorProfile.MAIN;
+            }
+        } else {
+            // app setting value
+            return profileFromAppSettings.colorProfile;
+        }
+    }
+
+    /**
      * Katsuna services setting override app setting.
      * @return right hand setting.
      */
