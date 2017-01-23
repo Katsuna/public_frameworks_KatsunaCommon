@@ -1,5 +1,7 @@
 package com.katsuna.commons.ui;
 
+import android.content.res.ColorStateList;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,8 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     protected UserProfileContainer mUserProfileContainer;
     protected boolean mUserProfileChanged;
     protected Toolbar mToolbar;
+    protected FloatingActionButton mFab1;
+    protected FloatingActionButton mFab2;
 
     @Override
     protected void onResume() {
@@ -34,7 +38,24 @@ public abstract class KatsunaActivity extends AppCompatActivity {
             adjustBackground(colorProfile);
             adjustStatusBar(colorProfile);
             adjustToolbar(colorProfile);
+            adjustFabColors(colorProfile);
         }
+    }
+
+    protected void adjustFabColors(ColorProfile profile) {
+        if(mFab1 != null) {
+            int color1 = ColorCalc.getColor(ColorProfileKey.ACCENT1_COLOR, profile);
+            setFabBackgroundColor(mFab1, color1);
+        }
+        if(mFab2 != null) {
+            int color2 = ColorCalc.getColor(ColorProfileKey.ACCENT2_COLOR, profile);
+            setFabBackgroundColor(mFab2, color2);
+        }
+    }
+
+    private void setFabBackgroundColor(FloatingActionButton fab, int resId) {
+        int color = ContextCompat.getColor(this, resId);
+        fab.setBackgroundTintList(ColorStateList.valueOf(color));
     }
 
     protected void initToolbar() {
