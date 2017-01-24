@@ -1,5 +1,8 @@
 package com.katsuna.commons.utils;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
+
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
@@ -13,7 +16,13 @@ public class ColorCalc {
     private final static String PROFILE_NOT_SET = "profile not set";
     private final static String PROFILE_KEY_NOT_SET = "profile key not set";
 
-    public static int getColor(ColorProfileKey key, ColorProfile profile) {
+    public static int getColor(Context context, ColorProfileKey key, ColorProfile profile) {
+        int colorResId = ColorCalc.getColorResId(key, profile);
+        int color = ContextCompat.getColor(context, colorResId);
+        return color;
+    }
+
+    public static int getColorResId(ColorProfileKey key, ColorProfile profile) {
 
         switch (key) {
             case MAIN_COLOR_VERY_LIGHT:

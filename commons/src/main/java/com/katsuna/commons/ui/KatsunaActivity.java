@@ -1,8 +1,10 @@
 package com.katsuna.commons.ui;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,6 +28,29 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     protected Toolbar mToolbar;
     protected FloatingActionButton mFab1;
     protected FloatingActionButton mFab2;
+    private int mTheme;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setupTheme();
+        super.onCreate(savedInstanceState);
+    }
+
+    private void setupTheme() {
+        UserProfileContainer userProfileContainer = ProfileReader.getKatsunaUserProfile(this);
+        ColorProfile colorProfile = userProfileContainer.getColorProfile();
+        mTheme = getTheme(colorProfile);
+        setTheme(mTheme);
+    }
+
+    private int getTheme(ColorProfile profile) {
+        int theme = R.style.CommonAppTheme;
+        if (profile == ColorProfile.CONTRAST ||
+                profile == ColorProfile.COLOR_IMPAIRMENT_AND_CONTRAST) {
+            theme = R.style.CommonAppThemeContrast;
+        }
+        return theme;
+    }
 
     @Override
     protected void onResume() {
@@ -33,28 +58,33 @@ public abstract class KatsunaActivity extends AppCompatActivity {
         UserProfileContainer userProfileContainer = ProfileReader.getKatsunaUserProfile(this);
         setUserProfile(userProfileContainer);
 
+        ColorProfile colorProfile = mUserProfileContainer.getColorProfile();
+        int newTheme = getTheme(colorProfile);
+        if (newTheme != mTheme) {
+            // theme changed!
+            // recreate activity to apply new theme.
+            finish();
+            startActivity(new Intent(this, this.getClass()));
+            return;
+        }
+
         if (mUserProfileChanged) {
-            ColorProfile colorProfile = mUserProfileContainer.getColorProfile();
-            adjustBackground(colorProfile);
-            adjustStatusBar(colorProfile);
-            adjustToolbar(colorProfile);
             adjustFabColors(colorProfile);
         }
     }
 
     protected void adjustFabColors(ColorProfile profile) {
         if(mFab1 != null) {
-            int color1 = ColorCalc.getColor(ColorProfileKey.ACCENT1_COLOR, profile);
+            int color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, profile);
             setFabBackgroundColor(mFab1, color1);
         }
         if(mFab2 != null) {
-            int color2 = ColorCalc.getColor(ColorProfileKey.ACCENT2_COLOR, profile);
+            int color2 = ColorCalc.getColor(this, ColorProfileKey.ACCENT2_COLOR, profile);
             setFabBackgroundColor(mFab2, color2);
         }
     }
 
-    private void setFabBackgroundColor(FloatingActionButton fab, int resId) {
-        int color = ContextCompat.getColor(this, resId);
+    private void setFabBackgroundColor(FloatingActionButton fab, int color) {
         fab.setBackgroundTintList(ColorStateList.valueOf(color));
     }
 
@@ -84,20 +114,4 @@ public abstract class KatsunaActivity extends AppCompatActivity {
         }
     }
 
-    private void adjustBackground(ColorProfile profile) {
-        int color = ColorCalc.getColor(ColorProfileKey.MAIN_COLOR_VERY_LIGHT, profile);
-        getWindow().getDecorView().setBackgroundColor(ContextCompat.getColor(this, color));
-    }
-
-    private void adjustStatusBar(ColorProfile profile) {
-        int color = ColorCalc.getColor(ColorProfileKey.MAIN_COLOR_DARK, profile);
-        getWindow().setStatusBarColor(ContextCompat.getColor(this, color));
-    }
-
-    private void adjustToolbar(ColorProfile profile) {
-        if (mToolbar != null) {
-            int color = ColorCalc.getColor(ColorProfileKey.MAIN_COLOR_MEDIUM, profile);
-            mToolbar.setBackgroundColor(ContextCompat.getColor(this, color));
-        }
-    }
 }

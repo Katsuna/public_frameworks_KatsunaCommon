@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="CommonAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/common_grey300</item>
+        <item name="colorAccent">@color/common_blue900</item>
+        <item name="android:colorPrimaryDark">@color/common_grey600</item>
+        <item name="android:textColor">@color/common_black87</item>
+        <item name="android:textColorHint">@color/common_black54</item>
+        <item name="android:textColorPrimary">@color/common_black87</item>
+        <item name="android:textColorSecondary">@color/common_black54</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+    </style>
+
+    <style name="CommonAppThemeContrast" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/common_grey300</item>
+        <item name="colorAccent">@color/common_indigo900</item>
+        <item name="android:colorPrimaryDark">@color/common_grey600</item>
+        <item name="android:textColor">@color/common_black</item>
+        <item name="android:textColorHint">@color/common_black70</item>
+        <item name="android:textColorPrimary">@color/common_black</item>
+        <item name="android:textColorSecondary">@color/common_black70</item>
+    </style>
+
     <style name="CommonRobotoMedium">
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
@@ -9,13 +32,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- ToolBar -->
-    <style name="CommonToolBarStyle" parent="Theme.AppCompat">
-        <item name="android:colorPrimary">@color/common_grey300</item>
-        <item name="android:textColorPrimary">@color/common_black87</item>
-        <item name="android:textColorSecondary">@color/common_black87</item>
-        <item name="android:actionMenuTextColor">@color/common_black87</item>
-        <item name="android:textColorHint">@color/common_black87</item>
+    <style name="CommonDrawer">
+        <item name="android:textSize">@dimen/common_text_size</item>
     </style>
 
 </resources>
