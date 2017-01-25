@@ -9,12 +9,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.utils.ColorCalc;
 import com.katsuna.commons.utils.ProfileReader;
+import com.katsuna.commons.utils.ResourcesUtils;
 
 /**
  * Provides common functionality to subclasses.
@@ -44,10 +44,12 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     private int getTheme(ColorProfile profile) {
-        int theme = R.style.CommonAppTheme;
+        int theme = ResourcesUtils.getResourceIdByName(this.getPackageName(), "style",
+                "CommonAppTheme");
         if (profile == ColorProfile.CONTRAST ||
                 profile == ColorProfile.COLOR_IMPAIRMENT_AND_CONTRAST) {
-            theme = R.style.CommonAppThemeContrast;
+            theme = ResourcesUtils.getResourceIdByName(this.getPackageName(), "style",
+                    "CommonAppThemeContrast");
         }
         return theme;
     }
@@ -93,7 +95,8 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     protected void initToolbar(Integer drawableResId) {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        int resId = ResourcesUtils.getResourceIdByName(this.getPackageName(), "id", "toolbar");
+        mToolbar = (Toolbar) findViewById(resId);
         setSupportActionBar(mToolbar);
 
         ActionBar actionBar = getSupportActionBar();

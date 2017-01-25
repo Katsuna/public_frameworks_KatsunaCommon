@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 
 import com.katsuna.commons.entities.SpinnerItem;
+import com.katsuna.commons.utils.ResourcesUtils;
 
 import java.util.List;
 
@@ -21,23 +22,15 @@ public class SpinnerItemAdapter extends ArrayAdapter<SpinnerItem> {
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        CheckedTextView text = (CheckedTextView) convertView;
-
-        if (text == null) {
-            text = (CheckedTextView) LayoutInflater.from(getContext())
-                    .inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
-        }
-
-        SpinnerItem item = getItem(position);
-        if (item != null) {
-            text.setText(item.getDescriptionResId());
-        }
-
-        return text;
+        return getTextView(position, convertView, parent);
     }
 
     @Override
     public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
+        return getTextView(position, convertView, parent);
+    }
+
+    private View getTextView(int position, View convertView, @NonNull ViewGroup parent) {
         CheckedTextView text = (CheckedTextView) convertView;
 
         if (text == null) {
@@ -47,7 +40,10 @@ public class SpinnerItemAdapter extends ArrayAdapter<SpinnerItem> {
 
         SpinnerItem item = getItem(position);
         if (item != null) {
-            text.setText(item.getDescriptionResId());
+            int resId = ResourcesUtils.getResourceIdByName(getContext().getPackageName(), "string",
+                    item.getDescriptionResId());
+
+            text.setText(resId);
         }
 
         return text;
