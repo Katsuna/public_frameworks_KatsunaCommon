@@ -40,9 +40,7 @@ public class SpinnerItemAdapter extends ArrayAdapter<SpinnerItem> {
 
         SpinnerItem item = getItem(position);
         if (item != null) {
-            int resId = ResourcesUtils.getResourceIdByName(getContext().getPackageName(), "string",
-                    item.getDescriptionResId());
-
+            int resId = ResourcesUtils.getString(getContext(), item.getDescriptionResId());
             text.setText(resId);
         }
 

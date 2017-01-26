@@ -8,8 +8,7 @@ public class Shape {
 
     public static void setRoundedBackground(View v, int backgroundColor) {
         Resources r = v.getResources();
-        int resId = ResourcesUtils.getResourceIdByName(v.getContext().getPackageName(), "dimen",
-                "common_corner_radius");
+        int resId = ResourcesUtils.getDimen(v.getContext(), "common_corner_radius");
         float radius = r.getDimension(resId);
 
         setRoundedBackground(v, backgroundColor, radius);

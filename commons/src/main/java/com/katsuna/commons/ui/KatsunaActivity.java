@@ -44,12 +44,10 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     private int getTheme(ColorProfile profile) {
-        int theme = ResourcesUtils.getResourceIdByName(this.getPackageName(), "style",
-                "CommonAppTheme");
+        int theme = ResourcesUtils.getStyle(this, "CommonAppTheme");
         if (profile == ColorProfile.CONTRAST ||
                 profile == ColorProfile.COLOR_IMPAIRMENT_AND_CONTRAST) {
-            theme = ResourcesUtils.getResourceIdByName(this.getPackageName(), "style",
-                    "CommonAppThemeContrast");
+            theme = ResourcesUtils.getStyle(this, "CommonAppThemeContrast");
         }
         return theme;
     }
@@ -95,7 +93,7 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     protected void initToolbar(Integer drawableResId) {
-        int resId = ResourcesUtils.getResourceIdByName(this.getPackageName(), "id", "toolbar");
+        int resId = ResourcesUtils.getId(this, "toolbar");
         mToolbar = (Toolbar) findViewById(resId);
         setSupportActionBar(mToolbar);
 

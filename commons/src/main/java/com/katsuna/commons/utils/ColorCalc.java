@@ -17,7 +17,7 @@ public class ColorCalc {
 
     public static int getColor(Context context, ColorProfileKey key, ColorProfile profile) {
         String color = ColorCalc.getColorResId(key, profile);
-        int resId = ResourcesUtils.getResourceIdByName(context.getPackageName(), "color", color);
+        int resId = ResourcesUtils.getColor(context, color);
         return ContextCompat.getColor(context, resId);
     }
 
