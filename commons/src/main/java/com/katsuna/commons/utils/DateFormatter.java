@@ -20,6 +20,11 @@ public class DateFormatter {
 
     public static String format(long date) {
         DateTime dateTime = new DateTime(date);
+        return dateTime.toString(KATSUNA_DATE_FORMAT);
+    }
+
+    public static String relativeFormat(long date) {
+        DateTime dateTime = new DateTime(date);
 
         Interval todayInterval = new Interval(DateTime.now().withTimeAtStartOfDay(), Days.ONE);
         Interval yesterdayInterval = new Interval(DateTime.now().withTimeAtStartOfDay().minusDays(1), Days.ONE);
