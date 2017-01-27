@@ -3,6 +3,7 @@
 
     <!-- Base application theme. -->
     <style name="CommonAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/common_grey50</item>
         <item name="colorPrimary">@color/common_grey300</item>
         <item name="colorAccent">@color/common_blue900</item>
         <item name="android:colorPrimaryDark">@color/common_grey600</item>
@@ -14,6 +15,7 @@
     </style>
 
     <style name="CommonAppThemeContrast" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/common_grey50</item>
         <item name="colorPrimary">@color/common_grey300</item>
         <item name="colorAccent">@color/common_indigo900</item>
         <item name="android:colorPrimaryDark">@color/common_grey600</item>

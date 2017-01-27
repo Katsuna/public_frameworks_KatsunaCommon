@@ -8,6 +8,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
@@ -15,6 +18,7 @@ import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.utils.ColorCalc;
 import com.katsuna.commons.utils.ProfileReader;
 import com.katsuna.commons.utils.ResourcesUtils;
+import com.katsuna.commons.utils.Shape;
 
 /**
  * Provides common functionality to subclasses.
@@ -26,8 +30,13 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     protected UserProfileContainer mUserProfileContainer;
     protected boolean mUserProfileChanged;
     protected Toolbar mToolbar;
+    protected LinearLayout mButtonsContainer1;
+    protected LinearLayout mButtonsContainer2;
+    protected LinearLayout mFabContainer;
     protected FloatingActionButton mFab1;
     protected FloatingActionButton mFab2;
+    protected Button mPopupButton1;
+    protected Button mPopupButton2;
     private int mTheme;
 
     @Override
@@ -70,17 +79,66 @@ public abstract class KatsunaActivity extends AppCompatActivity {
 
         if (mUserProfileChanged) {
             adjustFabColors(colorProfile);
+            adjustRightHand();
         }
     }
 
     protected void adjustFabColors(ColorProfile profile) {
-        if(mFab1 != null) {
+        if (mFab1 != null) {
             int color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, profile);
             setFabBackgroundColor(mFab1, color1);
         }
-        if(mFab2 != null) {
+        if (mFab2 != null) {
             int color2 = ColorCalc.getColor(this, ColorProfileKey.ACCENT2_COLOR, profile);
             setFabBackgroundColor(mFab2, color2);
+        }
+    }
+
+    protected void adjustPopupButtons(ColorProfile profile) {
+        if (mPopupButton1 != null) {
+            int color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, profile);
+            Shape.setRoundedBackground(mPopupButton1, color1);
+        }
+
+        if (mPopupButton2 != null) {
+            int color2 = ColorCalc.getColor(this, ColorProfileKey.ACCENT2_COLOR, profile);
+            Shape.setRoundedBackground(mPopupButton2, color2);
+        }
+    }
+
+    private void adjustRightHand() {
+        if (mUserProfileContainer.isRightHanded()) {
+            positionFabsToLeft(false);
+        } else {
+            positionFabsToLeft(true);
+        }
+    }
+
+    protected void positionFabsToLeft(boolean flag) {
+        int fabContainerGravity = flag ? Gravity.START : Gravity.END;
+        if (mFabContainer != null) {
+            mFabContainer.setGravity(fabContainerGravity | Gravity.CENTER);
+        }
+
+        if (mButtonsContainer1 != null) {
+            mButtonsContainer1.removeAllViews();
+            mButtonsContainer1.addView(flag ? mFab1 : mPopupButton1);
+            mButtonsContainer1.addView(flag ? mPopupButton1 : mFab1);
+        }
+
+        if (mButtonsContainer2 != null) {
+            mButtonsContainer2.removeAllViews();
+            mButtonsContainer2.addView(flag ? mFab2 : mPopupButton2);
+            mButtonsContainer2.addView(flag ? mPopupButton2 : mFab2);
+        }
+    }
+
+    protected void adjustFabPosition(boolean verticalCenter) {
+        int verticalCenterGravity = verticalCenter ? Gravity.CENTER : Gravity.BOTTOM;
+        if (mUserProfileContainer.isRightHanded()) {
+            mFabContainer.setGravity(verticalCenterGravity | Gravity.END);
+        } else {
+            mFabContainer.setGravity(verticalCenterGravity | Gravity.START);
         }
     }
 
