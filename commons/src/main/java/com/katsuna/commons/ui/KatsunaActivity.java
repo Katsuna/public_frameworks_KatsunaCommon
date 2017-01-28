@@ -3,12 +3,15 @@ package com.katsuna.commons.ui;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -27,6 +30,8 @@ import com.katsuna.commons.utils.Shape;
 
 public abstract class KatsunaActivity extends AppCompatActivity {
 
+    protected static final int POPUP_INACTIVITY_THRESHOLD = 10000;
+    protected static final int POPUP_HANDLER_DELAY = 1000;
     protected UserProfileContainer mUserProfileContainer;
     protected boolean mUserProfileChanged;
     protected Toolbar mToolbar;
@@ -37,6 +42,9 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     protected FloatingActionButton mFab2;
     protected Button mPopupButton1;
     protected Button mPopupButton2;
+    protected long mLastTouchTimestamp;
+    protected Handler mPopupActionHandler;
+    protected boolean mPopupVisible;
     private int mTheme;
 
     @Override
@@ -79,6 +87,7 @@ public abstract class KatsunaActivity extends AppCompatActivity {
 
         if (mUserProfileChanged) {
             adjustFabColors(colorProfile);
+            adjustPopupButtons(colorProfile);
             adjustRightHand();
         }
     }
@@ -93,6 +102,50 @@ public abstract class KatsunaActivity extends AppCompatActivity {
             setFabBackgroundColor(mFab2, color2);
         }
     }
+
+    protected void tintFabs(boolean flag) {
+        int color1;
+        int color2;
+        if (flag) {
+            int color1ResId = ResourcesUtils.getColor(this, "common_pink_tinted");
+            color1 = ContextCompat.getColor(this, color1ResId);
+            int color2ResId = ResourcesUtils.getColor(this, "common_blue_tinted");
+            color2 = ContextCompat.getColor(this, color2ResId);
+        } else {
+            ColorProfile colorProfile = mUserProfileContainer.getColorProfile();
+            color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, colorProfile);
+            color2 = ColorCalc.getColor(this, ColorProfileKey.ACCENT2_COLOR, colorProfile);
+        }
+
+        if (mFab1 != null) {
+            mFab1.setBackgroundTintList(ColorStateList.valueOf(color1));
+        }
+        if (mFab2 != null) {
+            mFab2.setBackgroundTintList(ColorStateList.valueOf(color2));
+        }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        mLastTouchTimestamp = System.currentTimeMillis();
+        return super.dispatchTouchEvent(ev);
+    }
+
+    protected void initPopupActionHandler() {
+        mPopupActionHandler = new Handler();
+        mPopupActionHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                long now = System.currentTimeMillis();
+                if (now - POPUP_INACTIVITY_THRESHOLD > mLastTouchTimestamp && !mPopupVisible) {
+                    showPopup(true);
+                }
+                mPopupActionHandler.postDelayed(this, POPUP_HANDLER_DELAY);
+            }
+        }, POPUP_HANDLER_DELAY);
+    }
+
+    protected abstract void showPopup(boolean flag);
 
     protected void adjustPopupButtons(ColorProfile profile) {
         if (mPopupButton1 != null) {

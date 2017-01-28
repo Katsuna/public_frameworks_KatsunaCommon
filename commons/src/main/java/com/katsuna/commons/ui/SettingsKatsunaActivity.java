@@ -38,6 +38,11 @@ public class SettingsKatsunaActivity extends KatsunaActivity {
         }
     }
 
+    @Override
+    protected void showPopup(boolean flag) {
+        // no op for settings
+    }
+
     protected void initSizeProfiles() {
         int profilesResId = ResourcesUtils.getId(this, "profiles");
         Spinner mProfileTypes = (Spinner) findViewById(profilesResId);
