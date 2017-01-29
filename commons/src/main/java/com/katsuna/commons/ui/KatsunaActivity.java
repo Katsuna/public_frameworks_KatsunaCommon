@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -168,21 +170,34 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     protected void positionFabsToLeft(boolean flag) {
-        int fabContainerGravity = flag ? Gravity.START : Gravity.END;
+        int horizontalGravity = flag ? Gravity.START : Gravity.END;
         if (mFabContainer != null) {
-            mFabContainer.setGravity(fabContainerGravity | Gravity.CENTER);
-        }
+            // case with fab container with 1 or 2 fabs present with secondary buttons with text
+            // description
+            mFabContainer.setGravity(horizontalGravity | Gravity.CENTER);
 
-        if (mButtonsContainer1 != null) {
-            mButtonsContainer1.removeAllViews();
-            mButtonsContainer1.addView(flag ? mFab1 : mPopupButton1);
-            mButtonsContainer1.addView(flag ? mPopupButton1 : mFab1);
-        }
+            if (mButtonsContainer1 != null) {
+                mButtonsContainer1.removeAllViews();
+                mButtonsContainer1.addView(flag ? mFab1 : mPopupButton1);
+                mButtonsContainer1.addView(flag ? mPopupButton1 : mFab1);
+            }
 
-        if (mButtonsContainer2 != null) {
-            mButtonsContainer2.removeAllViews();
-            mButtonsContainer2.addView(flag ? mFab2 : mPopupButton2);
-            mButtonsContainer2.addView(flag ? mPopupButton2 : mFab2);
+            if (mButtonsContainer2 != null) {
+                mButtonsContainer2.removeAllViews();
+                mButtonsContainer2.addView(flag ? mFab2 : mPopupButton2);
+                mButtonsContainer2.addView(flag ? mPopupButton2 : mFab2);
+            }
+        } else {
+            if (mFab2 != null) {
+                ViewGroup.LayoutParams lp = mFab2.getLayoutParams();
+                if (lp instanceof CoordinatorLayout.LayoutParams) {
+                    CoordinatorLayout.LayoutParams coordLp = (CoordinatorLayout.LayoutParams) lp;
+                    //keep vertical gravity
+                    coordLp.gravity &= Gravity.VERTICAL_GRAVITY_MASK;
+                    //apply horizontal gravity
+                    coordLp.gravity |= horizontalGravity;
+                }
+            }
         }
     }
 
