@@ -63,4 +63,12 @@ public class ResourcesUtils {
     public static int getStyle(Context context, String name) {
         return getResourceIdByName(context.getPackageName(), "style", name);
     }
+
+    public static int getDrawable(Context context, String name) {
+        return getResourceIdByName(context.getPackageName(), "drawable", name);
+    }
+
+    public static int getLayout(Context context, String name) {
+        return getResourceIdByName(context.getPackageName(), "layout", name);
+    }
 }

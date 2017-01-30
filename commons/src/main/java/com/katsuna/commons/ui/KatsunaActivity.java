@@ -8,13 +8,17 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.katsuna.commons.entities.ColorProfile;
@@ -47,6 +51,13 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     protected long mLastTouchTimestamp;
     protected Handler mPopupActionHandler;
     protected boolean mPopupVisible;
+    protected View mFabToolbar;
+    protected boolean mFabToolbarOn;
+    protected FrameLayout mFabToolbarContainer;
+    protected LinearLayout mViewPagerContainer;
+    protected ViewPager mViewPager;
+    protected ImageButton mPrevButton;
+    protected ImageButton mNextButton;
     private int mTheme;
 
     @Override
@@ -88,13 +99,16 @@ public abstract class KatsunaActivity extends AppCompatActivity {
         }
 
         if (mUserProfileChanged) {
+            // color profile adjustments
             adjustFabColors(colorProfile);
             adjustPopupButtons(colorProfile);
+
+            // right hand adjustments
             adjustRightHand();
         }
     }
 
-    protected void adjustFabColors(ColorProfile profile) {
+    private void adjustFabColors(ColorProfile profile) {
         if (mFab1 != null) {
             int color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, profile);
             setFabBackgroundColor(mFab1, color1);
@@ -149,7 +163,7 @@ public abstract class KatsunaActivity extends AppCompatActivity {
 
     protected abstract void showPopup(boolean flag);
 
-    protected void adjustPopupButtons(ColorProfile profile) {
+    private void adjustPopupButtons(ColorProfile profile) {
         if (mPopupButton1 != null) {
             int color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, profile);
             Shape.setRoundedBackground(mPopupButton1, color1);
