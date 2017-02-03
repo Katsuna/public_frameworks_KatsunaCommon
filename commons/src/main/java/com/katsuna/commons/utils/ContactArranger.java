@@ -19,13 +19,13 @@ public class ContactArranger {
         String s = "-";
 
         for (Contact c : contacts) {
-            String displayName = c.getDisplayName();
+            String firstLetterNormalized = c.getFirstLetterNormalized();
 
             //check if contact is separator
             Separator separator = Separator.NONE;
-            if (displayName != null) {
-                if (!displayName.startsWith(s)) {
-                    s = displayName.subSequence(0, 1).toString();
+            if (firstLetterNormalized != null) {
+                if (!firstLetterNormalized.startsWith(s)) {
+                    s = firstLetterNormalized;
                     separator = Separator.FIRST_LETTER;
                 }
             }

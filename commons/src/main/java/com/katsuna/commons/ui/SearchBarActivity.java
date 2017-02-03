@@ -75,7 +75,10 @@ public abstract class SearchBarActivity extends KatsunaActivity
         for (ContactListItemModel contactListItemModel : models) {
             if (!contactListItemModel.isPremium()) {
                 if (contactListItemModel.getSeparator() == Separator.FIRST_LETTER) {
-                    letters.add(contactListItemModel.getContact().getDisplayName().substring(0, 1));
+                    String letter = contactListItemModel.getContact().getFirstLetterNormalized();
+                    if (!letters.contains(letter)) {
+                        letters.add(letter);
+                    }
                 }
             }
         }

@@ -48,7 +48,7 @@ public abstract class ContactsAdapterBase extends RecyclerView.Adapter<RecyclerV
                 continue;
             }
 
-            if (mFilteredContacts.get(i).getContact().getDisplayName().startsWith(letter)) {
+            if (mFilteredContacts.get(i).getContact().getFirstLetterNormalized().startsWith(letter)) {
                 position = i;
                 break;
             }

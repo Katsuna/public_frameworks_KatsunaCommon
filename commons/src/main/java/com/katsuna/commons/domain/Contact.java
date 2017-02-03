@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 
+import com.katsuna.commons.utils.LetterNormalizer;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class Contact implements Comparable<Contact>, Serializable {
     private boolean starred;
     private Uri photoUri;
     private String messageAddress;
+    private String firstLetterNormalized;
 
     public Contact() {
     }
@@ -57,11 +60,16 @@ public class Contact implements Comparable<Contact>, Serializable {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+        this.firstLetterNormalized = LetterNormalizer.normalize(displayName);
     }
 
     @Override
     public int compareTo(@NonNull Contact another) {
-        return displayName.compareTo(another.displayName);
+        int result = firstLetterNormalized.compareTo(another.getFirstLetterNormalized());
+        if (result == 0) {
+            result = displayName.compareTo(another.displayName);
+        }
+        return result;
     }
 
     public Bitmap getPhoto() {
@@ -149,5 +157,9 @@ public class Contact implements Comparable<Contact>, Serializable {
 
     public void setMessageAddress(String messageAddress) {
         this.messageAddress = messageAddress;
+    }
+
+    public String getFirstLetterNormalized() {
+        return firstLetterNormalized;
     }
 }
