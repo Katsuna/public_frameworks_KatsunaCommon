@@ -11,7 +11,8 @@ public class LetterNormalizer {
 
         String firstLetter = input.substring(0, 1);
         String firstLetterCapital = firstLetter.toUpperCase();
-        return stripAccents(firstLetterCapital);
+        String firstLetterCapitalNoAccents = stripAccents(firstLetterCapital);
+        return LetterMapper.getInstance().getLetter(firstLetterCapitalNoAccents);
     }
 
     public static String stripAccents(String s) {
