@@ -65,7 +65,7 @@ public class ColorCalc {
                         return "common_red500";
                     case COLOR_IMPAIREMENT:
                     case COLOR_IMPAIRMENT_AND_CONTRAST:
-                        return "common_grey900";
+                        return "common_yellow700";
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }
