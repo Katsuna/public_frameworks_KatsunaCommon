@@ -15,12 +15,14 @@ import android.util.Log;
 
 import com.katsuna.commons.domain.Address;
 import com.katsuna.commons.domain.Contact;
+import com.katsuna.commons.domain.Description;
 import com.katsuna.commons.domain.Email;
 import com.katsuna.commons.domain.Name;
 import com.katsuna.commons.domain.Phone;
 import com.katsuna.commons.providers.queries.ContactAddressQuery;
 import com.katsuna.commons.providers.queries.ContactEmailQuery;
 import com.katsuna.commons.providers.queries.ContactNameQuery;
+import com.katsuna.commons.providers.queries.ContactNoteQuery;
 import com.katsuna.commons.providers.queries.ContactPhotoQuery;
 import com.katsuna.commons.providers.queries.ContactQuery;
 import com.katsuna.commons.utils.Constants;
@@ -165,6 +167,12 @@ public class ContactProvider {
             contact.setAddress(addresses.get(0));
         }
 
+        // Read all description and use the first one.
+        List<Description> descriptions = getDescriptions(contactId);
+        if (descriptions.size() > 0) {
+            contact.setDescription(descriptions.get(0));
+        }
+
         return contact;
     }
 
@@ -248,6 +256,33 @@ public class ContactProvider {
         return addresses;
     }
 
+    private List<Description> getDescriptions(long contactId) {
+        List<Description> descriptions = new ArrayList<>();
+
+        Uri baseUri = ContactsContract.Data.CONTENT_URI;
+        String selection = ContactsContract.Data.CONTACT_ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?";
+        String[] selectionParameters = new String[]{String.valueOf(contactId),
+                ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE};
+
+        Cursor cursor = cr.query(baseUri, ContactNoteQuery._PROJECTION, selection, selectionParameters, null);
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    do {
+                        Description description = new Description();
+                        description.setId(cursor.getString(ContactNoteQuery._ID));
+                        description.setDescription(cursor.getString(ContactNoteQuery.NOTE));
+                        descriptions.add(description);
+                    } while (cursor.moveToNext());
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+
+        return descriptions;
+    }
+
     private Name getName(long contactId) {
         Name name = null;
 
@@ -314,6 +349,14 @@ public class ContactProvider {
                     .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                     .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
                     .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO, photo)
+                    .build());
+        }
+
+        if (contact.getDescription() != null) {
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Note.NOTE, contact.getDescription().getDescription())
                     .build());
         }
 
@@ -447,6 +490,35 @@ public class ContactProvider {
                 case DELETE:
                     where = ContactsContract.CommonDataKinds.Email._ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ? ";
                     params = new String[]{address.getId(), ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE};
+                    ops.add(ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
+                            .withSelection(where, params)
+                            .build());
+                    break;
+            }
+        }
+
+        //process descriptions
+        Description description = contact.getDescription();
+        if (description != null) {
+            switch (description.getDataAction()) {
+                case CREATE:
+                    ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                            .withValue(ContactsContract.Data.RAW_CONTACT_ID, rawContactId)
+                            .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE)
+                            .withValue(ContactsContract.CommonDataKinds.Note.NOTE, description.getDescription())
+                            .build());
+                    break;
+                case UPDATE:
+                    where = ContactsContract.Data._ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ? ";
+                    params = new String[]{description.getId(), ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE};
+                    ops.add(ContentProviderOperation.newUpdate(ContactsContract.Data.CONTENT_URI)
+                            .withSelection(where, params)
+                            .withValue(ContactsContract.CommonDataKinds.Note.NOTE, description.getDescription())
+                            .build());
+                    break;
+                case DELETE:
+                    where = ContactsContract.CommonDataKinds.Note._ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ? ";
+                    params = new String[]{description.getId(), ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE};
                     ops.add(ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
                             .withSelection(where, params)
                             .build());

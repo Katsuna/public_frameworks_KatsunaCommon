@@ -162,4 +162,14 @@ public class Contact implements Comparable<Contact>, Serializable {
     public String getFirstLetterNormalized() {
         return firstLetterNormalized;
     }
+
+    private Description description;
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
+    }
 }
