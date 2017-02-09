@@ -128,6 +128,12 @@ public class ContactProvider {
                             contact.setAddress(addresses.get(0));
                         }
 
+                        // Read all description and use the first one.
+                        List<Description> descriptions = getDescriptions(contactId);
+                        if (descriptions.size() > 0) {
+                            contact.setDescription(descriptions.get(0));
+                        }
+
                         contacts.add(contact);
                     } while (cursor.moveToNext());
                 }
@@ -619,6 +625,16 @@ public class ContactProvider {
                     .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                     .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
                     .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO, photo)
+                    .build());
+        }
+
+        //process description
+        Description description = contact.getDescription();
+        if (description != null) {
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Note.NOTE, description.getDescription())
                     .build());
         }
 
