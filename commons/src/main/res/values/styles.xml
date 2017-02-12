@@ -12,6 +12,7 @@
         <item name="android:textColorPrimary">@color/common_black87</item>
         <item name="android:textColorSecondary">@color/common_black54</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <item name="android:letterSpacing">0.1</item>
     </style>
 
     <style name="CommonAppThemeContrast" parent="Theme.AppCompat.Light.NoActionBar">
@@ -23,6 +24,7 @@
         <item name="android:textColorHint">@color/common_black70</item>
         <item name="android:textColorPrimary">@color/common_black</item>
         <item name="android:textColorSecondary">@color/common_black70</item>
+        <item name="android:letterSpacing">0.1</item>
     </style>
 
     <style name="CommonRobotoMedium">
