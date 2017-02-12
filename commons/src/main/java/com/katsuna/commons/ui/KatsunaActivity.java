@@ -143,8 +143,12 @@ public abstract class KatsunaActivity extends AppCompatActivity {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        mLastTouchTimestamp = System.currentTimeMillis();
+        refreshLastTouchTimestamp();
         return super.dispatchTouchEvent(ev);
+    }
+
+    protected void refreshLastTouchTimestamp() {
+        mLastTouchTimestamp = System.currentTimeMillis();
     }
 
     protected void initPopupActionHandler() {
