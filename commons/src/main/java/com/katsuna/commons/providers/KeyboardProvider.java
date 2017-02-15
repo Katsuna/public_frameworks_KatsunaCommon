@@ -7,8 +7,6 @@ import android.util.Log;
 
 import com.katsuna.commons.entities.KeyboardEvent;
 
-import org.joda.time.DateTime;
-
 public class KeyboardProvider {
 
     public static final String TAG = "KeyboardProvider";
@@ -23,7 +21,7 @@ public class KeyboardProvider {
         ContentValues values = new ContentValues();
         values.put(KeyboardEvent.COL_CODE, keyboardEvent.getCode());
         values.put(KeyboardEvent.COL_CHARACTER, keyboardEvent.getCharacter());
-        values.put(KeyboardEvent.COL_TIME, new DateTime().toString());
+        values.put(KeyboardEvent.COL_TIME, System.currentTimeMillis());
 
         try {
             context.getContentResolver().insert(URI_KEYBOARD, values);

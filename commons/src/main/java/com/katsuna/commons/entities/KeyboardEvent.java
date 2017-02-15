@@ -12,7 +12,7 @@ public class KeyboardEvent extends BaseObject {
 
     private int code;
     private String character;
-    private String time;
+    private long time;
 
     public KeyboardEvent() {
     }
@@ -34,11 +34,11 @@ public class KeyboardEvent extends BaseObject {
         this.code = code;
     }
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
