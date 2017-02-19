@@ -96,4 +96,7 @@ public class UserProfileContainer {
     }
 
 
+    public UserProfile getProfileFromKatsunaServices() {
+        return profileFromKatsunaServices;
+    }
 }

@@ -18,6 +18,8 @@
     <!-- Title for the Info item in every app's navigation drawer -->
     <string name="common_info">Info</string>
 
+    <string name="common_open">Open</string>
+
     <!-- Title for the call action in every app -->
     <string name="common_call">Call</string>
 
