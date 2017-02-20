@@ -20,6 +20,12 @@
 
     <string name="common_open">Open</string>
 
+    <string name="common_contacts">Contacts</string>
+
+    <string name="common_warning">Warning</string>
+
+    <string name="common_system_app_uninstall_error">System apps cannot be uninstalled.</string>
+
     <!-- Title for the call action in every app -->
     <string name="common_call">Call</string>
 
