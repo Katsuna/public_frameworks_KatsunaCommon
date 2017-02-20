@@ -1,7 +1,7 @@
 package com.katsuna.commons.utils;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +19,8 @@ public class KatsunaAlertBuilder {
     private View mView;
     private int mTitleResId;
     private int mMessageResId;
-    private UserProfileContainer mUserProfileContainer;
+    private ColorProfile mColorProfile;
+    private boolean mCancelHidden;
     private View.OnClickListener mCancelListener;
     private View.OnClickListener mOkListener;
     private Button mCancelButton;
@@ -51,7 +52,7 @@ public class KatsunaAlertBuilder {
     }
 
     public void setUserProfileContainer(UserProfileContainer userProfileContainer) {
-        mUserProfileContainer = userProfileContainer;
+        setColorProfile(userProfileContainer.getColorProfile());
     }
 
     public AlertDialog create() {
@@ -73,13 +74,19 @@ public class KatsunaAlertBuilder {
             }
         });
 
+        if (mCancelHidden) {
+            mCancelButton.setVisibility(View.INVISIBLE);
+        }
+
         int okButtonResId = ResourcesUtils.getId(mContext, "alert_ok_button");
         mOkButton = (Button) mView.findViewById(okButtonResId);
         mOkButton.setText(android.R.string.ok);
         mOkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mOkListener.onClick(v);
+                if (mOkListener != null) {
+                    mOkListener.onClick(v);
+                }
                 dialog.dismiss();
             }
         });
@@ -117,16 +124,27 @@ public class KatsunaAlertBuilder {
     }
 
     private void adjustProfile() {
-        ColorProfile colorProfile = mUserProfileContainer.getColorProfile();
+        if (mColorProfile == null) {
+            return;
+        }
+
         // set action buttons background color
-        int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR, colorProfile);
+        int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR, mColorProfile);
         Shape.setRoundedBackground(mOkButton, color1);
 
-        int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR, colorProfile);
+        int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR, mColorProfile);
         Shape.setRoundedBackground(mCancelButton, color2);
     }
 
     public void setScrollViewItems(List<String> scrollViewItems) {
         mScrollViewItems = scrollViewItems;
+    }
+
+    public void setColorProfile(ColorProfile colorProfile) {
+        mColorProfile = colorProfile;
+    }
+
+    public void setCancelHidden(boolean cancelHidden) {
+        mCancelHidden = cancelHidden;
     }
 }
