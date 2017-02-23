@@ -20,7 +20,8 @@ public class KeyboardProvider {
     public static void save(Context context, KeyboardEvent keyboardEvent) {
         ContentValues values = new ContentValues();
         values.put(KeyboardEvent.COL_CODE, keyboardEvent.getCode());
-        values.put(KeyboardEvent.COL_CHARACTER, keyboardEvent.getCharacter());
+        // Character logging disabled.
+        values.put(KeyboardEvent.COL_CHARACTER, "");
         values.put(KeyboardEvent.COL_TIME, System.currentTimeMillis());
 
         try {
