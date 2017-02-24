@@ -101,7 +101,7 @@ public class SearchBarFragment extends Fragment {
         searchLetter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.selectContactByStartingLetter(letter);
+                mListener.selectItemByStartingLetter(letter);
             }
         });
 
@@ -146,7 +146,7 @@ public class SearchBarFragment extends Fragment {
      * activity.
      */
     public interface OnFragmentInteractionListener {
-        void selectContactByStartingLetter(String letter);
+        void selectItemByStartingLetter(String letter);
 
         UserProfileContainer getUserProfileContainer();
     }

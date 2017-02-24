@@ -25,6 +25,7 @@ import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.utils.ColorCalc;
+import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.ProfileReader;
 import com.katsuna.commons.utils.ResourcesUtils;
 import com.katsuna.commons.utils.Shape;
@@ -36,8 +37,6 @@ import com.katsuna.commons.utils.Shape;
 
 public abstract class KatsunaActivity extends AppCompatActivity {
 
-    protected static final int POPUP_INACTIVITY_THRESHOLD = 10000;
-    protected static final int POPUP_HANDLER_DELAY = 1000;
     protected UserProfileContainer mUserProfileContainer;
     protected boolean mUserProfileChanged;
     protected Toolbar mToolbar;
@@ -106,6 +105,8 @@ public abstract class KatsunaActivity extends AppCompatActivity {
             // right hand adjustments
             adjustRightHand();
         }
+
+        refreshLastTouchTimestamp();
     }
 
     private void adjustFabColors(ColorProfile profile) {
@@ -157,12 +158,12 @@ public abstract class KatsunaActivity extends AppCompatActivity {
             @Override
             public void run() {
                 long now = System.currentTimeMillis();
-                if (now - POPUP_INACTIVITY_THRESHOLD > mLastTouchTimestamp && !mPopupVisible) {
+                if (now - Constants.POPUP_INACTIVITY_THRESHOLD > mLastTouchTimestamp && !mPopupVisible) {
                     showPopup(true);
                 }
-                mPopupActionHandler.postDelayed(this, POPUP_HANDLER_DELAY);
+                mPopupActionHandler.postDelayed(this, Constants.HANDLER_DELAY);
             }
-        }, POPUP_HANDLER_DELAY);
+        }, Constants.HANDLER_DELAY);
     }
 
     protected abstract void showPopup(boolean flag);

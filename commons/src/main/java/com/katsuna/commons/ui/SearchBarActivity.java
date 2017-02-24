@@ -1,5 +1,6 @@
 package com.katsuna.commons.ui;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
@@ -12,6 +13,7 @@ import com.katsuna.commons.ui.adapters.TabsPagerAdapter;
 import com.katsuna.commons.ui.adapters.models.ContactListItemModel;
 import com.katsuna.commons.ui.fragments.SearchBarFragment;
 import com.katsuna.commons.utils.ColorCalc;
+import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.ListChopper;
 import com.katsuna.commons.utils.ResourcesUtils;
 import com.katsuna.commons.utils.Separator;
@@ -21,6 +23,10 @@ import java.util.List;
 
 public abstract class SearchBarActivity extends KatsunaActivity
         implements SearchBarFragment.OnFragmentInteractionListener {
+
+    protected Handler mDeselectionActionHandler;
+    protected boolean mItemSelected;
+    protected long mLastSelectionTimestamp = System.currentTimeMillis();
 
     @Override
     protected void onResume() {
@@ -129,5 +135,26 @@ public abstract class SearchBarActivity extends KatsunaActivity
             mPrevButton.setVisibility(View.VISIBLE);
         }
     }
+
+    protected void initDeselectionActionHandler() {
+        mDeselectionActionHandler = new Handler();
+        mDeselectionActionHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                long now = System.currentTimeMillis();
+                if (now - Constants.SELECTION_THRESHOLD > mLastSelectionTimestamp && mItemSelected) {
+                    deselectItem();
+                }
+                mDeselectionActionHandler.postDelayed(this, Constants.HANDLER_DELAY);
+            }
+        }, Constants.HANDLER_DELAY);
+    }
+
+    protected void refreshLastSelectionTimestamp() {
+        mLastSelectionTimestamp = System.currentTimeMillis();
+    }
+
+    // Subclasses must implement this.
+    protected abstract void deselectItem();
 
 }

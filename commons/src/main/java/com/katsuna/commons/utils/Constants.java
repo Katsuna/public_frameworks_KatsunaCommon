@@ -13,4 +13,8 @@ public final class Constants {
     public static final String CREATE_CONTACT_ACTION = "com.katsuna.contacts.create";
 
     public static final int FAB_TRANSFORMATION_DURATION = 200;
+
+    public static final int POPUP_INACTIVITY_THRESHOLD = 10000;
+    public static final int SELECTION_THRESHOLD = 20000;
+    public static final int HANDLER_DELAY = 1000;
 }
