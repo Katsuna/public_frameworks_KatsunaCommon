@@ -99,4 +99,13 @@ public class UserProfileContainer {
     public UserProfile getProfileFromKatsunaServices() {
         return profileFromKatsunaServices;
     }
+
+    public UserProfile getActiveUserProfile() {
+        UserProfile userProfile = new UserProfile();
+        userProfile.opticalSizeProfile = getOpticalSizeProfile();
+        userProfile.colorProfile = getColorProfile();
+        userProfile.isRightHanded = isRightHanded();
+        return userProfile;
+    }
+
 }

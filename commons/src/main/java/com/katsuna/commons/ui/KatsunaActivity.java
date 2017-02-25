@@ -1,13 +1,11 @@
 package com.katsuna.commons.ui;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,13 +20,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.katsuna.commons.entities.ColorProfile;
-import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.UserProfileContainer;
-import com.katsuna.commons.utils.ColorCalc;
+import com.katsuna.commons.profile.Adjuster;
 import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.ProfileReader;
 import com.katsuna.commons.utils.ResourcesUtils;
-import com.katsuna.commons.utils.Shape;
 
 /**
  * Provides common functionality to subclasses.
@@ -98,9 +94,10 @@ public abstract class KatsunaActivity extends AppCompatActivity {
         }
 
         if (mUserProfileChanged) {
+            mAdjuster = new Adjuster(this, mUserProfileContainer.getActiveUserProfile());
             // color profile adjustments
-            adjustFabColors(colorProfile);
-            adjustPopupButtons(colorProfile);
+            mAdjuster.adjustFabColors(mFab1, mFab2);
+            mAdjuster.adjustPopupButtons(mPopupButton1, mPopupButton2);
 
             // right hand adjustments
             adjustRightHand();
@@ -109,36 +106,11 @@ public abstract class KatsunaActivity extends AppCompatActivity {
         refreshLastTouchTimestamp();
     }
 
-    private void adjustFabColors(ColorProfile profile) {
-        if (mFab1 != null) {
-            int color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, profile);
-            setFabBackgroundColor(mFab1, color1);
-        }
-        if (mFab2 != null) {
-            int color2 = ColorCalc.getColor(this, ColorProfileKey.ACCENT2_COLOR, profile);
-            setFabBackgroundColor(mFab2, color2);
-        }
-    }
+    protected Adjuster mAdjuster;
 
     protected void tintFabs(boolean flag) {
-        int color1;
-        int color2;
-        if (flag) {
-            int color1ResId = ResourcesUtils.getColor(this, "common_pink_tinted");
-            color1 = ContextCompat.getColor(this, color1ResId);
-            int color2ResId = ResourcesUtils.getColor(this, "common_blue_tinted");
-            color2 = ContextCompat.getColor(this, color2ResId);
-        } else {
-            ColorProfile colorProfile = mUserProfileContainer.getColorProfile();
-            color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, colorProfile);
-            color2 = ColorCalc.getColor(this, ColorProfileKey.ACCENT2_COLOR, colorProfile);
-        }
-
-        if (mFab1 != null) {
-            mFab1.setBackgroundTintList(ColorStateList.valueOf(color1));
-        }
-        if (mFab2 != null) {
-            mFab2.setBackgroundTintList(ColorStateList.valueOf(color2));
+        if (mAdjuster != null) {
+            mAdjuster.tintFabs(mFab1, mFab2, flag);
         }
     }
 
@@ -167,18 +139,6 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     protected abstract void showPopup(boolean flag);
-
-    private void adjustPopupButtons(ColorProfile profile) {
-        if (mPopupButton1 != null) {
-            int color1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, profile);
-            Shape.setRoundedBackground(mPopupButton1, color1);
-        }
-
-        if (mPopupButton2 != null) {
-            int color2 = ColorCalc.getColor(this, ColorProfileKey.ACCENT2_COLOR, profile);
-            Shape.setRoundedBackground(mPopupButton2, color2);
-        }
-    }
 
     private void adjustRightHand() {
         if (mUserProfileContainer.isRightHanded()) {
@@ -221,16 +181,7 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     protected void adjustFabPosition(boolean verticalCenter) {
-        int verticalCenterGravity = verticalCenter ? Gravity.CENTER : Gravity.BOTTOM;
-        if (mUserProfileContainer.isRightHanded()) {
-            mFabContainer.setGravity(verticalCenterGravity | Gravity.END);
-        } else {
-            mFabContainer.setGravity(verticalCenterGravity | Gravity.START);
-        }
-    }
-
-    private void setFabBackgroundColor(FloatingActionButton fab, int color) {
-        fab.setBackgroundTintList(ColorStateList.valueOf(color));
+        mAdjuster.adjustFabPosition(mFabContainer, verticalCenter);
     }
 
     protected void initToolbar() {
