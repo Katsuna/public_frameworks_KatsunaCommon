@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -100,6 +101,14 @@ public class Adjuster {
             fabContainer.setGravity(verticalCenterGravity | Gravity.END);
         } else {
             fabContainer.setGravity(verticalCenterGravity | Gravity.START);
+        }
+    }
+
+    public void adjustSearchBar(View container) {
+        if (container != null) {
+            int accentColor1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
+                    mUserProfile.colorProfile);
+            container.setBackgroundColor(accentColor1);
         }
     }
 

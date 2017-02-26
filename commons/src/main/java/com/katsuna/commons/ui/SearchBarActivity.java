@@ -7,12 +7,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.katsuna.commons.entities.ColorProfile;
-import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.ui.adapters.TabsPagerAdapter;
 import com.katsuna.commons.ui.adapters.models.ContactListItemModel;
-import com.katsuna.commons.ui.fragments.SearchBarFragment;
-import com.katsuna.commons.utils.ColorCalc;
+import com.katsuna.commons.ui.fragments.support.SearchBarFragment;
 import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.ListChopper;
 import com.katsuna.commons.utils.ResourcesUtils;
@@ -33,9 +30,8 @@ public abstract class SearchBarActivity extends KatsunaActivity
         super.onResume();
 
         if (mUserProfileChanged) {
-            ColorProfile colorProfile = mUserProfileContainer.getColorProfile();
             // color profile adjustments
-            adjustSearchBar(colorProfile);
+            mAdjuster.adjustSearchBar(mViewPagerContainer);
 
             // right hand adjustments
             adjustSearchToolbarRightHand();
@@ -65,13 +61,6 @@ public abstract class SearchBarActivity extends KatsunaActivity
             int bgResId = ResourcesUtils.getDrawable(this, "common_search_bar_bg_left_handed");
             mFabToolbar.setBackground(getDrawable(bgResId));
             mFabToolbar.setPadding(0, 0, shadowPixels, 0);
-        }
-    }
-
-    private void adjustSearchBar(ColorProfile profile) {
-        if (mViewPagerContainer != null) {
-            int accentColor1 = ColorCalc.getColor(this, ColorProfileKey.ACCENT1_COLOR, profile);
-            mViewPagerContainer.setBackgroundColor(accentColor1);
         }
     }
 

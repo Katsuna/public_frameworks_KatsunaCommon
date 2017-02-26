@@ -1,8 +1,8 @@
-package com.katsuna.commons.ui.fragments;
+package com.katsuna.commons.ui.fragments.support;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
-import com.katsuna.commons.entities.UserProfile;
+import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.utils.ColorCalc;
 import com.katsuna.commons.utils.ResourcesUtils;
 
@@ -66,20 +66,20 @@ public class SearchBarFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        int searchBarResId = ResourcesUtils.getLayout(getActivity(), "fragment_search_bar");
+        int searchBarResId = ResourcesUtils.getLayout(getContext(), "fragment_search_bar");
         View layout = inflater.inflate(searchBarResId, container, false);
 
-        int containerAResId = ResourcesUtils.getId(getActivity(), "letters_container_a");
+        int containerAResId = ResourcesUtils.getId(getContext(), "letters_container_a");
         LinearLayout mLettersContainerA = (LinearLayout) layout.findViewById(containerAResId);
-        int containerBResId = ResourcesUtils.getId(getActivity(), "letters_container_b");
+        int containerBResId = ResourcesUtils.getId(getContext(), "letters_container_b");
         LinearLayout mLettersContainerB = (LinearLayout) layout.findViewById(containerBResId);
-        int verticalDividerResId = ResourcesUtils.getId(getActivity(), "vertical_divider");
+        int verticalDividerResId = ResourcesUtils.getId(getContext(), "vertical_divider");
         mVerticalDivider = layout.findViewById(verticalDividerResId);
 
         int lettersAdded = 0;
 
         for (String letter : mLetters) {
-            if (lettersAdded < 8) {
+            if (lettersAdded < 10) {
                 addLetterView(inflater, letter, mLettersContainerA);
             } else {
                 addLetterView(inflater, letter, mLettersContainerB);
@@ -92,10 +92,10 @@ public class SearchBarFragment extends Fragment {
 
 
     private void addLetterView(LayoutInflater inflater, final String letter, ViewGroup container) {
-        int letterResId = ResourcesUtils.getLayout(getActivity(), "textview_letter_small");
+        int letterResId = ResourcesUtils.getLayout(getContext(), "textview_letter");
         View layout = inflater.inflate(letterResId, container, false);
 
-        int searchLetterResId = ResourcesUtils.getId(getActivity(), "search_letter");
+        int searchLetterResId = ResourcesUtils.getId(getContext(), "search_letter");
         TextView searchLetter = (TextView) layout.findViewById(searchLetterResId);
         searchLetter.setText(letter);
         searchLetter.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +133,7 @@ public class SearchBarFragment extends Fragment {
 
     private void applyColorProfile() {
         if (mListener != null) {
-            ColorProfile profile = mListener.getUserProfile().colorProfile;
+            ColorProfile profile = mListener.getUserProfileContainer().getColorProfile();
             int color = ColorCalc.getColor(getActivity(), ColorProfileKey.DIVIDERS_OPACITY, profile);
             mVerticalDivider.setBackgroundColor(color);
         }
@@ -148,6 +148,6 @@ public class SearchBarFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void selectItemByStartingLetter(String letter);
 
-        UserProfile getUserProfile();
+        UserProfileContainer getUserProfileContainer();
     }
 }
