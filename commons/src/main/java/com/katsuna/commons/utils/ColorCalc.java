@@ -41,7 +41,7 @@ public class ColorCalc {
                     case CONTRAST:
                         return "common_redA100";
                     case COLOR_IMPAIREMENT:
-                        return "common_amper400";
+                        return "common_amber400";
                     case COLOR_IMPAIRMENT_AND_CONTRAST:
                         return "common_yellowA400";
                     default:
