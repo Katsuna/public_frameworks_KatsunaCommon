@@ -6,6 +6,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := jodatime
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v4
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-appcompat
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-recyclerview
+LOCAL_STATIC_JAVA_LIBRARIES += android-support-v13
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-design
 
 LOCAL_MODULE := KatsunaCommon
