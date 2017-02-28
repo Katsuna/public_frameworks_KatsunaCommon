@@ -1,8 +1,14 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-# Add here only the libs (.jar) that the KatsunaCommon itself needs, to be built
-LOCAL_STATIC_JAVA_LIBRARIES := jodatime
+LOCAL_MANIFEST_FILE := commons/src/main/AndroidManifest.xml
+LOCAL_SRC_FILES := $(call all-java-files-under,commons)
+LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/commons/src/main/res
+LOCAL_RESOURCE_DIR += frameworks/support/v7/recyclerview/res
+LOCAL_RESOURCE_DIR += frameworks/support/v7/appcompat/res
+LOCAL_RESOURCE_DIR += frameworks/support/design/res
+
+LOCAL_STATIC_JAVA_LIBRARIES += jodatime
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v4
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-appcompat
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-recyclerview
@@ -10,20 +16,12 @@ LOCAL_STATIC_JAVA_LIBRARIES += android-support-v13
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-design
 
 LOCAL_MODULE := KatsunaCommon
-LOCAL_CERTIFICATE := platform
 
-LOCAL_SRC_FILES := $(call all-java-files-under, commons)
+LOCAL_SDK_VERSION := $(SUPPORT_CURRENT_SDK_VERSION)
+
+LOCAL_USE_AAPT2 := true
+LOCAL_AAPT_FLAGS := --no-version-vectors
+LOCAL_JAR_EXCLUDE_FILES := none
+#LOCAL_JAVA_LANGUAGE_VERSION := 1.7
 
 include $(BUILD_STATIC_JAVA_LIBRARY)
-
-include $(CLEAR_VARS)
-
-LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := jodatime:aosp/libs/jodatime-2.9.2.jar
-
-# This is a definition!
-# Add here all the libs (jar, aar) that are needed in all Katsuna Apps but not necessarily in KatsunaCommon
-LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES += picasso:aosp/libs/picasso-2.5.2.jar
-LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES += roundedimageview:aosp/libs/roundedimageview-2.2.1.aar
-LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES += fabtransformation:aosp/libs/fabtransformation-1.0.0.aar
-
-include $(BUILD_MULTI_PREBUILT)
