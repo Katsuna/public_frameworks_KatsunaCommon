@@ -17,9 +17,8 @@
     <color name="common_red500">#f44336</color>
     <color name="common_redA100">#ff8a80</color>
     <color name="common_sundown">#FFA6A6</color>
-    <color name="common_yellow400">#FFEE58</color>
     <color name="common_amber400">#FFCA28</color>
-    <color name="common_yellowA400">#FFEA00</color>
+    <color name="common_amberA400">#FFC400</color>
     <color name="common_yellow700">#FBC02D</color>
 
     <color name="common_black">#000000</color>
