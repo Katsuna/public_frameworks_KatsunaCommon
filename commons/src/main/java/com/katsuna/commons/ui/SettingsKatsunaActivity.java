@@ -17,7 +17,7 @@ import com.katsuna.commons.utils.SettingsManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SettingsKatsunaActivity extends KatsunaActivity {
+public abstract class SettingsKatsunaActivity extends KatsunaActivity {
 
     protected CheckBox mRightHand;
 
