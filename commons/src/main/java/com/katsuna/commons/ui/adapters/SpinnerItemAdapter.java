@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 
 import com.katsuna.commons.entities.SpinnerItem;
-import com.katsuna.commons.utils.ResourcesUtils;
 
 import java.util.List;
 
@@ -40,8 +39,7 @@ public class SpinnerItemAdapter extends ArrayAdapter<SpinnerItem> {
 
         SpinnerItem item = getItem(position);
         if (item != null) {
-            int resId = ResourcesUtils.getString(getContext(), item.getDescriptionResId());
-            text.setText(resId);
+            text.setText(item.getDescriptionResId());
         }
 
         return text;

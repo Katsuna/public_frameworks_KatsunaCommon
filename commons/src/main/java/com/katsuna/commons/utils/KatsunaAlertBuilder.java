@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.UserProfileContainer;
@@ -61,8 +62,7 @@ public class KatsunaAlertBuilder {
                 .setMessage(mMessageResId)
                 .setView(mView).create();
 
-        int cancelButtonResId = ResourcesUtils.getId(mContext, "alert_cancel_button");
-        mCancelButton = (Button) mView.findViewById(cancelButtonResId);
+        mCancelButton = (Button) mView.findViewById(R.id.alert_cancel_button);
         mCancelButton.setText(android.R.string.cancel);
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,8 +78,7 @@ public class KatsunaAlertBuilder {
             mCancelButton.setVisibility(View.INVISIBLE);
         }
 
-        int okButtonResId = ResourcesUtils.getId(mContext, "alert_ok_button");
-        mOkButton = (Button) mView.findViewById(okButtonResId);
+        mOkButton = (Button) mView.findViewById(R.id.alert_ok_button);
         mOkButton.setText(android.R.string.ok);
         mOkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,15 +92,11 @@ public class KatsunaAlertBuilder {
 
         if (mScrollViewItems != null) {
             // populate scroll view
-            int scrollViewItemsContainerId = ResourcesUtils.getId(mContext,
-                    "scroll_view_items_container");
             LinearLayout scrollViewItemsContainer =
-                    (LinearLayout) mView.findViewById(scrollViewItemsContainerId);
+                    (LinearLayout) mView.findViewById(R.id.scroll_view_items_container);
 
-            int scrollItemsPaddingId = ResourcesUtils.getDimen(mContext,
-                    "common_alert_scroll_items_padding");
             int scrollItemsPaddingInPixel = mContext.getResources()
-                    .getDimensionPixelSize(scrollItemsPaddingId);
+                    .getDimensionPixelSize(R.dimen.common_alert_scroll_items_padding);
 
             for (String item : mScrollViewItems) {
                 TextView tv = new TextView(mContext);
@@ -113,8 +108,7 @@ public class KatsunaAlertBuilder {
             }
 
             // show scroll view
-            int scrollViewContainerId = ResourcesUtils.getId(mContext, "scroll_view_container");
-            View scrollViewContainer = mView.findViewById(scrollViewContainerId);
+            View scrollViewContainer = mView.findViewById(R.id.scroll_view_container);
             scrollViewContainer.setVisibility(View.VISIBLE);
         }
 

@@ -2,13 +2,13 @@ package com.katsuna.commons.entities;
 
 public class SpinnerItem {
     private String value;
-    private String descriptionResId;
+    private int descriptionResId;
 
     public SpinnerItem(String value) {
         this.value = value;
     }
 
-    public SpinnerItem(String value, String descriptionResId) {
+    public SpinnerItem(String value, int descriptionResId) {
         this.value = value;
         this.descriptionResId = descriptionResId;
     }
@@ -17,7 +17,7 @@ public class SpinnerItem {
         return value;
     }
 
-    public String getDescriptionResId() {
+    public int getDescriptionResId() {
         return descriptionResId;
     }
 

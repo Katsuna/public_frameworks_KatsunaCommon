@@ -6,12 +6,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 
+import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.PreferenceKey;
 import com.katsuna.commons.entities.ProfileType;
 import com.katsuna.commons.entities.SpinnerItem;
 import com.katsuna.commons.ui.adapters.SpinnerItemAdapter;
-import com.katsuna.commons.utils.ResourcesUtils;
 import com.katsuna.commons.utils.SettingsManager;
 
 import java.util.ArrayList;
@@ -44,8 +44,7 @@ public class SettingsKatsunaActivity extends KatsunaActivity {
     }
 
     protected void initSizeProfiles() {
-        int profilesResId = ResourcesUtils.getId(this, "profiles");
-        Spinner mProfileTypes = (Spinner) findViewById(profilesResId);
+        Spinner mProfileTypes = (Spinner) findViewById(R.id.profiles);
         String profileSetting = SettingsManager.readSetting(this,
                 PreferenceKey.OPTICAL_SIZE_PROFILE,
                 String.valueOf(ProfileType.INTERMEDIATE.getNumVal()));
@@ -65,9 +64,7 @@ public class SettingsKatsunaActivity extends KatsunaActivity {
     }
 
     protected void initColorProfiles() {
-        int spinnerResId = ResourcesUtils.getId(this, "profiles_optical_color");
-
-        Spinner mProfileColor = (Spinner) findViewById(spinnerResId);
+        Spinner mProfileColor = (Spinner) findViewById(R.id.profiles_optical_color);
 
         List<SpinnerItem> spinnerArray = new ArrayList<>();
         for (ColorProfile colorProfile : ColorProfile.values()) {
@@ -97,8 +94,7 @@ public class SettingsKatsunaActivity extends KatsunaActivity {
     }
 
     protected void initRightHand() {
-        int rightHandResId = ResourcesUtils.getId(this, "right_hand");
-        mRightHand = (CheckBox) findViewById(rightHandResId);
+        mRightHand = (CheckBox) findViewById(R.id.right_hand);
         mRightHand.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

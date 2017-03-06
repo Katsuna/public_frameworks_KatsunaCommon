@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.utils.ColorCalc;
-import com.katsuna.commons.utils.ResourcesUtils;
 import com.katsuna.commons.utils.Shape;
 
 public class Adjuster {
@@ -58,10 +58,8 @@ public class Adjuster {
         int color1;
         int color2;
         if (flag) {
-            int color1ResId = ResourcesUtils.getColor(mContext, "common_pink_tinted");
-            color1 = ContextCompat.getColor(mContext, color1ResId);
-            int color2ResId = ResourcesUtils.getColor(mContext, "common_blue_tinted");
-            color2 = ContextCompat.getColor(mContext, color2ResId);
+            color1 = ContextCompat.getColor(mContext, R.color.common_pink_tinted);
+            color2 = ContextCompat.getColor(mContext, R.color.common_blue_tinted);
         } else {
             color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
                     mUserProfile.colorProfile);

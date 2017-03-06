@@ -7,12 +7,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.katsuna.commons.R;
 import com.katsuna.commons.ui.adapters.TabsPagerAdapter;
 import com.katsuna.commons.ui.adapters.models.ContactListItemModel;
 import com.katsuna.commons.ui.fragments.support.SearchBarFragment;
 import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.ListChopper;
-import com.katsuna.commons.utils.ResourcesUtils;
 import com.katsuna.commons.utils.Separator;
 
 import java.util.ArrayList;
@@ -43,23 +43,20 @@ public abstract class SearchBarActivity extends KatsunaActivity
             return;
         }
 
-        int shadowResId = ResourcesUtils.getDimen(this, "common_search_shadow");
-        int shadowPixels = getResources().getDimensionPixelSize(shadowResId);
+        int shadowPixels = getResources().getDimensionPixelSize(R.dimen.common_search_shadow);
         if (mUserProfileContainer.isRightHanded()) {
             FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mFabToolbarContainer.getLayoutParams();
             lp.gravity = Gravity.END;
 
             //set shadow properly
-            int bgResId = ResourcesUtils.getDrawable(this, "common_search_bar_bg");
-            mFabToolbar.setBackground(getDrawable(bgResId));
+            mFabToolbar.setBackground(getDrawable(R.drawable.common_search_bar_bg));
             mFabToolbar.setPadding(shadowPixels, 0, 0, 0);
         } else {
             FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mFabToolbarContainer.getLayoutParams();
             lp.gravity = Gravity.START;
 
             //set shadow properly
-            int bgResId = ResourcesUtils.getDrawable(this, "common_search_bar_bg_left_handed");
-            mFabToolbar.setBackground(getDrawable(bgResId));
+            mFabToolbar.setBackground(getDrawable(R.drawable.common_search_bar_bg_left_handed));
             mFabToolbar.setPadding(0, 0, shadowPixels, 0);
         }
     }

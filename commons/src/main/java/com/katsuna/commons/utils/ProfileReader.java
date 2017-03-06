@@ -94,7 +94,7 @@ public class ProfileReader {
         preferences.add(opticalContrast);
 
         String value = SettingsManager.readSetting(context, PreferenceKey.COLOR_PROFILE,
-                ColorProfile.MAIN.name());
+                ColorProfile.AUTO.name());
         Preference opticalColor = new Preference(PreferenceKey.COLOR_PROFILE, value);
         preferences.add(opticalColor);
 

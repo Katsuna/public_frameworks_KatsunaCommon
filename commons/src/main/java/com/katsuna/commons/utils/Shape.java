@@ -4,12 +4,13 @@ import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 
+import com.katsuna.commons.R;
+
 public class Shape {
 
     public static void setRoundedBackground(View v, int backgroundColor) {
         Resources r = v.getResources();
-        int resId = ResourcesUtils.getDimen(v.getContext(), "common_corner_radius");
-        float radius = r.getDimension(resId);
+        float radius = r.getDimension(R.dimen.common_corner_radius);
 
         setRoundedBackground(v, backgroundColor, radius);
     }

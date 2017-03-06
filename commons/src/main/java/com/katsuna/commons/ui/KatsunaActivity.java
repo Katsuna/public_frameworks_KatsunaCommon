@@ -19,12 +19,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.profile.Adjuster;
 import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.ProfileReader;
-import com.katsuna.commons.utils.ResourcesUtils;
 
 /**
  * Provides common functionality to subclasses.
@@ -69,10 +69,10 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     private int getTheme(ColorProfile profile) {
-        int theme = ResourcesUtils.getStyle(this, "CommonAppTheme");
+        int theme = R.style.CommonAppTheme;
         if (profile == ColorProfile.CONTRAST ||
                 profile == ColorProfile.COLOR_IMPAIRMENT_AND_CONTRAST) {
-            theme = ResourcesUtils.getStyle(this, "CommonAppThemeContrast");
+            theme = R.style.CommonAppThemeContrast;
         }
         return theme;
     }
@@ -189,8 +189,7 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     protected void initToolbar(Integer drawableResId) {
-        int resId = ResourcesUtils.getId(this, "toolbar");
-        mToolbar = (Toolbar) findViewById(resId);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
         ActionBar actionBar = getSupportActionBar();

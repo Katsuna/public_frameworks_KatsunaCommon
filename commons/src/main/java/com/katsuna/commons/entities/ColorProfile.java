@@ -1,19 +1,21 @@
 package com.katsuna.commons.entities;
 
+import com.katsuna.commons.R;
+
 public enum ColorProfile {
-    AUTO("common_profile_auto"),
-    MAIN("common_profile_color_main"),
-    CONTRAST("common_profile_color_contrast"),
-    COLOR_IMPAIREMENT("common_profile_color_impairement"),
-    COLOR_IMPAIRMENT_AND_CONTRAST("common_profile_color_impairement_contrast");
+    AUTO(R.string.common_profile_auto),
+    MAIN(R.string.common_profile_color_main),
+    CONTRAST(R.string.common_profile_color_contrast),
+    COLOR_IMPAIREMENT(R.string.common_profile_color_impairement),
+    COLOR_IMPAIRMENT_AND_CONTRAST(R.string.common_profile_color_impairement_contrast);
 
-    private final String resId;
+    private final int resId;
 
-    ColorProfile(String resId) {
+    ColorProfile(int resId) {
         this.resId = resId;
     }
 
-    public String getResId() {
+    public int getResId() {
         return resId;
     }
 }
