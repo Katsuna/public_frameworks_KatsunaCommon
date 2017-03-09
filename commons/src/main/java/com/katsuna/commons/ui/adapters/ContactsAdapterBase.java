@@ -18,6 +18,7 @@ public abstract class ContactsAdapterBase extends RecyclerView.Adapter<RecyclerV
     protected List<ContactListItemModel> mOriginalContacts;
     protected List<ContactListItemModel> mFilteredContacts;
     protected int mSelectedContactPosition = NO_CONTACT_POSITION;
+    protected int mSelectedFromSearchPosition = NO_CONTACT_POSITION;
 
     public void selectContactAtPosition(int position) {
         mSelectedContactPosition = position;
@@ -54,6 +55,17 @@ public abstract class ContactsAdapterBase extends RecyclerView.Adapter<RecyclerV
             }
         }
         return position;
+    }
+
+    public void focusFromSearch(int position) {
+        mSelectedFromSearchPosition = position;
+        notifyItemChanged(position);
+    }
+
+    public void unfocusFromSearch() {
+        int prevFocused = mSelectedFromSearchPosition;
+        mSelectedFromSearchPosition = NO_CONTACT_POSITION;
+        notifyItemChanged(prevFocused);
     }
 
     @Override
