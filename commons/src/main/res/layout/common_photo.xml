@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- We need to specify the Class instead of using res-auto for aosp compilation -->
 <com.makeramen.roundedimageview.RoundedImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/lib/com.makeramen.roundedimageview.RoundedImageView"
     android:id="@+id/photo"
     android:layout_width="@dimen/common_contact_photo_size_intemediate"
     android:layout_height="@dimen/common_contact_photo_size_intemediate"

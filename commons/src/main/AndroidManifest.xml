@@ -1,1 +1,10 @@
-<manifest package="com.katsuna.commons" />
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.katsuna.commons">
+
+    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk android:targetSdkVersion="8" />
+
+    <application />
+
+</manifest>
