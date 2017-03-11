@@ -55,25 +55,30 @@ public class ProfileReader {
     public static UserProfile getUserProfileFromKatsunaServices(Context context) {
         UserProfile userProfile = null;
 
-        Cursor cursor = context.getContentResolver().query(PreferenceProvider.URI_PREFERENCE, null,
-                null, null, null);
-        if (cursor != null) {
-            try {
-                if (cursor.moveToFirst()) {
-                    ArrayList<Preference> preferences = new ArrayList<>();
-                    do {
-                        Preference pref = new Preference();
-                        pref.setId(cursor.getLong(Preference.COL_ID_INDEX));
-                        pref.setKey(cursor.getString(Preference.COL_KEY_INDEX));
-                        pref.setValue(cursor.getString(Preference.COL_VALUE_INDEX));
-                        preferences.add(pref);
-                    } while (cursor.moveToNext());
+        try {
+            Cursor cursor = context.getContentResolver().query(PreferenceProvider.URI_PREFERENCE, null,
+                    null, null, null);
+            if (cursor != null) {
+                try {
+                    if (cursor.moveToFirst()) {
+                        ArrayList<Preference> preferences = new ArrayList<>();
+                        do {
+                            Preference pref = new Preference();
+                            pref.setId(cursor.getLong(Preference.COL_ID_INDEX));
+                            pref.setKey(cursor.getString(Preference.COL_KEY_INDEX));
+                            pref.setValue(cursor.getString(Preference.COL_VALUE_INDEX));
+                            preferences.add(pref);
+                        } while (cursor.moveToNext());
 
-                    userProfile = getUserProfileFromPreferences(preferences);
+                        userProfile = getUserProfileFromPreferences(preferences);
+                    }
+                } finally {
+                    cursor.close();
                 }
-            } finally {
-                cursor.close();
             }
+        } catch (SecurityException se) {
+            Log.d(context, "SecurityException! The app doesn't have the required permissions"
+                    + " to access the Katsuna ContentProvider!");
         }
 
         return userProfile;
