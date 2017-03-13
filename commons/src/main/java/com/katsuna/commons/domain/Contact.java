@@ -34,7 +34,7 @@ public class Contact implements Comparable<Contact>, Serializable {
 
     public Contact(Contact contact) {
         id = contact.getId();
-        displayName = contact.getDisplayName();
+        setDisplayName(contact.getDisplayName());
         timesContacted = contact.getTimesContacted();
         lastTimeContacted = contact.getLastTimeContacted();
         starred = contact.isStarred();

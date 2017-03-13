@@ -58,6 +58,8 @@ public abstract class ContactsAdapterBase extends RecyclerView.Adapter<RecyclerV
     }
 
     public void focusFromSearch(int position) {
+        int prevFocused = mSelectedFromSearchPosition;
+        notifyItemChanged(prevFocused);
         mSelectedFromSearchPosition = position;
         notifyItemChanged(position);
     }
@@ -103,7 +105,9 @@ public abstract class ContactsAdapterBase extends RecyclerView.Adapter<RecyclerV
                 if (text.contains(query)) {
                     //exclude premium contacts
                     if (!model.isPremium()) {
-                        model.setSeparator(Separator.NONE);
+                        ContactListItemModel modelFound = new ContactListItemModel();
+                        modelFound.setContact(model.getContact());
+                        modelFound.setSeparator(Separator.NONE);
                         filteredModelList.add(model);
                     }
                 }
