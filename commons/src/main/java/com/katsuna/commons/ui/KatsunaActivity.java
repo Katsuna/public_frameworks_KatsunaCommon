@@ -167,8 +167,8 @@ public abstract class KatsunaActivity extends AppCompatActivity {
                 mButtonsContainer2.addView(flag ? mPopupButton2 : mFab2);
             }
         } else {
-            if (mFab2 != null) {
-                ViewGroup.LayoutParams lp = mFab2.getLayoutParams();
+            if (mFab1 != null) {
+                ViewGroup.LayoutParams lp = mFab1.getLayoutParams();
                 if (lp instanceof CoordinatorLayout.LayoutParams) {
                     CoordinatorLayout.LayoutParams coordLp = (CoordinatorLayout.LayoutParams) lp;
                     //keep vertical gravity
