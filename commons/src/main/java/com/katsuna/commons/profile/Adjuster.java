@@ -110,4 +110,15 @@ public class Adjuster {
         }
     }
 
+    public void adjustRightHand(LinearLayout fabContainer, FloatingActionButton fab1,
+                                Button popupButton1) {
+        int horizontalGravity = mUserProfile.isRightHanded ? Gravity.END : Gravity.START;
+        if (fabContainer != null) {
+            fabContainer.setGravity(horizontalGravity | Gravity.CENTER);
+            fabContainer.removeAllViews();
+            fabContainer.addView(mUserProfile.isRightHanded ? popupButton1 : fab1);
+            fabContainer.addView(mUserProfile.isRightHanded ? fab1 : popupButton1);
+        }
+    }
+
 }
