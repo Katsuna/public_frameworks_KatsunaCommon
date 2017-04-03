@@ -9,7 +9,7 @@ import android.widget.Spinner;
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.PreferenceKey;
-import com.katsuna.commons.entities.ProfileType;
+import com.katsuna.commons.entities.SizeProfile;
 import com.katsuna.commons.entities.SpinnerItem;
 import com.katsuna.commons.ui.adapters.SpinnerItemAdapter;
 import com.katsuna.commons.utils.SettingsManager;
@@ -44,16 +44,25 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
     }
 
     protected void initSizeProfiles() {
-        Spinner mProfileTypes = (Spinner) findViewById(R.id.profiles);
-        String profileSetting = SettingsManager.readSetting(this,
-                PreferenceKey.OPTICAL_SIZE_PROFILE,
-                String.valueOf(ProfileType.INTERMEDIATE.getNumVal()));
-        mProfileTypes.setSelection(Integer.parseInt(profileSetting));
-        mProfileTypes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        Spinner mProfileSize = (Spinner) findViewById(R.id.profiles);
+
+        List<SpinnerItem> spinnerArray = new ArrayList<>();
+        for (SizeProfile sizeProfile : SizeProfile.values()) {
+            spinnerArray.add(new SpinnerItem(sizeProfile.name(), sizeProfile.getResId()));
+        }
+        SpinnerItemAdapter mSizeProfilesAdapter = new SpinnerItemAdapter(this, spinnerArray);
+        mProfileSize.setAdapter(mSizeProfilesAdapter);
+
+        String value = SettingsManager.readSetting(SettingsKatsunaActivity.this,
+                PreferenceKey.OPTICAL_SIZE_PROFILE, SizeProfile.AUTO.name());
+        mProfileSize.setSelection(mSizeProfilesAdapter.getPosition(new SpinnerItem(value)));
+
+        mProfileSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String value = ((SpinnerItem) adapterView.getItemAtPosition(i)).getValue();
                 SettingsManager.setSetting(SettingsKatsunaActivity.this,
-                        PreferenceKey.OPTICAL_SIZE_PROFILE, String.valueOf(i));
+                        PreferenceKey.OPTICAL_SIZE_PROFILE, value);
             }
 
             @Override

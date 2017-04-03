@@ -1,5 +1,7 @@
 package com.katsuna.commons.entities;
 
+import android.util.Size;
+
 import java.util.Objects;
 
 /**
@@ -22,14 +24,14 @@ public class UserProfileContainer {
      * Default profile setting set to Intermediate.
      * @return profile type for optical size
      */
-    public ProfileType getOpticalSizeProfile() {
-        if (profileFromAppSettings.opticalSizeProfile == ProfileType.AUTO) {
+    public SizeProfile getOpticalSizeProfile() {
+        if (profileFromAppSettings.opticalSizeProfile == SizeProfile.AUTO) {
             if (profileFromKatsunaServices != null) {
                 // katsuna services value
                 return profileFromKatsunaServices.opticalSizeProfile;
             } else {
                 // Default value
-                return ProfileType.INTERMEDIATE;
+                return SizeProfile.INTERMEDIATE;
             }
         } else {
             // app setting value

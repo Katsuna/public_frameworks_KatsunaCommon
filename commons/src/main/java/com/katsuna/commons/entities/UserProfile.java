@@ -8,11 +8,8 @@ import java.util.Objects;
 
 public class UserProfile {
 
-    public ProfileType opticalSizeProfile;
-    public ProfileType opticalContrastProfile;
+    public SizeProfile opticalSizeProfile;
     public ColorProfile colorProfile;
-    public ProfileType cognityProfile;
-    public ProfileType memoryProfile;
     public boolean isRightHanded;
 
     @Override
@@ -24,16 +21,12 @@ public class UserProfile {
         }
         UserProfile userProfile = (UserProfile) obj;
         return opticalSizeProfile == userProfile.opticalSizeProfile &&
-                opticalContrastProfile == userProfile.opticalContrastProfile &&
                 colorProfile == userProfile.colorProfile &&
-                cognityProfile == userProfile.cognityProfile &&
-                memoryProfile == userProfile.memoryProfile &&
                 isRightHanded == userProfile.isRightHanded;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(opticalSizeProfile, opticalContrastProfile, colorProfile,
-                cognityProfile, memoryProfile, isRightHanded);
+        return Objects.hash(opticalSizeProfile, colorProfile, isRightHanded);
     }
 }
