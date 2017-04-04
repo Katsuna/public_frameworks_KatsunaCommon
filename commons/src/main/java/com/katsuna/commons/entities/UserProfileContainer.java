@@ -1,7 +1,5 @@
 package com.katsuna.commons.entities;
 
-import android.util.Size;
-
 import java.util.Objects;
 
 /**

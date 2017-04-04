@@ -18,9 +18,6 @@ public final class Constants {
     public static final int SELECTION_THRESHOLD = 20000;
     public static final int HANDLER_DELAY = 1000;
 
-    public static final int OPACITY_87 = 87;
-    public static final int OPACITY_54 = 54;
-
     public static final String SANS_SERIF = "sans-serif";
     public static final String SANS_SERIF_MEDIUM = "sans-serif-medium";
 }

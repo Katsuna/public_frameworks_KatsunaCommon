@@ -23,18 +23,18 @@ public class SizeCalc {
                 switch (profile) {
                     case SIMPLE:
                         params.setTextSize(R.dimen.common_title_text_size_simple);
-                        params.setOpacity(Constants.OPACITY_87);
+                        params.setTextColor(R.color.common_black87);
                         params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
                         break;
                     case INTERMEDIATE:
                     case AUTO:
                         params.setTextSize(R.dimen.common_title_text_size_intermediate);
-                        params.setOpacity(Constants.OPACITY_87);
+                        params.setTextColor(R.color.common_black87);
                         params.setTextFontFamily(Constants.SANS_SERIF);
                         break;
                     case ADVANCED:
                         params.setTextSize(R.dimen.common_title_text_size_advanced);
-                        params.setOpacity(Constants.OPACITY_87);
+                        params.setTextColor(R.color.common_black87);
                         params.setTextFontFamily(Constants.SANS_SERIF);
                         break;
                     default:
@@ -45,16 +45,19 @@ public class SizeCalc {
                 switch (profile) {
                     case SIMPLE:
                         params.setTextSize(R.dimen.common_subheader_text_size_simple);
-                        params.setOpacity(Constants.OPACITY_54);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF);
                         break;
                     case INTERMEDIATE:
                     case AUTO:
                         params.setTextSize(R.dimen.common_subheader_text_size_intermediate);
-                        params.setOpacity(Constants.OPACITY_54);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF);
                         break;
                     case ADVANCED:
                         params.setTextSize(R.dimen.common_subheader_text_size_advanced);
-                        params.setOpacity(Constants.OPACITY_54);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF);
                         break;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
@@ -64,16 +67,19 @@ public class SizeCalc {
                 switch (profile) {
                     case SIMPLE:
                         params.setTextSize(R.dimen.common_body1_text_size_simple);
-                        params.setOpacity(Constants.OPACITY_54);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF);
                         break;
                     case INTERMEDIATE:
                     case AUTO:
                         params.setTextSize(R.dimen.common_body1_text_size_intermediate);
-                        params.setOpacity(Constants.OPACITY_54);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF);
                         break;
                     case ADVANCED:
                         params.setTextSize(R.dimen.common_body1_text_size_advanced);
-                        params.setOpacity(Constants.OPACITY_54);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF);
                         break;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
@@ -83,15 +89,18 @@ public class SizeCalc {
                 switch (profile) {
                     case SIMPLE:
                         params.setTextSize(R.dimen.common_action_button_text_size_simple);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
                         params.setHeight(R.dimen.common_action_button_h_simple);
                         break;
                     case INTERMEDIATE:
                     case AUTO:
                         params.setTextSize(R.dimen.common_action_button_text_size_intermediate);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
                         params.setHeight(R.dimen.common_action_button_h_intemediate);
                         break;
                     case ADVANCED:
                         params.setTextSize(R.dimen.common_action_button_text_size_advanced);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
                         params.setHeight(R.dimen.common_action_button_h_advanced);
                         break;
                     default:

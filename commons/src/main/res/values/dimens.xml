@@ -5,7 +5,7 @@
     <dimen name="common_activity_margin">16dp</dimen>
     <dimen name="common_selection_elevation">4dp</dimen>
     <dimen name="common_text_size">20sp</dimen>
-    <dimen name="common_corner_radius">10dp</dimen>
+    <dimen name="common_corner_radius">2dp</dimen>
     <dimen name="common_search_shadow">8dp</dimen>
     <dimen name="common_alert_scroll_items_padding">8dp</dimen>
 

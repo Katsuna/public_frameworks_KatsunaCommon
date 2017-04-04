@@ -3,8 +3,8 @@ package com.katsuna.commons.entities;
 public class OpticalParams {
 
     private int mTextSize;
+    private int mTextColor;
     private String mTextFontFamily;
-    private int mOpacity;
     private int mHeight;
 
     public int getTextSize() {
@@ -23,14 +23,6 @@ public class OpticalParams {
         this.mTextFontFamily = mTextFontFamily;
     }
 
-    public int getOpacity() {
-        return mOpacity;
-    }
-
-    public void setOpacity(int mOpacity) {
-        this.mOpacity = mOpacity;
-    }
-
     public int getHeight() {
         return mHeight;
     }
@@ -38,4 +30,13 @@ public class OpticalParams {
     public void setHeight(int mHeight) {
         this.mHeight = mHeight;
     }
+
+    public int getTextColor() {
+        return mTextColor;
+    }
+
+    public void setTextColor(int mTextColor) {
+        this.mTextColor = mTextColor;
+    }
+
 }
