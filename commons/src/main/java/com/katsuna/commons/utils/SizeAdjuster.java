@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,6 +39,16 @@ public class SizeAdjuster {
             ViewGroup.LayoutParams buttonLayoutParams = button.getLayoutParams();
             buttonLayoutParams.height = height;
             button.setLayoutParams(buttonLayoutParams);
+        }
+    }
+
+    public static void adjustButtonContainer(Context context, View container, OpticalParams opticalParams) {
+        if (opticalParams.getHeight() != 0) {
+            int height = context.getResources().getDimensionPixelSize(opticalParams.getHeight());
+
+            ViewGroup.LayoutParams buttonLayoutParams = container.getLayoutParams();
+            buttonLayoutParams.height = height;
+            container.setLayoutParams(buttonLayoutParams);
         }
     }
 
