@@ -28,7 +28,7 @@
   <!-- KatsunaServices profile related strings -->
   <skip></skip>
   <!-- Title of the accessibility profile selection setting -->
-  <string name="common_select_profile">Accessibility profile</string>
+  <string name="common_select_profile">Προφίλ προσβασιμότητας</string>
   <!-- Dropdown option, Auto (profile) -->
   <string name="common_profile_auto">Αυτόματο</string>
   <!-- Dropdown option, Simple (profile) -->
@@ -38,17 +38,17 @@
   <!-- Dropdown option, Advanced (profile) -->
   <string name="common_profile_advanced">Για προχωρημένους</string>
   <!-- Title of the color profile selection setting -->
-  <string name="common_profile_color">Color profile</string>
+  <string name="common_profile_color">Προφίλ χρωμάτων</string>
   <!-- Dropdown option, Main color (profile) -->
-  <string name="common_profile_color_main">Main</string>
+  <string name="common_profile_color_main">Κύρια</string>
   <!-- Dropdown option, (color profile) optimized for contrast -->
-  <string name="common_profile_color_contrast">Optimized for contrast</string>
+  <string name="common_profile_color_contrast">Βελτιστοποιημένο για προβλήματα χρωματικών αντιθέσεων</string>
   <!-- Dropdown option, (color profile) optimized for color impairment (medical condition of the user) -->
-  <string name="common_profile_color_impairement">Optimized for color impairement</string>
+  <string name="common_profile_color_impairement">Βελτιστοποιημένο για προβλήμα αντίληψης χρωμάτων</string>
   <!-- Dropdown option, (color profile) optimized for color impairment (medical condition of the user) and contrast -->
-  <string name="common_profile_color_impairement_contrast">Optimized for color impairement and contrast</string>
+  <string name="common_profile_color_impairement_contrast">Βελτιστοποιημένο για προβλήμα αντίληψης χρωμάτων και χρωματικών αντιθέσεων</string>
   <!-- Title of the "right hand" setting (when the option is enabled, the FAB buttons go to the right side of the screen) -->
-  <string name="common_right_hand_setting">Right hand</string>
+  <string name="common_right_hand_setting">Δεξί χέρι</string>
   <!-- TODO -->
-  <string name="common_dial">Dial</string>
+  <string name="common_dial">Κλήση</string>
 </resources>

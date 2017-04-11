@@ -6,25 +6,25 @@
   <!-- Content description for closing the navigation drawer for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="common_navigation_drawer_close">Close navigation drawer</string>
   <!-- Title for every app's settings screen -->
-  <string name="common_settings">Settings</string>
+  <string name="common_settings">إعدادات</string>
   <!-- Text used in buttons and/or menus  for every app's search functions -->
-  <string name="common_search">Search</string>
+  <string name="common_search">بحث</string>
   <!-- Title for the Help item in every app's navigation drawer -->
-  <string name="common_help">Help</string>
+  <string name="common_help">مساعدة</string>
   <!-- Title for the Info item in every app's navigation drawer -->
-  <string name="common_info">Info</string>
+  <string name="common_info">معلومات</string>
   <!-- Title for the call action in every app -->
-  <string name="common_call">Call</string>
+  <string name="common_call">اتصل</string>
   <!-- Title for the message action in every app -->
-  <string name="common_message">Message</string>
+  <string name="common_message">رسالة</string>
   <!-- Title for the action of selecting phone numbers in every app -->
-  <string name="common_select_phone_number">Select phone number</string>
+  <string name="common_select_phone_number">حدد رقم الهاتف</string>
   <!-- Title for the action of selecting a specific contact in every app -->
-  <string name="common_select_contact">Select contact</string>
+  <string name="common_select_contact">حدد جهة الاتصال</string>
   <!-- Title for the action of searching for contacts in every app -->
-  <string name="common_search_contacts">Search for contacts</string>
+  <string name="common_search_contacts">البحث عن جهة الاتصال</string>
   <!-- Search result when no contacts are found, in every app -->
-  <string name="common_no_contacts">No contacts found.</string>
+  <string name="common_no_contacts">لم يتم العثور على أية جهات اتصال.</string>
   <!-- KatsunaServices profile related strings -->
   <skip></skip>
   <!-- Title of the accessibility profile selection setting -->
@@ -32,15 +32,15 @@
   <!-- Dropdown option, Auto (profile) -->
   <string name="common_profile_auto">Auto</string>
   <!-- Dropdown option, Simple (profile) -->
-  <string name="common_profile_simple">Simple</string>
+  <string name="common_profile_simple">بسيط</string>
   <!-- Dropdown option, Intermediate (profile) -->
-  <string name="common_profile_intermediate">Intermediate</string>
+  <string name="common_profile_intermediate">متوسط</string>
   <!-- Dropdown option, Advanced (profile) -->
-  <string name="common_profile_advanced">Advanced</string>
+  <string name="common_profile_advanced">متقدم</string>
   <!-- Title of the color profile selection setting -->
   <string name="common_profile_color">Color profile</string>
   <!-- Dropdown option, Main color (profile) -->
-  <string name="common_profile_color_main">Main</string>
+  <string name="common_profile_color_main">الرئيسي</string>
   <!-- Dropdown option, (color profile) optimized for contrast -->
   <string name="common_profile_color_contrast">Optimized for contrast</string>
   <!-- Dropdown option, (color profile) optimized for color impairment (medical condition of the user) -->
@@ -48,7 +48,7 @@
   <!-- Dropdown option, (color profile) optimized for color impairment (medical condition of the user) and contrast -->
   <string name="common_profile_color_impairement_contrast">Optimized for color impairement and contrast</string>
   <!-- Title of the "right hand" setting (when the option is enabled, the FAB buttons go to the right side of the screen) -->
-  <string name="common_right_hand_setting">Right hand</string>
+  <string name="common_right_hand_setting">اليد اليمنى</string>
   <!-- TODO -->
   <string name="common_dial">Dial</string>
 </resources>
