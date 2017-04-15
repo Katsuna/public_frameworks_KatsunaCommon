@@ -101,6 +101,9 @@ public abstract class KatsunaActivity extends AppCompatActivity {
 
             // right hand adjustments
             adjustRightHand();
+
+            // adjust fab size
+            mAdjuster.adjustFabSize(mFab1, mFab2);
         }
 
         refreshLastTouchTimestamp();

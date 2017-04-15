@@ -110,14 +110,14 @@ public class SizeCalc {
             case FLOATING_BUTTON:
                 switch (profile) {
                     case SIMPLE:
-                        params.setHeight(R.dimen.common_action_button_h_simple);
+                        params.setHeight(R.dimen.common_floating_button_h_simple);
                         break;
                     case INTERMEDIATE:
                     case AUTO:
-                        params.setHeight(R.dimen.common_action_button_h_intemediate);
+                        params.setHeight(R.dimen.common_floating_button_h_intemediate);
                         break;
                     case ADVANCED:
-                        params.setHeight(R.dimen.common_action_button_h_advanced);
+                        params.setHeight(R.dimen.common_floating_button_h_advanced);
                         break;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);

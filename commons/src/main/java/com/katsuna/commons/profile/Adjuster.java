@@ -6,14 +6,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfileKey;
+import com.katsuna.commons.entities.OpticalParams;
+import com.katsuna.commons.entities.SizeProfileKey;
 import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.utils.ColorCalc;
 import com.katsuna.commons.utils.Shape;
+import com.katsuna.commons.utils.SizeCalc;
 
 public class Adjuster {
 
@@ -119,6 +123,23 @@ public class Adjuster {
             fabContainer.addView(mUserProfile.isRightHanded ? popupButton1 : fab1);
             fabContainer.addView(mUserProfile.isRightHanded ? fab1 : popupButton1);
         }
+    }
+
+    public void adjustFabSize(FloatingActionButton fab1, FloatingActionButton fab2) {
+        adjustFabSize(fab1);
+        adjustFabSize(fab2);
+    }
+
+    public void adjustFabSize(FloatingActionButton fab) {
+        if (fab == null) return;
+
+        OpticalParams params = SizeCalc.getOpticalParams(SizeProfileKey.FLOATING_BUTTON,
+                mUserProfile.opticalSizeProfile);
+        int height = mContext.getResources().getDimensionPixelSize(params.getHeight());
+
+        ViewGroup.LayoutParams layoutParams = fab.getLayoutParams();
+        layoutParams.width = height;
+        layoutParams.height = height;
     }
 
 }
