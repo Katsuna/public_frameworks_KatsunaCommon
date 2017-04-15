@@ -30,12 +30,12 @@ public class SizeCalc {
                     case AUTO:
                         params.setTextSize(R.dimen.common_title_text_size_intermediate);
                         params.setTextColor(R.color.common_black87);
-                        params.setTextFontFamily(Constants.SANS_SERIF);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
                         break;
                     case ADVANCED:
                         params.setTextSize(R.dimen.common_title_text_size_advanced);
                         params.setTextColor(R.color.common_black87);
-                        params.setTextFontFamily(Constants.SANS_SERIF);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
                         break;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
@@ -102,6 +102,36 @@ public class SizeCalc {
                         params.setTextSize(R.dimen.common_action_button_text_size_advanced);
                         params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
                         params.setHeight(R.dimen.common_action_button_h_advanced);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case FLOATING_BUTTON:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setHeight(R.dimen.common_action_button_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case AUTO:
+                        params.setHeight(R.dimen.common_action_button_h_intemediate);
+                        break;
+                    case ADVANCED:
+                        params.setHeight(R.dimen.common_action_button_h_advanced);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case ICON:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setHeight(R.dimen.common_icon_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case ADVANCED:
+                    case AUTO:
+                        params.setHeight(R.dimen.common_icon_h_intermediate);
                         break;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);

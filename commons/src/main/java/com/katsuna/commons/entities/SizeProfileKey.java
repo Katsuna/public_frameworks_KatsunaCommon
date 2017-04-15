@@ -4,5 +4,7 @@ public enum SizeProfileKey {
     TITLE,
     SUBHEADER,
     BODY_1,
-    ACTION_BUTTON
+    ACTION_BUTTON,
+    FLOATING_BUTTON,
+    ICON
 }
