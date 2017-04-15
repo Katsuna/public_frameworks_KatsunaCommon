@@ -25,17 +25,20 @@ public class SizeCalc {
                         params.setTextSize(R.dimen.common_title_text_size_simple);
                         params.setTextColor(R.color.common_black87);
                         params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setStyle(R.style.KatsunaTitleSimple);
                         break;
                     case INTERMEDIATE:
                     case AUTO:
                         params.setTextSize(R.dimen.common_title_text_size_intermediate);
                         params.setTextColor(R.color.common_black87);
                         params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setStyle(R.style.KatsunaTitleIntermediate);
                         break;
                     case ADVANCED:
                         params.setTextSize(R.dimen.common_title_text_size_advanced);
                         params.setTextColor(R.color.common_black87);
                         params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setStyle(R.style.KatsunaTitleAdvanced);
                         break;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);

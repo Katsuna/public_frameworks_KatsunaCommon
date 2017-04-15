@@ -6,6 +6,7 @@ public class OpticalParams {
     private int mTextColor;
     private String mTextFontFamily;
     private int mHeight;
+    private int mStyle;
 
     public int getTextSize() {
         return mTextSize;
@@ -39,4 +40,11 @@ public class OpticalParams {
         this.mTextColor = mTextColor;
     }
 
+    public int getStyle() {
+        return mStyle;
+    }
+
+    public void setStyle(int style) {
+        this.mStyle = style;
+    }
 }

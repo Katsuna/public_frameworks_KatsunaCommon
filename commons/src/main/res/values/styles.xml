@@ -40,4 +40,22 @@
         <item name="android:textSize">@dimen/common_text_size</item>
     </style>
 
+    <style name="KatsunaTitleSimple">
+        <item name="android:textSize">@dimen/common_title_text_size_simple</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/common_black87</item>
+    </style>
+
+    <style name="KatsunaTitleIntermediate">
+        <item name="android:textSize">@dimen/common_title_text_size_intermediate</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/common_black87</item>
+    </style>
+
+    <style name="KatsunaTitleAdvanced">
+        <item name="android:textSize">@dimen/common_title_text_size_advanced</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/common_black87</item>
+    </style>
+
 </resources>

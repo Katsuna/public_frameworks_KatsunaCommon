@@ -21,10 +21,13 @@ import android.widget.LinearLayout;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
+import com.katsuna.commons.entities.OpticalParams;
+import com.katsuna.commons.entities.SizeProfileKey;
 import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.profile.Adjuster;
 import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.ProfileReader;
+import com.katsuna.commons.utils.SizeCalc;
 
 /**
  * Provides common functionality to subclasses.
@@ -53,6 +56,7 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     protected ViewPager mViewPager;
     protected ImageButton mPrevButton;
     protected ImageButton mNextButton;
+    protected Adjuster mAdjuster;
     private int mTheme;
 
     @Override
@@ -104,12 +108,20 @@ public abstract class KatsunaActivity extends AppCompatActivity {
 
             // adjust fab size
             mAdjuster.adjustFabSize(mFab1, mFab2);
+            adjustToolbar();
         }
 
         refreshLastTouchTimestamp();
     }
 
-    protected Adjuster mAdjuster;
+    private void adjustToolbar() {
+        if (mToolbar == null) return;
+
+        OpticalParams params = SizeCalc.getOpticalParams(SizeProfileKey.TITLE,
+                mUserProfileContainer.getOpticalSizeProfile());
+
+        mToolbar.setTitleTextAppearance(this, params.getStyle());
+    }
 
     protected void tintFabs(boolean flag) {
         if (mAdjuster != null) {
