@@ -52,4 +52,15 @@ public class SizeAdjuster {
         }
     }
 
+    public static void adjustIcon(Context context, View icon, OpticalParams opticalParams) {
+        if (opticalParams.getHeight() != 0) {
+            int height = context.getResources().getDimensionPixelSize(opticalParams.getHeight());
+
+            ViewGroup.LayoutParams lp = icon.getLayoutParams();
+            lp.width = height;
+            lp.height = height;
+            icon.setLayoutParams(lp);
+        }
+    }
+
 }
