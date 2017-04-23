@@ -17,7 +17,7 @@
     <dimen name="common_action_button_height_advanced">52dp</dimen>
     <dimen name="common_action_button_height_simple">94dp</dimen>
     <dimen name="common_title_text_size_simple">26sp</dimen>
-    <dimen name="common_title_text_size_intermediate">21sp</dimen>
+    <dimen name="common_title_text_size_intermediate">23sp</dimen>
     <dimen name="common_title_text_size_advanced">20sp</dimen>
 
     <dimen name="common_subheader_text_size_simple">24sp</dimen>
