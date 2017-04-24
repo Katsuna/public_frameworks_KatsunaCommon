@@ -112,6 +112,7 @@ public abstract class KatsunaActivity extends AppCompatActivity {
         }
 
         refreshLastTouchTimestamp();
+        showPopup(false);
     }
 
     private void adjustToolbar() {
@@ -145,8 +146,9 @@ public abstract class KatsunaActivity extends AppCompatActivity {
             @Override
             public void run() {
                 long now = System.currentTimeMillis();
-                if (now - Constants.POPUP_INACTIVITY_THRESHOLD > mLastTouchTimestamp && !mPopupVisible) {
-                    showPopup(true);
+                if (now - Constants.POPUP_INACTIVITY_THRESHOLD > mLastTouchTimestamp) {
+                    refreshLastTouchTimestamp();
+                    showPopup(!mPopupVisible);
                 }
                 mPopupActionHandler.postDelayed(this, Constants.HANDLER_DELAY);
             }
