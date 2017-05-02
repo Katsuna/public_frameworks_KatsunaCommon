@@ -2,12 +2,14 @@ package com.katsuna.commons.profile;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.katsuna.commons.R;
@@ -122,6 +124,33 @@ public class Adjuster {
             fabContainer.removeAllViews();
             fabContainer.addView(mUserProfile.isRightHanded ? popupButton1 : fab1);
             fabContainer.addView(mUserProfile.isRightHanded ? fab1 : popupButton1);
+        }
+    }
+
+    public void adjustSearchBarForRightHand(View mFabToolbarContainer, View mFabToolbar) {
+        if (mFabToolbarContainer == null || mFabToolbar == null) {
+            return;
+        }
+
+        int shadowPixels = mContext.getResources()
+                .getDimensionPixelSize(com.katsuna.commons.R.dimen.common_search_shadow);
+        if (mUserProfile.isRightHanded) {
+            FrameLayout.LayoutParams lp =
+                    (FrameLayout.LayoutParams) mFabToolbarContainer.getLayoutParams();
+            lp.gravity = Gravity.END;
+
+            //set shadow properly
+            Drawable bg = mContext.getDrawable(com.katsuna.commons.R.drawable.common_search_bar_bg);
+            mFabToolbar.setBackground(bg);
+            mFabToolbar.setPadding(shadowPixels, 0, 0, 0);
+        } else {
+            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mFabToolbarContainer.getLayoutParams();
+            lp.gravity = Gravity.START;
+
+            //set shadow properly
+            Drawable bg = mContext.getDrawable(com.katsuna.commons.R.drawable.common_search_bar_bg_left_handed);
+            mFabToolbar.setBackground(bg);
+            mFabToolbar.setPadding(0, 0, shadowPixels, 0);
         }
     }
 

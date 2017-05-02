@@ -34,30 +34,7 @@ public abstract class SearchBarActivity extends KatsunaActivity
             mAdjuster.adjustSearchBar(mViewPagerContainer);
 
             // right hand adjustments
-            adjustSearchToolbarRightHand();
-        }
-    }
-
-    private void adjustSearchToolbarRightHand() {
-        if (mFabToolbarContainer == null || mFabToolbar == null) {
-            return;
-        }
-
-        int shadowPixels = getResources().getDimensionPixelSize(R.dimen.common_search_shadow);
-        if (mUserProfileContainer.isRightHanded()) {
-            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mFabToolbarContainer.getLayoutParams();
-            lp.gravity = Gravity.END;
-
-            //set shadow properly
-            mFabToolbar.setBackground(getDrawable(R.drawable.common_search_bar_bg));
-            mFabToolbar.setPadding(shadowPixels, 0, 0, 0);
-        } else {
-            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mFabToolbarContainer.getLayoutParams();
-            lp.gravity = Gravity.START;
-
-            //set shadow properly
-            mFabToolbar.setBackground(getDrawable(R.drawable.common_search_bar_bg_left_handed));
-            mFabToolbar.setPadding(0, 0, shadowPixels, 0);
+            mAdjuster.adjustSearchBarForRightHand(mFabToolbarContainer, mFabToolbar);
         }
     }
 
