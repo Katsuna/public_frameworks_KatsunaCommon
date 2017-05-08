@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.katsuna.commons.entities.ColorProfile;
+import com.katsuna.commons.entities.Gender;
+import com.katsuna.commons.entities.GenderInfo;
+import com.katsuna.commons.entities.Notification;
 import com.katsuna.commons.entities.Preference;
 import com.katsuna.commons.entities.PreferenceKey;
 import com.katsuna.commons.entities.SizeProfile;
@@ -42,6 +45,7 @@ public class ProfileReader {
                             pref.setId(cursor.getLong(Preference.COL_ID_INDEX));
                             pref.setKey(cursor.getString(Preference.COL_KEY_INDEX));
                             pref.setValue(cursor.getString(Preference.COL_VALUE_INDEX));
+                            pref.setDescr(cursor.getString(Preference.COL_DESCR_INDEX));
                             preferences.add(pref);
                         } while (cursor.moveToNext());
 
@@ -94,6 +98,18 @@ public class ProfileReader {
                 }
                 case PreferenceKey.RIGHT_HAND:
                     userProfile.isRightHanded = Boolean.parseBoolean(pref.getValue());
+                    break;
+                case PreferenceKey.NOTIFICATION:
+                    userProfile.notification = Notification.valueOf(pref.getValue());
+                    break;
+                case PreferenceKey.AGE:
+                    userProfile.age = pref.getValue();
+                    break;
+                case PreferenceKey.GENDER:
+                    GenderInfo genderInfo = new GenderInfo();
+                    genderInfo.gender = Gender.valueOf(pref.getValue());
+                    genderInfo.descr = pref.getDescr();
+                    userProfile.genderInfo = genderInfo;
                     break;
             }
         }

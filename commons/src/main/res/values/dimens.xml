@@ -28,6 +28,10 @@
     <dimen name="common_body1_text_size_intermediate">19sp</dimen>
     <dimen name="common_body1_text_size_advanced">14sp</dimen>
 
+    <dimen name="common_body2_text_size_simple">21sp</dimen>
+    <dimen name="common_body2_text_size_intermediate">17sp</dimen>
+    <dimen name="common_body2_text_size_advanced">14sp</dimen>
+
     <dimen name="common_action_button_text_size_simple">21sp</dimen>
     <dimen name="common_action_button_text_size_intermediate">17sp</dimen>
     <dimen name="common_action_button_text_size_advanced">14sp</dimen>

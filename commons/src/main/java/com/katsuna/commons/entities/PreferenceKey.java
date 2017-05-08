@@ -12,5 +12,9 @@ public class PreferenceKey {
     public static final String COGNITIVE_PROFILE = "COGNITIVE_PROFILE";
     public static final String MEMORY_PROFILE = "MEMORY_PROFILE";
     public static final String RIGHT_HAND = "RIGHT_HAND";
+    public static final String AGE = "AGE";
+    public static final String GENDER = "GENDER";
+    public static final String NOTIFICATION = "NOTIFICATION";
+
 
 }

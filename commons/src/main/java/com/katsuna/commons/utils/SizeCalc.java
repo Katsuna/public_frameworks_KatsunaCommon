@@ -88,6 +88,28 @@ public class SizeCalc {
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }
                 break;
+            case BODY_2:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setTextSize(R.dimen.common_body2_text_size_simple);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        break;
+                    case INTERMEDIATE:
+                    case AUTO:
+                        params.setTextSize(R.dimen.common_body2_text_size_intermediate);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        break;
+                    case ADVANCED:
+                        params.setTextSize(R.dimen.common_body2_text_size_advanced);
+                        params.setTextColor(R.color.common_black54);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
             case ACTION_BUTTON:
                 switch (profile) {
                     case SIMPLE:

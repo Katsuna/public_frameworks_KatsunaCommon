@@ -11,6 +11,9 @@ public class UserProfile {
     public SizeProfile opticalSizeProfile;
     public ColorProfile colorProfile;
     public boolean isRightHanded;
+    public Notification notification;
+    public String age;
+    public GenderInfo genderInfo;
 
     @Override
     public boolean equals(Object obj) {
@@ -28,5 +31,17 @@ public class UserProfile {
     @Override
     public int hashCode() {
         return Objects.hash(opticalSizeProfile, colorProfile, isRightHanded);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("UserProfile[opticalSizeProfile=%s, colorProfile=%s, " +
+                        " isRightHanded=%s, notification=%s, age=%s, genderInfo=%s]",
+                opticalSizeProfile.name(),
+                colorProfile.name(),
+                isRightHanded,
+                notification.name(),
+                age,
+                genderInfo);
     }
 }
