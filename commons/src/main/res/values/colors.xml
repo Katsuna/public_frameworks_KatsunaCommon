@@ -12,6 +12,7 @@
     <color name="common_grey600">#757575</color>
     <color name="common_grey900">#212121</color>
 
+    <color name="common_blueA700">#2962FF</color>
     <color name="common_blue900">#0D47A1</color>
     <color name="common_indigo900">#1A237E</color>
     <color name="common_red500">#f44336</color>
