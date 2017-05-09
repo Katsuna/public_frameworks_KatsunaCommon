@@ -51,7 +51,7 @@ public class ColorCalc {
                 switch (profile) {
                     case MAIN:
                     case COLOR_IMPAIREMENT:
-                        return R.color.common_blueA700;
+                        return R.color.common_indigoA700;
                     case CONTRAST:
                     case COLOR_IMPAIRMENT_AND_CONTRAST:
                         return R.color.common_indigo900;

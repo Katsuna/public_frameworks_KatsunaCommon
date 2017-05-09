@@ -1,5 +1,6 @@
 package com.katsuna.commons.utils;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
@@ -22,5 +23,27 @@ public class Shape {
                 radius});
         shape.setColor(backgroundColor);
         v.setBackground(shape);
+    }
+
+    public static void setRoundedBorder(View v, int backgroundColor) {
+        float radius = getCommonRadius(v.getContext());
+        int borderStroke = getCommonStroke(v.getContext());
+
+        GradientDrawable shape = new GradientDrawable();
+        shape.setShape(GradientDrawable.RECTANGLE);
+        shape.setCornerRadii(new float[]{radius, radius, radius, radius, radius, radius, radius,
+                radius});
+        shape.setStroke(borderStroke, backgroundColor);
+        v.setBackground(shape);
+    }
+
+    private static int getCommonStroke(Context context) {
+        Resources r = context.getResources();
+        return r.getDimensionPixelSize(R.dimen.common_border_stroke);
+    }
+
+    private static float getCommonRadius(Context context) {
+        Resources r = context.getResources();
+        return r.getDimension(R.dimen.common_corner_radius);
     }
 }
