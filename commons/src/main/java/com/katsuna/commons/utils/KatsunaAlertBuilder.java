@@ -2,6 +2,7 @@ package com.katsuna.commons.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -127,7 +128,11 @@ public class KatsunaAlertBuilder {
         Shape.setRoundedBackground(mOkButton, color1);
 
         int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR, mColorProfile);
-        Shape.setRoundedBackground(mCancelButton, color2);
+        Shape.setRoundedBorder(mCancelButton, color2);
+
+        Drawable[] drawables = mCancelButton.getCompoundDrawablesRelative();
+        DrawUtils.setColor(drawables[0], color2);
+        mCancelButton.setTextColor(color2);
     }
 
     public void setScrollViewItems(List<String> scrollViewItems) {
