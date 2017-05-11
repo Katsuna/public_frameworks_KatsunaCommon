@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="sizeProfileEnabled" format="boolean" />
+    <attr name="sizeProfileKey">
+        <enum name="TITLE" value="0" />
+        <enum name="SUBHEADER" value="1" />
+        <enum name="BODY_1" value="2" />
+        <enum name="BODY_2" value="3" />
+        <enum name="ACTION_BUTTON" value="4" />
+        <enum name="FLOATING_BUTTON" value="5" />
+        <enum name="ICON" value="6" />
+    </attr>
+
+    <declare-styleable name="KatsunaImageView">
+        <attr name="sizeProfileEnabled" />
+        <attr name="sizeProfileKey" />
+    </declare-styleable>
+
+    <declare-styleable name="KatsunaTextView">
+        <attr name="sizeProfileEnabled" />
+        <attr name="sizeProfileKey" />
+    </declare-styleable>
+
+    <declare-styleable name="KatsunaButton">
+        <attr name="sizeProfileEnabled" />
+        <attr name="sizeProfileKey" />
+    </declare-styleable>
+
+    <declare-styleable name="KatsunaToggleButton">
+        <attr name="sizeProfileEnabled" />
+        <attr name="sizeProfileKey" />
+    </declare-styleable>
+
+    <declare-styleable name="KatsunaEditText">
+        <attr name="sizeProfileEnabled" />
+        <attr name="sizeProfileKey" />
+    </declare-styleable>
+
+</resources>
