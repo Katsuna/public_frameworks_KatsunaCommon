@@ -86,4 +86,9 @@
     <!-- TODO -->
     <string name="common_dial">Dial</string>
 
+    <string name="common_day">Day</string>
+    <string name="common_month">Month</string>
+    <string name="common_year">Year</string>
+    <string name="common_date_validation_error">Please correct the provided date.</string>
+
 </resources>
