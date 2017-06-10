@@ -107,5 +107,34 @@
     <!-- Text for more button -->
     <string name="common_more">More</string>
 
+    <!-- Used for optical size radio buttons. Used at Settings and SetupWizard. -->
+    <string name="common_size_selector" translatable="false">A</string>
+
+    <!-- optical size setting label -->
+    <string name="common_size">Text size</string>
+
+    <!-- hand setting left label -->
+    <string name="common_hand_left">Left</string>
+
+    <!-- hand setting left label -->
+    <string name="common_hand_right">Right</string>
+
+    <!-- Label for Gender setting -->
+    <string name="common_gender">Gender</string>
+
+    <!-- Hint for other Gender detail setting -->
+    <string name="common_gender_hint">Please specify</string>
+
+    <!-- Male gender -->
+    <string name="common_male">Male</string>
+
+    <!-- Female gender -->
+    <string name="common_female">Female</string>
+
+    <!-- Other gender -->
+    <string name="common_other">Other</string>
+
+    <!-- Text sample title for optical size profile selection -->
+    <string name="common_ithaca">ITHACA</string>
 
 </resources>
