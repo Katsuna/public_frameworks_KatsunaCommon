@@ -83,12 +83,29 @@
     <!-- Title of the "right hand" setting (when the option is enabled, the FAB buttons go to the right side of the screen) -->
     <string name="common_right_hand_setting">Right hand</string>
 
-    <!-- TODO -->
+    <!-- Text for dial action (opening of a dialpad) -->
     <string name="common_dial">Dial</string>
 
+    <!-- Title for day control -->
     <string name="common_day">Day</string>
+
+    <!-- Title for month control -->
     <string name="common_month">Month</string>
+
+    <!-- Title for year control -->
     <string name="common_year">Year</string>
+
+    <!-- Validation message for age setting for Setup Wizard and Settings apps -->
     <string name="common_date_validation_error">Please correct the provided date.</string>
+
+    <!-- Text for toggle button on position -->
+    <string name="common_on">On</string>
+
+    <!-- Text for toggle button off position -->
+    <string name="common_off">Off</string>
+
+    <!-- Text for more button -->
+    <string name="common_more">More</string>
+
 
 </resources>
