@@ -13,6 +13,14 @@
   <string name="common_help">Help</string>
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">Info</string>
+  <!-- Title for the "open" button -->
+  <string name="common_open">Open</string>
+  <!-- Title of a Contacts app shortcut -->
+  <string name="common_contacts">Contacts</string>
+  <!-- Generic warning title -->
+  <string name="common_warning">Warning</string>
+  <!-- Message displayed when the user tries to uninstall a system app -->
+  <string name="common_system_app_uninstall_error">System apps cannot be uninstalled.</string>
   <!-- Title for the call action in every app -->
   <string name="common_call">Call</string>
   <!-- Title for the message action in every app -->

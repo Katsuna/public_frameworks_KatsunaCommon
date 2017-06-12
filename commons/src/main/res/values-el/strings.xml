@@ -13,6 +13,14 @@
   <string name="common_help">Βοήθεια</string>
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">Πληροφορίες</string>
+  <!-- Title for the "open" button -->
+  <string name="common_open">Ανοιχτό</string>
+  <!-- Title of a Contacts app shortcut -->
+  <string name="common_contacts">Επαφές</string>
+  <!-- Generic warning title -->
+  <string name="common_warning">Προειδοποίηση</string>
+  <!-- Message displayed when the user tries to uninstall a system app -->
+  <string name="common_system_app_uninstall_error">Εφαρμογές του συστήματος δεν μπορούν να καταργηθούν.</string>
   <!-- Title for the call action in every app -->
   <string name="common_call">Κλήση</string>
   <!-- Title for the message action in every app -->
