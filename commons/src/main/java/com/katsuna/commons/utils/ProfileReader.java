@@ -78,7 +78,7 @@ public class ProfileReader {
         preferences.add(opticalColor);
 
         Preference rightHand = new Preference(PreferenceKey.RIGHT_HAND,
-                String.valueOf(SettingsManager.readSetting(context, PreferenceKey.RIGHT_HAND, true)));
+                SettingsManager.readSetting(context, PreferenceKey.RIGHT_HAND, "true"));
         preferences.add(rightHand);
 
         return getUserProfileFromPreferences(preferences);
@@ -97,7 +97,12 @@ public class ProfileReader {
                     break;
                 }
                 case PreferenceKey.RIGHT_HAND:
-                    userProfile.isRightHanded = Boolean.parseBoolean(pref.getValue());
+                    userProfile.handProfileAuto = "auto".equals(pref.getValue());
+                    if (userProfile.handProfileAuto) {
+                        userProfile.isRightHanded = true;
+                    } else {
+                        userProfile.isRightHanded = Boolean.parseBoolean(pref.getValue());
+                    }
                     break;
                 case PreferenceKey.NOTIFICATION:
                     userProfile.notification = Notification.valueOf(pref.getValue());

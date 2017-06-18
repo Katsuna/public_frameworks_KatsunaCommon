@@ -10,6 +10,7 @@ public class UserProfile {
 
     public SizeProfile opticalSizeProfile;
     public ColorProfile colorProfile;
+    public boolean handProfileAuto;
     public boolean isRightHanded;
     public Notification notification;
     public String age;
@@ -25,6 +26,7 @@ public class UserProfile {
         UserProfile userProfile = (UserProfile) obj;
         return opticalSizeProfile == userProfile.opticalSizeProfile &&
                 colorProfile == userProfile.colorProfile &&
+                handProfileAuto == userProfile.handProfileAuto &&
                 isRightHanded == userProfile.isRightHanded;
     }
 
@@ -36,9 +38,11 @@ public class UserProfile {
     @Override
     public String toString() {
         return String.format("UserProfile[opticalSizeProfile=%s, colorProfile=%s, " +
-                        " isRightHanded=%s, notification=%s, age=%s, genderInfo=%s]",
+                        " handProfileAuto=%s, isRightHanded=%s, notification=%s, age=%s," +
+                        " genderInfo=%s]",
                 opticalSizeProfile.name(),
                 colorProfile.name(),
+                handProfileAuto,
                 isRightHanded,
                 notification.name(),
                 age,

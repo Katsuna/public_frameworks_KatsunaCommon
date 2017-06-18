@@ -63,7 +63,9 @@ public class UserProfileContainer {
      */
     public boolean isRightHanded() {
         if (profileFromKatsunaServices != null) {
-            return profileFromKatsunaServices.isRightHanded;
+            return profileFromAppSettings.handProfileAuto ? profileFromKatsunaServices.isRightHanded
+                    : profileFromAppSettings.isRightHanded;
+
         } else {
             return profileFromAppSettings.isRightHanded;
         }

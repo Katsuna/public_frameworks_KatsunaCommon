@@ -113,6 +113,9 @@
     <!-- optical size setting label -->
     <string name="common_size">Text size</string>
 
+    <!-- Hand of use settings label -->
+    <string name="common_hand">Preferred hand</string>
+
     <!-- hand setting left label -->
     <string name="common_hand_left">Left</string>
 
