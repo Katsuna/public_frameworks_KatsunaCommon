@@ -78,7 +78,7 @@ public class ProfileReader {
         preferences.add(opticalColor);
 
         Preference rightHand = new Preference(PreferenceKey.RIGHT_HAND,
-                SettingsManager.readSetting(context, PreferenceKey.RIGHT_HAND, "true"));
+                SettingsManager.readSetting(context, PreferenceKey.RIGHT_HAND, "auto"));
         preferences.add(rightHand);
 
         return getUserProfileFromPreferences(preferences);

@@ -10,7 +10,7 @@ public class UserProfile {
 
     public SizeProfile opticalSizeProfile;
     public ColorProfile colorProfile;
-    public boolean handProfileAuto;
+    public boolean handProfileAuto = true;
     public boolean isRightHanded;
     public Notification notification;
     public String age;
@@ -40,11 +40,11 @@ public class UserProfile {
         return String.format("UserProfile[opticalSizeProfile=%s, colorProfile=%s, " +
                         " handProfileAuto=%s, isRightHanded=%s, notification=%s, age=%s," +
                         " genderInfo=%s]",
-                opticalSizeProfile.name(),
-                colorProfile.name(),
+                opticalSizeProfile == null ? "null" : opticalSizeProfile.name(),
+                colorProfile == null ? "null" : colorProfile.name(),
                 handProfileAuto,
                 isRightHanded,
-                notification.name(),
+                notification == null ? "null" : notification.name(),
                 age,
                 genderInfo);
     }
