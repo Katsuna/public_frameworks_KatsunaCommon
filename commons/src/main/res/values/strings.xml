@@ -86,6 +86,9 @@
     <!-- Text for dial action (opening of a dialpad) -->
     <string name="common_dial">Dial</string>
 
+    <!-- Text for dial alert title  -->
+    <string name="common_dial_instruction">Dial the number</string>
+
     <!-- Title for day control -->
     <string name="common_day">Day</string>
 

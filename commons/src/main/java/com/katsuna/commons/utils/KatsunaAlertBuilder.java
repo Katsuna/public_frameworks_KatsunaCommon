@@ -2,16 +2,17 @@ package com.katsuna.commons.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
-import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.UserProfileContainer;
 
 import java.util.List;
@@ -25,9 +26,11 @@ public class KatsunaAlertBuilder {
     private boolean mCancelHidden;
     private View.OnClickListener mCancelListener;
     private View.OnClickListener mOkListener;
+    private KatsunaAlertText mTextSelected;
     private Button mCancelButton;
     private Button mOkButton;
     private List<String> mScrollViewItems;
+    private EditText mText;
 
     public KatsunaAlertBuilder(Context context) {
         mContext = context;
@@ -49,6 +52,10 @@ public class KatsunaAlertBuilder {
         mOkListener = okListener;
     }
 
+    public void setTextSelected(KatsunaAlertText textSelected) {
+        mTextSelected = textSelected;
+    }
+
     public void setCancelListener(View.OnClickListener cancelListener) {
         mCancelListener = cancelListener;
     }
@@ -58,10 +65,17 @@ public class KatsunaAlertBuilder {
     }
 
     public AlertDialog create() {
-        final AlertDialog dialog = new AlertDialog.Builder(mContext)
-                .setTitle(mTitleResId)
-                .setMessage(mMessageResId)
-                .setView(mView).create();
+        final AlertDialog dialog;
+        if (mMessageResId != 0) {
+            dialog = new AlertDialog.Builder(mContext)
+                    .setTitle(mTitleResId)
+                    .setMessage(mMessageResId)
+                    .setView(mView).create();
+        } else {
+            dialog = new AlertDialog.Builder(mContext)
+                    .setTitle(mTitleResId)
+                    .setView(mView).create();
+        }
 
         mCancelButton = (Button) mView.findViewById(R.id.alert_cancel_button);
         mCancelButton.setText(android.R.string.cancel);
@@ -79,6 +93,21 @@ public class KatsunaAlertBuilder {
             mCancelButton.setVisibility(View.INVISIBLE);
         }
 
+        mText = (EditText) mView.findViewById(R.id.text_input);
+
+        if (mText != null) {
+            mText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (hasFocus) {
+                        Window window = dialog.getWindow();
+                        if (window != null)
+                            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                    }
+                }
+            });
+        }
+
         mOkButton = (Button) mView.findViewById(R.id.alert_ok_button);
         mOkButton.setText(android.R.string.ok);
         mOkButton.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +115,9 @@ public class KatsunaAlertBuilder {
             public void onClick(View v) {
                 if (mOkListener != null) {
                     mOkListener.onClick(v);
+                }
+                if (mTextSelected != null) {
+                    mTextSelected.textSelected(mText.getText().toString());
                 }
                 dialog.dismiss();
             }
@@ -135,5 +167,9 @@ public class KatsunaAlertBuilder {
 
     public void setCancelHidden(boolean cancelHidden) {
         mCancelHidden = cancelHidden;
+    }
+
+    public interface KatsunaAlertText {
+        void textSelected(String input);
     }
 }
