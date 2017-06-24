@@ -36,25 +36,39 @@ public class ColorCalc {
                 return R.color.common_white;
             case ACCENT1_COLOR:
                 switch (profile) {
-                    case MAIN:
-                        return R.color.common_sundown;
-                    case CONTRAST:
-                        return R.color.common_redA100;
                     case COLOR_IMPAIREMENT:
-                        return R.color.common_amber400;
-                    case COLOR_IMPAIRMENT_AND_CONTRAST:
                         return R.color.common_amberA400;
+                    case MAIN:
+                        return R.color.common_deep_orange_A100;
+                    case COLOR_IMPAIRMENT_AND_CONTRAST:
+                        return R.color.common_amberA700;
+                    case CONTRAST:
+                        return R.color.common_grey900;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }
             case ACCENT2_COLOR:
                 switch (profile) {
-                    case MAIN:
                     case COLOR_IMPAIREMENT:
+                    case MAIN:
+                        return R.color.common_blueA700;
+                    case COLOR_IMPAIRMENT_AND_CONTRAST:
                         return R.color.common_indigoA700;
                     case CONTRAST:
+                        return R.color.common_white;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+            case ACCENT3_COLOR:
+                switch (profile) {
+                    case COLOR_IMPAIREMENT:
+                        return R.color.common_amber200;
+                    case MAIN:
+                        return R.color.common_deep_orange_200;
                     case COLOR_IMPAIRMENT_AND_CONTRAST:
-                        return R.color.common_indigo900;
+                        return R.color.common_amber300;
+                    case CONTRAST:
+                        return R.color.common_white;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }

@@ -122,17 +122,7 @@ public class KatsunaAlertBuilder {
         if (mColorProfile == null) {
             return;
         }
-
-        // set action buttons background color
-        int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR, mColorProfile);
-        Shape.setRoundedBackground(mOkButton, color1);
-
-        int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR, mColorProfile);
-        Shape.setRoundedBorder(mCancelButton, color2);
-
-        Drawable[] drawables = mCancelButton.getCompoundDrawablesRelative();
-        DrawUtils.setColor(drawables[0], color2);
-        mCancelButton.setTextColor(color2);
+        ColorAdjuster.adjustButtons(mContext, mColorProfile, mOkButton, mCancelButton);
     }
 
     public void setScrollViewItems(List<String> scrollViewItems) {

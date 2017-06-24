@@ -8,12 +8,6 @@ public class DrawUtils {
     public static void setColor(Drawable drawable, int color) {
         if (drawable == null) return;
 
-        drawable.mutate().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
-    }
-
-    public static void setColorATOP(Drawable drawable, int color) {
-        if (drawable == null) return;
-
         drawable.mutate().setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
     }
 

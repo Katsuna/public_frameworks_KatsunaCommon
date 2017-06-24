@@ -10,16 +10,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.katsuna.commons.R;
+import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.OpticalParams;
 import com.katsuna.commons.entities.SizeProfileKey;
 import com.katsuna.commons.entities.UserProfile;
+import com.katsuna.commons.ui.fragments.SearchBarFragment;
 import com.katsuna.commons.utils.ColorCalc;
+import com.katsuna.commons.utils.DrawUtils;
 import com.katsuna.commons.utils.Shape;
 import com.katsuna.commons.utils.SizeCalc;
+
+import java.util.List;
 
 public class Adjuster {
 
@@ -40,14 +46,27 @@ public class Adjuster {
     }
 
     public void adjustFabColors(FloatingActionButton fab1, FloatingActionButton fab2) {
+        int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
+                mUserProfile.colorProfile);
+        int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR,
+                mUserProfile.colorProfile);
+        int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
+        int blackResId = ContextCompat.getColor(mContext, R.color.common_black);
+
         if (fab1 != null) {
-            int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
-                    mUserProfile.colorProfile);
+            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
+                DrawUtils.setColor(fab1.getDrawable(), color2);
+            } else {
+                DrawUtils.setColor(fab1.getDrawable(), blackResId);
+            }
             setFabBackgroundColor(fab1, color1);
         }
         if (fab2 != null) {
-            int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR,
-                    mUserProfile.colorProfile);
+            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
+                DrawUtils.setColor(fab2.getDrawable(), color1);
+            } else {
+                DrawUtils.setColor(fab2.getDrawable(), whiteResId);
+            }
             setFabBackgroundColor(fab2, color2);
         }
     }
@@ -61,23 +80,32 @@ public class Adjuster {
     }
 
     public void tintFabs(FloatingActionButton fab1, FloatingActionButton fab2, boolean flag) {
-        int color1;
-        int color2;
         if (flag) {
-            color1 = ContextCompat.getColor(mContext, R.color.common_pink_tinted);
-            color2 = ContextCompat.getColor(mContext, R.color.common_blue_tinted);
-        } else {
-            color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
-                    mUserProfile.colorProfile);
-            color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR,
-                    mUserProfile.colorProfile);
-        }
+            int color1 = ContextCompat.getColor(mContext, R.color.common_pink_tinted);
+            int color2 = ContextCompat.getColor(mContext, R.color.common_blue_tinted);
+            int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
+            int blackResId = ContextCompat.getColor(mContext, R.color.common_black54);
 
-        if (fab1 != null) {
-            fab1.setBackgroundTintList(ColorStateList.valueOf(color1));
-        }
-        if (fab2 != null) {
-            fab2.setBackgroundTintList(ColorStateList.valueOf(color2));
+            if (fab1 != null) {
+                if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
+                    fab1.setBackgroundTintList(ColorStateList.valueOf(color2));
+                    DrawUtils.setColor(fab1.getDrawable(), whiteResId);
+                } else {
+                    fab1.setBackgroundTintList(ColorStateList.valueOf(color1));
+                    DrawUtils.setColor(fab1.getDrawable(), blackResId);
+                }
+            }
+            if (fab2 != null) {
+                if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
+                    fab2.setBackgroundTintList(ColorStateList.valueOf(color1));
+                    DrawUtils.setColor(fab2.getDrawable(), blackResId);
+                } else {
+                    fab2.setBackgroundTintList(ColorStateList.valueOf(color2));
+                    DrawUtils.setColor(fab2.getDrawable(), whiteResId);
+                }
+            }
+        } else {
+            adjustFabColors(fab1, fab2);
         }
     }
 
@@ -86,16 +114,30 @@ public class Adjuster {
     }
 
     public void adjustPopupButtons(Button popupButton1, Button popupButton2) {
+        int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
+                mUserProfile.colorProfile);
+        int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR,
+                mUserProfile.colorProfile);
+        int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
+        int blackResId = ContextCompat.getColor(mContext, R.color.common_black);
+
         if (popupButton1 != null) {
-            int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
-                    mUserProfile.colorProfile);
             Shape.setRoundedBackground(popupButton1, color1);
+
+            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
+                popupButton1.setTextColor(color2);
+            } else {
+                popupButton1.setTextColor(blackResId);
+            }
         }
 
         if (popupButton2 != null) {
-            int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR,
-                    mUserProfile.colorProfile);
             Shape.setRoundedBackground(popupButton2, color2);
+            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
+                popupButton2.setTextColor(color1);
+            } else {
+                popupButton2.setTextColor(whiteResId);
+            }
         }
     }
 
@@ -108,11 +150,30 @@ public class Adjuster {
         }
     }
 
-    public void adjustSearchBar(View container) {
+    public void adjustSearchBar(View container, ImageButton prevButton, ImageButton nextButton) {
         if (container != null) {
             int accentColor1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
                     mUserProfile.colorProfile);
             container.setBackgroundColor(accentColor1);
+
+            int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
+            int black87ResId = ContextCompat.getColor(mContext, R.color.common_black87);
+
+            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
+                if (prevButton != null) {
+                    DrawUtils.setColor(prevButton.getDrawable(), whiteResId);
+                }
+                if (nextButton != null) {
+                    DrawUtils.setColor(nextButton.getDrawable(), whiteResId);
+                }
+            } else {
+                if (prevButton != null) {
+                    DrawUtils.setColor(prevButton.getDrawable(), black87ResId);
+                }
+                if (nextButton != null) {
+                    DrawUtils.setColor(nextButton.getDrawable(), black87ResId);
+                }
+            }
         }
     }
 

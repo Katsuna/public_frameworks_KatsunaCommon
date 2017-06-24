@@ -3,6 +3,7 @@ package com.katsuna.commons.ui.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class SearchBarFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private View mVerticalDivider;
+    public List<TextView> lettersList = new ArrayList<>();
 
     public SearchBarFragment() {
         // Required empty public constructor
@@ -77,11 +79,13 @@ public class SearchBarFragment extends Fragment {
         int lettersAdded = 0;
 
         for (String letter : mLetters) {
+            TextView textViewAdded;
             if (lettersAdded < 8) {
-                addLetterView(inflater, letter, mLettersContainerA);
+                textViewAdded = addLetterView(inflater, letter, mLettersContainerA);
             } else {
-                addLetterView(inflater, letter, mLettersContainerB);
+                textViewAdded = addLetterView(inflater, letter, mLettersContainerB);
             }
+            lettersList.add(textViewAdded);
             lettersAdded++;
         }
 
@@ -89,7 +93,7 @@ public class SearchBarFragment extends Fragment {
     }
 
 
-    private void addLetterView(LayoutInflater inflater, final String letter, ViewGroup container) {
+    private TextView addLetterView(LayoutInflater inflater, final String letter, ViewGroup container) {
         View layout = inflater.inflate(R.layout.textview_letter_small, container, false);
 
         TextView searchLetter = (TextView) layout.findViewById(R.id.search_letter);
@@ -102,6 +106,7 @@ public class SearchBarFragment extends Fragment {
         });
 
         container.addView(layout);
+        return searchLetter;
     }
 
     @Override
@@ -132,6 +137,13 @@ public class SearchBarFragment extends Fragment {
             ColorProfile profile = mListener.getUserProfile().colorProfile;
             int color = ColorCalc.getColor(getActivity(), ColorProfileKey.DIVIDERS_OPACITY, profile);
             mVerticalDivider.setBackgroundColor(color);
+
+            if (profile == ColorProfile.CONTRAST) {
+                int whiteResId = ContextCompat.getColor(getContext(), R.color.common_white);
+                for (TextView textView : lettersList) {
+                    textView.setTextColor(whiteResId);
+                }
+            }
         }
     }
 

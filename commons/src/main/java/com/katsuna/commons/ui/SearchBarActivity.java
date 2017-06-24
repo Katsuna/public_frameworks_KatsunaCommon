@@ -3,11 +3,8 @@ package com.katsuna.commons.ui;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.FrameLayout;
 
-import com.katsuna.commons.R;
 import com.katsuna.commons.ui.adapters.TabsPagerAdapter;
 import com.katsuna.commons.ui.adapters.models.ContactListItemModel;
 import com.katsuna.commons.ui.fragments.support.SearchBarFragment;
@@ -31,7 +28,7 @@ public abstract class SearchBarActivity extends KatsunaActivity
 
         if (mUserProfileChanged) {
             // color profile adjustments
-            mAdjuster.adjustSearchBar(mViewPagerContainer);
+            mAdjuster.adjustSearchBar(mViewPagerContainer, mPrevButton, mNextButton);
 
             // right hand adjustments
             mAdjuster.adjustSearchBarForRightHand(mFabToolbarContainer, mFabToolbar);
