@@ -57,7 +57,10 @@ public class ColorAdjuster {
         Shape.setRoundedBackground(primaryButton, color1);
 
         int color2 = ColorCalc.getColor(context, ColorProfileKey.ACCENT2_COLOR, colorProfile);
-        Shape.setRoundedBorder(secondaryButton, color2);
+
+        if (secondaryButton != null) {
+            Shape.setRoundedBorder(secondaryButton, color2);
+        }
 
         int blackResId = ContextCompat.getColor(context, R.color.common_black);
 
@@ -70,21 +73,25 @@ public class ColorAdjuster {
                 DrawUtils.setColor(drawables[0], color2);
             }
 
-            Shape.setRoundedBorder(secondaryButton, color1);
-            secondaryButton.setTextColor(color1);
-            Drawable[] messageButtondrawables = secondaryButton.getCompoundDrawablesRelative();
-            if (messageButtondrawables[0] != null) {
-                DrawUtils.setColor(messageButtondrawables[0], color1);
+            if (secondaryButton != null) {
+                Shape.setRoundedBorder(secondaryButton, color1);
+                secondaryButton.setTextColor(color1);
+                Drawable[] messageButtondrawables = secondaryButton.getCompoundDrawablesRelative();
+                if (messageButtondrawables[0] != null) {
+                    DrawUtils.setColor(messageButtondrawables[0], color1);
+                }
             }
         } else {
             Shape.setRoundedBackground(primaryButton, color1);
             primaryButton.setTextColor(blackResId);
 
-            Shape.setRoundedBorder(secondaryButton, color2);
-            secondaryButton.setTextColor(color2);
-            Drawable[] drawables = secondaryButton.getCompoundDrawablesRelative();
-            if (drawables[0] != null) {
-                DrawUtils.setColor(drawables[0], color2);
+            if (secondaryButton != null) {
+                Shape.setRoundedBorder(secondaryButton, color2);
+                secondaryButton.setTextColor(color2);
+                Drawable[] drawables = secondaryButton.getCompoundDrawablesRelative();
+                if (drawables[0] != null) {
+                    DrawUtils.setColor(drawables[0], color2);
+                }
             }
         }
     }

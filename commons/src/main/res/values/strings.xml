@@ -92,11 +92,20 @@
     <!-- Title for day control -->
     <string name="common_day">Day</string>
 
+    <!-- Title for day selection alert -->
+    <string name="common_select_day">Select day</string>
+
     <!-- Title for month control -->
     <string name="common_month">Month</string>
 
+    <!-- Title for month selection control -->
+    <string name="common_select_month">Select month</string>
+
     <!-- Title for year control -->
     <string name="common_year">Year</string>
+
+    <!-- Title for year selection control -->
+    <string name="common_select_year">Select year</string>
 
     <!-- Validation message for age setting for Setup Wizard and Settings apps -->
     <string name="common_date_validation_error">Please correct the provided date.</string>
