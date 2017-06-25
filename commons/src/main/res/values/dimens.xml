@@ -8,7 +8,9 @@
     <dimen name="common_corner_radius">2dp</dimen>
     <dimen name="common_border_stroke">2dp</dimen>
     <dimen name="common_search_shadow">8dp</dimen>
+    <dimen name="common_alert_height">340dp</dimen>
     <dimen name="common_alert_scroll_items_padding">8dp</dimen>
+    <dimen name="common_alert_scroll_items_height">42dp</dimen>
     <dimen name="common_drawable_padding">4dp</dimen>
     <dimen name="common_button_padding">8dp</dimen>
 
