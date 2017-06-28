@@ -2,6 +2,7 @@ package com.katsuna.commons.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class AlertUtils {
 
     public static void createListAlert(final Context context, final EditText editText,
+                                       final String suggestedValue,
                                        final int titleResId, final UserProfile profile,
                                        final List<String> items, final Callback callback) {
         //disable manual editing
@@ -39,7 +41,12 @@ public class AlertUtils {
 
                 builder.setScrollViewItems(items);
                 builder.setCustomTitle(true);
-                builder.setSelectedItem(editText.getText().toString());
+
+                if (suggestedValue != null && TextUtils.isEmpty(editText.getText())) {
+                    builder.setSelectedItem(suggestedValue);
+                } else {
+                    builder.setSelectedItem(editText.getText().toString());
+                }
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
