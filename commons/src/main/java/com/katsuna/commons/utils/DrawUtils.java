@@ -11,4 +11,10 @@ public class DrawUtils {
         drawable.mutate().setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
     }
 
+    public static void setDimensions(Drawable drawable, int width, int height) {
+        if (drawable == null) return;
+
+        drawable.setBounds(0, 0, width, height);
+    }
+
 }
