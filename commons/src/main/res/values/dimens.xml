@@ -52,5 +52,13 @@
     <dimen name="common_icon_h_simple">28dp</dimen>
     <dimen name="common_icon_h_intermediate">24dp</dimen>
 
+    <dimen name="common_notification_button_padding_simple">18dp</dimen>
+    <dimen name="common_notification_button_padding_intemediate">12dp</dimen>
+    <dimen name="common_notification_button_padding_advanced">6dp</dimen>
+
+    <dimen name="common_notification_text_size_simple">21sp</dimen>
+    <dimen name="common_notification_text_size_intemediate">17sp</dimen>
+    <dimen name="common_notification_text_size_advanced">14sp</dimen>
+
     <!-- eof profile dimens -->
 </resources>
