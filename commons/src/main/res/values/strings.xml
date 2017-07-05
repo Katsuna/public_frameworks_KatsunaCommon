@@ -123,7 +123,7 @@
     <string name="common_size_selector" translatable="false">A</string>
 
     <!-- optical size setting label -->
-    <string name="common_size">Text size</string>
+    <string name="common_size">Size</string>
 
     <!-- Hand of use settings label -->
     <string name="common_hand">Preferred hand</string>
