@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/common_grey300" />
+
+    <com.katsuna.commons.controls.KatsunaTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/common_usability_settings"
+        app:sizeProfileKey="BODY_2" />
+
+    <!-- hand setting -->
+    <LinearLayout
+        android:id="@+id/hand_initial_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <com.katsuna.commons.controls.KatsunaImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/common_ic_dualpan_tool_grey600_24dp"
+            tools:ignore="ContentDescription" />
+
+        <com.katsuna.commons.controls.KatsunaTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="@string/common_hand"
+            app:sizeProfileKey="SUBHEADER" />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radio_group_hand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/radio_right_hand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:button="@null"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/common_ic_rightpan_tool_grey600_24dp"
+            android:text="@string/common_hand_right"
+            android:textAlignment="textStart" />
+
+        <RadioButton
+            android:id="@+id/radio_left_hand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:button="@null"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/common_ic_leftpan_tool_grey600_24dp"
+            android:text="@string/common_hand_left"
+            android:textAlignment="textStart" />
+
+    </RadioGroup>
+
+    <!-- size setting -->
+    <LinearLayout
+        android:id="@+id/size_initial_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
+
+        <com.katsuna.commons.controls.KatsunaImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/common_ic_format_size_grey600_24dp"
+            tools:ignore="ContentDescription" />
+
+        <com.katsuna.commons.controls.KatsunaTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/common_size"
+            app:sizeProfileKey="SUBHEADER" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/size_expanded_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.katsuna.commons.controls.KatsunaTextView
+            android:id="@+id/text_ithaka"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/common_ithaca"
+            app:sizeProfileKey="TITLE" />
+
+        <com.katsuna.commons.controls.KatsunaTextView
+            android:id="@+id/text_ithaka_full"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/common_ithaca_full"
+            app:sizeProfileKey="BODY_1" />
+
+        <RadioButton
+            android:id="@+id/radio_size_auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="16dp"
+            android:button="@null"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:drawablePadding="16dp"
+            android:drawableStart="@drawable/common_ic_font_download_grey600_24dp"
+            android:padding="16dp"
+            android:text="@string/common_use_auto_setting"
+            android:textAlignment="textStart" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_size_advanced"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                android:gravity="center"
+                android:text="@string/common_size_selector"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radio_size_intermediate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                android:gravity="center"
+                android:text="@string/common_size_selector"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_size_simple"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                android:gravity="center"
+                android:text="@string/common_size_selector"
+                android:textSize="26sp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <!-- color setting -->
+    <LinearLayout
+        android:id="@+id/color_initial_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
+
+        <com.katsuna.commons.controls.KatsunaImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/common_ic_palette_grey600_24dp"
+            tools:ignore="ContentDescription" />
+
+        <com.katsuna.commons.controls.KatsunaTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="@string/common_profile_color"
+            app:sizeProfileKey="SUBHEADER" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/color_expanded_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.katsuna.commons.controls.KatsunaTextView
+            android:id="@+id/select_color_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/common_select_palette"
+            app:sizeProfileKey="BODY_2" />
+
+        <RadioButton
+            android:id="@+id/radio_color_auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="16dp"
+            android:button="@null"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:drawablePadding="16dp"
+            android:drawableStart="@drawable/common_ic_font_download_grey600_24dp"
+            android:padding="16dp"
+            android:text="@string/common_use_auto_setting"
+            android:textAlignment="textStart" />
+
+        <include
+            android:id="@+id/demo_color_profile_impairement"
+            layout="@layout/common_color_demo_rh" />
+
+        <include
+            android:id="@+id/demo_color_profile_main"
+            layout="@layout/common_color_demo_rh" />
+
+        <include
+            android:id="@+id/demo_color_profile_impairement_contrast"
+            layout="@layout/common_color_demo_rh" />
+
+        <include
+            android:id="@+id/demo_color_profile_contrast"
+            layout="@layout/common_color_demo_rh" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

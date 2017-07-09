@@ -227,4 +227,9 @@ public abstract class KatsunaActivity extends AppCompatActivity {
         }
     }
 
+    protected void refreshUserProfileContainer() {
+        UserProfileContainer userProfileContainer = ProfileReader.getKatsunaUserProfile(this);
+        setUserProfile(userProfileContainer);
+    }
+
 }

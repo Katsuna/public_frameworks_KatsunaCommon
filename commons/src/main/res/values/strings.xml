@@ -152,4 +152,31 @@
     <!-- Text sample title for optical size profile selection -->
     <string name="common_ithaca">ITHACA</string>
 
+    <!-- Text sample for optical size profile selection -->
+    <string name="common_ithaca_full">As you set out for Ithaka hope the voyage is a long one, full of
+        adventure, full of discovery. Laistrygonians and Cyclops, angry Poseidon—don’t be afraid of
+        them: you’ll never find things like that on your way as long as you keep your thoughts
+        raised high, as long as a rare excitement stirs your spirit and your body. Laistrygonians
+        and Cyclops, wild Poseidon—you won’t encounter them unless you bring them along inside your
+        soul, unless your soul sets them up in front of you.
+    </string>
+
+    <!-- Label for usability settings section -->
+    <string name="common_usability_settings">Usability settings</string>
+
+    <!-- Color palette selection label -->
+    <string name="common_select_palette">Select your colour palette</string>
+
+    <!-- Demo label for color profile samples. -->
+    <string name="demo_name" translatable="false">Mary Johnson</string>
+
+    <!-- Demo label for color profile samples. -->
+    <string name="demo_number" translatable="false">6932713889</string>
+
+    <!-- Demo label for color profile samples. -->
+    <string name="demo_time" translatable="false">Mon 23, 23:30pm</string>
+
+    <!-- Label for app settings auto option -->
+    <string name="common_use_auto_setting">Use Auto setting</string>
+
 </resources>

@@ -3,6 +3,7 @@ package com.katsuna.commons.utils;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
+import android.util.Size;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.katsuna.commons.controls.KatsunaImageView;
 import com.katsuna.commons.controls.KatsunaTextView;
 import com.katsuna.commons.controls.KatsunaToggleButton;
 import com.katsuna.commons.entities.OpticalParams;
+import com.katsuna.commons.entities.SizeProfile;
 import com.katsuna.commons.entities.SizeProfileKey;
 import com.katsuna.commons.entities.UserProfile;
 
@@ -72,11 +74,14 @@ public class SizeAdjuster {
             icon.setLayoutParams(lp);
         }
     }
-
     public static void applySizeProfile(Context context, ViewGroup viewGroup, UserProfile profile) {
+        applySizeProfile(context, viewGroup, profile.opticalSizeProfile);
+    }
+
+    public static void applySizeProfile(Context context, ViewGroup viewGroup, SizeProfile profile) {
         // adjust all katsuna icons
         OpticalParams iconParams = SizeCalc.getOpticalParams(SizeProfileKey.ICON,
-                profile.opticalSizeProfile);
+                profile);
 
         List<View> katsunaImageViews = getKatsunaImageViews(viewGroup);
         for (View v : katsunaImageViews) {
@@ -87,7 +92,7 @@ public class SizeAdjuster {
         List<KatsunaTextView> katsunaTextViews = getKatsunaTextViews(viewGroup);
         for (KatsunaTextView tv : katsunaTextViews) {
             OpticalParams tvParams = SizeCalc.getOpticalParams(
-                    tv.getSizeProfileKey(), profile.opticalSizeProfile);
+                    tv.getSizeProfileKey(), profile);
             SizeAdjuster.adjustText(context, tv, tvParams);
         }
 
@@ -95,7 +100,7 @@ public class SizeAdjuster {
         List<KatsunaButton> buttons = getKatsunaButtons(viewGroup);
         for (KatsunaButton button : buttons) {
             OpticalParams buttonParams = SizeCalc.getOpticalParams(
-                    button.getSizeProfileKey(), profile.opticalSizeProfile);
+                    button.getSizeProfileKey(), profile);
             SizeAdjuster.adjustText(context, button, buttonParams);
         }
 
@@ -103,7 +108,7 @@ public class SizeAdjuster {
         List<KatsunaToggleButton> toggleButtons = getKatsunaToggleButtons(viewGroup);
         for (KatsunaToggleButton button : toggleButtons) {
             OpticalParams tbParams = SizeCalc.getOpticalParams(
-                    button.getSizeProfileKey(), profile.opticalSizeProfile);
+                    button.getSizeProfileKey(), profile);
             SizeAdjuster.adjustText(context, button, tbParams);
         }
 
@@ -111,7 +116,7 @@ public class SizeAdjuster {
         List<KatsunaEditText> editTexts = getKatsunaEditTexts(viewGroup);
         for (KatsunaEditText editText : editTexts) {
             OpticalParams editTextParams = SizeCalc.getOpticalParams(
-                    editText.getSizeProfileKey(), profile.opticalSizeProfile);
+                    editText.getSizeProfileKey(), profile);
             SizeAdjuster.adjustText(context, editText, editTextParams);
         }
     }

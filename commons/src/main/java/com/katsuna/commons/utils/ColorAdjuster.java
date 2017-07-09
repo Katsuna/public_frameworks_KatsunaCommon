@@ -53,50 +53,60 @@ public class ColorAdjuster {
     public static void adjustButtons(Context context, ColorProfile colorProfile,
                                      Button primaryButton, Button secondaryButton) {
 
-        int color1 = ColorCalc.getColor(context, ColorProfileKey.ACCENT1_COLOR, colorProfile);
-        Shape.setRoundedBackground(primaryButton, color1);
-
-        int color2 = ColorCalc.getColor(context, ColorProfileKey.ACCENT2_COLOR, colorProfile);
+        adjustPrimaryButton(context, colorProfile, primaryButton);
 
         if (secondaryButton != null) {
-            Shape.setRoundedBorder(secondaryButton, color2);
+            adjustSecondaryButton(context, colorProfile, secondaryButton);
         }
+    }
+
+    public static void adjustPrimaryButton(Context context, ColorProfile colorProfile,
+                                             Button button) {
+        int color1 = ColorCalc.getColor(context, ColorProfileKey.ACCENT1_COLOR, colorProfile);
+        Shape.setRoundedBackground(button, color1);
+
+        int color2 = ColorCalc.getColor(context, ColorProfileKey.ACCENT2_COLOR, colorProfile);
 
         int blackResId = ContextCompat.getColor(context, R.color.common_black);
 
         if (colorProfile == ColorProfile.CONTRAST) {
-            Shape.setRoundedBackground(primaryButton, color1);
+            Shape.setRoundedBackground(button, color1);
 
-            Drawable[] drawables = primaryButton.getCompoundDrawablesRelative();
-            primaryButton.setTextColor(color2);
+            Drawable[] drawables = button.getCompoundDrawables();
+            button.setTextColor(color2);
             if (drawables[0] != null) {
                 DrawUtils.setColor(drawables[0], color2);
             }
-
-            if (secondaryButton != null) {
-                Shape.setRoundedBorder(secondaryButton, color1);
-                secondaryButton.setTextColor(color1);
-                Drawable[] messageButtondrawables = secondaryButton.getCompoundDrawablesRelative();
-                if (messageButtondrawables[0] != null) {
-                    DrawUtils.setColor(messageButtondrawables[0], color1);
-                }
-            }
         } else {
-            Shape.setRoundedBackground(primaryButton, color1);
-            primaryButton.setTextColor(blackResId);
-
-            if (secondaryButton != null) {
-                Shape.setRoundedBorder(secondaryButton, color2);
-                secondaryButton.setTextColor(color2);
-                Drawable[] drawables = secondaryButton.getCompoundDrawablesRelative();
-                if (drawables[0] != null) {
-                    DrawUtils.setColor(drawables[0], color2);
-                }
-            }
+            Shape.setRoundedBackground(button, color1);
+            button.setTextColor(blackResId);
         }
     }
 
+    public static void adjustSecondaryButton(Context context, ColorProfile colorProfile,
+                                             Button button) {
 
+        int color1 = ColorCalc.getColor(context, ColorProfileKey.ACCENT1_COLOR, colorProfile);
+        int color2 = ColorCalc.getColor(context, ColorProfileKey.ACCENT2_COLOR, colorProfile);
+
+        Shape.setRoundedBorder(button, color2);
+
+        if (colorProfile == ColorProfile.CONTRAST) {
+            Shape.setRoundedBorder(button, color1);
+            button.setTextColor(color1);
+            Drawable[] drawables = button.getCompoundDrawables();
+            if (drawables[0] != null) {
+                DrawUtils.setColor(drawables[0], color1);
+            }
+        } else {
+            Shape.setRoundedBorder(button, color2);
+            button.setTextColor(color2);
+            Drawable[] drawables = button.getCompoundDrawables();
+            if (drawables[0] != null) {
+                DrawUtils.setColor(drawables[0], color2);
+            }
+        }
+    }
 
     public static void adjustStartingLetter(Context context, ColorProfile colorProfile,
                                             TextView textView, boolean enabled) {

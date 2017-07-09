@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/drawer_settings"
+            android:icon="@drawable/common_ic_settings_black_24dp"
+            android:title="@string/common_settings" />
+
+        <item
+            android:id="@+id/drawer_info"
+            android:icon="@drawable/common_ic_info_black_24dp"
+            android:title="@string/common_info" />
+
+    </group>
+</menu>
