@@ -113,11 +113,13 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         ColorProfile colorProfile = ColorProfile.valueOf(colorProfileStr);
         selectColorProfile(colorProfile);
 
-        boolean isRightHanded = Boolean.parseBoolean(
-                SettingsManager.readSetting(SettingsKatsunaActivity.this, PreferenceKey.RIGHT_HAND,
-                        "true"));
-        mRadioRightHand.setChecked(isRightHanded);
-        mRadioLeftHand.setChecked(!isRightHanded);
+        if(!mUserProfileContainer.hasKatsunaServices()) {
+            boolean isRightHanded = Boolean.parseBoolean(
+                    SettingsManager.readSetting(SettingsKatsunaActivity.this, PreferenceKey.RIGHT_HAND,
+                            "true"));
+            mRadioRightHand.setChecked(isRightHanded);
+            mRadioLeftHand.setChecked(!isRightHanded);
+        }
     }
 
     protected void initAppSettings() {
