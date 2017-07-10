@@ -52,8 +52,8 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     protected View mFabToolbar;
     protected boolean mFabToolbarOn;
     protected FrameLayout mFabToolbarContainer;
-    protected LinearLayout mViewPagerContainer;
-    protected ViewPager mViewPager;
+    protected View mViewPagerContainer;
+
     protected ImageButton mPrevButton;
     protected ImageButton mNextButton;
     protected Adjuster mAdjuster;

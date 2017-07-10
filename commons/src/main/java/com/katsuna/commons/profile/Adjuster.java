@@ -19,13 +19,10 @@ import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.OpticalParams;
 import com.katsuna.commons.entities.SizeProfileKey;
 import com.katsuna.commons.entities.UserProfile;
-import com.katsuna.commons.ui.fragments.SearchBarFragment;
 import com.katsuna.commons.utils.ColorCalc;
 import com.katsuna.commons.utils.DrawUtils;
 import com.katsuna.commons.utils.Shape;
 import com.katsuna.commons.utils.SizeCalc;
-
-import java.util.List;
 
 public class Adjuster {
 

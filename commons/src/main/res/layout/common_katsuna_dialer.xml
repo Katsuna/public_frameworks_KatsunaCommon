@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawablePadding="-15dp"
-            android:drawableStart="@drawable/common_ic_check_black87_24dp"
+            android:drawableLeft="@drawable/common_ic_check_black87_24dp"
             android:paddingEnd="0dp"
             android:paddingStart="15dp"
             android:textColor="@color/common_black87" />
@@ -54,7 +54,7 @@
             android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:drawablePadding="-15dp"
-            android:drawableStart="@drawable/common_ic_close_grey50_24dp"
+            android:drawableLeft="@drawable/common_ic_close_grey50_24dp"
             android:paddingEnd="0dp"
             android:paddingStart="15dp"
             android:textColor="@color/common_grey50" />

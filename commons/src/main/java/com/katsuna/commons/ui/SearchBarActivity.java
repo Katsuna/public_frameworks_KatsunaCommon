@@ -1,26 +1,24 @@
 package com.katsuna.commons.ui;
 
 import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.view.View;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import com.katsuna.commons.ui.adapters.TabsPagerAdapter;
+import com.katsuna.commons.ui.adapters.LettersAdapter;
+import com.katsuna.commons.ui.adapters.interfaces.LetterListener;
 import com.katsuna.commons.ui.adapters.models.ContactListItemModel;
-import com.katsuna.commons.ui.fragments.support.SearchBarFragment;
 import com.katsuna.commons.utils.Constants;
-import com.katsuna.commons.utils.ListChopper;
 import com.katsuna.commons.utils.Separator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class SearchBarActivity extends KatsunaActivity
-        implements SearchBarFragment.OnFragmentInteractionListener {
+public abstract class SearchBarActivity extends KatsunaActivity implements LetterListener {
 
     protected Handler mDeselectionActionHandler;
     protected boolean mItemSelected;
     protected long mLastSelectionTimestamp = System.currentTimeMillis();
+    protected RecyclerView mLettersList;
 
     @Override
     protected void onResume() {
@@ -49,51 +47,9 @@ public abstract class SearchBarActivity extends KatsunaActivity
             }
         }
 
-        List<ArrayList<String>> lettersLists = ListChopper.chopped(letters, 20);
-
-        ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
-        for (ArrayList<String> lettersList : lettersLists) {
-            fragmentArrayList.add(SearchBarFragment.newInstance(lettersList));
-        }
-
-        TabsPagerAdapter mLetterAdapter = new TabsPagerAdapter(getSupportFragmentManager(),
-                fragmentArrayList);
-        mViewPager.setAdapter(mLetterAdapter);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                adjustFabToolbarNavButtonsVisibility();
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-        adjustFabToolbarNavButtonsVisibility();
-    }
-
-    protected void adjustFabToolbarNavButtonsVisibility() {
-        int pages = mViewPager.getChildCount();
-        int currentPage = mViewPager.getCurrentItem();
-
-        if (pages == currentPage + 1) {
-            mNextButton.setVisibility(View.INVISIBLE);
-        } else {
-            mNextButton.setVisibility(View.VISIBLE);
-        }
-
-        if (currentPage == 0) {
-            mPrevButton.setVisibility(View.INVISIBLE);
-        } else {
-            mPrevButton.setVisibility(View.VISIBLE);
-        }
+        LettersAdapter mLettersAdapter = new LettersAdapter(letters, this);
+        mLettersList.setAdapter(mLettersAdapter);
+        mLettersList.setLayoutManager(new LinearLayoutManager(this));
     }
 
     protected void initDeselectionActionHandler() {
