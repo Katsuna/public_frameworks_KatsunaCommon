@@ -18,6 +18,9 @@
     <!-- Title for the Info item in every app's navigation drawer -->
     <string name="common_info">Info</string>
 
+    <!-- Title for the Info activity -->
+    <string name="common_app_info">App info</string>
+
     <!-- Title for the "open" button -->
     <string name="common_open">Open</string>
 
@@ -178,5 +181,13 @@
 
     <!-- Label for app settings auto option -->
     <string name="common_use_auto_setting">Use Auto setting</string>
+
+    <!-- version label for app info activities -->
+    <string name="common_version">version</string>
+
+    <!-- developer label for app info activities -->
+    <string name="common_developer">Developer</string>
+
+    <string name="common_katsuna_company" translatable="false">Katsuna GmbH</string>
 
 </resources>
