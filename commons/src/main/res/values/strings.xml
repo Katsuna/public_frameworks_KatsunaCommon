@@ -190,4 +190,6 @@
 
     <string name="common_katsuna_company" translatable="false">Katsuna GmbH</string>
 
+    <string name="common_katsuna_address" translatable="false">Bahnhofstrasse 7\n6300 Zug, Switzerland.</string>
+
 </resources>

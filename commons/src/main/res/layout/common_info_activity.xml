@@ -60,6 +60,14 @@
             android:textColor="@color/common_grey600"
             android:textSize="16sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/common_katsuna_address"
+            android:textColor="@color/common_grey600"
+            android:textSize="16sp" />
+
 
     </LinearLayout>
 
