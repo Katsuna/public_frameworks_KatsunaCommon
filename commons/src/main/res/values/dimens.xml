@@ -24,6 +24,10 @@
     <dimen name="common_title_text_size_simple">26sp</dimen>
     <dimen name="common_title_text_size_intermediate">23sp</dimen>
     <dimen name="common_title_text_size_advanced">20sp</dimen>
+    <dimen name="common_fab_text_size_simple">22sp</dimen>
+    <dimen name="common_fab_text_size_intermediate">20sp</dimen>
+    <dimen name="common_fab_text_size_advanced">18sp</dimen>
+
 
     <dimen name="common_subheader_text_size_simple">24sp</dimen>
     <dimen name="common_subheader_text_size_intermediate">21sp</dimen>

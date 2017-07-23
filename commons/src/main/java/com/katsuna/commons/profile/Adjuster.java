@@ -3,8 +3,11 @@ package com.katsuna.commons.profile;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
@@ -40,6 +44,28 @@ public class Adjuster {
 
     public void adjustFabColors(FloatingActionButton fab1) {
         adjustFabColors(fab1, null);
+    }
+
+    public void adjustFabSample(View fab, TextView textView) {
+        int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
+                mUserProfile.colorProfile);
+        int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR,
+                mUserProfile.colorProfile);
+        int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
+        int blackResId = ContextCompat.getColor(mContext, R.color.common_black);
+
+        if (fab != null) {
+            GradientDrawable fabBg =  (GradientDrawable) fab.getBackground();
+            fabBg.setColor(color1);
+        }
+
+        if (textView != null) {
+            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
+                textView.setTextColor(whiteResId);
+            } else {
+                textView.setTextColor(blackResId);
+            }
+        }
     }
 
     public void adjustFabColors(FloatingActionButton fab1, FloatingActionButton fab2) {
@@ -229,4 +255,32 @@ public class Adjuster {
         layoutParams.height = height;
     }
 
+
+    public void adjustFabSampleSize(View fab, TextView textView) {
+        OpticalParams params = SizeCalc.getOpticalParams(SizeProfileKey.FLOATING_BUTTON,
+                mUserProfile.opticalSizeProfile);
+        int height = mContext.getResources().getDimensionPixelSize(params.getHeight());
+
+        ViewGroup.LayoutParams layoutParams = fab.getLayoutParams();
+        layoutParams.width = height;
+        layoutParams.height = height;
+
+        float textSize = mContext.getResources()
+                .getDimension(R.dimen.common_fab_text_size_intermediate);
+        switch (mUserProfile.opticalSizeProfile) {
+            case SIMPLE:
+                textSize = mContext.getResources().
+                        getDimension(R.dimen.common_fab_text_size_simple);
+                break;
+            case INTERMEDIATE:
+                textSize = mContext.getResources()
+                        .getDimension(R.dimen.common_fab_text_size_intermediate);
+                break;
+            case ADVANCED:
+                textSize = mContext.getResources()
+                        .getDimension(R.dimen.common_fab_text_size_advanced);
+                break;
+        }
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+    }
 }

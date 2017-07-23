@@ -1,11 +1,13 @@
 package com.katsuna.commons.ui;
 
 import android.support.annotation.IdRes;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.controls.DemoProfile;
@@ -15,6 +17,7 @@ import com.katsuna.commons.entities.PreferenceKey;
 import com.katsuna.commons.entities.SizeProfile;
 import com.katsuna.commons.entities.SizeProfileKey;
 import com.katsuna.commons.entities.UserProfile;
+import com.katsuna.commons.profile.Adjuster;
 import com.katsuna.commons.utils.SettingsManager;
 import com.katsuna.commons.utils.SizeAdjuster;
 import com.katsuna.commons.utils.SizeCalc;
@@ -45,6 +48,8 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
     private RadioButton mRadioRightHand;
     private RadioButton mRadioLeftHand;
     private boolean sizeRadioAutoChangeInProgress;
+    private View mSizeSampleFab;
+    private TextView mSizeSampleFabText;
 
     @Override
     protected void onResume() {
@@ -71,10 +76,10 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
     protected void applyProfiles() {
         refreshUserProfileContainer();
         UserProfile profile = mUserProfileContainer.getActiveUserProfile();
-        applySizeProfileLocal(profile);
+        applyProfileLocal(profile);
     }
 
-    private void applySizeProfileLocal(UserProfile profile) {
+    private void applyProfileLocal(UserProfile profile) {
         applySizeProfile(profile.opticalSizeProfile);
 
         OpticalParams opticalParams = SizeCalc.getOpticalParams(SizeProfileKey.SUBHEADER,
@@ -84,6 +89,10 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         SizeAdjuster.adjustText(this, mRadioRightHand, opticalParams);
         SizeAdjuster.adjustText(this, mRadioLeftHand, opticalParams);
         applyColorProfile(profile.colorProfile);
+
+        Adjuster adjuster = new Adjuster(this, profile);
+        adjuster.adjustFabSampleSize(mSizeSampleFab, mSizeSampleFabText);
+        adjuster.adjustFabSample(mSizeSampleFab, mSizeSampleFabText);
     }
 
     protected void loadProfiles() {
@@ -210,6 +219,10 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
                 }
             }
         });
+
+
+        mSizeSampleFab = findViewById(R.id.commom_size_sample_fab);
+        mSizeSampleFabText = (TextView) findViewById(R.id.commom_size_sample_fab_text);
     }
 
     private void initColorSetting() {
@@ -321,6 +334,7 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         SettingsManager.setSetting(SettingsKatsunaActivity.this, PreferenceKey.COLOR_PROFILE,
                 colorProfile.name());
         applyColorProfile(colorProfile);
+        applyProfiles();
     }
 
     public void refreshControlsVisibility() {
