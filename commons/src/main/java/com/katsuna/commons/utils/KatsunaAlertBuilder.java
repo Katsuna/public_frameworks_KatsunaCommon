@@ -35,6 +35,8 @@ public class KatsunaAlertBuilder {
     private Button mCancelButton;
     private Button mOkButton;
     private List<String> mScrollViewItems;
+    private List<String> mScrollViewItemsLabels;
+
     private EditText mText;
     private boolean mCustomTitleOn;
     private String mSelectedItem;
@@ -159,10 +161,18 @@ public class KatsunaAlertBuilder {
 
             TextView selectedItem = null;
 
+            int itemIndex = 0;
             for (String item : mScrollViewItems) {
 
                 final TextView tv = new TextView(mContext);
-                tv.setText(item);
+
+                if (mScrollViewItemsLabels != null) {
+                    tv.setText(mScrollViewItemsLabels.get(itemIndex));
+                    tv.setTag(item);
+                } else {
+                    tv.setText(item);
+                    tv.setTag(item);
+                }
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
                 tv.setTextColor(textColor);
                 tv.setHeight(scrollItemsHeightInPixel);
@@ -180,7 +190,7 @@ public class KatsunaAlertBuilder {
                     tv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            mListItemSelected.listItemSelected(tv.getText().toString());
+                            mListItemSelected.listItemSelected(tv.getTag().toString());
                             dialog.dismiss();
                         }
                     });
@@ -192,6 +202,7 @@ public class KatsunaAlertBuilder {
                 }
 
                 scrollViewItemsContainer.addView(tv);
+                itemIndex++;
             }
 
             // show scroll view
@@ -258,6 +269,10 @@ public class KatsunaAlertBuilder {
 
     public void setScrollViewItems(List<String> scrollViewItems) {
         mScrollViewItems = scrollViewItems;
+    }
+
+    public void setScrollViewItemsLabels(List<String> scrollViewItemsLabels) {
+        mScrollViewItemsLabels = scrollViewItemsLabels;
     }
 
     public void setColorProfile(ColorProfile colorProfile) {

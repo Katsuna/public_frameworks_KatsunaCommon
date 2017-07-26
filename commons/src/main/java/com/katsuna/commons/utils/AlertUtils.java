@@ -11,6 +11,8 @@ import com.katsuna.commons.entities.UserProfile;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.text.DateFormatSymbols;
 import java.util.List;
 
 public class AlertUtils {
@@ -18,7 +20,9 @@ public class AlertUtils {
     public static void createListAlert(final Context context, final EditText editText,
                                        final String suggestedValue,
                                        final int titleResId, final UserProfile profile,
-                                       final List<String> items, final Callback callback) {
+                                       final List<String> items,
+                                       final List<String> itemsLabels,
+                                       final Callback callback) {
         //disable manual editing
         editText.setFocusable(false);
         editText.setLongClickable(false);
@@ -40,6 +44,7 @@ public class AlertUtils {
                 });
 
                 builder.setScrollViewItems(items);
+                builder.setScrollViewItemsLabels(itemsLabels);
                 builder.setCustomTitle(true);
 
                 if (suggestedValue != null && TextUtils.isEmpty(editText.getText())) {
@@ -66,6 +71,14 @@ public class AlertUtils {
         List<String> months = new ArrayList<>();
         for (int i = 1; i <= 12; i++) {
             months.add(String.valueOf(i));
+        }
+        return months;
+    }
+
+    public static List<String> getMonthsLabels() {
+        List<String> months = new ArrayList<>();
+        for (int i = 1; i <= 12; i++) {
+            months.add(new DateFormatSymbols().getMonths()[i-1]);
         }
         return months;
     }
