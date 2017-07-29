@@ -58,9 +58,9 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         if (mUserProfileChanged) {
             if (!mUserProfileContainer.hasKatsunaServices()) {
                 //enable app right hand setting
-                boolean isRightHanded = SettingsManager.readSetting(this, PreferenceKey.RIGHT_HAND,
-                        true);
-                mRadioRightHand.setChecked(isRightHanded);
+                String isRightHanded = SettingsManager.readSetting(this, PreferenceKey.RIGHT_HAND,
+                        "true");
+                mRadioRightHand.setChecked(Boolean.parseBoolean(isRightHanded));
                 mHandInitialContainer.setVisibility(View.VISIBLE);
             } else {
                 mHandInitialContainer.setVisibility(View.GONE);
