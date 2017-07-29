@@ -10,12 +10,14 @@ import android.graphics.drawable.StateListDrawable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
+import com.katsuna.commons.entities.UserProfile;
 
 public class ColorAdjuster {
 
@@ -197,6 +199,27 @@ public class ColorAdjuster {
         res.addState(new int[]{android.R.attr.state_checked}, checkedDrawable);
         res.addState(new int[]{}, defaultDrawable);
         return res;
+    }
+
+    public static void adjustRadioButton(Context context, UserProfile profile, RadioButton button) {
+        // right hand default
+        int buttonDrawableIndex = 2;
+        if (!profile.isRightHanded) {
+            buttonDrawableIndex = 0;
+        }
+
+        adjustRadioButton(context, profile, button, buttonDrawableIndex);
+    }
+
+    public static void adjustRadioButton(Context context, UserProfile profile, RadioButton button,
+                                         int drawableIndex) {
+        int color = ColorCalc.getColor(context, ColorProfileKey.ACCENT2_COLOR, profile.colorProfile);
+        if(profile.colorProfile == ColorProfile.CONTRAST) {
+            color = ColorCalc.getColor(context, ColorProfileKey.ACCENT1_COLOR, profile.colorProfile);
+        }
+
+        Drawable[] lHandDrawables = button.getCompoundDrawablesRelative();
+        lHandDrawables[drawableIndex].setTint(color);
     }
 
 }
