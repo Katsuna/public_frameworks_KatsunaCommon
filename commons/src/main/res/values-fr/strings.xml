@@ -14,7 +14,7 @@
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">Info</string>
   <!-- Title for the Info activity -->
-  <string name="common_app_info">App info</string>
+  <string name="common_app_info">Info de l’app</string>
   <!-- Title for the "open" button -->
   <string name="common_open">Ouvrir</string>
   <!-- Title of a Contacts app shortcut -->
@@ -54,38 +54,38 @@
   <!-- Dropdown option, (color profile) optimized for contrast -->
   <string name="common_profile_color_contrast">Optimisé pour le contraste</string>
   <!-- Dropdown option, (color profile) optimized for color impairment (medical condition of the user) -->
-  <string name="common_profile_color_impairement">Optimized for color impairement</string>
+  <string name="common_profile_color_impairement">Optimisé pour affaiblissement des couleurs </string>
   <!-- Dropdown option, (color profile) optimized for color impairment (medical condition of the user) and contrast -->
-  <string name="common_profile_color_impairement_contrast">Optimized for color impairement and contrast</string>
+  <string name="common_profile_color_impairement_contrast">Optimisé pour affaiblissement des couleurs et contraste</string>
   <!-- Title of the "right hand" setting (when the option is enabled, the FAB buttons go to the right side of the screen) -->
   <string name="common_right_hand_setting">Main droite</string>
   <!-- Text for dial action (opening of a dialpad) -->
-  <string name="common_dial">Dial</string>
+  <string name="common_dial">Cadran</string>
   <!-- Text for dial alert title  -->
   <string name="common_dial_instruction">Composez le numéro</string>
   <!-- Title for day control -->
   <string name="common_day">Journée</string>
   <!-- Title for day selection alert -->
-  <string name="common_select_day">Select day</string>
+  <string name="common_select_day">Sélectionnez le jour</string>
   <!-- Title for month control -->
   <string name="common_month">Mois</string>
   <!-- Title for month selection control -->
-  <string name="common_select_month">Select month</string>
+  <string name="common_select_month">Sélectionnez le mois</string>
   <!-- Title for year control -->
   <string name="common_year">Année</string>
   <!-- Title for year selection control -->
-  <string name="common_select_year">Select year</string>
+  <string name="common_select_year">Sélectionnez l’année</string>
   <!-- Validation message for age setting for Setup Wizard and Settings apps -->
-  <string name="common_date_validation_error">Please correct the provided date.</string>
+  <string name="common_date_validation_error">Corrigez s\'il vous plaît la date fournie.</string>
   <!-- Text for toggle button on position -->
   <string name="common_on"> marche</string>
   <!-- Text for toggle button off position -->
   <string name="common_off">arrêt</string>
   <!-- Text for more button -->
-  <string name="common_more">More</string>
+  <string name="common_more">Plus</string>
   <!-- Used for optical size radio buttons. Used at Settings and SetupWizard. -->
   <!-- optical size setting label -->
-  <string name="common_size">Size</string>
+  <string name="common_size">Taille</string>
   <!-- Hand of use settings label -->
   <string name="common_hand">Main préférée</string>
   <!-- hand setting left label -->
@@ -105,24 +105,33 @@
   <!-- Text sample title for optical size profile selection -->
   <string name="common_ithaca">ITHAQUE</string>
   <!-- Text sample for optical size profile selection -->
-  <string name="common_ithaca_full">As you set out for Ithaka hope the voyage is a long one, full of
-        adventure, full of discovery. Laistrygonians and Cyclops, angry Poseidon—don’t be afraid of
-        them: you’ll never find things like that on your way as long as you keep your thoughts
-        raised high, as long as a rare excitement stirs your spirit and your body. Laistrygonians
-        and Cyclops, wild Poseidon—you won’t encounter them unless you bring them along inside your
-        soul, unless your soul sets them up in front of you.
-    </string>
+  <string name="common_ithaca_full">Quand tu partiras pour Ithaque,
+souhaite que le chemin soit long,
+riche en péripéties et en expériences.
+
+Ne crains ni les Lestrygons, ni les Cyclopes,
+ni la colère de Neptune.
+Tu ne verras rien de pareil sur ta route si tes pensées restent hautes, s
+i ton corps et ton âme ne se laissent effleurer
+que par des émotions sans bassesse.
+
+Tu ne rencontreras ni les Lestrygons, ni les Cyclopes,
+ni le farouche Neptune,
+si tu ne les portes pas en toi-même,
+si ton cœur ne les dresse pas devant toi.
+
+</string>
   <!-- Label for usability settings section -->
-  <string name="common_usability_settings">Usability settings</string>
+  <string name="common_usability_settings">Paramètres de l’utilisabilité</string>
   <!-- Color palette selection label -->
-  <string name="common_select_palette">Select your colour palette</string>
+  <string name="common_select_palette">Choisir votre palette de couleurs</string>
   <!-- Demo label for color profile samples. -->
   <!-- Demo label for color profile samples. -->
   <!-- Demo label for color profile samples. -->
   <!-- Label for app settings auto option -->
-  <string name="common_use_auto_setting">Use Auto setting</string>
+  <string name="common_use_auto_setting">Utiliser le réglage automatique</string>
   <!-- version label for app info activities -->
   <string name="common_version">version</string>
   <!-- developer label for app info activities -->
-  <string name="common_developer">Developer</string>
+  <string name="common_developer">Développeur</string>
 </resources>

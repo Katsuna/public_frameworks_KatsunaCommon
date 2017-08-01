@@ -14,7 +14,7 @@
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">Info</string>
   <!-- Title for the Info activity -->
-  <string name="common_app_info">App info</string>
+  <string name="common_app_info">App-Infos</string>
   <!-- Title for the "open" button -->
   <string name="common_open">Öffnen</string>
   <!-- Title of a Contacts app shortcut -->
@@ -66,15 +66,15 @@
   <!-- Title for day control -->
   <string name="common_day">Tag</string>
   <!-- Title for day selection alert -->
-  <string name="common_select_day">Select day</string>
+  <string name="common_select_day">Wählen Sie einen Tag aus</string>
   <!-- Title for month control -->
   <string name="common_month">Monat</string>
   <!-- Title for month selection control -->
-  <string name="common_select_month">Select month</string>
+  <string name="common_select_month">Wählen Sie einen Monat aus</string>
   <!-- Title for year control -->
   <string name="common_year">Jahr</string>
   <!-- Title for year selection control -->
-  <string name="common_select_year">Select year</string>
+  <string name="common_select_year">Wählen Sie das Jahr aus</string>
   <!-- Validation message for age setting for Setup Wizard and Settings apps -->
   <string name="common_date_validation_error">Bitte korrigieren Sie das angegebene Datum.</string>
   <!-- Text for toggle button on position -->
@@ -85,7 +85,7 @@
   <string name="common_more">Mehr</string>
   <!-- Used for optical size radio buttons. Used at Settings and SetupWizard. -->
   <!-- optical size setting label -->
-  <string name="common_size">Size</string>
+  <string name="common_size">Größe</string>
   <!-- Hand of use settings label -->
   <string name="common_hand">Bevorzugte Hand</string>
   <!-- hand setting left label -->
@@ -105,24 +105,30 @@
   <!-- Text sample title for optical size profile selection -->
   <string name="common_ithaca">ITHACA</string>
   <!-- Text sample for optical size profile selection -->
-  <string name="common_ithaca_full">As you set out for Ithaka hope the voyage is a long one, full of
-        adventure, full of discovery. Laistrygonians and Cyclops, angry Poseidon—don’t be afraid of
-        them: you’ll never find things like that on your way as long as you keep your thoughts
-        raised high, as long as a rare excitement stirs your spirit and your body. Laistrygonians
-        and Cyclops, wild Poseidon—you won’t encounter them unless you bring them along inside your
-        soul, unless your soul sets them up in front of you.
-    </string>
+  <string name="common_ithaca_full">Brichst du auf gen Ithaka,
+wünsch dir eine lange Fahrt,
+voller Abenteuer und Erkenntnisse.
+Die Lästrygonen und Zyklopen,
+den zornigen Poseidon fürchte nicht,
+solcherlei wirst du auf deiner Fahrt nie finden,
+wenn dein Denken hochgespannt, wenn edle
+Regung deinen Geist und Körper anrührt.
+Den Lästrygonen und Zyklopen,
+dem wütenden Poseidon wirst du nicht begegnen,
+falls du sie nicht in deiner Seele mit dir trägst,
+falls deine Seele sie nicht vor dir aufbaut.</string>
   <!-- Label for usability settings section -->
-  <string name="common_usability_settings">Usability settings</string>
+  <string name="common_usability_settings">
+Benutzerfreundlichkeit -Einstellungen</string>
   <!-- Color palette selection label -->
-  <string name="common_select_palette">Select your colour palette</string>
+  <string name="common_select_palette">Wählen Sie Ihre Farbpalette aus</string>
   <!-- Demo label for color profile samples. -->
   <!-- Demo label for color profile samples. -->
   <!-- Demo label for color profile samples. -->
   <!-- Label for app settings auto option -->
-  <string name="common_use_auto_setting">Use Auto setting</string>
+  <string name="common_use_auto_setting">Verwenden der Einstellung \"Auto\"</string>
   <!-- version label for app info activities -->
-  <string name="common_version">version</string>
+  <string name="common_version">Version</string>
   <!-- developer label for app info activities -->
-  <string name="common_developer">Developer</string>
+  <string name="common_developer">Entwickler</string>
 </resources>
