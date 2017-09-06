@@ -192,4 +192,13 @@
 
     <string name="common_katsuna_address" translatable="false">Bahnhofstrasse 7\n6300 Zug, Switzerland.</string>
 
+    <!-- Label for age setting -->
+    <string name="common_age">Age</string>
+
+    <!-- Label for age setting description -->
+    <string name="common_age_hint">Enter your age</string>
+
+    <!-- Color palette label -->
+    <string name="common_color">Colour palettes</string>
+
 </resources>
