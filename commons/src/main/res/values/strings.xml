@@ -201,4 +201,18 @@
     <!-- Color palette label -->
     <string name="common_color">Colour palettes</string>
 
+    <!-- app names for katsuna apps -->
+    <string name="common_katsuna_contacts_app">Contacts</string>
+    <string name="common_katsuna_messages_app">Messages</string>
+    <string name="common_katsuna_calls_app">Calls</string>
+    <string name="common_katsuna_keyboard_app">Keyboard</string>
+
+    <string name="common_download">Download</string>
+    <string name="common_download_app">Download %1$s app</string>
+    <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility in mind. Press Continue to download the app from Google Play.</string>
+
+
+    <string name="common_continue">Continue</string>
+    <string name="common_cancel">Cancel</string>
+
 </resources>

@@ -11,12 +11,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
+import com.katsuna.commons.entities.KatsunaApp;
 import com.katsuna.commons.entities.UserProfileContainer;
 
 import java.util.List;
@@ -40,6 +42,10 @@ public class KatsunaAlertBuilder {
     private EditText mText;
     private boolean mCustomTitleOn;
     private String mSelectedItem;
+    private KatsunaApp mKatsunaApp;
+    private ImageView mAppIcon;
+    private TextView mAppTitle;
+    private TextView mAppDesc;
 
     public KatsunaAlertBuilder(Context context) {
         mContext = context;
@@ -234,6 +240,55 @@ public class KatsunaAlertBuilder {
         return dialog;
     }
 
+    public AlertDialog createKatsunaAppSuggestion() {
+        final AlertDialog dialog;
+        if (mMessageResId != 0) {
+            dialog = new AlertDialog.Builder(mContext)
+                    .setMessage(mMessageResId)
+                    .setView(mView).create();
+        } else {
+            dialog = new AlertDialog.Builder(mContext)
+                    .setView(mView).create();
+        }
+
+        mAppIcon = (ImageView) mView.findViewById(R.id.app_icon);
+        mAppIcon.setImageResource(mKatsunaApp.drawableId);
+
+        mAppTitle = (TextView) mView.findViewById(R.id.app_title);
+
+        String title = mView.getResources().getString(R.string.common_download_app,
+                mKatsunaApp.title);
+        mAppTitle.setText(title);
+
+        mAppDesc = (TextView) mView.findViewById(R.id.app_desc);
+        String desc = mView.getResources().getString(R.string.common_katsuna_app_desc,
+                mKatsunaApp.title);
+        mAppDesc.setText(desc);
+
+        mCancelButton = (Button) mView.findViewById(R.id.alert_cancel_button);
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        mOkButton = (Button) mView.findViewById(R.id.alert_ok_button);
+        mOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                KatsunaUtils.goToGooglePlay(mView.getContext(), mKatsunaApp.packageName);
+                dialog.dismiss();
+            }
+        });
+
+        if (mColorProfile != null) {
+            ColorAdjuster.adjustButtons(mContext, mColorProfile, mOkButton, mCancelButton);
+        }
+
+        return  dialog;
+    }
+
     public void setCustomTitle(boolean enabled) {
         mCustomTitleOn = enabled;
     }
@@ -281,6 +336,10 @@ public class KatsunaAlertBuilder {
 
     public void setCancelHidden(boolean cancelHidden) {
         mCancelHidden = cancelHidden;
+    }
+
+    public void setKatsunaApp(KatsunaApp katsunaApp) {
+        mKatsunaApp = katsunaApp;
     }
 
     public interface KatsunaAlertText {
