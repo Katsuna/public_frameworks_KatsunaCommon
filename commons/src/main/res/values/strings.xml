@@ -164,6 +164,12 @@
         soul, unless your soul sets them up in front of you.
     </string>
 
+    <!-- Text sample for optical size profile selection - shorter version -->
+    <string name="common_ithaca_full_short">As you set out for ITHACA hope the voyage is a long one, full of
+        adventure, full of discovery. Laistrygonians and Cyclops, angry Poseidon—don’t be afraid of
+        them: you’ll never find things like that on your way as long as you keep your thoughts
+        raised high, as long as a rare excitement stirs your spirit and your body.</string>
+
     <!-- Label for usability settings section -->
     <string name="common_usability_settings">Usability settings</string>
 
