@@ -117,6 +117,11 @@ Den Lästrygonen und Zyklopen,
 dem wütenden Poseidon wirst du nicht begegnen,
 falls du sie nicht in deiner Seele mit dir trägst,
 falls deine Seele sie nicht vor dir aufbaut.</string>
+  <!-- Text sample for optical size profile selection - shorter version -->
+  <string name="common_ithaca_full_short">As you set out for ITHACA hope the voyage is a long one, full of
+        adventure, full of discovery. Laistrygonians and Cyclops, angry Poseidon—don’t be afraid of
+        them: you’ll never find things like that on your way as long as you keep your thoughts
+        raised high, as long as a rare excitement stirs your spirit and your body.</string>
   <!-- Label for usability settings section -->
   <string name="common_usability_settings">
 Benutzerfreundlichkeit -Einstellungen</string>
@@ -131,4 +136,21 @@ Benutzerfreundlichkeit -Einstellungen</string>
   <string name="common_version">Version</string>
   <!-- developer label for app info activities -->
   <string name="common_developer">Entwickler</string>
+  <!-- Label for age setting -->
+  <string name="common_age">Age</string>
+  <!-- Label for age setting description -->
+  <string name="common_age_hint">Enter your age</string>
+  <!-- Color palette label -->
+  <string name="common_color">Colour palettes</string>
+  <!-- app names for katsuna apps -->
+  <string name="common_katsuna_contacts_app">Contacts</string>
+  <string name="common_katsuna_messages_app">Messages</string>
+  <string name="common_katsuna_calls_app">Calls</string>
+  <string name="common_katsuna_keyboard_app">Keyboard</string>
+  <string name="common_download">Download</string>
+  <string name="common_download_app">Download %1$s app</string>
+  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility in mind. Press Continue to download the app from Google Play.</string>
+  <string name="common_continue">Continue</string>
+  <string name="common_cancel">Cancel</string>
+  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to Application Settings and grant the permissions needed.</string>
 </resources>
