@@ -215,7 +215,9 @@
 
     <string name="common_download">Download</string>
     <string name="common_download_app">Download %1$s app</string>
-    <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility in mind. Press Continue to download the app from Google Play.</string>
+
+    <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
+    <string name="common_katsuna_app_desc">Katsuna's %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
 
 
     <string name="common_continue">Continue</string>
