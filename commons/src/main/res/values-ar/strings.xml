@@ -124,6 +124,8 @@
   <string name="common_version">الإصدار</string>
   <!-- developer label for app info activities -->
   <string name="common_developer">المطوِّر</string>
+  <!-- Katsuna company name -->
+  <!-- Katsuna command address -->
   <!-- Label for age setting -->
   <string name="common_age">Age</string>
   <!-- Label for age setting description -->
@@ -131,14 +133,24 @@
   <!-- Color palette label -->
   <string name="common_color">Colour palettes</string>
   <!-- app names for katsuna apps -->
+  <!-- "Contacts" Katsuna app name (use the same translation as used in the name of the Contacts app) -->
   <string name="common_katsuna_contacts_app">Contacts</string>
+  <!-- "Messages" Katsuna app name (use the same translation as used in the name of the Messages app) -->
   <string name="common_katsuna_messages_app">Messages</string>
+  <!-- "Calls" Katsuna app name (use the same translation as used in the name of the Calls app) -->
   <string name="common_katsuna_calls_app">Calls</string>
+  <!-- "Keyboard" Katsuna app name (use the same translation as used in the name of the Keyboard app) -->
   <string name="common_katsuna_keyboard_app">Keyboard</string>
+  <!-- Common "Download" button title -->
   <string name="common_download">Download</string>
+  <!-- Common "Download x app" dialog text -->
   <string name="common_download_app">Download %1$s app</string>
-  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility in mind. Press Continue to download the app from Google Play.</string>
+  <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
+  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
+  <!-- Common "Continue" button title -->
   <string name="common_continue">Continue</string>
+  <!-- Common "Cancel" button title -->
   <string name="common_cancel">Cancel</string>
-  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to Application Settings and grant the permissions needed.</string>
+  <!-- Common "Missing Permissions" warning text -->
+  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application\'s Settings and grant the permissions needed.</string>
 </resources>

@@ -122,10 +122,20 @@ si ton cœur ne les dresse pas devant toi.
 
 </string>
   <!-- Text sample for optical size profile selection - shorter version -->
-  <string name="common_ithaca_full_short">As you set out for ITHACA hope the voyage is a long one, full of
-        adventure, full of discovery. Laistrygonians and Cyclops, angry Poseidon—don’t be afraid of
-        them: you’ll never find things like that on your way as long as you keep your thoughts
-        raised high, as long as a rare excitement stirs your spirit and your body.</string>
+  <string name="common_ithaca_full_short">Quand tu partiras pour Ithaque,
+souhaite que le chemin soit long,
+riche en péripéties et en expériences.
+
+Ne crains ni les Lestrygons, ni les Cyclopes,
+ni la colère de Neptune.
+Tu ne verras rien de pareil sur ta route si tes pensées restent hautes, s
+i ton corps et ton âme ne se laissent effleurer
+que par des émotions sans bassesse.
+
+Tu ne rencontreras ni les Lestrygons, ni les Cyclopes,
+ni le farouche Neptune,
+si tu ne les portes pas en toi-même,
+si ton cœur ne les dresse pas devant toi.</string>
   <!-- Label for usability settings section -->
   <string name="common_usability_settings">Paramètres de l’utilisabilité</string>
   <!-- Color palette selection label -->
@@ -139,21 +149,33 @@ si ton cœur ne les dresse pas devant toi.
   <string name="common_version">version</string>
   <!-- developer label for app info activities -->
   <string name="common_developer">Développeur</string>
+  <!-- Katsuna company name -->
+  <!-- Katsuna command address -->
   <!-- Label for age setting -->
-  <string name="common_age">Age</string>
+  <string name="common_age">Âge</string>
   <!-- Label for age setting description -->
-  <string name="common_age_hint">Enter your age</string>
+  <string name="common_age_hint">Entrez votre âge</string>
   <!-- Color palette label -->
-  <string name="common_color">Colour palettes</string>
+  <string name="common_color">Palettes de couleurs</string>
   <!-- app names for katsuna apps -->
+  <!-- "Contacts" Katsuna app name (use the same translation as used in the name of the Contacts app) -->
   <string name="common_katsuna_contacts_app">Contacts</string>
+  <!-- "Messages" Katsuna app name (use the same translation as used in the name of the Messages app) -->
   <string name="common_katsuna_messages_app">Messages</string>
-  <string name="common_katsuna_calls_app">Calls</string>
-  <string name="common_katsuna_keyboard_app">Keyboard</string>
-  <string name="common_download">Download</string>
-  <string name="common_download_app">Download %1$s app</string>
-  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility in mind. Press Continue to download the app from Google Play.</string>
-  <string name="common_continue">Continue</string>
-  <string name="common_cancel">Cancel</string>
-  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to Application Settings and grant the permissions needed.</string>
+  <!-- "Calls" Katsuna app name (use the same translation as used in the name of the Calls app) -->
+  <string name="common_katsuna_calls_app">Appels</string>
+  <!-- "Keyboard" Katsuna app name (use the same translation as used in the name of the Keyboard app) -->
+  <string name="common_katsuna_keyboard_app">Clavier</string>
+  <!-- Common "Download" button title -->
+  <string name="common_download">Télécharger</string>
+  <!-- Common "Download x app" dialog text -->
+  <string name="common_download_app">Télécharger app %1$s</string>
+  <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
+  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
+  <!-- Common "Continue" button title -->
+  <string name="common_continue">Continuer</string>
+  <!-- Common "Cancel" button title -->
+  <string name="common_cancel">Annuler</string>
+  <!-- Common "Missing Permissions" warning text -->
+  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application\'s Settings and grant the permissions needed.</string>
 </resources>
