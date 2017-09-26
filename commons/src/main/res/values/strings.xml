@@ -231,7 +231,7 @@
     <string name="common_download_app">Download %1$s app</string>
 
     <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
-    <string name="common_katsuna_app_desc">Katsuna's %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
+    <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
 
     <!-- Common "Continue" button title -->
     <string name="common_continue">Continue</string>
@@ -240,6 +240,6 @@
     <string name="common_cancel">Cancel</string>
 
     <!-- Common "Missing Permissions" warning text -->
-    <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application's Settings and grant the permissions needed.</string>
+    <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application\'s Settings and grant the permissions needed.</string>
 
 </resources>
