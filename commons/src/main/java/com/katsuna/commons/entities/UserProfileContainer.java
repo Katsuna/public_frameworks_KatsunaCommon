@@ -49,7 +49,7 @@ public class UserProfileContainer {
                 return profileFromKatsunaServices.colorProfile;
             } else {
                 // Default value
-                return ColorProfile.MAIN;
+                return ColorProfile.COLOR_IMPAIREMENT;
             }
         } else {
             // app setting value
