@@ -64,7 +64,7 @@
     <dimen name="common_notification_text_size_intemediate">17sp</dimen>
     <dimen name="common_notification_text_size_advanced">14sp</dimen>
 
-    <dimen name="common_app_menu_height">140dp</dimen>
+    <dimen name="common_app_menu_height">190dp</dimen>
     <dimen name="common_settings_button_width">200dp</dimen>
 
     <dimen name="common_search_bar_width">65dp</dimen>

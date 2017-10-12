@@ -20,4 +20,6 @@ public final class Constants {
 
     public static final String SANS_SERIF = "sans-serif";
     public static final String SANS_SERIF_MEDIUM = "sans-serif-medium";
+
+    public static final String KATSUNA_PRIVACY_URL = "http://katsuna.com/privacy-policy/";
 }
