@@ -13,6 +13,8 @@
   <string name="common_help">Hilfe</string>
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">Info</string>
+  <!-- Title for the privacy policy item in every app's navigation drawer -->
+  <string name="common_privacy_policy">Privacy policy</string>
   <!-- Title for the Info activity -->
   <string name="common_app_info">App-Infos</string>
   <!-- Title for the "open" button -->

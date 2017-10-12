@@ -13,6 +13,8 @@
   <string name="common_help">تعليمات</string>
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">معلومات</string>
+  <!-- Title for the privacy policy item in every app's navigation drawer -->
+  <string name="common_privacy_policy">Privacy policy</string>
   <!-- Title for the Info activity -->
   <string name="common_app_info">معلومات التطبيق</string>
   <!-- Title for the "open" button -->
@@ -107,10 +109,7 @@
   <!-- Text sample for optical size profile selection -->
   <string name="common_ithaca_full">بهيج الخطيب هو سياسي سوري، شغل منصب رئيس الجمهورية السورية الأولى بالتعيين، خلال فترة حرجة غداة الحرب العالمية الثانية، ليكون بذلك عاشر حاكم في تاريخ سوريا الحديث، بعد سقوط سوريا العثمانية. حكم الخطيب في ظل تعطيل العمل بالدستور، وحل مجلس النواب، في أعقاب القلاقل التي دفعت الرئيس هاشم الأتاسي للاستقالة. شهدت رئاسته الصراع بين دول الحلفاء ودول المحور حول السيطرة على سوريا خلال الحرب.    </string>
   <!-- Text sample for optical size profile selection - shorter version -->
-  <string name="common_ithaca_full_short">As you set out for ITHACA hope the voyage is a long one, full of
-        adventure, full of discovery. Laistrygonians and Cyclops, angry Poseidon—don’t be afraid of
-        them: you’ll never find things like that on your way as long as you keep your thoughts
-        raised high, as long as a rare excitement stirs your spirit and your body.</string>
+  <string name="common_ithaca_full_short">بهيج الخطيب هو سياسي سوري، شغل منصب رئيس الجمهورية السورية الأولى بالتعيين، خلال فترة حرجة غداة الحرب العالمية الثانية، ليكون بذلك عاشر حاكم في تاريخ سوريا الحديث، بعد سقوط سوريا العثمانية. حكم الخطيب في ظل تعطيل العمل بالدستور، وحل مجلس النواب، في أعقاب القلاقل التي دفعت الرئيس هاشم الأتاسي للاستقالة. شهدت رئاسته الصراع بين دول الحلفاء ودول المحور حول السيطرة على سوريا خلال الحرب.</string>
   <!-- Label for usability settings section -->
   <string name="common_usability_settings">إعدادات قابلية الاستخدام</string>
   <!-- Color palette selection label -->
@@ -127,30 +126,30 @@
   <!-- Katsuna company name -->
   <!-- Katsuna command address -->
   <!-- Label for age setting -->
-  <string name="common_age">Age</string>
+  <string name="common_age">العمر</string>
   <!-- Label for age setting description -->
-  <string name="common_age_hint">Enter your age</string>
+  <string name="common_age_hint">أدخل عمرك</string>
   <!-- Color palette label -->
-  <string name="common_color">Colour palettes</string>
+  <string name="common_color">لوحات الألوان</string>
   <!-- app names for katsuna apps -->
   <!-- "Contacts" Katsuna app name (use the same translation as used in the name of the Contacts app) -->
-  <string name="common_katsuna_contacts_app">Contacts</string>
+  <string name="common_katsuna_contacts_app">أشخاص</string>
   <!-- "Messages" Katsuna app name (use the same translation as used in the name of the Messages app) -->
-  <string name="common_katsuna_messages_app">Messages</string>
+  <string name="common_katsuna_messages_app">رسائل</string>
   <!-- "Calls" Katsuna app name (use the same translation as used in the name of the Calls app) -->
-  <string name="common_katsuna_calls_app">Calls</string>
+  <string name="common_katsuna_calls_app">المكالمات</string>
   <!-- "Keyboard" Katsuna app name (use the same translation as used in the name of the Keyboard app) -->
-  <string name="common_katsuna_keyboard_app">Keyboard</string>
+  <string name="common_katsuna_keyboard_app">لوحة المفاتيح</string>
   <!-- Common "Download" button title -->
-  <string name="common_download">Download</string>
+  <string name="common_download">انزال</string>
   <!-- Common "Download x app" dialog text -->
-  <string name="common_download_app">Download %1$s app</string>
+  <string name="common_download_app">انزال التطبيق %1$s</string>
   <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
-  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
+  <string name="common_katsuna_app_desc">تطبيق كاتسونا %1$s تم تطويره خصيصا لسهولة الاستخدام. اضغط على زر الاستمرار لتنزيل التطبيق من Google Play.</string>
   <!-- Common "Continue" button title -->
-  <string name="common_continue">Continue</string>
+  <string name="common_continue">استمرار</string>
   <!-- Common "Cancel" button title -->
-  <string name="common_cancel">Cancel</string>
+  <string name="common_cancel">الغاء</string>
   <!-- Common "Missing Permissions" warning text -->
-  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application\'s Settings and grant the permissions needed.</string>
+  <string name="common_go_to_settings_permissions">الأذونات مفقودة. الرجاء الانتقال إلى إعدادات التطبيق ومنح الأذونات اللازمة.</string>
 </resources>
