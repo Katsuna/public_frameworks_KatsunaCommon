@@ -14,7 +14,7 @@
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">Πληροφορίες</string>
   <!-- Title for the privacy policy item in every app's navigation drawer -->
-  <string name="common_privacy_policy">Privacy policy</string>
+  <string name="common_privacy_policy">Πολιτική προστασίας προσωπικών δεδομένων</string>
   <!-- Title for the Info activity -->
   <string name="common_app_info">Πληροφορίες εφαρμογής</string>
   <!-- Title for the "open" button -->
@@ -167,11 +167,11 @@
   <!-- Common "Download x app" dialog text -->
   <string name="common_download_app">Κατεβάστε το %1$s app</string>
   <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
-  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
+  <string name="common_katsuna_app_desc">Η εφαρμογή %1$s app της Katsuna έχει αναπτυχθεί ειδικά για την προσβασιμότητα. Πατήστε Συνέχεια για να κατεβάσετε την εφαρμογή από το Google Play.</string>
   <!-- Common "Continue" button title -->
   <string name="common_continue">Συνεχίστε</string>
   <!-- Common "Cancel" button title -->
   <string name="common_cancel">Ακύρωση</string>
   <!-- Common "Missing Permissions" warning text -->
-  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application\'s Settings and grant the permissions needed.</string>
+  <string name="common_go_to_settings_permissions">Ελλιπή δικαιώματα. Παρακαλώ πηγαίνετε στις ρυθμίσεις της εφαρμογής και παραχωρήστε τα δικαιώματα που απαιτούνται.</string>
 </resources>

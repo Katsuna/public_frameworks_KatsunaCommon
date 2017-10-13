@@ -14,7 +14,7 @@
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">Info</string>
   <!-- Title for the privacy policy item in every app's navigation drawer -->
-  <string name="common_privacy_policy">Privacy policy</string>
+  <string name="common_privacy_policy">Datenschutzerklärung</string>
   <!-- Title for the Info activity -->
   <string name="common_app_info">App-Infos</string>
   <!-- Title for the "open" button -->
@@ -163,11 +163,11 @@ Benutzerfreundlichkeit -Einstellungen</string>
   <!-- Common "Download x app" dialog text -->
   <string name="common_download_app">%1$s app herunterladen</string>
   <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
-  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
+  <string name="common_katsuna_app_desc">Die App %1$s von Katsuna wurde speziell für die Barrierefreiheit entwickelt. Klicken Sie auf Weiter, um die App von Google Play herunterzuladen.</string>
   <!-- Common "Continue" button title -->
   <string name="common_continue">Weiter</string>
   <!-- Common "Cancel" button title -->
   <string name="common_cancel">Abbrechen</string>
   <!-- Common "Missing Permissions" warning text -->
-  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application\'s Settings and grant the permissions needed.</string>
+  <string name="common_go_to_settings_permissions">Berechtigungen fehlen. Bitte gehen Sie zu den Einstellungen der Anwendung und erteilen Sie die erforderlichen Berechtigungen.</string>
 </resources>
