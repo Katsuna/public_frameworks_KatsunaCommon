@@ -254,8 +254,8 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    updateColorProfile(ColorProfile.AUTO);
                     selectColorProfile(ColorProfile.AUTO);
+                    updateColorProfile(ColorProfile.AUTO);
                 }
             }
         });
