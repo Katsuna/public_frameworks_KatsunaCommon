@@ -165,9 +165,9 @@
   <!-- Common "Download" button title -->
   <string name="common_download">Λήψη</string>
   <!-- Common "Download x app" dialog text -->
-  <string name="common_download_app">Κατεβάστε το %1$s app</string>
+  <string name="common_download_app">Κατεβάστε την εφαρμογή %1$s</string>
   <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
-  <string name="common_katsuna_app_desc">Η εφαρμογή %1$s app της Katsuna έχει αναπτυχθεί ειδικά για την προσβασιμότητα. Πατήστε Συνέχεια για να κατεβάσετε την εφαρμογή από το Google Play.</string>
+  <string name="common_katsuna_app_desc">Η εφαρμογή %1$s της Katsuna έχει αναπτυχθεί ειδικά για την προσβασιμότητα. Πατήστε Συνέχεια για να κατεβάσετε την εφαρμογή από το Google Play.</string>
   <!-- Common "Continue" button title -->
   <string name="common_continue">Συνεχίστε</string>
   <!-- Common "Cancel" button title -->
