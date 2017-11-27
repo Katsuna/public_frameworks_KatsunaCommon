@@ -10,8 +10,6 @@ import com.katsuna.commons.R;
 import com.katsuna.commons.entities.UserProfile;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
 import java.text.DateFormatSymbols;
 import java.util.List;
 
@@ -84,7 +82,7 @@ public class AlertUtils {
     }
 
     public static List<String> getYears() {
-        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+        int thisYear = 2017;
 
         List<String> years = new ArrayList<>();
         for (int i = 0; i <= 150; i++) {
