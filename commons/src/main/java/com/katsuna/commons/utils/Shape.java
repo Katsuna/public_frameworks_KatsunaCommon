@@ -37,6 +37,19 @@ public class Shape {
         v.setBackground(shape);
     }
 
+    public static void setRoundedBorder(View v, int backgroundColor, int innerBackgroundColor) {
+        float radius = getCommonRadius(v.getContext());
+        int borderStroke = getCommonStroke(v.getContext());
+
+        GradientDrawable shape = new GradientDrawable();
+        shape.setShape(GradientDrawable.RECTANGLE);
+        shape.setColor(innerBackgroundColor);
+        shape.setCornerRadii(new float[]{radius, radius, radius, radius, radius, radius, radius,
+                radius});
+        shape.setStroke(borderStroke, backgroundColor);
+        v.setBackground(shape);
+    }
+
     private static int getCommonStroke(Context context) {
         Resources r = context.getResources();
         return r.getDimensionPixelSize(R.dimen.common_border_stroke);

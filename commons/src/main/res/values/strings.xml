@@ -125,6 +125,9 @@
     <!-- Text for more button -->
     <string name="common_more">More</string>
 
+    <!-- Text for less button -->
+    <string name="common_less">Less</string>
+
     <!-- Used for optical size radio buttons. Used at Settings and SetupWizard. -->
     <string name="common_size_selector" translatable="false">A</string>
 
