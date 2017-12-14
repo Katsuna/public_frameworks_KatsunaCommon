@@ -14,7 +14,7 @@
   <!-- Title for the Info item in every app's navigation drawer -->
   <string name="common_info">Info</string>
   <!-- Title for the privacy policy item in every app's navigation drawer -->
-  <string name="common_privacy_policy">Privacy policy</string>
+  <string name="common_privacy_policy">Informativa sulla privacy</string>
   <!-- Title for the Info activity -->
   <string name="common_app_info">Info app</string>
   <!-- Title for the "open" button -->
@@ -146,11 +146,11 @@ se l\'anima non te li mette contro.    </string>
   <!-- Common "Download x app" dialog text -->
   <string name="common_download_app">Scaricare app %1$s</string>
   <!-- Common Katsuna app description. Displayed when a Katsuna app is suggested to the user -->
-  <string name="common_katsuna_app_desc">Katsuna\'s %1$s app is specifically developed for accessibility. Press Continue to download the app from Google Play.</string>
+  <string name="common_katsuna_app_desc">L\'app %1$s di Katsuna è specificatamente sviluppata per migliorare l\'accessibilità. Premere continua per scaricare l\'app da Google Play.</string>
   <!-- Common "Continue" button title -->
   <string name="common_continue">Continua</string>
   <!-- Common "Cancel" button title -->
   <string name="common_cancel">Annulla</string>
   <!-- Common "Missing Permissions" warning text -->
-  <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application\'s Settings and grant the permissions needed.</string>
+  <string name="common_go_to_settings_permissions">Mancano le autorizzazioni. Vai alle impostazioni dell\'applicazione e concedi le autorizzazioni necessarie.</string>
 </resources>
