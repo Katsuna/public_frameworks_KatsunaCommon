@@ -84,7 +84,12 @@ public class KatsunaAlertBuilder {
     }
 
     public void setUserProfileContainer(UserProfileContainer userProfileContainer) {
-        setColorProfile(userProfileContainer.getColorProfile());
+        if (userProfileContainer == null) {
+            // default color profile
+            setColorProfile(ColorProfile.COLOR_IMPAIREMENT);
+        } else {
+            setColorProfile(userProfileContainer.getColorProfile());
+        }
     }
 
     public AlertDialog create() {

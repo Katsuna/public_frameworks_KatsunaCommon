@@ -11,6 +11,7 @@ public final class Constants {
     public static final String DISPLAY_SORT_NAME = "2";
 
     public static final String CREATE_CONTACT_ACTION = "com.katsuna.contacts.create";
+    public static final String EDIT_CONTACT_ACTION = "com.katsuna.contacts.edit";
 
     public static final int FAB_TRANSFORMATION_DURATION = 200;
 

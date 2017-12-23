@@ -38,4 +38,18 @@
     <color name="common_black12">#1F000000</color>
     <color name="common_black07">#18000000</color>
 
+    <!-- redesign v2 colors -->
+    <color name="priority_one">#E0E0E0</color>
+    <color name="priority_one_tone_one">#FAFAFA</color>
+
+    <color name="priority_two">#81D4FA</color>
+    <color name="priority_two_tone_one">#E1F5FE</color>
+
+    <color name="priority_three">#FFD740</color>
+    <color name="priority_three_tone_one">#FFF9C4</color>
+
+    <!-- button colors -->
+    <color name="more_color">#DE2F80ED</color>
+    <color name="buttons_color">#2F80ED</color>
+
 </resources>

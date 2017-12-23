@@ -55,7 +55,11 @@ public class Contact implements Comparable<Contact>, Serializable {
     }
 
     public String getDisplayName() {
-        return displayName.replace(",", "");
+        String output = "";
+        if (displayName != null) {
+            output = displayName.replace(",", "");
+        }
+        return output;
     }
 
     public void setDisplayName(String displayName) {

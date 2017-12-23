@@ -262,7 +262,7 @@ public class ContactProvider {
         return addresses;
     }
 
-    private List<Description> getDescriptions(long contactId) {
+    public List<Description> getDescriptions(long contactId) {
         List<Description> descriptions = new ArrayList<>();
 
         Uri baseUri = ContactsContract.Data.CONTENT_URI;
