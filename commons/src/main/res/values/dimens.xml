@@ -68,5 +68,65 @@
     <dimen name="common_settings_button_width">200dp</dimen>
 
     <dimen name="common_search_bar_width">65dp</dimen>
+
+    <!-- v2 redesign additions -->
+    <dimen name="common_item_type_icon_h_simple">32dp</dimen>
+    <dimen name="common_item_type_icon_h_intermediate">28dp</dimen>
+
+    <!-- level-1 -->
+    <dimen name="common_level_1_text_simple">21sp</dimen>
+    <dimen name="common_level_1_text_h_simple">27dp</dimen>
+    <dimen name="common_level_1_text_intermediate">19sp</dimen>
+    <dimen name="common_level_1_text_h_intermediate">27dp</dimen>
+    <dimen name="common_level_1_text_advanced">14sp</dimen>
+    <dimen name="common_level_1_text_h_advanced">24dp</dimen>
+
+    <!-- level-2 -->
+    <dimen name="common_level_2_text_simple">26sp</dimen>
+    <dimen name="common_level_2_text_h_simple">36dp</dimen>
+    <dimen name="common_level_2_text_intermediate">23sp</dimen>
+    <dimen name="common_level_2_text_h_intermediate">32dp</dimen>
+    <dimen name="common_level_2_text_advanced">20sp</dimen>
+    <dimen name="common_level_2_text_h_advanced">28dp</dimen>
+
+    <!-- level-3 -->
+    <dimen name="common_level_3_text_simple">24sp</dimen>
+    <dimen name="common_level_3_text_h_simple">36dp</dimen>
+    <dimen name="common_level_3_text_intermediate">21sp</dimen>
+    <dimen name="common_level_3_text_h_intermediate">32dp</dimen>
+    <dimen name="common_level_3_text_advanced">16sp</dimen>
+    <dimen name="common_level_3_text_h_advanced">28dp</dimen>
+
+    <!-- action-button-v2 -->
+    <dimen name="common_action_button_v2_text_size_simple">21sp</dimen>
+    <dimen name="common_action_button_v2_text_size_intermediate">16sp</dimen>
+    <dimen name="common_action_button_v2_text_size_advanced">14sp</dimen>
+
+    <dimen name="common_action_button_v2_h_simple">42dp</dimen>
+    <dimen name="common_action_button_v2_h_intemediate">36dp</dimen>
+    <dimen name="common_action_button_v2_h_advanced">36dp</dimen>
+
+    <!-- more-text -->
+    <dimen name="common_more_text_simple">21sp</dimen>
+    <dimen name="common_more_text_h_simple">37dp</dimen>
+    <dimen name="common_more_text_intermediate">16sp</dimen>
+    <dimen name="common_more_text_h_intermediate">28dp</dimen>
+    <dimen name="common_more_text_advanced">14sp</dimen>
+    <dimen name="common_more_text_h_advanced">25dp</dimen>
+
+    <!-- level-2-action-icon -->
+    <dimen name="common_level_2_action_icon_h_simple">27dp</dimen>
+    <dimen name="common_level_2_action_icon_h_intermediate">21dp</dimen>
+
+    <!-- level-2-action-text -->
+    <dimen name="common_level_2_action_text_simple">24sp</dimen>
+    <dimen name="common_level_2_action_text_h_simple">32dp</dimen>
+    <dimen name="common_level_2_action_text_intermediate">21sp</dimen>
+    <dimen name="common_level_2_action_text_h_intermediate">30dp</dimen>
+    <dimen name="common_level_2_action_text_advanced">16sp</dimen>
+    <dimen name="common_level_2_action_text_h_advanced">28dp</dimen>
+
+    <!-- v2 redesign additions end -->
+
     <!-- eof profile dimens -->
 </resources>

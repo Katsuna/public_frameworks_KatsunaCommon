@@ -3,7 +3,6 @@ package com.katsuna.commons.utils;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
-import android.util.Size;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +40,11 @@ public class SizeAdjuster {
         // set font family
         if (opticalParams.getTextFontFamily() != null) {
             textView.setTypeface(Typeface.create(opticalParams.getTextFontFamily(), Typeface.NORMAL));
+        }
+
+        if (opticalParams.getHeight() != 0) {
+            int height = context.getResources().getDimensionPixelSize(opticalParams.getHeight());
+            textView.setMinHeight(height);
         }
     }
 

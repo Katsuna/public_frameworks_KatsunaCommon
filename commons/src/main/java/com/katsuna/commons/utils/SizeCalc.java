@@ -162,6 +162,166 @@ public class SizeCalc {
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }
                 break;
+            case ITEM_TYPE_ICON:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setHeight(R.dimen.common_item_type_icon_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case ADVANCED:
+                    case AUTO:
+                        params.setHeight(R.dimen.common_item_type_icon_h_intermediate);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case LEVEL_1_TEXT:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setTextFontFamily(Constants.SANS_SERIF);
+                        params.setTextSize(R.dimen.common_level_1_text_simple);
+                        params.setHeight(R.dimen.common_level_1_text_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case AUTO:
+                        params.setTextFontFamily(Constants.SANS_SERIF);
+                        params.setTextSize(R.dimen.common_level_1_text_intermediate);
+                        params.setHeight(R.dimen.common_level_1_text_h_intermediate);
+                        break;
+                    case ADVANCED:
+                        params.setTextFontFamily(Constants.SANS_SERIF);
+                        params.setTextSize(R.dimen.common_level_1_text_advanced);
+                        params.setHeight(R.dimen.common_level_1_text_h_advanced);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case LEVEL_2_TEXT:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_level_2_text_simple);
+                        params.setHeight(R.dimen.common_level_2_text_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case AUTO:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_level_2_text_intermediate);
+                        params.setHeight(R.dimen.common_level_2_text_h_intermediate);
+                        break;
+                    case ADVANCED:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_level_2_text_advanced);
+                        params.setHeight(R.dimen.common_level_2_text_h_advanced);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case LEVEL_3_TEXT:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setTextFontFamily(Constants.SANS_SERIF);
+                        params.setTextSize(R.dimen.common_level_3_text_simple);
+                        params.setHeight(R.dimen.common_level_3_text_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case AUTO:
+                        params.setTextFontFamily(Constants.SANS_SERIF);
+                        params.setTextSize(R.dimen.common_level_3_text_intermediate);
+                        params.setHeight(R.dimen.common_level_3_text_h_intermediate);
+                        break;
+                    case ADVANCED:
+                        params.setTextFontFamily(Constants.SANS_SERIF);
+                        params.setTextSize(R.dimen.common_level_3_text_advanced);
+                        params.setHeight(R.dimen.common_level_3_text_h_advanced);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case ACTION_BUTTON_V2:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setTextSize(R.dimen.common_action_button_v2_text_size_simple);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setHeight(R.dimen.common_action_button_v2_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case AUTO:
+                        params.setTextSize(R.dimen.common_action_button_v2_text_size_intermediate);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setHeight(R.dimen.common_action_button_v2_h_intemediate);
+                        break;
+                    case ADVANCED:
+                        params.setTextSize(R.dimen.common_action_button_v2_text_size_advanced);
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setHeight(R.dimen.common_action_button_v2_h_advanced);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case MORE_TEXT:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_more_text_simple);
+                        params.setHeight(R.dimen.common_more_text_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case AUTO:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_more_text_intermediate);
+                        params.setHeight(R.dimen.common_more_text_h_intermediate);
+                        break;
+                    case ADVANCED:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_more_text_advanced);
+                        params.setHeight(R.dimen.common_more_text_h_advanced);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case LEVEL_2_ACTION_ICON:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setHeight(R.dimen.common_level_2_action_icon_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case ADVANCED:
+                    case AUTO:
+                        params.setHeight(R.dimen.common_level_2_action_icon_h_intermediate);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
+            case LEVEL_2_ACTION_TEXT:
+                switch (profile) {
+                    case SIMPLE:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_level_2_action_text_simple);
+                        params.setHeight(R.dimen.common_level_2_action_text_h_simple);
+                        break;
+                    case INTERMEDIATE:
+                    case AUTO:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_level_2_action_text_intermediate);
+                        params.setHeight(R.dimen.common_level_2_action_text_h_intermediate);
+                        break;
+                    case ADVANCED:
+                        params.setTextFontFamily(Constants.SANS_SERIF_MEDIUM);
+                        params.setTextSize(R.dimen.common_level_2_action_text_advanced);
+                        params.setHeight(R.dimen.common_level_2_action_text_h_advanced);
+                        break;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
+                break;
             default:
                 throw new RuntimeException(PROFILE_KEY_NOT_SET);
         }
