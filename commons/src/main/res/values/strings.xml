@@ -248,4 +248,6 @@
     <!-- Common "Missing Permissions" warning text -->
     <string name="common_go_to_settings_permissions">Permissions are missing. Please go to the application\'s Settings and grant the permissions needed.</string>
 
+    <string name="common_favorites">Favorites</string>
+
 </resources>
