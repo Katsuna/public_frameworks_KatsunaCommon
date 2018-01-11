@@ -66,6 +66,11 @@ public class ContactProvider {
                         contact.setLastTimeContacted(cursor.getLong(ContactQuery.LAST_TIME_CONTACTED));
                         int starred = cursor.getInt(ContactQuery.STARRED);
                         contact.setStarred(starred == 1);
+                        // Read all description and use the first one.
+                        List<Description> descriptions = getDescriptions(contact.getId());
+                        if (descriptions.size() > 0) {
+                            contact.setDescription(descriptions.get(0));
+                        }
                         contacts.add(contact);
                     } while (cursor.moveToNext());
                 }

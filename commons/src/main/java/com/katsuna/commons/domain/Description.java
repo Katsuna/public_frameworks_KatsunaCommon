@@ -18,6 +18,13 @@ public class Description implements Serializable {
         this.description = description;
     }
 
+    public Description(Description description) {
+        if (description != null) {
+            this.id = description.getId();
+            this.description = description.getDescription();
+        }
+    }
+
     @Override
     public String toString() {
         return " Description: " + getDescription();

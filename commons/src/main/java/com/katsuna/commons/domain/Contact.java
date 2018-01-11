@@ -39,6 +39,7 @@ public class Contact implements Comparable<Contact>, Serializable {
         lastTimeContacted = contact.getLastTimeContacted();
         starred = contact.isStarred();
         photoUri = contact.getPhotoUri();
+        description = new Description(contact.getDescription());
     }
 
     @Override
@@ -171,6 +172,10 @@ public class Contact implements Comparable<Contact>, Serializable {
 
     public Description getDescription() {
         return description;
+    }
+
+    public String showDescription() {
+        return (description == null) ? "" : description.getDescription();
     }
 
     public void setDescription(Description description) {
