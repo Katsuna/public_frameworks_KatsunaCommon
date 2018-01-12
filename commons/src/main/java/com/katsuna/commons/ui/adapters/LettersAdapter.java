@@ -32,7 +32,7 @@ public class LettersAdapter extends RecyclerView.Adapter<LetterViewHolder> {
     @Override
     public void onBindViewHolder(LetterViewHolder holder, int position) {
         String letter = mLetters.get(position);
-        holder.bind(letter);
+        holder.bind(letter, position);
     }
 
     @Override

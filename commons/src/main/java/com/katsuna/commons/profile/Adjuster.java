@@ -177,7 +177,9 @@ public class Adjuster {
         if (container != null) {
             int accentColor1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
                     mUserProfile.colorProfile);
-            container.setBackgroundColor(accentColor1);
+
+            int p3color = ContextCompat.getColor(mContext, R.color.priority_three);
+            container.setBackgroundColor(p3color);
 
             int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
             int black87ResId = ContextCompat.getColor(mContext, R.color.common_black87);

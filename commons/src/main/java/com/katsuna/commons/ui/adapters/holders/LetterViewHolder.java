@@ -21,7 +21,7 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
         mLetterListener = letterListener;
     }
 
-    public void bind(final String letter) {
+    public void bind(final String letter, int position) {
         mLetter.setText(letter);
         mLetter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +31,14 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
         });
 
         applyColorProfile();
+
+        if (position % 2 == 0 ) {
+            mLetter.setBackgroundColor(ContextCompat.getColor(itemView.getContext(),
+                    R.color.priority_three_tone_one));
+        } else {
+            mLetter.setBackgroundColor(ContextCompat.getColor(itemView.getContext(),
+                    R.color.priority_three));
+        }
     }
 
     private void applyColorProfile() {
