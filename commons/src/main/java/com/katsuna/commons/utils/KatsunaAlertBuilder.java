@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class KatsunaAlertBuilder {
     private View mView;
     private int mTitleResId;
     private int mMessageResId;
+    private String mMessage;
     private ColorProfile mColorProfile;
     private boolean mCancelHidden;
     private View.OnClickListener mCancelListener;
@@ -63,6 +65,10 @@ public class KatsunaAlertBuilder {
         mMessageResId = messageResId;
     }
 
+    public void setMessage(String message) {
+        mMessage = message;
+    }
+
     public void setOkListener(View.OnClickListener okListener) {
         mOkListener = okListener;
     }
@@ -94,7 +100,11 @@ public class KatsunaAlertBuilder {
 
     public AlertDialog create() {
         final AlertDialog dialog;
-        if (mMessageResId != 0) {
+        if (!TextUtils.isEmpty(mMessage)) {
+            dialog = new AlertDialog.Builder(mContext)
+                    .setMessage(mMessage)
+                    .setView(mView).create();
+        } else if (mMessageResId != 0) {
             dialog = new AlertDialog.Builder(mContext)
                     .setMessage(mMessageResId)
                     .setView(mView).create();

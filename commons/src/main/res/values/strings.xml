@@ -250,4 +250,10 @@
 
     <string name="common_favorites">Favorites</string>
 
+    <string name="common_edit_contact">Edit Contact</string>
+
+    <string name="common_delete_contact">Delete Contact</string>
+
+    <string name="common_delete_contact_approval">Are you sure you want to delete the contact: %1$s ?</string>
+
 </resources>

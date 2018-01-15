@@ -4,6 +4,8 @@
     <color name="common_pink_tinted">#eeede9</color>
 
     <!-- profile colors -->
+    <color name="common_transparent">#00FFFFFF</color>
+    <color name="common_unfocused">#FEFEFE</color>
     <color name="common_white">#FFFFFF</color>
     <color name="common_white38">#97ffffff</color>
     <color name="common_grey50">#FAFAFA</color>
@@ -34,6 +36,7 @@
     <color name="common_black54">#8A000000</color>
     <color name="common_black50">#80000000</color>
     <color name="common_black38">#61000000</color>
+    <color name="common_black34">#57000000</color>
     <color name="common_black26">#42000000</color>
     <color name="common_black12">#1F000000</color>
     <color name="common_black07">#18000000</color>
