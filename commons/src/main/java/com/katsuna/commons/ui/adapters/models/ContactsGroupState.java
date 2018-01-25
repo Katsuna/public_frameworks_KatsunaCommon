@@ -6,6 +6,7 @@ public class ContactsGroupState {
     private boolean premium;
     private boolean focused;
     private boolean unfocused;
+    private boolean highlighted;
 
     private int contactGroupPosition;
     private String startLetter;
@@ -13,10 +14,11 @@ public class ContactsGroupState {
 
 
     public ContactsGroupState(boolean premium, boolean focused, boolean unfocused,
-                              int contactGroupPosition) {
+                              boolean highlighted, int contactGroupPosition) {
         this.premium = premium;
         this.focused = focused;
         this.unfocused = unfocused;
+        this.highlighted = highlighted;
         this.contactGroupPosition = contactGroupPosition;
     }
 
@@ -66,5 +68,13 @@ public class ContactsGroupState {
 
     public void setContactGroupPosition(int contactGroupPosition) {
         this.contactGroupPosition = contactGroupPosition;
+    }
+
+    public boolean isHighlighted() {
+        return highlighted;
+    }
+
+    public void setHighlighted(boolean highlighted) {
+        this.highlighted = highlighted;
     }
 }
