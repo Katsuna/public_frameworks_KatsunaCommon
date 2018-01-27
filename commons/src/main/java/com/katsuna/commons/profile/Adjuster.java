@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
@@ -21,12 +20,12 @@ import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
 import com.katsuna.commons.entities.OpticalParams;
-import com.katsuna.commons.entities.SizeProfileKey;
+import com.katsuna.commons.entities.SizeProfileKeyV2;
 import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.utils.ColorCalc;
 import com.katsuna.commons.utils.DrawUtils;
 import com.katsuna.commons.utils.Shape;
-import com.katsuna.commons.utils.SizeCalc;
+import com.katsuna.commons.utils.SizeCalcV2;
 
 public class Adjuster {
 
@@ -248,7 +247,7 @@ public class Adjuster {
     public void adjustFabSize(FloatingActionButton fab) {
         if (fab == null) return;
 
-        OpticalParams params = SizeCalc.getOpticalParams(SizeProfileKey.FLOATING_BUTTON,
+        OpticalParams params = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.FLOATING_BUTTON,
                 mUserProfile.opticalSizeProfile);
         int height = mContext.getResources().getDimensionPixelSize(params.getHeight());
 
@@ -259,7 +258,7 @@ public class Adjuster {
 
 
     public void adjustFabSampleSize(View fab, TextView textView) {
-        OpticalParams params = SizeCalc.getOpticalParams(SizeProfileKey.FLOATING_BUTTON,
+        OpticalParams params = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.FLOATING_BUTTON,
                 mUserProfile.opticalSizeProfile);
         int height = mContext.getResources().getDimensionPixelSize(params.getHeight());
 

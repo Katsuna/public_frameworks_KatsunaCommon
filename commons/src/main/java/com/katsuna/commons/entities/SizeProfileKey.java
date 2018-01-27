@@ -7,15 +7,7 @@ public enum SizeProfileKey {
     BODY_2,
     ACTION_BUTTON,
     FLOATING_BUTTON,
-    ICON,
-    ITEM_TYPE_ICON,
-    LEVEL_1_TEXT,
-    LEVEL_2_TEXT,
-    LEVEL_3_TEXT,
-    ACTION_BUTTON_V2,
-    MORE_TEXT,
-    LEVEL_2_ACTION_ICON,
-    LEVEL_2_ACTION_TEXT;
+    ICON;
 
     public static SizeProfileKey fromInteger(int x) {
         switch(x) {
@@ -33,22 +25,6 @@ public enum SizeProfileKey {
                 return FLOATING_BUTTON;
             case 6:
                 return ICON;
-            case 7:
-                return ITEM_TYPE_ICON;
-            case 8:
-                return LEVEL_1_TEXT;
-            case 9:
-                return LEVEL_2_TEXT;
-            case 10:
-                return LEVEL_3_TEXT;
-            case 11:
-                return ACTION_BUTTON_V2;
-            case 12:
-                return MORE_TEXT;
-            case 13:
-                return LEVEL_2_ACTION_ICON;
-            case 14:
-                return LEVEL_2_ACTION_TEXT;
         }
         return null;
     }
