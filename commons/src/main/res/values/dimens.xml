@@ -70,6 +70,8 @@
     <dimen name="common_search_bar_width">65dp</dimen>
 
     <!-- v2 redesign additions -->
+    <dimen name="common_button_min_width">106dp</dimen>
+
     <dimen name="common_26sp">26sp</dimen>
     <dimen name="common_24sp">24sp</dimen>
     <dimen name="common_23sp">23sp</dimen>
