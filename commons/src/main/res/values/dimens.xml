@@ -88,6 +88,7 @@
     <dimen name="common_36dp">36dp</dimen>
     <dimen name="common_32dp">32dp</dimen>
     <dimen name="common_28dp">28dp</dimen>
+    <dimen name="common_20dp">20dp</dimen>
     <!-- v2 redesign additions end -->
 
     <!-- eof profile dimens -->
