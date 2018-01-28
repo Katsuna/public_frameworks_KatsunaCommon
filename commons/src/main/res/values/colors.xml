@@ -43,8 +43,6 @@
     <color name="common_black07">#18000000</color>
 
     <!-- redesign v2 colors -->
-    <color name="common_divider_1">#C4C4C4</color>
-
     <color name="priority_one">#E0E0E0</color>
     <color name="priority_one_tone_one">#FAFAFA</color>
 
