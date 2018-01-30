@@ -256,4 +256,6 @@
 
     <string name="common_delete_contact_approval">Are you sure you want to delete the contact: %1$s ?</string>
 
+    <string name="common_save">Save</string>
+
 </resources>
