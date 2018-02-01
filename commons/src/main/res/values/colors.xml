@@ -58,5 +58,6 @@
     <color name="buttons_color">#2F80ED</color>
 
     <color name="common_grey_one">#E5E5E5</color>
+    <color name="common_grey_two">#EEEEEE</color>
 
 </resources>
