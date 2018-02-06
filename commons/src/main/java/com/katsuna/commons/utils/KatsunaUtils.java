@@ -18,6 +18,7 @@ public class KatsunaUtils {
     private static final String KATSUNA_MESSAGES_PACKAGE = "com.katsuna.messages";
     private static final String KATSUNA_CALLS_PACKAGE = "com.katsuna.calls";
     private static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
+    private static final String KATSUNA_HOMESCREEN_WIDGET_PACKAGE = "com.katsuna.widgets";
 
     public static boolean katsunaOsDetected(Context context) {
         return DeviceUtils.isPackageInstalled(context, KATSUNA_SERVICES_PACKAGE);
@@ -27,20 +28,19 @@ public class KatsunaUtils {
         List<KatsunaApp> apps = new ArrayList<>();
 
         apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_contacts_app),
-                KATSUNA_CONTACTS_PACKAGE, R.mipmap.common_contacts_icon,
-                R.mipmap.common_contacts_icon_opa54));
+                KATSUNA_CONTACTS_PACKAGE, R.mipmap.common_contacts_icon));
 
-        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_messages_app),
-                KATSUNA_MESSAGES_PACKAGE, R.mipmap.common_messages_icon,
-                R.mipmap.common_messages_icon_opa54));
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_messages_app), KATSUNA_MESSAGES_PACKAGE,
+                R.mipmap.common_messages_icon));
 
-        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_calls_app),
-                KATSUNA_CALLS_PACKAGE, R.mipmap.common_calls_icon,
-                R.mipmap.common_calls_icon_opa54));
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_calls_app), KATSUNA_CALLS_PACKAGE,
+                R.mipmap.common_calls_icon));
 
         apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_keyboard_app),
-                KATSUNA_KEYBOARD_PACKAGE, R.mipmap.common_keyboard_icon,
-                R.mipmap.common_keyboard_icon_opa54));
+                KATSUNA_KEYBOARD_PACKAGE, R.mipmap.common_keyboard_icon));
+
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_homescreen_widget),
+                KATSUNA_HOMESCREEN_WIDGET_PACKAGE, R.mipmap.common_widgets_icon));
 
         return apps;
     }

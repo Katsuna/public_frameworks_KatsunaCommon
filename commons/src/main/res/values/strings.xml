@@ -229,6 +229,9 @@
     <!-- "Keyboard" Katsuna app name (use the same translation as used in the name of the Keyboard app) -->
     <string name="common_katsuna_keyboard_app">Keyboard</string>
 
+    <!-- "Homescreen widget" Katsuna app name -->
+    <string name="common_katsuna_homescreen_widget">Katsuna Homescreen widget</string>
+
 
     <!-- Common "Download" button title --> 
     <string name="common_download">Download</string>
