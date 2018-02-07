@@ -13,12 +13,12 @@ import java.util.List;
 
 public class KatsunaUtils {
 
-    private static final String KATSUNA_SERVICES_PACKAGE = "com.katsuna.services";
-    private static final String KATSUNA_CONTACTS_PACKAGE = "com.katsuna.contacts";
-    private static final String KATSUNA_MESSAGES_PACKAGE = "com.katsuna.messages";
-    private static final String KATSUNA_CALLS_PACKAGE = "com.katsuna.calls";
-    private static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
-    private static final String KATSUNA_HOMESCREEN_WIDGET_PACKAGE = "com.katsuna.widgets";
+    public static final String KATSUNA_SERVICES_PACKAGE = "com.katsuna.services";
+    public static final String KATSUNA_CONTACTS_PACKAGE = "com.katsuna.contacts";
+    public static final String KATSUNA_MESSAGES_PACKAGE = "com.katsuna.messages";
+    public static final String KATSUNA_CALLS_PACKAGE = "com.katsuna.calls";
+    public static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
+    public static final String KATSUNA_HOMESCREEN_WIDGET_PACKAGE = "com.katsuna.widgets";
 
     public static boolean katsunaOsDetected(Context context) {
         return DeviceUtils.isPackageInstalled(context, KATSUNA_SERVICES_PACKAGE);

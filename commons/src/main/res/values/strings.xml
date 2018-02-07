@@ -261,4 +261,7 @@
 
     <string name="common_save">Save</string>
 
+    <!-- Message shown when the user tries to open a katsuna app that is missing -->
+    <string name="common_missing_app">You need to install the %1$s application.</string>
+
 </resources>
