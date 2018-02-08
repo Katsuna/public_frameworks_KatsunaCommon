@@ -13,8 +13,13 @@ import java.util.List;
 
 public class KatsunaUtils {
 
+    public static final String BUILD_TYPE_STAGING = "staging";
+
     public static final String KATSUNA_SERVICES_PACKAGE = "com.katsuna.services";
+    public static final String KATSUNA_LAUNCHER_PACKAGE = "com.katsuna.launcher";
     public static final String KATSUNA_CONTACTS_PACKAGE = "com.katsuna.contacts";
+    public static final String KATSUNA_CONTACTS_STAGING_PACKAGE = KATSUNA_CONTACTS_PACKAGE + "." +
+            BUILD_TYPE_STAGING;
     public static final String KATSUNA_MESSAGES_PACKAGE = "com.katsuna.messages";
     public static final String KATSUNA_CALLS_PACKAGE = "com.katsuna.calls";
     public static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
