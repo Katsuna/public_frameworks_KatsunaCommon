@@ -7,17 +7,19 @@ import android.widget.TextView;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
+import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.ui.adapters.interfaces.LetterListener;
+import com.katsuna.commons.utils.ColorCalcV2;
 
 public class LetterViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView mLetter;
-    private LetterListener mLetterListener;
+    private final TextView mLetter;
+    private final LetterListener mLetterListener;
 
     public LetterViewHolder(View itemView, LetterListener letterListener) {
         super(itemView);
-        mLetter = (TextView) itemView.findViewById(R.id.search_letter);
+        mLetter = itemView.findViewById(R.id.search_letter);
         mLetterListener = letterListener;
     }
 
@@ -32,12 +34,17 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
 
         applyColorProfile();
 
+        UserProfile userProfile = mLetterListener.getUserProfile();
+        int primaryColor1 = ColorCalcV2.getColor(itemView.getContext(),
+                ColorProfileKeyV2.PRIMARY_COLOR_1, userProfile.colorProfile);
+
+        int secondaryColor1 = ColorCalcV2.getColor(itemView.getContext(),
+                ColorProfileKeyV2.SECONDARY_COLOR_1, userProfile.colorProfile);
+
         if (position % 2 == 0 ) {
-            mLetter.setBackgroundColor(ContextCompat.getColor(itemView.getContext(),
-                    R.color.priority_three_tone_one));
+            mLetter.setBackgroundColor(secondaryColor1);
         } else {
-            mLetter.setBackgroundColor(ContextCompat.getColor(itemView.getContext(),
-                    R.color.priority_three));
+            mLetter.setBackgroundColor(primaryColor1);
         }
     }
 

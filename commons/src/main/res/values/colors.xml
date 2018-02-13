@@ -13,6 +13,7 @@
     <color name="common_grey50">#FAFAFA</color>
     <color name="common_grey100">#F5F5F5</color>
     <color name="common_grey300">#E0E0E0</color>
+    <color name="common_grey500">#9E9E9E</color>
     <color name="common_grey600">#757575</color>
     <color name="common_grey900">#212121</color>
 
@@ -30,6 +31,7 @@
     <color name="common_amberA700">#FFAB00</color>
     <color name="common_yellow700">#FBC02D</color>
     <color name="common_deep_orange_A100">#FF9E80</color>
+    <color name="common_deep_orange_A200">#FF6E40</color>
     <color name="common_deep_orange_200">#FFAB91</color>
 
     <color name="common_black">#000000</color>
@@ -44,6 +46,19 @@
     <color name="common_black07">#18000000</color>
 
     <!-- redesign v2 colors -->
+    <color name="common_grey_one">#E5E5E5</color>
+    <color name="common_grey_two">#EEEEEE</color>
+
+    <color name="common_milk_punch">#FFF5D6</color>
+    <color name="common_pippin">#FFE8E0</color>
+    <color name="common_papaya_whip">#FFF1D6</color>
+
+    <color name="common_solitude">#EEF3FF</color>
+    <color name="common_ghost_white">#EFF1FF</color>
+
+    <color name="common_white_smoke">#F8F8F8</color>
+
+<!--
     <color name="priority_one">#E0E0E0</color>
     <color name="priority_one_tone_one">#FAFAFA</color>
 
@@ -51,13 +66,7 @@
     <color name="priority_two_tone_one">#E1F5FE</color>
 
     <color name="priority_three">#FFD740</color>
-    <color name="priority_three_tone_one">#FFF9C4</color>
+    <color name="priority_three_tone_one">#FFF9C4</color>-->
 
-    <!-- button colors -->
-    <color name="more_color">#DE2F80ED</color>
-    <color name="buttons_color">#2F80ED</color>
-
-    <color name="common_grey_one">#E5E5E5</color>
-    <color name="common_grey_two">#EEEEEE</color>
 
 </resources>

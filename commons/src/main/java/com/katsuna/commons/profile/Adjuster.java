@@ -19,17 +19,19 @@ import android.widget.TextView;
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKey;
+import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.OpticalParams;
 import com.katsuna.commons.entities.SizeProfileKeyV2;
 import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.utils.ColorCalc;
+import com.katsuna.commons.utils.ColorCalcV2;
 import com.katsuna.commons.utils.DrawUtils;
 import com.katsuna.commons.utils.Shape;
 import com.katsuna.commons.utils.SizeCalcV2;
 
 public class Adjuster {
 
-    private Context mContext;
+    private final Context mContext;
     private UserProfile mUserProfile;
 
     public Adjuster(Context context) {
@@ -174,11 +176,10 @@ public class Adjuster {
 
     public void adjustSearchBar(View container, ImageButton prevButton, ImageButton nextButton) {
         if (container != null) {
-            int accentColor1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
+            int primaryColor1 = ColorCalcV2.getColor(mContext, ColorProfileKeyV2.PRIMARY_COLOR_1,
                     mUserProfile.colorProfile);
 
-            int p3color = ContextCompat.getColor(mContext, R.color.priority_three);
-            container.setBackgroundColor(p3color);
+            container.setBackgroundColor(primaryColor1);
 
             int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
             int black87ResId = ContextCompat.getColor(mContext, R.color.common_black87);
@@ -249,22 +250,22 @@ public class Adjuster {
 
         OpticalParams params = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.FLOATING_BUTTON,
                 mUserProfile.opticalSizeProfile);
-        int height = mContext.getResources().getDimensionPixelSize(params.getHeight());
+        int h = mContext.getResources().getDimensionPixelSize(params.getHeight());
 
         ViewGroup.LayoutParams layoutParams = fab.getLayoutParams();
-        layoutParams.width = height;
-        layoutParams.height = height;
+        layoutParams.width = h;
+        layoutParams.height = h;
     }
 
 
     public void adjustFabSampleSize(View fab, TextView textView) {
         OpticalParams params = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.FLOATING_BUTTON,
                 mUserProfile.opticalSizeProfile);
-        int height = mContext.getResources().getDimensionPixelSize(params.getHeight());
+        int h = mContext.getResources().getDimensionPixelSize(params.getHeight());
 
         ViewGroup.LayoutParams layoutParams = fab.getLayoutParams();
-        layoutParams.width = height;
-        layoutParams.height = height;
+        layoutParams.width = h;
+        layoutParams.height = h;
 
         float textSize = mContext.getResources()
                 .getDimension(R.dimen.common_fab_text_size_intermediate);
