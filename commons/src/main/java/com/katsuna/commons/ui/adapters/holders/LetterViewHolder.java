@@ -19,7 +19,7 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
 
     public LetterViewHolder(View itemView, LetterListener letterListener) {
         super(itemView);
-        mLetter = itemView.findViewById(R.id.search_letter);
+        mLetter = (TextView) itemView.findViewById(R.id.search_letter);
         mLetterListener = letterListener;
     }
 
