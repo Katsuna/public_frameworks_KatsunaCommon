@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="none">
-
+    <group android:id="@+id/grp1" android:checkableBehavior="none">
         <item
             android:id="@+id/drawer_settings"
             android:icon="@drawable/common_ic_settings_black_24dp"
             android:title="@string/common_settings" />
+    </group>
 
+    <group android:id="@+id/grp2" android:checkableBehavior="none">
         <item
             android:id="@+id/drawer_info"
             android:icon="@drawable/common_ic_info_black_24dp"
             android:title="@string/common_info" />
+    </group>
 
+    <group android:id="@+id/grp3" android:checkableBehavior="none">
         <item
             android:id="@+id/drawer_privacy"
             android:icon="@drawable/common_ic_note_black_24dp"
             android:title="@string/common_privacy_policy" />
-
     </group>
+
 </menu>

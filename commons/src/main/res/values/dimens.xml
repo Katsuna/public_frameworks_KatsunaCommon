@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="common_fab_margin">16dp</dimen>
     <dimen name="common_fab_vertical_margin">12dp</dimen>
     <dimen name="common_activity_margin">16dp</dimen>
@@ -90,6 +90,8 @@
     <dimen name="common_28dp">28dp</dimen>
     <dimen name="common_20dp">20dp</dimen>
     <!-- v2 redesign additions end -->
+
+    <dimen name="design_navigation_icon_padding" tools:override="true">10dp</dimen>
 
     <!-- eof profile dimens -->
 </resources>

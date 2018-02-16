@@ -37,7 +37,7 @@
     </style>
 
     <style name="CommonDrawer">
-        <item name="android:textSize">@dimen/common_text_size</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="KatsunaTitleSimple">
