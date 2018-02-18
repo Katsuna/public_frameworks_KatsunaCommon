@@ -1,330 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/common_grey300" />
-
-    <com.katsuna.commons.controls.KatsunaTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/common_usability_settings"
-        app:sizeProfileKey="BODY_2" />
-
-    <!-- hand setting -->
-    <LinearLayout
-        android:id="@+id/hand_initial_container"
+    <android.support.v7.widget.CardView
+        android:id="@+id/usability_settings_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp">
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:clipToPadding="false"
+        android:gravity="center"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp">
 
-        <com.katsuna.commons.controls.KatsunaImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/common_ic_dualpan_tool_grey600_24dp"
-            tools:ignore="ContentDescription" />
-
-        <com.katsuna.commons.controls.KatsunaTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:text="@string/common_hand"
-            app:sizeProfileKey="SUBHEADER" />
-
-    </LinearLayout>
-
-    <RadioGroup
-        android:id="@+id/radio_group_hand"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <RadioButton
-            android:id="@+id/radio_right_hand"
+        <LinearLayout
+            android:id="@+id/usability_settings_card_inner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:button="@null"
-            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-            android:drawablePadding="10dp"
-            android:drawableStart="@drawable/common_ic_rightpan_tool_grey600_24dp"
-            android:text="@string/common_hand_right"
-            android:textAlignment="textStart" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/radio_left_hand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:button="@null"
-            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-            android:drawablePadding="10dp"
-            android:drawableStart="@drawable/common_ic_leftpan_tool_grey600_24dp"
-            android:text="@string/common_hand_left"
-            android:textAlignment="textStart" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:minHeight="19dp"
+                android:text="@string/common_usability_settings"
+                android:textColor="@color/common_black54"
+                android:textSize="16sp" />
 
-    </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_black12" />
 
-    <!-- size setting -->
-    <LinearLayout
-        android:id="@+id/size_initial_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="horizontal">
+            <!-- hand setting -->
+            <TextView
+                android:id="@+id/hand_initial_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="12dp"
+                android:drawableStart="@drawable/common_ic_dualpan_tool_grey600_24dp"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="@string/common_hand"
+                android:textColor="@color/common_black54"
+                android:textSize="16sp" />
 
-        <com.katsuna.commons.controls.KatsunaImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/common_ic_format_size_grey600_24dp"
-            tools:ignore="ContentDescription" />
-
-        <com.katsuna.commons.controls.KatsunaTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/common_size"
-            app:sizeProfileKey="SUBHEADER" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/size_expanded_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <com.katsuna.commons.controls.KatsunaTextView
-            android:id="@+id/text_ithaka"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/common_ithaca"
-            app:sizeProfileKey="TITLE" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.katsuna.commons.controls.KatsunaTextView
-                android:id="@+id/text_ithaka_full"
+            <RadioGroup
+                android:id="@+id/radio_group_hand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radio_right_hand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:button="@null"
+                    android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/common_ic_rightpan_tool_grey600_24dp"
+                    android:text="@string/common_hand_right"
+                    android:textAlignment="textStart" />
+
+                <RadioButton
+                    android:id="@+id/radio_left_hand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:button="@null"
+                    android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/common_ic_leftpan_tool_grey600_24dp"
+                    android:text="@string/common_hand_left"
+                    android:textAlignment="textStart" />
+
+            </RadioGroup>
+
+            <View
+                android:id="@+id/hand_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_black12" />
+
+            <!-- size setting -->
+            <TextView
+                android:id="@+id/size_initial_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="12dp"
+                android:drawableStart="@drawable/common_ic_format_size_grey600_24dp"
                 android:gravity="center"
-                android:text="@string/common_ithaca_full_short"
-                app:sizeProfileKey="BODY_1" />
+                android:minHeight="48dp"
+                android:text="@string/common_size"
+                android:textColor="@color/common_black54"
+                android:textSize="16sp" />
 
             <LinearLayout
+                android:id="@+id/size_expanded_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom|end">
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.katsuna.commons.controls.KatsunaTextView
+                    android:id="@+id/text_ithaka"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/common_ithaca"
+                    app:sizeProfileKey="TITLE" />
 
                 <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                    <View
-                        android:id="@+id/commom_size_sample_fab"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/common_circle_black"
-                        android:elevation="10dp" />
-
-                    <TextView
-                        android:id="@+id/commom_size_sample_fab_text"
-                        android:layout_width="wrap_content"
+                    <com.katsuna.commons.controls.KatsunaTextView
+                        android:id="@+id/text_ithaka_full"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:elevation="16dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@string/common_size_selector"
-                        android:textColor="@android:color/white" />
+                        android:layout_marginBottom="25dp"
+                        android:gravity="center"
+                        android:text="@string/common_ithaca_full_short"
+                        app:sizeProfileKey="BODY_1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom|end">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|end">
+
+                            <View
+                                android:id="@+id/commom_size_sample_fab"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_margin="16dp"
+                                android:background="@drawable/common_circle_black"
+                                android:elevation="10dp" />
+
+                            <TextView
+                                android:id="@+id/commom_size_sample_fab_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:elevation="16dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="@string/common_size_selector"
+                                android:textColor="@android:color/white" />
+
+                        </FrameLayout>
+
+                    </LinearLayout>
 
                 </FrameLayout>
 
+                <RadioButton
+                    android:id="@+id/radio_size_auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="16dp"
+                    android:button="@null"
+                    android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                    android:drawablePadding="16dp"
+                    android:drawableStart="@drawable/common_ic_font_download_grey600_24dp"
+                    android:padding="16dp"
+                    android:text="@string/common_use_auto_setting"
+                    android:textAlignment="textStart" />
+
+                <RadioGroup
+                    android:id="@+id/radio_group_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_size_advanced"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                        android:gravity="center"
+                        android:text="@string/common_size_selector"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_size_intermediate"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                        android:gravity="center"
+                        android:text="@string/common_size_selector"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_size_simple"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                        android:gravity="center"
+                        android:text="@string/common_size_selector"
+                        android:textSize="26sp" />
+
+                </RadioGroup>
+
             </LinearLayout>
 
-        </FrameLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_black12" />
 
-        <RadioButton
-            android:id="@+id/radio_size_auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_margin="16dp"
-            android:button="@null"
-            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-            android:drawablePadding="16dp"
-            android:drawableStart="@drawable/common_ic_font_download_grey600_24dp"
-            android:padding="16dp"
-            android:text="@string/common_use_auto_setting"
-            android:textAlignment="textStart" />
-
-        <RadioGroup
-            android:id="@+id/radio_group_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radio_size_advanced"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+            <!-- color setting -->
+            <TextView
+                android:id="@+id/color_initial_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="12dp"
+                android:drawableStart="@drawable/common_ic_palette_grey600_24dp"
                 android:gravity="center"
-                android:text="@string/common_size_selector"
-                android:textSize="18sp" />
+                android:minHeight="48dp"
+                android:text="@string/common_profile_color"
+                android:textColor="@color/common_black54"
+                android:textSize="16sp" />
 
-            <RadioButton
-                android:id="@+id/radio_size_intermediate"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
-                android:gravity="center"
-                android:text="@string/common_size_selector"
-                android:textSize="20sp" />
 
-            <RadioButton
-                android:id="@+id/radio_size_simple"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
-                android:gravity="center"
-                android:text="@string/common_size_selector"
-                android:textSize="26sp" />
-
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <!-- color setting -->
-    <LinearLayout
-        android:id="@+id/color_initial_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="horizontal">
-
-        <com.katsuna.commons.controls.KatsunaImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/common_ic_palette_grey600_24dp"
-            tools:ignore="ContentDescription" />
-
-        <com.katsuna.commons.controls.KatsunaTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:text="@string/common_profile_color"
-            app:sizeProfileKey="SUBHEADER" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/color_expanded_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <com.katsuna.commons.controls.KatsunaTextView
-            android:id="@+id/select_color_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/common_select_palette"
-            app:sizeProfileKey="BODY_2" />
-
-        <RadioButton
-            android:id="@+id/radio_color_auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_margin="16dp"
-            android:button="@null"
-            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-            android:drawablePadding="16dp"
-            android:drawableStart="@drawable/common_ic_font_download_grey600_24dp"
-            android:padding="16dp"
-            android:text="@string/common_use_auto_setting"
-            android:textAlignment="textStart" />
-
-        <RadioGroup
-            android:id="@+id/color_profiles"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:id="@+id/profile_impairement"
-                android:layout_width="250dp"
+            <LinearLayout
+                android:id="@+id/color_expanded_container"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                android:drawableStart="@drawable/katsuna_color_profile_1"
-                android:padding="16dp" />
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <RadioButton
-                android:id="@+id/profile_main"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                android:drawableStart="@drawable/katsuna_color_profile_2"
-                android:padding="16dp" />
+                <com.katsuna.commons.controls.KatsunaTextView
+                    android:id="@+id/select_color_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/common_select_palette"
+                    app:sizeProfileKey="BODY_2" />
 
-            <RadioButton
-                android:id="@+id/profile_contrast_impairement"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                android:drawableStart="@drawable/katsuna_color_profile_3"
-                android:padding="16dp" />
+                <RadioButton
+                    android:id="@+id/radio_color_auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="16dp"
+                    android:button="@null"
+                    android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                    android:drawablePadding="16dp"
+                    android:drawableStart="@drawable/common_ic_font_download_grey600_24dp"
+                    android:padding="16dp"
+                    android:text="@string/common_use_auto_setting"
+                    android:textAlignment="textStart" />
 
-            <RadioButton
-                android:id="@+id/profile_contrast"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                android:drawableStart="@drawable/katsuna_color_profile_4"
-                android:padding="16dp" />
+                <RadioGroup
+                    android:id="@+id/color_profiles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-        </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/profile_impairement"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                        android:drawableStart="@drawable/katsuna_color_profile_1"
+                        android:padding="16dp" />
 
-    </LinearLayout>
+                    <RadioButton
+                        android:id="@+id/profile_main"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                        android:drawableStart="@drawable/katsuna_color_profile_2"
+                        android:padding="16dp" />
 
+                    <RadioButton
+                        android:id="@+id/profile_contrast_impairement"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                        android:drawableStart="@drawable/katsuna_color_profile_3"
+                        android:padding="16dp" />
+
+                    <RadioButton
+                        android:id="@+id/profile_contrast"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                        android:drawableStart="@drawable/katsuna_color_profile_4"
+                        android:padding="16dp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

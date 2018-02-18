@@ -1,7 +1,8 @@
 package com.katsuna.commons.ui;
 
+import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -11,30 +12,33 @@ import android.widget.TextView;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
+import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.OpticalParams;
 import com.katsuna.commons.entities.PreferenceKey;
 import com.katsuna.commons.entities.SizeProfile;
 import com.katsuna.commons.entities.SizeProfileKey;
 import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.profile.Adjuster;
-import com.katsuna.commons.utils.ColorAdjuster;
+import com.katsuna.commons.utils.ColorAdjusterV2;
+import com.katsuna.commons.utils.ColorCalcV2;
 import com.katsuna.commons.utils.SettingsManager;
 import com.katsuna.commons.utils.SizeAdjuster;
 import com.katsuna.commons.utils.SizeCalc;
 import com.katsuna.commons.utils.ViewUtils;
 
-public abstract class SettingsKatsunaActivity extends KatsunaActivity {
+public abstract class SettingsActivityBase extends KatsunaActivity {
 
     protected ScrollView mScrollViewContainer;
-    private View mSizeInitialContainer;
+    private TextView mSizeInitialContainer;
     private View mSizeExpandedContainer;
     private boolean mHandControlsExpanded;
     private boolean mSizeControlsExpanded;
     private boolean mColorControlsExpanded;
     private View mColorExpandedContainer;
     private RadioGroup mHandExpandedContainer;
-    private View mHandInitialContainer;
-    private View mColorInitialContainer;
+    private TextView mHandInitialContainer;
+    private View mHandDivider;
+    private TextView mColorInitialContainer;
     private RadioGroup mColorProfiles;
     private RadioButton mProfileMain;
     private RadioButton mProfileImpairement;
@@ -51,6 +55,36 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
     private boolean sizeRadioAutoChangeInProgress;
     private View mSizeSampleFab;
     private TextView mSizeSampleFabText;
+    private CardView mUsabilitySettingsCard;
+    private View mUsabilitySettingsCardInner;
+    private boolean resumed = false;
+
+    protected void initControls() {
+        mUsabilitySettingsCard = (CardView) findViewById(R.id.usability_settings_card);
+        mUsabilitySettingsCardInner = findViewById(R.id.usability_settings_card_inner);
+
+        // hand settings
+        mHandDivider = findViewById(R.id.hand_divider);
+        mHandInitialContainer = findViewById(R.id.hand_initial_container);
+        mHandExpandedContainer = (RadioGroup) findViewById(R.id.radio_group_hand);
+        mRadioRightHand = (RadioButton) findViewById(R.id.radio_right_hand);
+        mRadioLeftHand = (RadioButton) findViewById(R.id.radio_left_hand);
+
+        // size settings
+        mSizeExpandedContainer = findViewById(R.id.size_expanded_container);
+        mSizeInitialContainer = (TextView) findViewById(R.id.size_initial_container);
+        mRadioSizeAuto = (RadioButton) findViewById(R.id.radio_size_auto);
+        mRadioSizeAdvanced = (RadioButton) findViewById(R.id.radio_size_advanced);
+        mRadioSizeIntermediate = (RadioButton) findViewById(R.id.radio_size_intermediate);
+        mRadioSizeSimple = (RadioButton) findViewById(R.id.radio_size_simple);
+        mRadioGroupSize = (RadioGroup) findViewById(R.id.radio_group_size);
+        mSizeSampleFab = findViewById(R.id.commom_size_sample_fab);
+        mSizeSampleFabText = (TextView) findViewById(R.id.commom_size_sample_fab_text);
+
+        // color settings
+        mColorExpandedContainer = findViewById(R.id.color_expanded_container);
+        mColorInitialContainer = (TextView) findViewById(R.id.color_initial_container);
+    }
 
     @Override
     protected void onResume() {
@@ -63,10 +97,24 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
                         "true");
                 mRadioRightHand.setChecked(Boolean.parseBoolean(isRightHanded));
                 mHandInitialContainer.setVisibility(View.VISIBLE);
+                mHandDivider.setVisibility(View.VISIBLE);
             } else {
                 mHandInitialContainer.setVisibility(View.GONE);
+                mHandDivider.setVisibility(View.GONE);
             }
         }
+
+        initAppSettings();
+
+        loadProfiles();
+
+        resumed = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        resumed = false;
     }
 
     @Override
@@ -77,10 +125,7 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
     protected void applyProfiles() {
         refreshUserProfileContainer();
         UserProfile profile = mUserProfileContainer.getActiveUserProfile();
-        applyProfileLocal(profile);
-    }
 
-    private void applyProfileLocal(UserProfile profile) {
         applySizeProfile(profile.opticalSizeProfile);
 
         OpticalParams opticalParams = SizeCalc.getOpticalParams(SizeProfileKey.SUBHEADER,
@@ -95,15 +140,31 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         adjuster.adjustFabSampleSize(mSizeSampleFab, mSizeSampleFabText);
         adjuster.adjustFabSample(mSizeSampleFab, mSizeSampleFabText);
 
-        ColorAdjuster.adjustRadioButton(this, profile, mProfileContrast);
-        ColorAdjuster.adjustRadioButton(this, profile, mProfileContrastImpairement);
-        ColorAdjuster.adjustRadioButton(this, profile, mProfileImpairement);
-        ColorAdjuster.adjustRadioButton(this, profile, mProfileMain);
+
+        // color profiles
+        int primary2 = ColorCalcV2.getColor(this, ColorProfileKeyV2.PRIMARY_COLOR_2, profile.colorProfile);
+        ColorAdjusterV2.setTextViewDrawableColor(mHandInitialContainer, primary2);
+        ColorAdjusterV2.setTextViewDrawableColor(mSizeInitialContainer, primary2);
+        ColorAdjusterV2.setTextViewDrawableColor(mColorInitialContainer, primary2);
+
+        int primaryGrey1 = ColorCalcV2.getColor(this, ColorProfileKeyV2.PRIMARY_GREY_1,
+                profile.colorProfile);
+
+        int secondaryGrey2 = ColorCalcV2.getColor(this, ColorProfileKeyV2.SECONDARY_GREY_2,
+                profile.colorProfile);
+
+        mUsabilitySettingsCard.setCardBackgroundColor(primaryGrey1);
+        mUsabilitySettingsCardInner.setBackgroundColor(secondaryGrey2);
+
+        ColorAdjusterV2.adjustRadioButton(this, profile, mProfileContrast);
+        ColorAdjusterV2.adjustRadioButton(this, profile, mProfileContrastImpairement);
+        ColorAdjusterV2.adjustRadioButton(this, profile, mProfileImpairement);
+        ColorAdjusterV2.adjustRadioButton(this, profile, mProfileMain);
     }
 
-    protected void loadProfiles() {
+    private void loadProfiles() {
         // read size profile
-        String sizeProfileStr = SettingsManager.readSetting(SettingsKatsunaActivity.this,
+        String sizeProfileStr = SettingsManager.readSetting(SettingsActivityBase.this,
                 PreferenceKey.OPTICAL_SIZE_PROFILE, SizeProfile.AUTO.name());
         SizeProfile sizeProfile = SizeProfile.valueOf(sizeProfileStr);
 
@@ -123,28 +184,28 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         }
 
         // read color profile
-        String colorProfileStr = SettingsManager.readSetting(SettingsKatsunaActivity.this,
+        String colorProfileStr = SettingsManager.readSetting(SettingsActivityBase.this,
                 PreferenceKey.COLOR_PROFILE, ColorProfile.AUTO.name());
         ColorProfile colorProfile = ColorProfile.valueOf(colorProfileStr);
         selectColorProfile(colorProfile);
 
-        if(!mUserProfileContainer.hasKatsunaServices()) {
+        if (!mUserProfileContainer.hasKatsunaServices()) {
             boolean isRightHanded = Boolean.parseBoolean(
-                    SettingsManager.readSetting(SettingsKatsunaActivity.this, PreferenceKey.RIGHT_HAND,
+                    SettingsManager.readSetting(SettingsActivityBase.this, PreferenceKey.RIGHT_HAND,
                             "true"));
             mRadioRightHand.setChecked(isRightHanded);
             mRadioLeftHand.setChecked(!isRightHanded);
         }
     }
 
-    protected void initAppSettings() {
+    private void initAppSettings() {
         initHandSetting();
         initSizeSetting();
         initColorSetting();
     }
 
     private void initHandSetting() {
-        mHandInitialContainer = findViewById(R.id.hand_initial_container);
+
         mHandInitialContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,10 +216,7 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
                 focusOnView(mHandInitialContainer);
             }
         });
-        mRadioRightHand = (RadioButton) findViewById(R.id.radio_right_hand);
-        mRadioLeftHand = (RadioButton) findViewById(R.id.radio_left_hand);
 
-        mHandExpandedContainer = (RadioGroup) findViewById(R.id.radio_group_hand);
         mHandExpandedContainer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -166,15 +224,13 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
                 if (checkedId == R.id.radio_left_hand) {
                     isRightHand = false;
                 }
-                SettingsManager.setSetting(SettingsKatsunaActivity.this, PreferenceKey.RIGHT_HAND,
+                SettingsManager.setSetting(SettingsActivityBase.this, PreferenceKey.RIGHT_HAND,
                         String.valueOf(isRightHand));
             }
         });
     }
 
     private void initSizeSetting() {
-        mSizeExpandedContainer = findViewById(R.id.size_expanded_container);
-        mSizeInitialContainer = findViewById(R.id.size_initial_container);
         mSizeInitialContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,29 +241,30 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
                 focusOnView(mSizeExpandedContainer);
             }
         });
-        mRadioSizeAuto = (RadioButton) findViewById(R.id.radio_size_auto);
+
         mRadioSizeAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!resumed) return;
+
                 if (isChecked) {
                     sizeRadioAutoChangeInProgress = true;
                     mRadioGroupSize.clearCheck();
-                    SettingsManager.setSetting(SettingsKatsunaActivity.this,
+                    SettingsManager.setSetting(SettingsActivityBase.this,
                             PreferenceKey.OPTICAL_SIZE_PROFILE, SizeProfile.AUTO.name());
                     applyProfiles();
                     sizeRadioAutoChangeInProgress = false;
                 }
             }
         });
-        mRadioSizeAdvanced = (RadioButton) findViewById(R.id.radio_size_advanced);
-        mRadioSizeIntermediate = (RadioButton) findViewById(R.id.radio_size_intermediate);
-        mRadioSizeSimple = (RadioButton) findViewById(R.id.radio_size_simple);
-        mRadioGroupSize = (RadioGroup) findViewById(R.id.radio_group_size);
+
         mRadioGroupSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 // no reason to run listener
                 if (sizeRadioAutoChangeInProgress) return;
+
+                if (!resumed) return;
 
                 SizeProfile sizeProfile = null;
                 if (checkedId == R.id.radio_size_advanced) {
@@ -219,21 +276,15 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
                 }
                 if (sizeProfile != null) {
                     mRadioSizeAuto.setChecked(false);
-                    SettingsManager.setSetting(SettingsKatsunaActivity.this,
+                    SettingsManager.setSetting(SettingsActivityBase.this,
                             PreferenceKey.OPTICAL_SIZE_PROFILE, sizeProfile.name());
                     applyProfiles();
                 }
             }
         });
-
-
-        mSizeSampleFab = findViewById(R.id.commom_size_sample_fab);
-        mSizeSampleFabText = (TextView) findViewById(R.id.commom_size_sample_fab_text);
     }
 
     private void initColorSetting() {
-        mColorExpandedContainer = findViewById(R.id.color_expanded_container);
-        mColorInitialContainer = findViewById(R.id.color_initial_container);
         mColorInitialContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,6 +304,8 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         mRadioColorAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!resumed) return;
+
                 if (isChecked) {
                     selectColorProfile(ColorProfile.AUTO);
                     updateColorProfile(ColorProfile.AUTO);
@@ -270,6 +323,7 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         mColorProfiles.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (!resumed) return;
 
                 mRadioColorAuto.setChecked(false);
                 if (checkedId == R.id.profile_main) {
@@ -313,7 +367,7 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
     }
 
     private void updateColorProfile(ColorProfile colorProfile) {
-        SettingsManager.setSetting(SettingsKatsunaActivity.this, PreferenceKey.COLOR_PROFILE,
+        SettingsManager.setSetting(SettingsActivityBase.this, PreferenceKey.COLOR_PROFILE,
                 colorProfile.name());
         applyColorProfile(colorProfile);
         applyProfiles();
@@ -322,8 +376,10 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
     public void refreshControlsVisibility() {
         if (mHandControlsExpanded) {
             mHandExpandedContainer.setVisibility(View.VISIBLE);
+            mHandDivider.setVisibility(View.VISIBLE);
         } else {
             mHandExpandedContainer.setVisibility(View.GONE);
+            mHandDivider.setVisibility(View.GONE);
         }
 
         if (mSizeControlsExpanded) {
@@ -348,7 +404,7 @@ public abstract class SettingsKatsunaActivity extends KatsunaActivity {
         target.post(new Runnable() {
             @Override
             public void run() {
-                ViewUtils.verticalScrollToView(SettingsKatsunaActivity.this, mScrollViewContainer,
+                ViewUtils.verticalScrollToView(SettingsActivityBase.this, mScrollViewContainer,
                         target);
             }
         });

@@ -1,8 +1,12 @@
 package com.katsuna.commons.utils;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.katsuna.commons.R;
@@ -46,4 +50,30 @@ public class ColorAdjusterV2 {
                 profile.colorProfile);
         textView.setTextColor(primaryColor2);
     }
+
+    public static void setTextViewDrawableColor(TextView textView, int color) {
+        for (Drawable drawable : textView.getCompoundDrawablesRelative()) {
+            if (drawable != null) {
+                drawable.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
+            }
+        }
+    }
+
+    public static void adjustRadioButton(Context context, UserProfile profile, RadioButton button) {
+        // right hand default
+        int buttonDrawableIndex = 2;
+        adjustRadioButton(context, profile, button, buttonDrawableIndex);
+    }
+
+    public static void adjustRadioButton(Context context, UserProfile profile, RadioButton button,
+                                         int drawableIndex) {
+        int color = ColorCalcV2.getColor(context, ColorProfileKeyV2.PRIMARY_COLOR_2, profile.colorProfile);
+
+        Drawable[] lHandDrawables = button.getCompoundDrawablesRelative();
+        lHandDrawables[drawableIndex].setTint(color);
+
+        button.setTextColor(color);
+    }
+
+
 }
