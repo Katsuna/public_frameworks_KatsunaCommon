@@ -174,10 +174,6 @@ public class Contact implements Comparable<Contact>, Serializable {
         return description;
     }
 
-    public String showDescription() {
-        return (description == null) ? "" : description.getDescription();
-    }
-
     public void setDescription(Description description) {
         this.description = description;
     }
