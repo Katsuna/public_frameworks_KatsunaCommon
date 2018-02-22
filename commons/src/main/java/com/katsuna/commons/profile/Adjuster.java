@@ -70,9 +70,9 @@ public class Adjuster {
     }
 
     public void adjustFabColors(FloatingActionButton fab1, FloatingActionButton fab2) {
-        int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
+        int color1 = ColorCalcV2.getColor(mContext, ColorProfileKeyV2.PRIMARY_COLOR_1,
                 mUserProfile.colorProfile);
-        int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR,
+        int color2 = ColorCalcV2.getColor(mContext, ColorProfileKeyV2.PRIMARY_COLOR_2,
                 mUserProfile.colorProfile);
         int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
         int blackResId = ContextCompat.getColor(mContext, R.color.common_black);
@@ -138,9 +138,9 @@ public class Adjuster {
     }
 
     public void adjustPopupButtons(Button popupButton1, Button popupButton2) {
-        int color1 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT1_COLOR,
+        int color1 = ColorCalcV2.getColor(mContext, ColorProfileKeyV2.PRIMARY_COLOR_1,
                 mUserProfile.colorProfile);
-        int color2 = ColorCalc.getColor(mContext, ColorProfileKey.ACCENT2_COLOR,
+        int color2 = ColorCalcV2.getColor(mContext, ColorProfileKeyV2.PRIMARY_COLOR_2,
                 mUserProfile.colorProfile);
         int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
         int blackResId = ContextCompat.getColor(mContext, R.color.common_black);
