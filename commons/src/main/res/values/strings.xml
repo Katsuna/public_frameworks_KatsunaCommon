@@ -197,6 +197,8 @@
     <!-- version label for app info activities -->
     <string name="common_version">version</string>
 
+    <string name="common_version_info">version %1$s</string>
+
     <!-- developer label for app info activities -->
     <string name="common_developer">Developer</string>
 
