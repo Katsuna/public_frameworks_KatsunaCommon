@@ -338,15 +338,49 @@ public class ContactProvider {
         ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                 .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                 .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, contact.getDisplayName())
+                .withValue(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME, contact.getName().getName())
+                .withValue(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME, contact.getName().getSurname())
                 .build());
 
-        ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, contact.getPhones().get(0).getNumber())
-                .withValue(ContactsContract.CommonDataKinds.Phone.IS_PRIMARY, 1)
-                .build());
+        //process Phones
+        for (Phone phone : contact.getPhones()) {
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phone.getNumber())
+                    .withValue(ContactsContract.CommonDataKinds.Phone.IS_PRIMARY, phone.isPrimary() ? 1 : 0)
+                    .build());
+        }
+
+        //process Email
+        Email email = contact.getEmail();
+        if (email != null) {
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Email.ADDRESS, email.getAddress())
+                    .build());
+        }
+
+        //process address
+        Address address = contact.getAddress();
+        if (address != null) {
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.StructuredPostal.FORMATTED_ADDRESS, address.getFormattedAddress())
+                    .build());
+        }
+
+        //process descriptions
+        Description description = contact.getDescription();
+        if (description != null) {
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Note.NOTE, description.getDescription())
+                    .build());
+        }
 
         if (contact.getPhoto() != null) {
             byte[] photo = ImageHelper.bitmapToByteArray(contact.getPhoto());

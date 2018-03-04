@@ -255,6 +255,8 @@
 
     <string name="common_favorites">Favorites</string>
 
+    <string name="common_create_contact">Create contact</string>
+
     <string name="common_edit_contact">Edit Contact</string>
 
     <string name="common_delete_contact">Delete Contact</string>

@@ -32,6 +32,10 @@ public class Contact implements Comparable<Contact>, Serializable {
     public Contact() {
     }
 
+    public void initialize() {
+        name = new Name();
+    }
+
     public Contact(Contact contact) {
         id = contact.getId();
         setDisplayName(contact.getDisplayName());
