@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.katsuna.commons.R;
+import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.UserProfile;
 
@@ -59,20 +60,22 @@ public class ColorAdjusterV2 {
         }
     }
 
-    public static void adjustRadioButton(Context context, UserProfile profile, RadioButton button) {
+    public static void adjustRadioButton(Context context, ColorProfile profile, RadioButton button) {
         // right hand default
         int buttonDrawableIndex = 2;
-        adjustRadioButton(context, profile, button, buttonDrawableIndex);
+        adjustRadioButton(context, profile, button, buttonDrawableIndex, true);
     }
 
-    public static void adjustRadioButton(Context context, UserProfile profile, RadioButton button,
-                                         int drawableIndex) {
-        int color = ColorCalcV2.getColor(context, ColorProfileKeyV2.PRIMARY_COLOR_2, profile.colorProfile);
+    public static void adjustRadioButton(Context context, ColorProfile profile, RadioButton button,
+                                         int drawableIndex, boolean colorText) {
+        int color = ColorCalcV2.getColor(context, ColorProfileKeyV2.PRIMARY_COLOR_2, profile);
 
         Drawable[] lHandDrawables = button.getCompoundDrawablesRelative();
         lHandDrawables[drawableIndex].setTint(color);
 
-        button.setTextColor(color);
+        if (colorText) {
+            button.setTextColor(color);
+        }
     }
 
 

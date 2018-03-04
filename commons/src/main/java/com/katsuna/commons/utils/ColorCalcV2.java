@@ -45,7 +45,7 @@ public class ColorCalcV2 {
                     case COLOR_IMPAIRMENT_AND_CONTRAST:
                         return R.color.common_indigoA700;
                     case CONTRAST:
-                        return R.color.common_white;
+                        return R.color.common_dim_gray;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }
@@ -58,7 +58,7 @@ public class ColorCalcV2 {
                     case COLOR_IMPAIRMENT_AND_CONTRAST:
                         return R.color.common_papaya_whip;
                     case CONTRAST:
-                        return R.color.common_white;
+                        return R.color.common_grey300;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }
@@ -70,7 +70,7 @@ public class ColorCalcV2 {
                     case COLOR_IMPAIRMENT_AND_CONTRAST:
                         return R.color.common_ghost_white;
                     case CONTRAST:
-                        return R.color.common_ghost_white;
+                        return R.color.common_white_smoke;
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }

@@ -79,18 +79,14 @@ public class Adjuster {
 
         if (fab1 != null) {
             if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
-                DrawUtils.setColor(fab1.getDrawable(), color2);
+                DrawUtils.setColor(fab1.getDrawable(), whiteResId);
             } else {
                 DrawUtils.setColor(fab1.getDrawable(), blackResId);
             }
             setFabBackgroundColor(fab1, color1);
         }
         if (fab2 != null) {
-            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
-                DrawUtils.setColor(fab2.getDrawable(), color1);
-            } else {
-                DrawUtils.setColor(fab2.getDrawable(), whiteResId);
-            }
+            DrawUtils.setColor(fab2.getDrawable(), whiteResId);
             setFabBackgroundColor(fab2, color2);
         }
     }
@@ -149,7 +145,7 @@ public class Adjuster {
             Shape.setRoundedBackground(popupButton1, color1);
 
             if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
-                popupButton1.setTextColor(color2);
+                popupButton1.setTextColor(whiteResId);
             } else {
                 popupButton1.setTextColor(blackResId);
             }
@@ -157,11 +153,7 @@ public class Adjuster {
 
         if (popupButton2 != null) {
             Shape.setRoundedBackground(popupButton2, color2);
-            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
-                popupButton2.setTextColor(color1);
-            } else {
-                popupButton2.setTextColor(whiteResId);
-            }
+            popupButton2.setTextColor(whiteResId);
         }
     }
 

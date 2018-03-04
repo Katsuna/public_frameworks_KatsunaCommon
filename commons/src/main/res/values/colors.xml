@@ -58,15 +58,6 @@
 
     <color name="common_white_smoke">#F8F8F8</color>
 
-<!--
-    <color name="priority_one">#E0E0E0</color>
-    <color name="priority_one_tone_one">#FAFAFA</color>
-
-    <color name="priority_two">#81D4FA</color>
-    <color name="priority_two_tone_one">#E1F5FE</color>
-
-    <color name="priority_three">#FFD740</color>
-    <color name="priority_three_tone_one">#FFF9C4</color>-->
-
+    <color name="common_dim_gray">#626262</color>
 
 </resources>

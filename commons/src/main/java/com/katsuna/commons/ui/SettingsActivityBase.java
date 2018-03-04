@@ -1,6 +1,5 @@
 package com.katsuna.commons.ui;
 
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -156,10 +155,10 @@ public abstract class SettingsActivityBase extends KatsunaActivity {
         mUsabilitySettingsCard.setCardBackgroundColor(primaryGrey1);
         mUsabilitySettingsCardInner.setBackgroundColor(secondaryGrey2);
 
-        ColorAdjusterV2.adjustRadioButton(this, profile, mProfileContrast);
-        ColorAdjusterV2.adjustRadioButton(this, profile, mProfileContrastImpairement);
-        ColorAdjusterV2.adjustRadioButton(this, profile, mProfileImpairement);
-        ColorAdjusterV2.adjustRadioButton(this, profile, mProfileMain);
+        ColorAdjusterV2.adjustRadioButton(this, profile.colorProfile, mProfileContrast);
+        ColorAdjusterV2.adjustRadioButton(this, profile.colorProfile, mProfileContrastImpairement);
+        ColorAdjusterV2.adjustRadioButton(this, profile.colorProfile, mProfileImpairement);
+        ColorAdjusterV2.adjustRadioButton(this, profile.colorProfile, mProfileMain);
     }
 
     private void loadProfiles() {

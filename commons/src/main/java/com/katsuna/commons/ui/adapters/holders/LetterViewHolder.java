@@ -41,10 +41,19 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
         int secondaryColor1 = ColorCalcV2.getColor(itemView.getContext(),
                 ColorProfileKeyV2.SECONDARY_COLOR_1, userProfile.colorProfile);
 
+        int white87 = ContextCompat.getColor(itemView.getContext(), R.color.common_white87);
+        int black87 = ContextCompat.getColor(itemView.getContext(), R.color.common_black87);
+
         if (position % 2 == 0 ) {
             mLetter.setBackgroundColor(secondaryColor1);
+            mLetter.setTextColor(black87);
         } else {
             mLetter.setBackgroundColor(primaryColor1);
+            if (userProfile.colorProfile == ColorProfile.CONTRAST) {
+                mLetter.setTextColor(white87);
+            } else {
+                mLetter.setTextColor(black87);
+            }
         }
     }
 
