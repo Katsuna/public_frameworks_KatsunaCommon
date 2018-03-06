@@ -268,4 +268,8 @@
     <!-- Message shown when the user tries to open a katsuna app that is missing -->
     <string name="common_missing_app">You need to install the %1$s application.</string>
 
+    <string name="common_add_contact">Add New Contact</string>
+
+    <string name="common_add_to_existing_contact">Add to Existing Contact</string>
+
 </resources>
