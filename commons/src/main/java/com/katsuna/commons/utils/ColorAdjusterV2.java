@@ -16,6 +16,10 @@ import com.katsuna.commons.entities.UserProfile;
 
 public class ColorAdjusterV2 {
 
+    public static void adjustButtons(Context context, UserProfile profile,
+                                     Button primaryButton, Button secondaryButton) {
+        adjustButtons(context, profile, primaryButton, secondaryButton, null);
+    }
 
     public static void adjustButtons(Context context, UserProfile profile,
                                      Button primaryButton, Button secondaryButton,
