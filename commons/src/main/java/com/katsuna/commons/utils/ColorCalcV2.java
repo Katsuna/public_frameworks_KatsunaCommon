@@ -74,6 +74,18 @@ public class ColorCalcV2 {
                     default:
                         throw new RuntimeException(PROFILE_NOT_SET);
                 }
+            case SECONDARY_COLOR_3:
+                switch (profile) {
+                    case COLOR_IMPAIREMENT:
+                    case MAIN:
+                        return R.color.common_solitude_2;
+                    case COLOR_IMPAIRMENT_AND_CONTRAST:
+                        return R.color.common_lavender;
+                    case CONTRAST:
+                        return R.color.common_whisper;
+                    default:
+                        throw new RuntimeException(PROFILE_NOT_SET);
+                }
             case PRIMARY_GREY_1:
                 switch (profile) {
                     case COLOR_IMPAIREMENT:

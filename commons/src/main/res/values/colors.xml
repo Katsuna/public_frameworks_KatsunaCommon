@@ -59,5 +59,8 @@
     <color name="common_white_smoke">#F8F8F8</color>
 
     <color name="common_dim_gray">#626262</color>
+    <color name="common_solitude_2">#E5ECFF</color>
+    <color name="common_lavender">#E6E9FE</color>
+    <color name="common_whisper">#ECECEC</color>
 
 </resources>
