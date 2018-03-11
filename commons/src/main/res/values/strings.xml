@@ -125,6 +125,9 @@
     <!-- Text for more button -->
     <string name="common_more">More</string>
 
+    <!-- Text for less button -->
+    <string name="common_less">Less</string>
+
     <!-- Used for optical size radio buttons. Used at Settings and SetupWizard. -->
     <string name="common_size_selector" translatable="false">A</string>
 
@@ -194,6 +197,8 @@
     <!-- version label for app info activities -->
     <string name="common_version">version</string>
 
+    <string name="common_version_info">version %1$s</string>
+
     <!-- developer label for app info activities -->
     <string name="common_developer">Developer</string>
 
@@ -225,6 +230,9 @@
 
     <!-- "Keyboard" Katsuna app name (use the same translation as used in the name of the Keyboard app) -->
     <string name="common_katsuna_keyboard_app">Keyboard</string>
+
+    <!-- "Homescreen widget" Katsuna app name -->
+    <string name="common_katsuna_homescreen_widget">Katsuna Homescreen widget</string>
 
 
     <!-- Common "Download" button title --> 
@@ -260,5 +268,24 @@
     <string name="common_text_notification_cancel" translatable="false">Hide</string>
     <string name="common_text_notification_text" translatable="false">Let’s go for a walk.</string>
 
+
+    <string name="common_favorites">Favorites</string>
+
+    <string name="common_create_contact">Create contact</string>
+
+    <string name="common_edit_contact">Edit Contact</string>
+
+    <string name="common_delete_contact">Delete Contact</string>
+
+    <string name="common_delete_contact_approval">Are you sure you want to delete the contact: %1$s ?</string>
+
+    <string name="common_save">Save</string>
+
+    <!-- Message shown when the user tries to open a katsuna app that is missing -->
+    <string name="common_missing_app">You need to install the %1$s application.</string>
+
+    <string name="common_add_contact">Add New Contact</string>
+
+    <string name="common_add_to_existing_contact">Add to Existing Contact</string>
 
 </resources>

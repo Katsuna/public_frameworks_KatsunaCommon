@@ -7,13 +7,15 @@ import android.widget.TextView;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
+import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.ui.adapters.interfaces.LetterListener;
+import com.katsuna.commons.utils.ColorCalcV2;
 
 public class LetterViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView mLetter;
-    private LetterListener mLetterListener;
+    private final TextView mLetter;
+    private final LetterListener mLetterListener;
 
     public LetterViewHolder(View itemView, LetterListener letterListener) {
         super(itemView);
@@ -21,7 +23,7 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
         mLetterListener = letterListener;
     }
 
-    public void bind(final String letter) {
+    public void bind(final String letter, int position) {
         mLetter.setText(letter);
         mLetter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +33,28 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
         });
 
         applyColorProfile();
+
+        UserProfile userProfile = mLetterListener.getUserProfile();
+        int primaryColor1 = ColorCalcV2.getColor(itemView.getContext(),
+                ColorProfileKeyV2.PRIMARY_COLOR_1, userProfile.colorProfile);
+
+        int secondaryColor1 = ColorCalcV2.getColor(itemView.getContext(),
+                ColorProfileKeyV2.SECONDARY_COLOR_1, userProfile.colorProfile);
+
+        int white87 = ContextCompat.getColor(itemView.getContext(), R.color.common_white87);
+        int black87 = ContextCompat.getColor(itemView.getContext(), R.color.common_black87);
+
+        if (position % 2 == 0 ) {
+            mLetter.setBackgroundColor(secondaryColor1);
+            mLetter.setTextColor(black87);
+        } else {
+            mLetter.setBackgroundColor(primaryColor1);
+            if (userProfile.colorProfile == ColorProfile.CONTRAST) {
+                mLetter.setTextColor(white87);
+            } else {
+                mLetter.setTextColor(black87);
+            }
+        }
     }
 
     private void applyColorProfile() {

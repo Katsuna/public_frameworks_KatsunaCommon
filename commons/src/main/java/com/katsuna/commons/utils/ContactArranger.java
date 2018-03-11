@@ -2,6 +2,7 @@ package com.katsuna.commons.utils;
 
 import com.katsuna.commons.domain.Contact;
 import com.katsuna.commons.ui.adapters.models.ContactListItemModel;
+import com.katsuna.commons.ui.adapters.models.ContactsGroup;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,6 +41,29 @@ public class ContactArranger {
         return output;
     }
 
+    public static List<ContactsGroup> getSortedContactsGroups(List<Contact> contacts) {
+        Collections.sort(contacts);
+
+        LinkedHashMap<String, ContactsGroup> map = new LinkedHashMap<>();
+
+        for (Contact c : contacts) {
+            String firstLetterNormalized = c.getFirstLetterNormalized();
+
+            if (map.containsKey(firstLetterNormalized)) {
+                map.get(firstLetterNormalized).contactList.add(c);
+            } else {
+                ContactsGroup contactsGroup = new ContactsGroup();
+                contactsGroup.firstLetter = firstLetterNormalized;
+                contactsGroup.contactList.add(c);
+                map.put(firstLetterNormalized, contactsGroup);
+            }
+        }
+
+        List<ContactsGroup> output = new ArrayList<>(map.values());
+
+        return output;
+    }
+
     public static List<ContactListItemModel> getContactsProcessed(List<Contact> contacts) {
         List<ContactListItemModel> topContacts = getTopContacts(contacts);
 
@@ -53,7 +77,52 @@ public class ContactArranger {
         return output;
     }
 
+    public static List<ContactsGroup> getContactsGroups(List<Contact> contacts) {
+        ContactsGroup topContactsGroup = getTopContactsGroup(contacts);
+
+        //sort contacts
+        List<ContactsGroup> contactsSorted = getSortedContactsGroups(contacts);
+
+        List<ContactsGroup> output = new ArrayList<>();
+        output.add(topContactsGroup);
+        output.addAll(contactsSorted);
+
+        return output;
+    }
+
     private static List<ContactListItemModel> getTopContacts(List<Contact> contacts) {
+        Map<Long, Contact> map = getTopContactsMap(contacts);
+
+        //get topContacts
+        List<ContactListItemModel> topContacts = new ArrayList<>();
+        boolean firstItemSet = false;
+        for (Map.Entry<Long, Contact> entry : map.entrySet()) {
+            ContactListItemModel model = new ContactListItemModel();
+            model.setContact(entry.getValue());
+            model.setPremium(true);
+            if (!firstItemSet) {
+                model.setSeparator(Separator.STARRED);
+                firstItemSet = true;
+            }
+            topContacts.add(model);
+        }
+
+        return topContacts;
+    }
+
+    private static ContactsGroup getTopContactsGroup(List<Contact> contacts) {
+        // populate contacts
+        Map<Long, Contact> map = getTopContactsMap(contacts);
+
+        // populate output
+        ContactsGroup contactsGroup = new ContactsGroup();
+        contactsGroup.premium = true;
+        contactsGroup.contactList = new ArrayList<>(map.values());
+
+        return contactsGroup;
+    }
+
+    private static Map<Long, Contact> getTopContactsMap(List<Contact> contacts) {
         //select top contacts
         Contact[] frequentContacted = getFrequentContacted(contacts);
         Contact[] latestContacted = getLatestContacted(contacts);
@@ -89,21 +158,7 @@ public class ContactArranger {
             }
         }
 
-        //get topContacts
-        List<ContactListItemModel> topContacts = new ArrayList<>();
-        boolean firstItemSet = false;
-        for (Map.Entry<Long, Contact> entry : map.entrySet()) {
-            ContactListItemModel model = new ContactListItemModel();
-            model.setContact(entry.getValue());
-            model.setPremium(true);
-            if (!firstItemSet) {
-                model.setSeparator(Separator.STARRED);
-                firstItemSet = true;
-            }
-            topContacts.add(model);
-        }
-
-        return topContacts;
+        return map;
     }
 
     private static Contact[] getLatestContacted(List<Contact> contacts) {

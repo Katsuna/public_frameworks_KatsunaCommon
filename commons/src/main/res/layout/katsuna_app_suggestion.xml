@@ -49,7 +49,7 @@
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="@string/common_continue"
-            android:textColor="@color/common_black87" />
+            android:textColor="@color/common_white87" />
 
         <Button
             android:id="@+id/alert_cancel_button"

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,18 +18,18 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.katsuna.commons.R;
-import com.katsuna.commons.entities.ColorProfile;
+import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.KatsunaApp;
-import com.katsuna.commons.entities.UserProfileContainer;
+import com.katsuna.commons.entities.OpticalParams;
+import com.katsuna.commons.entities.SizeProfileKeyV2;
+import com.katsuna.commons.entities.UserProfile;
 
 import java.util.List;
 
 public class KatsunaAlertBuilder {
     private final Context mContext;
     private View mView;
-    private int mTitleResId;
-    private int mMessageResId;
-    private ColorProfile mColorProfile;
+    private String mMessage;
     private boolean mCancelHidden;
     private View.OnClickListener mCancelListener;
     private View.OnClickListener mOkListener;
@@ -40,12 +41,17 @@ public class KatsunaAlertBuilder {
     private List<String> mScrollViewItemsLabels;
 
     private EditText mText;
-    private boolean mCustomTitleOn;
     private String mSelectedItem;
     private KatsunaApp mKatsunaApp;
     private ImageView mAppIcon;
     private TextView mAppTitle;
     private TextView mAppDesc;
+    private Integer mTextVisibility;
+    private Integer mTextInputType;
+    private String mTitle;
+    private UserProfile mUserProfile;
+    private TextView mKatsunaMessage;
+    private TextView mKatsunaTitle;
 
     public KatsunaAlertBuilder(Context context) {
         mContext = context;
@@ -55,12 +61,8 @@ public class KatsunaAlertBuilder {
         mView = LayoutInflater.from(mContext).inflate(layoutId, null);
     }
 
-    public void setTitle(int titleResId) {
-        mTitleResId = titleResId;
-    }
-
-    public void setMessage(int messageResId) {
-        mMessageResId = messageResId;
+    public void setMessage(String message) {
+        mMessage = message;
     }
 
     public void setOkListener(View.OnClickListener okListener) {
@@ -83,22 +85,9 @@ public class KatsunaAlertBuilder {
         mSelectedItem = value;
     }
 
-    public void setUserProfileContainer(UserProfileContainer userProfileContainer) {
-        setColorProfile(userProfileContainer.getColorProfile());
-    }
-
     public AlertDialog create() {
         final AlertDialog dialog;
-        if (mMessageResId != 0) {
-            dialog = new AlertDialog.Builder(mContext)
-                    .setMessage(mMessageResId)
-                    .setView(mView).create();
-        } else {
-            dialog = new AlertDialog.Builder(mContext)
-                    .setView(mView).create();
-        }
-
-        setTitle(dialog);
+        dialog = new AlertDialog.Builder(mContext).setView(mView).create();
 
         mCancelButton = (Button) mView.findViewById(R.id.alert_cancel_button);
         if (mCancelButton != null) {
@@ -119,8 +108,27 @@ public class KatsunaAlertBuilder {
         }
 
         mText = (EditText) mView.findViewById(R.id.text_input);
+        mKatsunaTitle = (TextView) mView.findViewById(R.id.katsuna_title);
+        if (mKatsunaTitle != null) {
+            mKatsunaTitle.setText(mTitle);
+        }
+        mKatsunaMessage = (TextView) mView.findViewById(R.id.katsuna_message);
+        if (mKatsunaMessage != null) {
+            if (TextUtils.isEmpty(mMessage)) {
+                mKatsunaMessage.setVisibility(View.GONE);
+            } else {
+                mKatsunaMessage.setText(mMessage);
+                mKatsunaMessage.setVisibility(View.VISIBLE);
+            }
+        }
 
         if (mText != null) {
+            if (mTextVisibility != null) {
+                mText.setVisibility(mTextVisibility);
+            }
+            if (mTextInputType != null) {
+                mText.setInputType(mTextInputType);
+            }
             mText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
@@ -242,14 +250,7 @@ public class KatsunaAlertBuilder {
 
     public AlertDialog createKatsunaAppSuggestion() {
         final AlertDialog dialog;
-        if (mMessageResId != 0) {
-            dialog = new AlertDialog.Builder(mContext)
-                    .setMessage(mMessageResId)
-                    .setView(mView).create();
-        } else {
-            dialog = new AlertDialog.Builder(mContext)
-                    .setView(mView).create();
-        }
+        dialog = new AlertDialog.Builder(mContext).setView(mView).create();
 
         mAppIcon = (ImageView) mView.findViewById(R.id.app_icon);
         mAppIcon.setImageResource(mKatsunaApp.drawableId);
@@ -282,44 +283,45 @@ public class KatsunaAlertBuilder {
             }
         });
 
-        if (mColorProfile != null) {
-            ColorAdjuster.adjustButtons(mContext, mColorProfile, mOkButton, mCancelButton);
+        if (mUserProfile != null) {
+            ColorAdjusterV2.adjustButtons(mContext, mUserProfile, mOkButton, mCancelButton);
         }
 
-        return  dialog;
-    }
-
-    public void setCustomTitle(boolean enabled) {
-        mCustomTitleOn = enabled;
-    }
-
-    private void setTitle(AlertDialog dialog) {
-        if (mCustomTitleOn) {
-            TextView title = new TextView(mContext);
-
-            int textColor = ContextCompat.getColor(mContext, R.color.common_black87);
-            int textSize = mContext.getResources()
-                    .getDimensionPixelSize(R.dimen.common_title_text_size_intermediate);
-            int padding = mContext.getResources()
-                    .getDimensionPixelSize(R.dimen.common_alert_scroll_items_padding);
-
-            title.setText(mTitleResId);
-            title.setTextColor(textColor);
-            title.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-            title.setPadding(padding * 3, padding * 2, padding * 3, padding * 2);
-            title.setTypeface(Typeface.create(Constants.SANS_SERIF_MEDIUM, Typeface.NORMAL));
-
-            dialog.setCustomTitle(title);
-        } else {
-            dialog.setTitle(mTitleResId);
-        }
+        return dialog;
     }
 
     private void adjustProfile() {
-        if (mColorProfile == null) {
+        if (mUserProfile == null) {
             return;
         }
-        ColorAdjuster.adjustButtons(mContext, mColorProfile, mOkButton, mCancelButton);
+        ColorAdjusterV2.adjustButtons(mContext, mUserProfile, mOkButton, mCancelButton);
+        int bgColor = ColorCalcV2.getColor(mContext, ColorProfileKeyV2.SECONDARY_COLOR_1,
+                mUserProfile.colorProfile);
+        mView.setBackgroundColor(bgColor);
+
+        if (mKatsunaTitle != null) {
+            OpticalParams opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.SUBHEADING_2,
+                    mUserProfile.opticalSizeProfile);
+            SizeAdjuster.adjustText(mContext, mKatsunaTitle, opticalParams);
+        }
+
+        if (mKatsunaMessage != null) {
+            OpticalParams opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.SUBHEADING_1,
+                    mUserProfile.opticalSizeProfile);
+            SizeAdjuster.adjustText(mContext, mKatsunaMessage, opticalParams);
+        }
+
+        if (mOkButton != null) {
+            OpticalParams opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.BUTTON,
+                    mUserProfile.opticalSizeProfile);
+            SizeAdjuster.adjustText(mContext, mOkButton, opticalParams);
+        }
+
+        if (mCancelButton != null) {
+            OpticalParams opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.BUTTON,
+                    mUserProfile.opticalSizeProfile);
+            SizeAdjuster.adjustText(mContext, mCancelButton, opticalParams);
+        }
     }
 
     public void setScrollViewItems(List<String> scrollViewItems) {
@@ -330,8 +332,8 @@ public class KatsunaAlertBuilder {
         mScrollViewItemsLabels = scrollViewItemsLabels;
     }
 
-    public void setColorProfile(ColorProfile colorProfile) {
-        mColorProfile = colorProfile;
+    public void setUserProfile(UserProfile userProfile) {
+        mUserProfile = userProfile;
     }
 
     public void setCancelHidden(boolean cancelHidden) {
@@ -340,6 +342,18 @@ public class KatsunaAlertBuilder {
 
     public void setKatsunaApp(KatsunaApp katsunaApp) {
         mKatsunaApp = katsunaApp;
+    }
+
+    public void setTextVisibility(int visibility) {
+        mTextVisibility = visibility;
+    }
+
+    public void setTextInputType(Integer inputType) {
+        mTextInputType = inputType;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
     public interface KatsunaAlertText {

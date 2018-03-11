@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import com.katsuna.commons.ui.adapters.LettersAdapter;
 import com.katsuna.commons.ui.adapters.interfaces.LetterListener;
 import com.katsuna.commons.ui.adapters.models.ContactListItemModel;
+import com.katsuna.commons.ui.adapters.models.ContactsGroup;
 import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.Separator;
 
@@ -31,6 +32,25 @@ public abstract class SearchBarActivity extends KatsunaActivity implements Lette
             // right hand adjustments
             mAdjuster.adjustSearchBarForRightHand(mFabToolbarContainer, mFabToolbar);
         }
+    }
+
+    protected void initializeFabToolbarWithContactGroups(List<ContactsGroup> models) {
+        List<String> letters = new ArrayList<>();
+
+        for (ContactsGroup contactsGroup : models) {
+            if (!contactsGroup.premium) {
+                if (contactsGroup.contactList.size() > 0) {
+                    String letter = contactsGroup.contactList.get(0).getFirstLetterNormalized();
+                    if (!letters.contains(letter)) {
+                        letters.add(letter);
+                    }
+                }
+            }
+        }
+
+        LettersAdapter mLettersAdapter = new LettersAdapter(letters, this);
+        mLettersList.setAdapter(mLettersAdapter);
+        mLettersList.setLayoutManager(new LinearLayoutManager(this));
     }
 
     protected void initializeFabToolbar(List<ContactListItemModel> models) {

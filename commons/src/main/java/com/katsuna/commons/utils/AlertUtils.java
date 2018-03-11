@@ -17,7 +17,7 @@ public class AlertUtils {
 
     public static void createListAlert(final Context context, final EditText editText,
                                        final String suggestedValue,
-                                       final int titleResId, final UserProfile profile,
+                                       final String title, final UserProfile profile,
                                        final List<String> items,
                                        final List<String> itemsLabels,
                                        final Callback callback) {
@@ -28,9 +28,9 @@ public class AlertUtils {
             @Override
             public void onClick(View v) {
                 KatsunaAlertBuilder builder = new KatsunaAlertBuilder(context);
-                builder.setTitle(titleResId);
+                builder.setTitle(title);
                 builder.setView(R.layout.common_katsuna_alert_list);
-                builder.setColorProfile(profile.colorProfile);
+                builder.setUserProfile(profile);
                 builder.setListItemSelected(new KatsunaAlertBuilder.KatsunaAlertList() {
                     @Override
                     public void listItemSelected(String input) {
@@ -43,7 +43,6 @@ public class AlertUtils {
 
                 builder.setScrollViewItems(items);
                 builder.setScrollViewItemsLabels(itemsLabels);
-                builder.setCustomTitle(true);
 
                 if (suggestedValue != null && TextUtils.isEmpty(editText.getText())) {
                     builder.setSelectedItem(suggestedValue);

@@ -5,13 +5,11 @@ public class KatsunaApp {
     public String title;
     public String packageName;
     public int drawableId;
-    public int drawableOpa54Id;
 
-    public KatsunaApp(String title, String packageName, int drawableId, int drawableOpa54Id) {
+    public KatsunaApp(String title, String packageName, int drawableId) {
         this.title = title;
         this.packageName = packageName;
         this.drawableId = drawableId;
-        this.drawableOpa54Id = drawableOpa54Id;
     }
 
     @Override

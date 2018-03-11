@@ -32,6 +32,10 @@ public class Contact implements Comparable<Contact>, Serializable {
     public Contact() {
     }
 
+    public void initialize() {
+        name = new Name();
+    }
+
     public Contact(Contact contact) {
         id = contact.getId();
         setDisplayName(contact.getDisplayName());
@@ -39,6 +43,7 @@ public class Contact implements Comparable<Contact>, Serializable {
         lastTimeContacted = contact.getLastTimeContacted();
         starred = contact.isStarred();
         photoUri = contact.getPhotoUri();
+        description = new Description(contact.getDescription());
     }
 
     @Override
@@ -55,7 +60,11 @@ public class Contact implements Comparable<Contact>, Serializable {
     }
 
     public String getDisplayName() {
-        return displayName.replace(",", "");
+        String output = "";
+        if (displayName != null) {
+            output = displayName.replace(",", "");
+        }
+        return output;
     }
 
     public void setDisplayName(String displayName) {
