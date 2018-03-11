@@ -64,7 +64,7 @@ public abstract class SettingsActivityBase extends KatsunaActivity {
 
         // hand settings
         mHandDivider = findViewById(R.id.hand_divider);
-        mHandInitialContainer = findViewById(R.id.hand_initial_container);
+        mHandInitialContainer = (TextView) findViewById(R.id.hand_initial_container);
         mHandExpandedContainer = (RadioGroup) findViewById(R.id.radio_group_hand);
         mRadioRightHand = (RadioButton) findViewById(R.id.radio_right_hand);
         mRadioLeftHand = (RadioButton) findViewById(R.id.radio_left_hand);
