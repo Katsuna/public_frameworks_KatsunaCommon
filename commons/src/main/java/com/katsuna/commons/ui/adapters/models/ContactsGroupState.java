@@ -5,19 +5,20 @@ public class ContactsGroupState {
 
     private boolean premium;
     private boolean focused;
-    private boolean unfocused;
+    private boolean focusModeOn;
     private boolean highlighted;
 
     private int contactGroupPosition;
+    private int selectedGroupPosition;
     private String startLetter;
     private long contactId;
 
 
-    public ContactsGroupState(boolean premium, boolean focused, boolean unfocused,
+    public ContactsGroupState(boolean premium, boolean focused, boolean focusModeOn,
                               boolean highlighted, int contactGroupPosition) {
         this.premium = premium;
         this.focused = focused;
-        this.unfocused = unfocused;
+        this.focusModeOn = focusModeOn;
         this.highlighted = highlighted;
         this.contactGroupPosition = contactGroupPosition;
     }
@@ -38,12 +39,12 @@ public class ContactsGroupState {
         this.focused = focused;
     }
 
-    public boolean isUnfocused() {
-        return unfocused;
+    public boolean isFocusModeOn() {
+        return focusModeOn;
     }
 
-    public void setUnfocused(boolean unfocused) {
-        this.unfocused = unfocused;
+    public void setFocusModeOn(boolean unfocused) {
+        this.focusModeOn = unfocused;
     }
 
     public String getStartLetter() {
@@ -76,5 +77,13 @@ public class ContactsGroupState {
 
     public void setHighlighted(boolean highlighted) {
         this.highlighted = highlighted;
+    }
+
+    public int getSelectedGroupPosition() {
+        return selectedGroupPosition;
+    }
+
+    public void setSelectedGroupPosition(int selectedGroupPosition) {
+        this.selectedGroupPosition = selectedGroupPosition;
     }
 }
