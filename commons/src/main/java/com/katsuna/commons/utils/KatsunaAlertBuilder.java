@@ -52,6 +52,7 @@ public class KatsunaAlertBuilder {
     private UserProfile mUserProfile;
     private TextView mKatsunaMessage;
     private TextView mKatsunaTitle;
+    private String mTextInput;
 
     public KatsunaAlertBuilder(Context context) {
         mContext = context;
@@ -128,6 +129,9 @@ public class KatsunaAlertBuilder {
             }
             if (mTextInputType != null) {
                 mText.setInputType(mTextInputType);
+            }
+            if (mTextInput != null) {
+                mText.setText(mTextInput);
             }
             mText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -354,6 +358,10 @@ public class KatsunaAlertBuilder {
 
     public void setTitle(String title) {
         mTitle = title;
+    }
+
+    public void setText(String text) {
+        mTextInput = text;
     }
 
     public interface KatsunaAlertText {

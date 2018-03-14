@@ -288,4 +288,6 @@
 
     <string name="common_add_to_existing_contact">Add to Existing Contact</string>
 
+    <string name="common_missing_fields">Missing Fields</string>
+
 </resources>
