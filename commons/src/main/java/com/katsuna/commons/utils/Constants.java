@@ -14,6 +14,7 @@ public final class Constants {
     public static final String ADD_TO_CONTACT_ACTION = "com.katsuna.contacts.add";
     public static final String ADD_TO_CONTACT_ACTION_NUMBER = "number";
     public static final String EDIT_CONTACT_ACTION = "com.katsuna.contacts.edit";
+    public static final String SELECT_CONTACT_NUMBER_ACTION = "com.katsuna.commons.select_contact_number";
 
     public static final int FAB_TRANSFORMATION_DURATION = 200;
 

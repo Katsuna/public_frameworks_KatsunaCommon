@@ -96,5 +96,6 @@
 
     <dimen name="design_navigation_icon_padding" tools:override="true">10dp</dimen>
 
+    <dimen name="common_contact_item_height">50dp</dimen>
     <!-- eof profile dimens -->
 </resources>
