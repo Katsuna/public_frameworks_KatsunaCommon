@@ -42,12 +42,12 @@ public class ContactsGroupViewHolder extends RecyclerView.ViewHolder {
         mContactListener = contactListener;
         mUserProfileContainer = contactsGroupListener.getUserProfileContainer();
 
-        mStartLetter = view.findViewById(R.id.start_letter);
-        mStarIcon = view.findViewById(R.id.star_icon);
-        mStarDesc = view.findViewById(R.id.star_desc);
-        mContactsList = view.findViewById(R.id.contacts_list);
+        mStartLetter = (TextView) view.findViewById(R.id.start_letter);
+        mStarIcon = (ImageView) view.findViewById(R.id.star_icon);
+        mStarDesc = (TextView) view.findViewById(R.id.star_desc);
+        mContactsList = (RecyclerView) view.findViewById(R.id.contacts_list);
 
-        mContactsGroupContainerCard = view.findViewById(R.id.contacts_group_container_card);
+        mContactsGroupContainerCard = (CardView) view.findViewById(R.id.contacts_group_container_card);
         mOpacityLayer = view.findViewById(R.id.opacity_layer);
         mContactsGroupContainerCardInner = view.findViewById(R.id.contacts_group_container_card_inner);
         mCardHandle = view.findViewById(R.id.card_handle);

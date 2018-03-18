@@ -27,7 +27,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -194,9 +197,9 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
 
     private void initControls() {
         setupToolbar();
-        mLettersList = findViewById(R.id.letters_list);
+        mLettersList = (RecyclerView) findViewById(R.id.letters_list);
 
-        mRecyclerView = findViewById(R.id.contacts_list);
+        mRecyclerView = (RecyclerView) findViewById(R.id.contacts_list);
         mRecyclerView.setItemAnimator(null);
         mRecyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
@@ -226,25 +229,25 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         });
 
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mLastTouchTimestamp = System.currentTimeMillis();
         initPopupActionHandler();
 
         initDeselectionActionHandler();
 
-        mNoResultsView = findViewById(R.id.no_results);
+        mNoResultsView = (TextView) findViewById(R.id.no_results);
 
-        mPopupFrame = findViewById(R.id.popup_frame);
+        mPopupFrame = (FrameLayout) findViewById(R.id.popup_frame);
         mPopupFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPopup(false);
             }
         });
-        mFabContainer = findViewById(R.id.fab_container);
+        mFabContainer = (LinearLayout) findViewById(R.id.fab_container);
 
-        mPopupButton2 = findViewById(R.id.new_contact_button);
+        mPopupButton2 = (Button) findViewById(R.id.new_contact_button);
         mPopupButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -252,7 +255,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
             }
         });
 
-        mPopupButton1 = findViewById(R.id.search_button);
+        mPopupButton1 = (Button) findViewById(R.id.search_button);
         mPopupButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -261,7 +264,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         });
 
         mFabToolbar = findViewById(R.id.fab_toolbar);
-        mNextButton = findViewById(R.id.next_page_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_page_button);
         mNextButton.setOnTouchListener(new View.OnTouchListener() {
             private Handler mHandler;
             final Runnable mAction = new Runnable() {
@@ -291,7 +294,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
             }
         });
 
-        mPrevButton = findViewById(R.id.prev_page_button);
+        mPrevButton = (ImageButton) findViewById(R.id.prev_page_button);
         mPrevButton.setOnTouchListener(new View.OnTouchListener() {
             private Handler mHandler;
             final Runnable mAction = new Runnable() {
@@ -322,7 +325,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         });
 
         mViewPagerContainer = findViewById(R.id.viewpager_container);
-        mFabToolbarContainer = findViewById(R.id.fab_toolbar_container);
+        mFabToolbarContainer = (FrameLayout) findViewById(R.id.fab_toolbar_container);
     }
 
     protected abstract void setupToolbar();

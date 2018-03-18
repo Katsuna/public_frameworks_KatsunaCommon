@@ -37,17 +37,17 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
     public ContactViewHolder(View itemView, IContactListener contactListener) {
         super(itemView);
-        mContactName = itemView.findViewById(R.id.contact_name);
-        mContactDesc = itemView.findViewById(R.id.contact_desc);
+        mContactName = (TextView) itemView.findViewById(R.id.contact_name);
+        mContactDesc = (TextView) itemView.findViewById(R.id.contact_desc);
         mActionButtonsContainer = itemView.findViewById(R.id.action_buttons_container);
         mListener = contactListener;
 
-        mCallButton = itemView.findViewById(R.id.button_call);
-        mMessageButton = itemView.findViewById(R.id.button_message);
-        mMoreText = itemView.findViewById(R.id.txt_more);
+        mCallButton = (Button) itemView.findViewById(R.id.button_call);
+        mMessageButton = (Button) itemView.findViewById(R.id.button_message);
+        mMoreText = (TextView) itemView.findViewById(R.id.txt_more);
         mMoreActionsContainer = itemView.findViewById(R.id.more_actions_container);
-        mEditContactText = itemView.findViewById(R.id.edit_contact_text);
-        mDeleteContactText = itemView.findViewById(R.id.delete_contact_text);
+        mEditContactText = (TextView) itemView.findViewById(R.id.edit_contact_text);
+        mDeleteContactText = (TextView) itemView.findViewById(R.id.delete_contact_text);
     }
 
     public void bind(final Contact contact, final int position,
