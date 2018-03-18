@@ -291,50 +291,31 @@
                     android:text="@string/common_use_auto_setting"
                     android:textAlignment="textStart" />
 
-                <RadioGroup
-                    android:id="@+id/color_profiles"
-                    android:layout_width="match_parent"
+
+                <include
+                    android:id="@+id/profile_impairement_v2"
+                    layout="@layout/common_color_demo_v2" />
+
+                <include
+                    android:id="@+id/profile_main_v2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginTop="16dp"
+                    layout="@layout/common_color_demo_v2" />
 
-                    <RadioButton
-                        android:id="@+id/profile_impairement"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:button="@null"
-                        android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                        android:drawableStart="@drawable/katsuna_color_profile_1"
-                        android:padding="16dp" />
+                <include
+                    android:id="@+id/profile_contrast_impairement_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    layout="@layout/common_color_demo_v2" />
 
-                    <RadioButton
-                        android:id="@+id/profile_main"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:button="@null"
-                        android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                        android:drawableStart="@drawable/katsuna_color_profile_2"
-                        android:padding="16dp" />
-
-                    <RadioButton
-                        android:id="@+id/profile_contrast_impairement"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:button="@null"
-                        android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                        android:drawableStart="@drawable/katsuna_color_profile_3"
-                        android:padding="16dp" />
-
-                    <RadioButton
-                        android:id="@+id/profile_contrast"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:button="@null"
-                        android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                        android:drawableStart="@drawable/katsuna_color_profile_4"
-                        android:padding="16dp" />
-
-                </RadioGroup>
+                <include
+                    android:id="@+id/profile_contrast_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    layout="@layout/common_color_demo_v2" />
 
             </LinearLayout>
 

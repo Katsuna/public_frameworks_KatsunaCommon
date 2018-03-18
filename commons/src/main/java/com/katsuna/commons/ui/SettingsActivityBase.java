@@ -10,6 +10,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.katsuna.commons.R;
+import com.katsuna.commons.controls.DemoProfileV2;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.OpticalParams;
@@ -38,11 +39,6 @@ public abstract class SettingsActivityBase extends KatsunaActivity {
     private TextView mHandInitialContainer;
     private View mHandDivider;
     private TextView mColorInitialContainer;
-    private RadioGroup mColorProfiles;
-    private RadioButton mProfileMain;
-    private RadioButton mProfileImpairement;
-    private RadioButton mProfileContrast;
-    private RadioButton mProfileContrastImpairement;
     private RadioGroup mRadioGroupSize;
     private RadioButton mRadioSizeAuto;
     private RadioButton mRadioSizeAdvanced;
@@ -57,6 +53,10 @@ public abstract class SettingsActivityBase extends KatsunaActivity {
     private CardView mUsabilitySettingsCard;
     private View mUsabilitySettingsCardInner;
     private boolean resumed = false;
+    private DemoProfileV2 mDemoProfileImpairement;
+    private DemoProfileV2 mDemoProfileMain;
+    private DemoProfileV2 mDemoProfileContrastImpairement;
+    private DemoProfileV2 mDemoProfileContrast;
 
     protected void initControls() {
         mUsabilitySettingsCard = (CardView) findViewById(R.id.usability_settings_card);
@@ -83,6 +83,30 @@ public abstract class SettingsActivityBase extends KatsunaActivity {
         // color settings
         mColorExpandedContainer = findViewById(R.id.color_expanded_container);
         mColorInitialContainer = (TextView) findViewById(R.id.color_initial_container);
+
+        setupDemoProfiles();
+    }
+
+    private void setupDemoProfiles() {
+        mDemoProfileImpairement = (DemoProfileV2) findViewById(R.id.profile_impairement_v2);
+        mDemoProfileMain = (DemoProfileV2) findViewById(R.id.profile_main_v2);
+        mDemoProfileContrastImpairement = (DemoProfileV2) findViewById(R.id.profile_contrast_impairement_v2);
+        mDemoProfileContrast = (DemoProfileV2) findViewById(R.id.profile_contrast_v2);
+
+        UserProfile demoProfile = new UserProfile();
+        demoProfile.opticalSizeProfile = SizeProfile.INTERMEDIATE;
+
+        demoProfile.colorProfile = ColorProfile.COLOR_IMPAIREMENT;
+        mDemoProfileImpairement.adjustProfile(demoProfile);
+
+        demoProfile.colorProfile = ColorProfile.MAIN;
+        mDemoProfileMain.adjustProfile(demoProfile);
+
+        demoProfile.colorProfile = ColorProfile.COLOR_IMPAIRMENT_AND_CONTRAST;
+        mDemoProfileContrastImpairement .adjustProfile(demoProfile);
+
+        demoProfile.colorProfile = ColorProfile.CONTRAST;
+        mDemoProfileContrast .adjustProfile(demoProfile);
     }
 
     @Override
@@ -154,11 +178,6 @@ public abstract class SettingsActivityBase extends KatsunaActivity {
 
         mUsabilitySettingsCard.setCardBackgroundColor(primaryGrey1);
         mUsabilitySettingsCardInner.setBackgroundColor(secondaryGrey2);
-
-        ColorAdjusterV2.adjustRadioButton(this, profile.colorProfile, mProfileContrast);
-        ColorAdjusterV2.adjustRadioButton(this, profile.colorProfile, mProfileContrastImpairement);
-        ColorAdjusterV2.adjustRadioButton(this, profile.colorProfile, mProfileImpairement);
-        ColorAdjusterV2.adjustRadioButton(this, profile.colorProfile, mProfileMain);
     }
 
     private void loadProfiles() {
@@ -312,55 +331,58 @@ public abstract class SettingsActivityBase extends KatsunaActivity {
             }
         });
 
-        mProfileMain = (RadioButton) findViewById(R.id.profile_main);
-        mProfileImpairement = (RadioButton) findViewById(R.id.profile_impairement);
-        mProfileContrast = (RadioButton) findViewById(R.id.profile_contrast);
-        mProfileContrastImpairement =
-                (RadioButton) findViewById(R.id.profile_contrast_impairement);
-
-        mColorProfiles = (RadioGroup) findViewById(R.id.color_profiles);
-        mColorProfiles.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        mDemoProfileImpairement.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if (!resumed) return;
-
-                mRadioColorAuto.setChecked(false);
-                if (checkedId == R.id.profile_main) {
-                    updateColorProfile(ColorProfile.MAIN);
-                } else if (checkedId == R.id.profile_impairement) {
-                    updateColorProfile(ColorProfile.COLOR_IMPAIREMENT);
-                } else if (checkedId == R.id.profile_contrast) {
-                    updateColorProfile(ColorProfile.CONTRAST);
-                } else if (checkedId == R.id.profile_contrast_impairement) {
-                    updateColorProfile(ColorProfile.COLOR_IMPAIRMENT_AND_CONTRAST);
-                }
+            public void onClick(View v) {
+                selectColorProfile(ColorProfile.COLOR_IMPAIREMENT);
+                updateColorProfile(ColorProfile.COLOR_IMPAIREMENT);
             }
         });
-
+        mDemoProfileMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectColorProfile(ColorProfile.MAIN);
+                updateColorProfile(ColorProfile.MAIN);
+            }
+        });
+        mDemoProfileContrastImpairement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectColorProfile(ColorProfile.COLOR_IMPAIRMENT_AND_CONTRAST);
+                updateColorProfile(ColorProfile.COLOR_IMPAIRMENT_AND_CONTRAST);
+            }
+        });
+        mDemoProfileContrast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectColorProfile(ColorProfile.CONTRAST);
+                updateColorProfile(ColorProfile.CONTRAST);
+            }
+        });
     }
 
     private void selectColorProfile(ColorProfile colorProfile) {
         mRadioColorAuto.setChecked(false);
-        mProfileMain.setChecked(false);
-        mProfileContrast.setChecked(false);
-        mProfileImpairement.setChecked(false);
-        mProfileContrastImpairement.setChecked(false);
+        mDemoProfileMain.select(false);
+        mDemoProfileContrast.select(false);
+        mDemoProfileImpairement.select(false);
+        mDemoProfileContrastImpairement.select(false);
 
         switch (colorProfile) {
             case AUTO:
                 mRadioColorAuto.setChecked(true);
                 break;
             case MAIN:
-                mProfileMain.setChecked(true);
+                mDemoProfileMain.select(true);
                 break;
             case CONTRAST:
-                mProfileContrast.setChecked(true);
+                mDemoProfileContrast.select(true);
                 break;
             case COLOR_IMPAIREMENT:
-                mProfileImpairement.setChecked(true);
+                mDemoProfileImpairement.select(true);
                 break;
             case COLOR_IMPAIRMENT_AND_CONTRAST:
-                mProfileContrastImpairement.setChecked(true);
+                mDemoProfileContrastImpairement.select(true);
                 break;
         }
     }

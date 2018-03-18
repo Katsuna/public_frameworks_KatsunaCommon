@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.katsuna.commons.controls.DemoProfileV2 xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/border_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="3dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/container_card_demo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:gravity="center"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="2dp">
+
+        <RelativeLayout
+            android:id="@+id/container_card_demo_inner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:background="@color/common_grey50">
+
+            <ImageView
+                android:id="@+id/call_type_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:gravity="top"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:id="@+id/call_details_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/call_type_image"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/text_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/common_demo_text_bg" />
+
+                <View
+                    android:id="@+id/text_2"
+                    android:layout_width="126dp"
+                    android:layout_height="16dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/common_demo_text_bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/call_buttons_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/call_details_container"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_black12" />
+
+                <RelativeLayout
+                    android:id="@+id/action_buttons_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp">
+
+                    <Button
+                        android:id="@+id/call_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="8dp"
+                        android:minWidth="@dimen/common_button_min_width"
+                        android:paddingEnd="14dp"
+                        android:paddingStart="14dp"
+                        android:text="@string/common_call"
+                        android:textColor="@color/common_white" />
+
+                    <Button
+                        android:id="@+id/message_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toStartOf="@id/call_button"
+                        android:background="@color/common_white"
+                        android:minWidth="@dimen/common_button_min_width"
+                        android:paddingEnd="14dp"
+                        android:paddingStart="14dp"
+                        android:text="@string/common_message" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</com.katsuna.commons.controls.DemoProfileV2>
+
