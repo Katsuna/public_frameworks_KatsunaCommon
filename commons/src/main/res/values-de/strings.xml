@@ -170,4 +170,8 @@ Benutzerfreundlichkeit -Einstellungen</string>
   <string name="common_cancel">Abbrechen</string>
   <!-- Common "Missing Permissions" warning text -->
   <string name="common_go_to_settings_permissions">Berechtigungen fehlen. Bitte gehen Sie zu den Einstellungen der Anwendung und erteilen Sie die erforderlichen Berechtigungen.</string>
+  <!-- Text button besides the FAB shown after a certain period of inactivity in the main screen -->
+  <string name="add_contact">Kontakt hinzufügen</string>
+  <!-- Confirmation message after a successful contacts deletion -->
+  <string name="contacts_deleted">Löschung erfolgreich.</string>
 </resources>

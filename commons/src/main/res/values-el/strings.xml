@@ -174,4 +174,8 @@
   <string name="common_cancel">Ακύρωση</string>
   <!-- Common "Missing Permissions" warning text -->
   <string name="common_go_to_settings_permissions">Ελλιπή δικαιώματα. Παρακαλώ πηγαίνετε στις ρυθμίσεις της εφαρμογής και παραχωρήστε τα δικαιώματα που απαιτούνται.</string>
+  <!-- Text button besides the FAB shown after a certain period of inactivity in the main screen -->
+  <string name="add_contact">Προσθήκη επαφής</string>
+  <!-- Confirmation message after a successful contacts deletion -->
+  <string name="contacts_deleted">Διαγραφή επιτυχής.</string>
 </resources>

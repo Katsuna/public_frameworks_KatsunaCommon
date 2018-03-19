@@ -153,4 +153,8 @@ se l\'anima non te li mette contro.    </string>
   <string name="common_cancel">Annulla</string>
   <!-- Common "Missing Permissions" warning text -->
   <string name="common_go_to_settings_permissions">Mancano le autorizzazioni. Vai alle impostazioni dell\'applicazione e concedi le autorizzazioni necessarie.</string>
+  <!-- Text button besides the FAB shown after a certain period of inactivity in the main screen -->
+  <string name="add_contact">Aggiungi contatto</string>
+  <!-- Confirmation message after a successful contacts deletion -->
+  <string name="contacts_deleted">Eliminazione avvenuta con successo.</string>
 </resources>

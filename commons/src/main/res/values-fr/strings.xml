@@ -180,4 +180,8 @@ si ton cœur ne les dresse pas devant toi.</string>
   <string name="common_cancel">Annuler</string>
   <!-- Common "Missing Permissions" warning text -->
   <string name="common_go_to_settings_permissions">Les autorisations sont manquantes. Veuillez accéder aux paramètres de l\'application et accorder les autorisations nécessaires.</string>
+  <!-- Text button besides the FAB shown after a certain period of inactivity in the main screen -->
+  <string name="add_contact">Ajouter un contact</string>
+  <!-- Confirmation message after a successful contacts deletion -->
+  <string name="contacts_deleted">Suppression réussie.</string>
 </resources>

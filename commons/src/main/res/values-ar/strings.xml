@@ -152,4 +152,8 @@
   <string name="common_cancel">الغاء</string>
   <!-- Common "Missing Permissions" warning text -->
   <string name="common_go_to_settings_permissions">الأذونات مفقودة. الرجاء الانتقال إلى إعدادات التطبيق ومنح الأذونات اللازمة.</string>
+  <!-- Text button besides the FAB shown after a certain period of inactivity in the main screen -->
+  <string name="add_contact">اضافة شخص</string>
+  <!-- Confirmation message after a successful contacts deletion -->
+  <string name="contacts_deleted">تم الحذف.</string>
 </resources>
