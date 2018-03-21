@@ -195,6 +195,8 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         deselectItem();
     }
 
+    private long lastScrollChangeEvent = System.currentTimeMillis();
+
     private void initControls() {
         setupToolbar();
         mLettersList = (RecyclerView) findViewById(R.id.letters_list);
@@ -206,6 +208,13 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
             public void onScrollChange(View view, int i, int i1, int i2, int i3) {
                 // findPosition to highlight
 
+                long now = System.currentTimeMillis();
+                if (now - lastScrollChangeEvent < 100) {
+                    return;
+                } else {
+                    lastScrollChangeEvent = now;
+                }
+
                 LinearLayoutManager lm = ((LinearLayoutManager) mRecyclerView.getLayoutManager());
                 int firstVisibleItemPosition = lm.findFirstVisibleItemPosition();
                 int lastVisibleItemPosition = lm.findLastVisibleItemPosition();
@@ -215,13 +224,18 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
                     Rect outR = new Rect();
                     firstVisibleView.getHitRect(outR);
 
-                    int positionToHighlight;
+                    final int positionToHighlight;
                     if (outR.bottom - 300 < 0) {
                         positionToHighlight = firstVisibleItemPosition + 1;
 
                         // order highlight
                         if (mAdapter != null) {
-                            mAdapter.highlightContactsGroup(positionToHighlight);
+                            mRecyclerView.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mAdapter.highlightContactsGroup(positionToHighlight);
+                                }
+                            });
                         }
                     }
                 }
@@ -704,6 +718,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void callNumber(String number) {
         Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
