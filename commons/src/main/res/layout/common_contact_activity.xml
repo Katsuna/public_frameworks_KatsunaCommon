@@ -77,6 +77,35 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/dial_buttons_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/dial_button"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/common_dial"
+                        android:textAllCaps="false"
+                        android:textColor="@color/common_grey50"
+                        android:textSize="18sp"
+                        android:visibility="gone" />
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/dial_fab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/common_fab_vertical_margin"
+                        android:layout_marginEnd="@dimen/common_fab_margin"
+                        android:layout_marginStart="@dimen/common_fab_margin"
+                        android:layout_marginTop="@dimen/common_fab_vertical_margin"
+                        android:src="@drawable/common_ic_dialpad_grey50_24dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/new_contact_buttons_container"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -27,7 +27,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -261,21 +260,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         });
         mFabContainer = (LinearLayout) findViewById(R.id.fab_container);
 
-        mPopupButton2 = (Button) findViewById(R.id.new_contact_button);
-        mPopupButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createContact();
-            }
-        });
-
-        mPopupButton1 = (Button) findViewById(R.id.search_button);
-        mPopupButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showFabToolbar(true);
-            }
-        });
+        setupPopupButtons();
 
         mFabToolbar = findViewById(R.id.fab_toolbar);
         mNextButton = (ImageButton) findViewById(R.id.next_page_button);
@@ -341,6 +326,8 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         mViewPagerContainer = findViewById(R.id.viewpager_container);
         mFabToolbarContainer = (FrameLayout) findViewById(R.id.fab_toolbar_container);
     }
+
+    protected abstract void setupPopupButtons();
 
     protected abstract void setupToolbar();
 
