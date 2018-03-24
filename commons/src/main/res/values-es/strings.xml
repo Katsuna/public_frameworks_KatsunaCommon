@@ -86,7 +86,7 @@
   <!-- Text for more button -->
   <string name="common_more">Más</string>
   <!-- Text for less button -->
-  <string name="common_less">Less</string>
+  <string name="common_less">Menos</string>
   <!-- Used for optical size radio buttons. Used at Settings and SetupWizard. -->
   <!-- optical size setting label -->
   <string name="common_size">Tamaño</string>
@@ -144,7 +144,7 @@
   <!-- "Keyboard" Katsuna app name (use the same translation as used in the name of the Keyboard app) -->
   <string name="common_katsuna_keyboard_app">Teclado</string>
   <!-- "Homescreen widget" Katsuna app name -->
-  <string name="common_katsuna_homescreen_widget">Katsuna Homescreen widget</string>
+  <string name="common_katsuna_homescreen_widget">Widget Katsuna de pantalla principal</string>
   <!-- Common "Download" button title -->
   <string name="common_download">Descargar</string>
   <!-- Common "Download x app" dialog text -->
@@ -158,25 +158,25 @@
   <!-- Common "Missing Permissions" warning text -->
   <string name="common_go_to_settings_permissions">Faltan permisos. Por favor, vaya a configuración de la aplicación y conceda los permisos necesarios.</string>
   <!-- Call Notifications descriptions -->
-  <string name="common_call_notification_title">Call Notification</string>
-  <string name="common_call_notification_call">Call back</string>
-  <string name="common_call_notification_cancel">Hide</string>
-  <string name="common_call_notification_text">You had a missed call from</string>
+  <string name="common_call_notification_title">Notificacion de Llamada</string>
+  <string name="common_call_notification_call">Devolver llamada</string>
+  <string name="common_call_notification_cancel">Ocultar</string>
+  <string name="common_call_notification_text">Tienes una llamada perdida de</string>
   <!-- Text Notifications descriptions -->
-  <string name="common_text_notification_title">The weather is good</string>
-  <string name="common_favorites">Favorites</string>
-  <string name="common_create_contact">Create contact</string>
-  <string name="common_edit_contact">Edit Contact</string>
-  <string name="common_delete_contact">Delete Contact</string>
-  <string name="common_delete_contact_approval">Are you sure you want to delete the contact: %1$s ?</string>
-  <string name="common_save">Save</string>
+  <string name="common_text_notification_title">El tiempo es bueno</string>
+  <string name="common_favorites">Favoritos</string>
+  <string name="common_create_contact">Crear contacto</string>
+  <string name="common_edit_contact">Editar contacto</string>
+  <string name="common_delete_contact">Eliminar contacto</string>
+  <string name="common_delete_contact_approval">¿Está seguro que desea eliminar el contacto: %1$s?</string>
+  <string name="common_save">Guardar</string>
   <!-- Message shown when the user tries to open a katsuna app that is missing -->
-  <string name="common_missing_app">You need to install the %1$s application.</string>
-  <string name="common_add_contact">Add New Contact</string>
-  <string name="common_add_to_existing_contact">Add to Existing Contact</string>
-  <string name="common_missing_fields">Missing Fields</string>
+  <string name="common_missing_app">Es necesario instalar la aplicación %1$s.</string>
+  <string name="common_add_contact">Agregar Nuevo Contacto</string>
+  <string name="common_add_to_existing_contact">Agregar a Contacto Existente</string>
+  <string name="common_missing_fields">Campos Incompletos</string>
   <!-- Text button besides the FAB shown after a certain period of inactivity in the main screen -->
   <string name="add_contact">Agregar contacto</string>
   <!-- Confirmation message after a successful contacts deletion -->
-  <string name="contacts_deleted">Se eliminaron los contactos.</string>
+  <string name="contacts_deleted">Borrado completado.</string>
 </resources>

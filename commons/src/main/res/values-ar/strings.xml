@@ -176,7 +176,7 @@
   <string name="common_add_to_existing_contact">Add to Existing Contact</string>
   <string name="common_missing_fields">Missing Fields</string>
   <!-- Text button besides the FAB shown after a certain period of inactivity in the main screen -->
-  <string name="add_contact">اضافة شخص</string>
+  <string name="add_contact">Add contact</string>
   <!-- Confirmation message after a successful contacts deletion -->
-  <string name="contacts_deleted">تم الحذف.</string>
+  <string name="contacts_deleted">Deletion succeeded.</string>
 </resources>
