@@ -202,46 +202,6 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
 
         mRecyclerView = (RecyclerView) findViewById(R.id.contacts_list);
         mRecyclerView.setItemAnimator(null);
-        mRecyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
-                // findPosition to highlight
-
-                long now = System.currentTimeMillis();
-                if (now - lastScrollChangeEvent < 100) {
-                    return;
-                } else {
-                    lastScrollChangeEvent = now;
-                }
-
-                LinearLayoutManager lm = ((LinearLayoutManager) mRecyclerView.getLayoutManager());
-                int firstVisibleItemPosition = lm.findFirstVisibleItemPosition();
-                int lastVisibleItemPosition = lm.findLastVisibleItemPosition();
-
-                if (firstVisibleItemPosition < lastVisibleItemPosition) {
-                    View firstVisibleView = lm.findViewByPosition(firstVisibleItemPosition);
-                    Rect outR = new Rect();
-                    firstVisibleView.getHitRect(outR);
-
-                    final int positionToHighlight;
-                    if (outR.bottom - 300 < 0) {
-                        positionToHighlight = firstVisibleItemPosition + 1;
-
-                        // order highlight
-                        if (mAdapter != null) {
-                            mRecyclerView.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mAdapter.highlightContactsGroup(positionToHighlight);
-                                }
-                            });
-                        }
-                    }
-                }
-            }
-        });
-
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mLastTouchTimestamp = System.currentTimeMillis();
