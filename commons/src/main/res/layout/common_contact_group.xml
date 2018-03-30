@@ -18,11 +18,12 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="2dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/contacts_group_container_card_inner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/common_grey50">
+            android:layout_height="wrap_content"
+            android:background="@color/common_grey50"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/star_container"
@@ -68,10 +69,9 @@
                 android:id="@+id/contacts_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/star_container"
-                app:layoutManager="LinearLayoutManager" />
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <View
             android:id="@+id/card_handle"

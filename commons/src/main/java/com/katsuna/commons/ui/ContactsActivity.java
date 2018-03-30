@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -194,14 +193,15 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         deselectItem();
     }
 
-    private long lastScrollChangeEvent = System.currentTimeMillis();
-
     private void initControls() {
         setupToolbar();
         mLettersList = (RecyclerView) findViewById(R.id.letters_list);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.contacts_list);
         mRecyclerView.setItemAnimator(null);
+
+        mRecyclerView.setItemViewCacheSize(100);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mLastTouchTimestamp = System.currentTimeMillis();

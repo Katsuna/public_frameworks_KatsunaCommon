@@ -3,6 +3,7 @@ package com.katsuna.commons.ui.adapters.holders;
 import android.content.res.ColorStateList;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -46,6 +47,11 @@ public class ContactsGroupViewHolder extends RecyclerView.ViewHolder {
         mStarIcon = (ImageView) view.findViewById(R.id.star_icon);
         mStarDesc = (TextView) view.findViewById(R.id.star_desc);
         mContactsList = (RecyclerView) view.findViewById(R.id.contacts_list);
+        mContactsList.setItemViewCacheSize(1000);
+
+        LinearLayoutManager mgr = (LinearLayoutManager) mContactsList.getLayoutManager();
+        mgr.setItemPrefetchEnabled(true);
+        mgr.setInitialPrefetchItemCount(1000);
 
         mContactsGroupContainerCard = (CardView) view.findViewById(R.id.contacts_group_container_card);
         mOpacityLayer = view.findViewById(R.id.opacity_layer);
