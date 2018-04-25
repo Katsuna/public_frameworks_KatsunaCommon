@@ -33,7 +33,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:textColor="@color/common_black87" />
+            android:textColor="@color/common_white87" />
 
     </LinearLayout>
 </LinearLayout>

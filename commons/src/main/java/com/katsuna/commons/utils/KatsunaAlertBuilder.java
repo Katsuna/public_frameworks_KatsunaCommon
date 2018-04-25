@@ -214,7 +214,19 @@ public class KatsunaAlertBuilder {
                     });
                 }
 
+                boolean selectTv = false;
                 if (item.equals(mSelectedItem)) {
+                    selectTv = true;
+                } else {
+                      if (mScrollViewItemsLabels != null
+                              && mScrollViewItemsLabels.size() > itemIndex)  {
+                          if (mScrollViewItemsLabels.get(itemIndex).equals(mSelectedItem)) {
+                              selectTv = true;
+                          }
+                      }
+                }
+
+                if (selectTv) {
                     tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
                     selectedItem = tv;
                 }

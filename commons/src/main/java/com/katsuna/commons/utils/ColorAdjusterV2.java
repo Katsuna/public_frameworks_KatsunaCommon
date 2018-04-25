@@ -1,11 +1,13 @@
 package com.katsuna.commons.utils;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -82,5 +84,10 @@ public class ColorAdjusterV2 {
         }
     }
 
+    public static void adjustEditText(Context context, ColorProfile profile, EditText editText) {
+        int color = ColorCalcV2.getColor(context, ColorProfileKeyV2.PRIMARY_COLOR_2, profile);
+
+        editText.setBackgroundTintList(ColorStateList.valueOf(color));
+    }
 
 }
