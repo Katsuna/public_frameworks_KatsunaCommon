@@ -22,4 +22,11 @@
             android:title="@string/common_privacy_policy" />
     </group>
 
+    <group android:id="@+id/grp4" android:checkableBehavior="none">
+        <item
+            android:id="@+id/drawer_terms"
+            android:icon="@drawable/common_ic_description_black_24dp"
+            android:title="@string/common_terms_of_use" />
+    </group>
+
 </menu>
