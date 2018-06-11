@@ -99,4 +99,12 @@
 
     <dimen name="common_contact_item_height">50dp</dimen>
     <!-- eof profile dimens -->
+
+    <!-- toggle dimens
+         used in quick settings, settings -->
+    <dimen name="common_toggle_indicator_width">24dp</dimen>
+    <dimen name="common_toggle_indicator_height">4dp</dimen>
+    <dimen name="common_toggle_radius">2dp</dimen>
+    <dimen name="common_toggle_stroke">1dp</dimen>
+    <dimen name="common_toggle_width">66dp</dimen>
 </resources>
