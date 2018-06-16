@@ -107,4 +107,10 @@
     <dimen name="common_toggle_radius">2dp</dimen>
     <dimen name="common_toggle_stroke">1dp</dimen>
     <dimen name="common_toggle_width">66dp</dimen>
+
+    <!-- seekbar dimens
+         used in quick settings, settings -->
+    <dimen name="common_seekbar_progress_height">3dp</dimen>
+    <dimen name="common_seekbar_thumb_size">32dp</dimen>
+    <dimen name="common_seekbar_thumb_inset">5dp</dimen>
 </resources>

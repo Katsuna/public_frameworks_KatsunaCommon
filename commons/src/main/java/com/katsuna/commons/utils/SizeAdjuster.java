@@ -2,7 +2,6 @@ package com.katsuna.commons.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,22 +18,15 @@ import com.katsuna.commons.entities.SizeProfile;
 import com.katsuna.commons.entities.SizeProfileKey;
 import com.katsuna.commons.entities.UserProfile;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class SizeAdjuster {
+public class SizeAdjuster extends KatsunaAdjuster {
 
     public static void adjustText(Context context, TextView textView, OpticalParams opticalParams) {
         // set text size
         if (opticalParams.getTextSize() != 0) {
             float textSize = context.getResources().getDimension(opticalParams.getTextSize());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-        }
-
-        // set text color
-        if (opticalParams.getTextColor() != 0) {
-            int textColor = ContextCompat.getColor(context, opticalParams.getTextColor());
-            textView.setTextColor(textColor);
         }
 
         // set font family
@@ -87,7 +79,7 @@ public class SizeAdjuster {
         OpticalParams iconParams = SizeCalc.getOpticalParams(SizeProfileKey.ICON,
                 profile);
 
-        List<View> katsunaImageViews = getKatsunaImageViews(viewGroup);
+        List<KatsunaImageView> katsunaImageViews = getKatsunaImageViews(viewGroup);
         for (View v : katsunaImageViews) {
             SizeAdjuster.adjustIcon(context, v, iconParams);
         }
@@ -95,122 +87,37 @@ public class SizeAdjuster {
         // adjust all text views
         List<KatsunaTextView> katsunaTextViews = getKatsunaTextViews(viewGroup);
         for (KatsunaTextView tv : katsunaTextViews) {
-            OpticalParams tvParams = SizeCalc.getOpticalParams(
-                    tv.getSizeProfileKey(), profile);
+            SizeProfileKey key = tv.getSizeProfileKey();
+            if (key == null) continue;
+            OpticalParams tvParams = SizeCalc.getOpticalParams(key, profile);
             SizeAdjuster.adjustText(context, tv, tvParams);
         }
 
         // adjust all buttons
         List<KatsunaButton> buttons = getKatsunaButtons(viewGroup);
         for (KatsunaButton button : buttons) {
-            OpticalParams buttonParams = SizeCalc.getOpticalParams(
-                    button.getSizeProfileKey(), profile);
+            SizeProfileKey key = button.getSizeProfileKey();
+            if (key == null) continue;
+            OpticalParams buttonParams = SizeCalc.getOpticalParams(key, profile);
             SizeAdjuster.adjustText(context, button, buttonParams);
         }
 
         // adjust all toggle buttons
         List<KatsunaToggleButton> toggleButtons = getKatsunaToggleButtons(viewGroup);
         for (KatsunaToggleButton button : toggleButtons) {
-            OpticalParams tbParams = SizeCalc.getOpticalParams(
-                    button.getSizeProfileKey(), profile);
+            SizeProfileKey key = button.getSizeProfileKey();
+            if (key == null) continue;
+            OpticalParams tbParams = SizeCalc.getOpticalParams(key, profile);
             SizeAdjuster.adjustText(context, button, tbParams);
         }
 
         // adjust all editTexts
         List<KatsunaEditText> editTexts = getKatsunaEditTexts(viewGroup);
         for (KatsunaEditText editText : editTexts) {
-            OpticalParams editTextParams = SizeCalc.getOpticalParams(
-                    editText.getSizeProfileKey(), profile);
+            SizeProfileKey key = editText.getSizeProfileKey();
+            if (key == null) continue;
+            OpticalParams editTextParams = SizeCalc.getOpticalParams(key, profile);
             SizeAdjuster.adjustText(context, editText, editTextParams);
         }
-    }
-
-    private static List<View> getKatsunaImageViews(ViewGroup viewGroup) {
-        ArrayList<View> views = new ArrayList<>();
-
-        final int childcount = viewGroup.getChildCount();
-        for (int i = 0; i < childcount; i++) {
-            View v = viewGroup.getChildAt(i);
-            if (v instanceof ViewGroup) {
-                views.addAll(getKatsunaImageViews((ViewGroup) v));
-            } else if (v instanceof KatsunaImageView) {
-                if (((KatsunaImageView) v).isSizeProfileEnabled()) {
-                    views.add(v);
-                }
-            }
-        }
-        return views;
-    }
-
-    private static List<KatsunaTextView> getKatsunaTextViews(ViewGroup viewGroup) {
-        ArrayList<KatsunaTextView> views = new ArrayList<>();
-
-        final int childcount = viewGroup.getChildCount();
-        for (int i = 0; i < childcount; i++) {
-            View v = viewGroup.getChildAt(i);
-            if (v instanceof ViewGroup) {
-                views.addAll(getKatsunaTextViews((ViewGroup) v));
-            } else if (v instanceof KatsunaTextView) {
-                KatsunaTextView katsunaTextView = (KatsunaTextView) v;
-                if (katsunaTextView.isSizeProfileEnabled()) {
-                    views.add(katsunaTextView);
-                }
-            }
-        }
-        return views;
-    }
-
-    private static List<KatsunaButton> getKatsunaButtons(ViewGroup viewGroup) {
-        ArrayList<KatsunaButton> views = new ArrayList<>();
-
-        final int childcount = viewGroup.getChildCount();
-        for (int i = 0; i < childcount; i++) {
-            View v = viewGroup.getChildAt(i);
-            if (v instanceof ViewGroup) {
-                views.addAll(getKatsunaButtons((ViewGroup) v));
-            } else if (v instanceof KatsunaButton) {
-                KatsunaButton button = (KatsunaButton) v;
-                if (button.isSizeProfileEnabled()) {
-                    views.add(button);
-                }
-            }
-        }
-        return views;
-    }
-
-    private static List<KatsunaToggleButton> getKatsunaToggleButtons(ViewGroup viewGroup) {
-        ArrayList<KatsunaToggleButton> views = new ArrayList<>();
-
-        final int childcount = viewGroup.getChildCount();
-        for (int i = 0; i < childcount; i++) {
-            View v = viewGroup.getChildAt(i);
-            if (v instanceof ViewGroup) {
-                views.addAll(getKatsunaToggleButtons((ViewGroup) v));
-            } else if (v instanceof KatsunaToggleButton) {
-                KatsunaToggleButton toggleButton = (KatsunaToggleButton) v;
-                if (toggleButton.isSizeProfileEnabled()) {
-                    views.add(toggleButton);
-                }
-            }
-        }
-        return views;
-    }
-
-    private static List<KatsunaEditText> getKatsunaEditTexts(ViewGroup viewGroup) {
-        ArrayList<KatsunaEditText> views = new ArrayList<>();
-
-        final int childcount = viewGroup.getChildCount();
-        for (int i = 0; i < childcount; i++) {
-            View v = viewGroup.getChildAt(i);
-            if (v instanceof ViewGroup) {
-                views.addAll(getKatsunaEditTexts((ViewGroup) v));
-            } else if (v instanceof KatsunaEditText) {
-                KatsunaEditText editText = (KatsunaEditText) v;
-                if (editText.isSizeProfileEnabled()) {
-                    views.add(editText);
-                }
-            }
-        }
-        return views;
     }
 }

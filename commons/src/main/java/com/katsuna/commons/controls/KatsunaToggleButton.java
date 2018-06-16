@@ -16,11 +16,11 @@ public class KatsunaToggleButton extends ToggleButton implements IKatsunaControl
     public KatsunaToggleButton(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.KatsunaImageView);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.KatsunaToggleButton);
         mSizeProfileEnabled =
                 array.getBoolean(R.styleable.KatsunaToggleButton_sizeProfileEnabled, true);
         int sizeProfileKeyIndex =
-                array.getInt(R.styleable.KatsunaToggleButton_sizeProfileKey, 0);
+                array.getInt(R.styleable.KatsunaToggleButton_sizeProfileKey, -1);
         mSizeProfileKey = SizeProfileKey.fromInteger(sizeProfileKeyIndex);
 
         array.recycle();

@@ -12,9 +12,20 @@
         <enum name="ICON" value="6" />
     </attr>
 
+    <attr name="colorProfileKey">
+        <enum name="PRIMARY_COLOR_1" value="1" />
+        <enum name="PRIMARY_COLOR_2" value="2" />
+        <enum name="SECONDARY_COLOR_1" value="3" />
+        <enum name="SECONDARY_COLOR_2" value="4" />
+        <enum name="SECONDARY_COLOR_3" value="5" />
+        <enum name="PRIMARY_GREY_1" value="6" />
+        <enum name="SECONDARY_GREY_2" value="7" />
+    </attr>
+
     <declare-styleable name="KatsunaImageView">
         <attr name="sizeProfileEnabled" />
         <attr name="sizeProfileKey" />
+        <attr name="colorProfileKey" />
     </declare-styleable>
 
     <declare-styleable name="KatsunaTextView">

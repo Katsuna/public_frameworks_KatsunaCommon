@@ -299,4 +299,14 @@
     <!-- Confirmation message after a successful contacts deletion -->
     <string name="contacts_deleted">Deletion succeeded.</string>
 
+    <!-- Settings and Quick settings controls -->
+    <string name="common_brightness_dark">Dark</string>
+
+    <string name="common_brightness_light">Light</string>
+
+    <string name="common_volume_silent">Silent</string>
+
+    <string name="common_volume_loud">Loud</string>
+
+
 </resources>

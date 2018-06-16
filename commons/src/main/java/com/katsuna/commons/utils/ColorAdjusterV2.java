@@ -6,17 +6,21 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.katsuna.commons.R;
+import com.katsuna.commons.controls.KatsunaImageView;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.UserProfile;
 
-public class ColorAdjusterV2 {
+import java.util.List;
+
+public class ColorAdjusterV2 extends KatsunaAdjuster {
 
     public static void adjustButtons(Context context, UserProfile profile,
                                      Button primaryButton, Button secondaryButton) {
@@ -88,6 +92,24 @@ public class ColorAdjusterV2 {
         int color = ColorCalcV2.getColor(context, ColorProfileKeyV2.PRIMARY_COLOR_2, profile);
 
         editText.setBackgroundTintList(ColorStateList.valueOf(color));
+    }
+
+    public static void applyColorProfile(Context context, ViewGroup viewGroup, UserProfile profile) {
+        List<KatsunaImageView> katsunaImageViews = getKatsunaImageViews(viewGroup);
+        for (KatsunaImageView v : katsunaImageViews) {
+            adjustImageView(context, v, profile);
+        }
+    }
+
+    private static void adjustImageView(Context context, KatsunaImageView v, UserProfile profile) {
+        // adjust all katsuna icons
+        ColorProfileKeyV2 key = v.getColorProfileKeyV2();
+        if (key == null) {
+            return;
+        }
+
+        int color = ColorCalcV2.getColor(context, key, profile.colorProfile);
+        DrawUtils.setColor(v.getDrawable(), color);
     }
 
 }
