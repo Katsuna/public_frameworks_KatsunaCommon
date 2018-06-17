@@ -2,13 +2,13 @@ package com.katsuna.commons.controls;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
+import android.widget.EditText;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.entities.SizeProfileKey;
 
-public class KatsunaEditText extends AppCompatEditText implements IKatsunaControl {
+public class KatsunaEditText extends EditText implements IKatsunaControl {
 
     private final boolean mSizeProfileEnabled;
     private final SizeProfileKey mSizeProfileKey;
