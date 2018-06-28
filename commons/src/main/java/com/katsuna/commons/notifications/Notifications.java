@@ -22,6 +22,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class Notifications {
 
 
+    public static String KATSUNA_NOTIFICATION = "katsuna_notification";
     public static void callNotification(Context context , String text, String number)
     {
 
@@ -52,7 +53,7 @@ public class Notifications {
 //                    .addAction(remove)
 //                    .build();
 
-            Notification n  = new NotificationCompat.Builder(context)
+            Notification n  = new NotificationCompat.Builder(context,KATSUNA_NOTIFICATION)
                     .setSmallIcon(R.drawable.common_ic_call_black_24dp)
                     .setCustomBigContentView(getCallNotificationView(context, number, call, dismissIntent)).build();
 
@@ -86,7 +87,7 @@ public class Notifications {
 //            notificationManager.notify(notificationId, noti);
 
 
-            Notification n  = new NotificationCompat.Builder(context)
+            Notification n  = new NotificationCompat.Builder(context, KATSUNA_NOTIFICATION)
                     .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                     .setCustomBigContentView(getTextNotificationView(context, dismissIntent)).build();
 
