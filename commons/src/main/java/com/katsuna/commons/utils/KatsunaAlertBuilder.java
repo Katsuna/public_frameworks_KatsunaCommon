@@ -54,6 +54,9 @@ public class KatsunaAlertBuilder {
     private TextView mKatsunaTitle;
     private String mTextInput;
 
+    private String mCancelButtonText;
+    private String mOkButtonText;
+
     public KatsunaAlertBuilder(Context context) {
         mContext = context;
     }
@@ -92,7 +95,12 @@ public class KatsunaAlertBuilder {
 
         mCancelButton = (Button) mView.findViewById(R.id.alert_cancel_button);
         if (mCancelButton != null) {
-            mCancelButton.setText(android.R.string.cancel);
+            if (mCancelButtonText != null) {
+                mCancelButton.setText(mCancelButtonText);
+            } else {
+                mCancelButton.setText(android.R.string.cancel);
+            }
+
             mCancelButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -374,6 +382,10 @@ public class KatsunaAlertBuilder {
 
     public void setText(String text) {
         mTextInput = text;
+    }
+
+    public void setCancelButtonText(String cancelButtonText) {
+        mCancelButtonText = cancelButtonText;
     }
 
     public interface KatsunaAlertText {
