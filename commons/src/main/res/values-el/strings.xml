@@ -15,6 +15,8 @@
   <string name="common_info">Πληροφορίες</string>
   <!-- Title for the privacy policy item in every app's navigation drawer -->
   <string name="common_privacy_policy">Πολιτική προστασίας προσωπικών δεδομένων</string>
+  <!-- Title for the terms of use item in every app's navigation drawer -->
+  <string name="common_terms_of_use">Terms of use</string>
   <!-- Title for the Info activity -->
   <string name="common_app_info">Πληροφορίες εφαρμογής</string>
   <!-- Title for the "open" button -->
@@ -97,7 +99,7 @@
   <!-- hand setting left label -->
   <string name="common_hand_right">Δεξιό</string>
   <!-- Label for Gender setting -->
-  <string name="common_gender">Φύλλο</string>
+  <string name="common_gender">Φύλο</string>
   <!-- Hint for other Gender detail setting -->
   <string name="common_gender_hint">Διευκρινίστε</string>
   <!-- Male gender -->
@@ -201,4 +203,9 @@
   <string name="add_contact">Προσθήκη επαφής</string>
   <!-- Confirmation message after a successful contacts deletion -->
   <string name="contacts_deleted">Διαγραφή επιτυχής.</string>
+  <!-- Settings and Quick settings controls -->
+  <string name="common_brightness_dark">Dark</string>
+  <string name="common_brightness_light">Light</string>
+  <string name="common_volume_silent">Silent</string>
+  <string name="common_volume_loud">Loud</string>
 </resources>
