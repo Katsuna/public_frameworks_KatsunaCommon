@@ -39,6 +39,8 @@
   <string name="common_search_contacts">Búsqueda de contactos</string>
   <!-- Search result when no contacts are found, in every app -->
   <string name="common_no_contacts">No se encontraron contactos.</string>
+  <!-- Search result when no contact is found, in every app -->
+  <string name="common_no_contact">No contact found.</string>
   <!-- KatsunaServices profile related strings -->
   <skip></skip>
   <!-- Title of the accessibility profile selection setting -->
