@@ -181,4 +181,10 @@ public class Contact implements Comparable<Contact>, Serializable {
     public void setDescription(Description description) {
         this.description = description;
     }
+
+    public boolean isEmpty() {
+        // we assume that a contact is empty if there is no name assigned to it
+        return name == null;
+
+    }
 }
