@@ -493,7 +493,9 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
                     Log.d(TAG, "call contact permission granted");
-                    callContact(mSelectedContact);
+                    if (mSelectedContact != null) {
+                        callContact(mSelectedContact);
+                    }
                 }
                 break;
             case REQUEST_CODE_WRITE_CONTACTS_PERMISSION:
