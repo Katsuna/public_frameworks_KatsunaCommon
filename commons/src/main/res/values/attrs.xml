@@ -48,4 +48,8 @@
         <attr name="sizeProfileKey" />
     </declare-styleable>
 
+    <declare-styleable name="KatsunaNavigationView">
+        <attr name="customMenu" format="reference" />
+    </declare-styleable>
+
 </resources>

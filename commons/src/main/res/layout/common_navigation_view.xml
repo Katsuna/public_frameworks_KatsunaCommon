@@ -14,6 +14,7 @@
         android:background="@drawable/app_menu_bg"
         android:fitsSystemWindows="true"
         android:theme="@style/CommonDrawer"
+        app:elevation="0dp"
         app:itemTextColor="@color/common_black54"
         app:menu="@menu/common_app_menu" />
 
