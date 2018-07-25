@@ -24,9 +24,10 @@ public class KatsunaUtils {
     public static final String KATSUNA_CALLS_PACKAGE = "com.katsuna.calls";
     public static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
     public static final String KATSUNA_HOMESCREEN_WIDGET_PACKAGE = "com.katsuna.widgets";
+    public static final String KATSUNA_UPDATER = "com.katsuna.updater";
 
     public static boolean katsunaOsDetected(Context context) {
-        return DeviceUtils.isPackageInstalled(context, KATSUNA_SERVICES_PACKAGE);
+        return DeviceUtils.isPackageInstalled(context, KATSUNA_UPDATER);
     }
 
     public static List<KatsunaApp> getKatsunaApps(Context context) {
