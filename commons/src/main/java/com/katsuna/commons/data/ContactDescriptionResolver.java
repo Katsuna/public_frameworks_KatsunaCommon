@@ -6,7 +6,9 @@ import com.katsuna.commons.domain.Contact;
 import com.katsuna.commons.domain.Description;
 import com.katsuna.commons.providers.ContactProvider;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ContactDescriptionResolver {
 
@@ -30,4 +32,20 @@ public class ContactDescriptionResolver {
 
         return output;
     }
+
+    public static void getDescriptions(Context context, Contact[] contacts) {
+        ContactProvider provider = new ContactProvider(context);
+        HashMap<Long, Description> map = provider.getContactsDescriptions(contacts);
+
+        for (Map.Entry<Long, Description> entry : map.entrySet()) {
+            Long key = entry.getKey();
+            Description value = entry.getValue();
+            if (value == null) {
+                ContactsInfoCache.DescriptionsMap.remove(key);
+            } else {
+                ContactsInfoCache.DescriptionsMap.put(key, value.getDescription());
+            }
+        }
+    }
+
 }

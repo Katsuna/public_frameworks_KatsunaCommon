@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.katsuna.commons.domain.Address;
@@ -30,6 +31,8 @@ import com.katsuna.commons.utils.ImageHelper;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ContactProvider {
@@ -279,6 +282,50 @@ public class ContactProvider {
                         description.setId(cursor.getString(ContactNoteQuery._ID));
                         description.setDescription(cursor.getString(ContactNoteQuery.NOTE));
                         descriptions.add(description);
+                    } while (cursor.moveToNext());
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+
+        return descriptions;
+    }
+
+    // fetch only one description per contact
+    public HashMap<Long, Description> getContactsDescriptions(Contact[] contacts) {
+        HashMap<Long, Description> descriptions = new LinkedHashMap<>();
+
+        List<String> selectionArgs = new ArrayList<>();
+        List<String> parameters = new ArrayList<>();
+        for (Contact contact: contacts) {
+            selectionArgs.add(String.valueOf(contact.getId()));
+            parameters.add("?");
+        }
+
+        // add MIMETYPE
+        selectionArgs.add(ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE);
+        parameters.add("?");
+
+        Uri baseUri = ContactsContract.Data.CONTENT_URI;
+        String selection = ContactsContract.RawContacts.CONTACT_ID
+                + " in (" + TextUtils.join(",", parameters) + ")"
+                + " AND " + ContactsContract.Data.MIMETYPE + " = ? ";
+
+        String[] selectionParameters = selectionArgs.toArray(new String[selectionArgs.size()]);
+
+        Cursor cursor = cr.query(baseUri, ContactNoteQuery._PROJECTION, selection, selectionParameters, null);
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    do {
+                        long contactId = cursor.getLong(ContactNoteQuery.CONTACT_ID);
+                        if (descriptions.get(contactId) == null) {
+                            Description description = new Description();
+                            description.setId(cursor.getString(ContactNoteQuery._ID));
+                            description.setDescription(cursor.getString(ContactNoteQuery.NOTE));
+                            descriptions.put(contactId, description);
+                        }
                     } while (cursor.moveToNext());
                 }
             } finally {

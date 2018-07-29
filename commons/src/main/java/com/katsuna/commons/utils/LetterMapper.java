@@ -22,8 +22,10 @@ public class LetterMapper {
     private static final String LETTER_Y = "Y";
     private static final String LETTER_Z = "Z";
 
-    private static LetterMapper ourInstance = new LetterMapper();
-    private LinkedHashMap<String, String> map = new LinkedHashMap<>();
+    private static final LetterMapper ourInstance = new LetterMapper();
+    private final LinkedHashMap<String, String> map = new LinkedHashMap<>();
+    private final LinkedHashMap<String, String> lettersMapped = new LinkedHashMap<>();
+
     private LetterMapper() {
         // For each language put the corresponding letter to the map in capital - non accented.
 
@@ -68,5 +70,13 @@ public class LetterMapper {
             output = input;
         }
         return output;
+    }
+
+    public String getLetterMapped(String input) {
+        return lettersMapped.get(input);
+    }
+
+    public void putLetterMapped(String key, String value) {
+        lettersMapped.put(key, value);
     }
 }

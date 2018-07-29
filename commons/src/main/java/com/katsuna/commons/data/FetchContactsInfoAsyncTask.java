@@ -18,9 +18,7 @@ public class FetchContactsInfoAsyncTask extends AsyncTask<Contact, Void, Void> {
     @Override
     protected Void doInBackground(Contact... contacts) {
 
-        for (Contact contact : contacts) {
-            ContactDescriptionResolver.getDescription(mContext.get(), contact);
-        }
+        ContactDescriptionResolver.getDescriptions(mContext.get(), contacts);
 
         return null;
     }
