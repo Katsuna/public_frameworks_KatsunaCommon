@@ -15,7 +15,6 @@ public class KatsunaUtils {
 
     public static final String BUILD_TYPE_STAGING = "staging";
 
-    public static final String KATSUNA_SERVICES_PACKAGE = "com.katsuna.services";
     public static final String KATSUNA_LAUNCHER_PACKAGE = "com.katsuna.launcher";
     public static final String KATSUNA_CONTACTS_PACKAGE = "com.katsuna.contacts";
     public static final String KATSUNA_CONTACTS_STAGING_PACKAGE = KATSUNA_CONTACTS_PACKAGE + "." +
@@ -24,10 +23,11 @@ public class KatsunaUtils {
     public static final String KATSUNA_CALLS_PACKAGE = "com.katsuna.calls";
     public static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
     public static final String KATSUNA_HOMESCREEN_WIDGET_PACKAGE = "com.katsuna.widgets";
-    public static final String KATSUNA_UPDATER = "com.katsuna.updater";
 
-    public static boolean katsunaOsDetected(Context context) {
-        return DeviceUtils.isPackageInstalled(context, KATSUNA_UPDATER);
+    public static final String PROP_KATSUNA_VERSION = "ro.katsuna.version";
+
+    public static boolean katsunaOsDetected() {
+        return !DeviceUtils.getProp(PROP_KATSUNA_VERSION).isEmpty();
     }
 
     public static List<KatsunaApp> getKatsunaApps(Context context) {
