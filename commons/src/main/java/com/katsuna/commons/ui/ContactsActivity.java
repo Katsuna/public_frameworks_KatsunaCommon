@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.katsuna.commons.R;
-import com.katsuna.commons.data.FetchContactsInfoAsyncTask;
+import com.katsuna.commons.data.ContactDescriptionResolver;
 import com.katsuna.commons.domain.Contact;
 import com.katsuna.commons.domain.Phone;
 import com.katsuna.commons.entities.KatsunaConstants;
@@ -49,7 +49,6 @@ import com.katsuna.commons.utils.ContactArranger;
 import com.katsuna.commons.utils.KatsunaAlertBuilder;
 import com.konifar.fab_transformation.FabTransformation;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import static com.katsuna.commons.utils.Constants.SELECT_CONTACT_NUMBER_ACTION;
@@ -426,10 +425,8 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         ContactProvider contactProvider = new ContactProvider(this);
         List<Contact> contactList = contactProvider.getContacts();
 
-        // load contants info cache
-        Contact[] contactsArray = new Contact[contactList.size()];
-        new FetchContactsInfoAsyncTask(new WeakReference<Context>(this))
-                .execute(contactList.toArray(contactsArray));
+        // load descriptions into cache
+        ContactDescriptionResolver.getDescriptions(this, contactList);
 
         mModels = ContactArranger.getContactsGroups(contactList);
         mAdapter = new ContactsGroupAdapter(mModels, this, this);

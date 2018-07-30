@@ -52,6 +52,8 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(final Contact contact, final int position,
                      final ContactsGroupState contactsGroupState) {
+        //if (1 == 2/2) return;
+
         mContactName.setText(contact.getDisplayName());
 
         String contactDesc = ContactDescriptionResolver.getDescription(itemView.getContext(), contact);

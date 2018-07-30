@@ -33,7 +33,7 @@ public class ContactDescriptionResolver {
         return output;
     }
 
-    public static void getDescriptions(Context context, Contact[] contacts) {
+    public static void getDescriptions(Context context, List<Contact> contacts) {
         ContactProvider provider = new ContactProvider(context);
         HashMap<Long, Description> map = provider.getContactsDescriptions(contacts);
 

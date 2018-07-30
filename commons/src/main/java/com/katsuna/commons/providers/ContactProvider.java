@@ -293,7 +293,7 @@ public class ContactProvider {
     }
 
     // fetch only one description per contact
-    public HashMap<Long, Description> getContactsDescriptions(Contact[] contacts) {
+    public HashMap<Long, Description> getContactsDescriptions(List<Contact> contacts) {
         HashMap<Long, Description> descriptions = new LinkedHashMap<>();
 
         List<String> selectionArgs = new ArrayList<>();
@@ -305,10 +305,9 @@ public class ContactProvider {
 
         // add MIMETYPE
         selectionArgs.add(ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE);
-        parameters.add("?");
 
         Uri baseUri = ContactsContract.Data.CONTENT_URI;
-        String selection = ContactsContract.RawContacts.CONTACT_ID
+        String selection = ContactsContract.Data.CONTACT_ID
                 + " in (" + TextUtils.join(",", parameters) + ")"
                 + " AND " + ContactsContract.Data.MIMETYPE + " = ? ";
 
