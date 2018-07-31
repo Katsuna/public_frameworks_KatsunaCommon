@@ -16,10 +16,9 @@ import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.ui.adapters.ContactsAdapter;
 import com.katsuna.commons.ui.adapters.models.ContactsGroup;
 import com.katsuna.commons.ui.adapters.models.ContactsGroupState;
-import com.katsuna.commons.utils.ColorCalcV2;
 import com.katsuna.commons.ui.listeners.IContactListener;
 import com.katsuna.commons.ui.listeners.IContactsGroupListener;
-import com.katsuna.commons.utils.Log;
+import com.katsuna.commons.utils.ColorCalcV2;
 
 public class ContactsGroupViewHolder extends RecyclerView.ViewHolder {
 
@@ -69,13 +68,13 @@ public class ContactsGroupViewHolder extends RecyclerView.ViewHolder {
             mStarIcon.setVisibility(View.VISIBLE);
             mStarDesc.setVisibility(View.VISIBLE);
             mStartLetter.setVisibility(View.GONE);
-            Log.e(TAG, "lag group model premium");
+            //Log.e(TAG, "lag group model premium");
         } else {
             mStarIcon.setVisibility(View.GONE);
             mStarDesc.setVisibility(View.GONE);
             mStartLetter.setVisibility(View.VISIBLE);
             mStartLetter.setText(model.firstLetter);
-            Log.e(TAG, "lag group model: " + model.firstLetter);
+            //Log.e(TAG, "lag group model: " + model.firstLetter);
         }
 
         ContactsAdapter adapter = new ContactsAdapter(model.contactList, mContactListener,

@@ -20,7 +20,7 @@
             android:layout_marginTop="4dp"
             android:clipToPadding="false"
             android:paddingBottom="200dp"
-            app:layoutManager="com.katsuna.commons.ui.PreLoadLayoutManager"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <TextView

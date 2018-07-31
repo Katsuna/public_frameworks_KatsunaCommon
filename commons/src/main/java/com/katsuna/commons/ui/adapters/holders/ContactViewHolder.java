@@ -3,24 +3,27 @@ package com.katsuna.commons.ui.adapters.holders;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.katsuna.commons.R;
+import com.katsuna.commons.data.ContactDescriptionResolver;
 import com.katsuna.commons.domain.Contact;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKeyV2;
 import com.katsuna.commons.entities.OpticalParams;
 import com.katsuna.commons.entities.SizeProfile;
 import com.katsuna.commons.entities.SizeProfileKeyV2;
+import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.ui.adapters.models.ContactsGroupState;
+import com.katsuna.commons.ui.listeners.IContactListener;
 import com.katsuna.commons.utils.ColorAdjusterV2;
 import com.katsuna.commons.utils.ColorCalcV2;
 import com.katsuna.commons.utils.SizeAdjuster;
 import com.katsuna.commons.utils.SizeCalcV2;
-import com.katsuna.commons.data.ContactDescriptionResolver;
-import com.katsuna.commons.ui.listeners.IContactListener;
 
 public class ContactViewHolder extends RecyclerView.ViewHolder {
 
@@ -28,12 +31,14 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
     private final TextView mContactDesc;
     private final View mActionButtonsContainer;
     private final IContactListener mListener;
-    private final Button mCallButton;
-    private final Button mMessageButton;
-    private final TextView mMoreText;
-    private final View mMoreActionsContainer;
-    private final TextView mEditContactText;
-    private final TextView mDeleteContactText;
+    private Button mCallButton;
+    private Button mMessageButton;
+    private TextView mMoreText;
+    private final ViewGroup mMoreActionsContainer;
+    private final ViewGroup mButtonsWrapper;
+    private UserProfile mUserProfile;
+    private TextView mEditContactText;
+    private TextView mDeleteContactText;
 
     public ContactViewHolder(View itemView, IContactListener contactListener) {
         super(itemView);
@@ -42,17 +47,13 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
         mActionButtonsContainer = itemView.findViewById(R.id.action_buttons_container);
         mListener = contactListener;
 
-        mCallButton = (Button) itemView.findViewById(R.id.button_call);
-        mMessageButton = (Button) itemView.findViewById(R.id.button_message);
-        mMoreText = (TextView) itemView.findViewById(R.id.txt_more);
-        mMoreActionsContainer = itemView.findViewById(R.id.more_actions_container);
-        mEditContactText = (TextView) itemView.findViewById(R.id.edit_contact_text);
-        mDeleteContactText = (TextView) itemView.findViewById(R.id.delete_contact_text);
+        mButtonsWrapper = (ViewGroup) itemView.findViewById(R.id.action_buttons_wrapper);
+        mMoreActionsContainer =  (ViewGroup) itemView.findViewById(R.id.more_actions_container);
     }
 
     public void bind(final Contact contact, final int position,
                      final ContactsGroupState contactsGroupState) {
-        //if (1 == 2/2) return;
+        mUserProfile = mListener.getUserProfileContainer().getActiveUserProfile();
 
         mContactName.setText(contact.getDisplayName());
 
@@ -66,12 +67,14 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
         if (contact.getId() == contactsGroupState.getContactId() &&
                 contactsGroupState.isFocused()) {
+            mButtonsWrapper.removeAllViews();
+            addActionButtonControls(contact);
             mActionButtonsContainer.setVisibility(View.VISIBLE);
         } else {
             mActionButtonsContainer.setVisibility(View.GONE);
         }
 
-        ColorProfile colorProfile = mListener.getUserProfileContainer().getActiveUserProfile().colorProfile;
+        ColorProfile colorProfile = mUserProfile.colorProfile;
         int secondaryColor1 = ColorCalcV2.getColor(itemView.getContext(),
                 ColorProfileKeyV2.SECONDARY_COLOR_1, colorProfile);
         int secondaryColor2 = ColorCalcV2.getColor(itemView.getContext(),
@@ -117,7 +120,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         }
-        mContactName.setTextColor(ContextCompat.getColor(itemView.getContext(),colorForTextFields));
+        mContactName.setTextColor(ContextCompat.getColor(itemView.getContext(), colorForTextFields));
         itemView.setBackgroundColor(colorForBackground);
 
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +130,15 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
                         contact.getFirstLetterNormalized(), contact, position);
             }
         });
+
+        adjustSizeProfile();
+        adjustColorProfile();
+    }
+
+    private void bindActionButtonsControls(final Contact contact) {
+        mCallButton = (Button) itemView.findViewById(R.id.button_call);
+        mMessageButton = (Button) itemView.findViewById(R.id.button_message);
+        mMoreText = (TextView) itemView.findViewById(R.id.txt_more);
 
         mCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,12 +157,17 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 if (mMoreActionsContainer.getVisibility() == View.VISIBLE) {
-                    expandMoreActions(false);
+                    expandMoreActions(false, contact);
                 } else {
-                    expandMoreActions(true);
+                    expandMoreActions(true, contact);
                 }
             }
         });
+    }
+
+    private void bindEditControls(final Contact contact) {
+        mEditContactText = (TextView) itemView.findViewById(R.id.edit_contact_text);
+        mDeleteContactText = (TextView) itemView.findViewById(R.id.delete_contact_text);
 
         mEditContactText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,13 +182,10 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
                 mListener.deleteContact(contact);
             }
         });
-
-        adjustSizeProfile();
-        adjustColorProfile();
     }
 
     private void adjustSizeProfile() {
-        SizeProfile sizeProfile = mListener.getUserProfileContainer().getOpticalSizeProfile();
+        SizeProfile sizeProfile = mUserProfile.opticalSizeProfile;
 
         // display name
         OpticalParams opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.TITLE, sizeProfile);
@@ -183,33 +197,75 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
         // adjust buttons
         opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.BUTTON, sizeProfile);
-        SizeAdjuster.adjustText(itemView.getContext(), mCallButton, opticalParams);
-        SizeAdjuster.adjustText(itemView.getContext(), mMessageButton, opticalParams);
+        if (mCallButton != null) {
+            SizeAdjuster.adjustText(itemView.getContext(), mCallButton, opticalParams);
+        }
+        if (mMessageButton != null) {
+            SizeAdjuster.adjustText(itemView.getContext(), mMessageButton, opticalParams);
+        }
 
         // more text
-        opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.BUTTON, sizeProfile);
-        SizeAdjuster.adjustText(itemView.getContext(), mMoreText, opticalParams);
+        if (mMoreText != null) {
+            SizeAdjuster.adjustText(itemView.getContext(), mMoreText, opticalParams);
+        }
 
-        // contact description
+        // contact edit actions
         opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.SUBHEADING_2, sizeProfile);
-        SizeAdjuster.adjustText(itemView.getContext(), mEditContactText, opticalParams);
-        SizeAdjuster.adjustText(itemView.getContext(), mDeleteContactText, opticalParams);
+        if (mEditContactText != null) {
+            SizeAdjuster.adjustText(itemView.getContext(), mEditContactText, opticalParams);
+        }
+        if (mDeleteContactText != null) {
+            SizeAdjuster.adjustText(itemView.getContext(), mDeleteContactText, opticalParams);
+        }
     }
 
     private void adjustColorProfile() {
-        ColorAdjusterV2.adjustButtons(itemView.getContext(),
-                mListener.getUserProfileContainer().getActiveUserProfile(),
+        ColorAdjusterV2.adjustButtons(itemView.getContext(), mUserProfile,
                 mCallButton, mMessageButton, mMoreText);
     }
 
-    private void expandMoreActions(boolean flag) {
+    private void expandMoreActions(boolean flag, Contact contact) {
         if (flag) {
+            mMoreActionsContainer.removeAllViews();
+            addEditControls(contact);
             mMoreActionsContainer.setVisibility(View.VISIBLE);
             mMoreText.setText(R.string.common_less);
         } else {
             mMoreActionsContainer.setVisibility(View.GONE);
+            addEditControls(contact);
             mMoreText.setText(R.string.common_more);
         }
+    }
+
+    private void addActionButtonControls(Contact contact) {
+        LayoutInflater inflater = LayoutInflater.from(itemView.getContext());
+        View buttonsView = mUserProfile.isRightHanded ?
+                inflater.inflate(R.layout.common_contact_buttons_rh, mButtonsWrapper, false) :
+                inflater.inflate(R.layout.common_contact_buttons_lh, mButtonsWrapper, false);
+
+        mButtonsWrapper.addView(buttonsView);
+
+        // init controls and bind actions
+        bindActionButtonsControls(contact);
+
+        // adjust profiles
+        adjustSizeProfile();
+        adjustColorProfile();
+    }
+
+    private void addEditControls(Contact contact) {
+        LayoutInflater inflater = LayoutInflater.from(itemView.getContext());
+        View editControlsView = inflater.inflate(R.layout.common_edit_contact_actions,
+                mMoreActionsContainer, false);
+
+        mMoreActionsContainer.addView(editControlsView);
+
+        // init controls and bind actions
+        bindEditControls(contact);
+
+        // adjust profiles
+        adjustSizeProfile();
+        adjustColorProfile();
     }
 
 }

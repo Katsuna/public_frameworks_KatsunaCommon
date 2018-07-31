@@ -30,16 +30,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        boolean isRightHanded = mContactListener.getUserProfileContainer().isRightHanded();
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.common_contact_v2, parent, false);
-        ViewGroup buttonsWrapper = (ViewGroup) view.findViewById(R.id.action_buttons_wrapper);
-        View buttonsView = isRightHanded ?
-                inflater.inflate(R.layout.common_contact_buttons_rh, buttonsWrapper, false) :
-                inflater.inflate(R.layout.common_contact_buttons_lh, buttonsWrapper, false);
-
-        buttonsWrapper.addView(buttonsView);
-
         return new ContactViewHolder(view, mContactListener);
     }
 
