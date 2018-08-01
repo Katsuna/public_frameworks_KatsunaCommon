@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 # Applications that use this library must specify
 #
 #   LOCAL_STATIC_ANDROID_LIBRARIES := \
-        KatsunaCommon \
+#       KatsunaCommon \
 #       android-support-v4 \
 #       android-support-v7-appcompat \
 #       android-support-v7-recyclerview \
