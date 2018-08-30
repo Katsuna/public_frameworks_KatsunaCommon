@@ -297,10 +297,9 @@ public class ContactProvider {
         HashMap<Long, Description> descriptions = new LinkedHashMap<>();
 
         List<String> selectionArgs = new ArrayList<>();
-        List<String> parameters = new ArrayList<>();
+        List<String> contactIds = new ArrayList<>();
         for (Contact contact: contacts) {
-            selectionArgs.add(String.valueOf(contact.getId()));
-            parameters.add("?");
+            contactIds.add(String.valueOf(contact.getId()));
         }
 
         // add MIMETYPE
@@ -308,7 +307,7 @@ public class ContactProvider {
 
         Uri baseUri = ContactsContract.Data.CONTENT_URI;
         String selection = ContactsContract.Data.CONTACT_ID
-                + " in (" + TextUtils.join(",", parameters) + ")"
+                + " in (" + TextUtils.join(",", contactIds) + ")"
                 + " AND " + ContactsContract.Data.MIMETYPE + " = ? ";
 
         String[] selectionParameters = selectionArgs.toArray(new String[selectionArgs.size()]);
