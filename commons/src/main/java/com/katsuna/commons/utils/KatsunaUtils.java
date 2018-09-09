@@ -26,8 +26,13 @@ public class KatsunaUtils {
 
     public static final String PROP_KATSUNA_VERSION = "ro.katsuna.version";
 
-    public static boolean katsunaOsDetected() {
-        return !DeviceUtils.getProp(PROP_KATSUNA_VERSION).isEmpty();
+    static Boolean cachedKatsunaOsDetected = null;
+
+    public static boolean katsunaOsDetected(Context context) {
+        if (cachedKatsunaOsDetected == null) {
+            cachedKatsunaOsDetected = !DeviceUtils.getProp(PROP_KATSUNA_VERSION).isEmpty();
+        }
+        return cachedKatsunaOsDetected;
     }
 
     public static List<KatsunaApp> getKatsunaApps(Context context) {
