@@ -14,13 +14,16 @@ LOCAL_PATH := $(call my-dir)
 # in their makefiles to include the resources and their dependencies in their package.
 include $(CLEAR_VARS)
 LOCAL_USE_AAPT2 := true
+# Not to be used in Oreo - Pie upstream flag
+#LOCAL_AAPT_NAMESPACES := true
 LOCAL_MODULE := KatsunaCommon
 LOCAL_SDK_VERSION := $(SUPPORT_CURRENT_SDK_VERSION)
 
 LOCAL_SRC_FILES := $(call all-java-files-under,commons)
 
 LOCAL_RESOURCE_DIR := \
-    $(LOCAL_PATH)/commons/src/main/res
+    $(LOCAL_PATH)/commons/src/main/res \
+    prebuilts/sdk/current/extras/constraint-layout/res
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
     android-support-v4 \
@@ -31,7 +34,9 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     android-support-design
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    jodatime
+    jodatime \
+    android-support-constraint-layout \
+    android-support-constraint-layout-solver
 
 LOCAL_STATIC_JAVA_AAR_LIBRARIES += \
     fabtransformation
