@@ -28,7 +28,7 @@ public class KatsunaUtils {
 
     static Boolean cachedKatsunaOsDetected = null;
 
-    public static boolean katsunaOsDetected(Context context) {
+    public static boolean katsunaOsDetected() {
         if (cachedKatsunaOsDetected == null) {
             cachedKatsunaOsDetected = !DeviceUtils.getProp(PROP_KATSUNA_VERSION).isEmpty();
         }
