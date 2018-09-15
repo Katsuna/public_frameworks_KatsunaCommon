@@ -41,7 +41,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 LOCAL_STATIC_JAVA_AAR_LIBRARIES += \
     fabtransformation
 
-LOCAL_MANIFEST_FILE := commons/src/main/AndroidManifest.xml
+LOCAL_MANIFEST_FILE := commons/src/aosp/AndroidManifest.xml
 
 #LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
 LOCAL_AAPT_FLAGS += \
