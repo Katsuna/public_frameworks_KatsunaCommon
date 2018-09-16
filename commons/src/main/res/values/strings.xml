@@ -311,5 +311,6 @@
 
     <string name="common_volume_loud">Loud</string>
 
+    <string name="common_browser_not_found">No application can handle this request. Please install a web browser</string>
 
 </resources>
