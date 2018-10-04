@@ -38,8 +38,8 @@ public class LauncherAccessReader {
 
     public static HashMap<String, Integer> getLauncherStatsPerApp(Context context) {
         HashMap<String, Integer> output = new HashMap<>();
-        String[] projection = new String[]{"count(" + LauncherAccess.COL_USER + ") as launch_count", LauncherAccess.COL_USER};
-        String selection = LauncherAccess.COL_TIME + ">? GROUP BY (" + LauncherAccess.COL_USER + ")";
+        String[] projection = new String[]{"count(" + LauncherAccess.COL_COMPONENT + ") as launch_count", LauncherAccess.COL_COMPONENT};
+        String selection = LauncherAccess.COL_TIME + ">? GROUP BY (" + LauncherAccess.COL_COMPONENT + ")";
         DateTime oneMonthAgo = new DateTime().minusMonths(1);
         String[] selectionArgs = new String[]{ oneMonthAgo.toString() };
         Cursor cursor = context.getContentResolver().query(LauncherProvider.URI_LAUNCHER_ACCESS,
@@ -49,8 +49,8 @@ public class LauncherAccessReader {
             if (cursor.moveToFirst()) {
                 do {
                     int count = cursor.getInt(0);
-                    String intentUri = cursor.getString(1);
-                    output.put(intentUri, count);
+                    String component = cursor.getString(1);
+                    output.put(component, count);
                 } while (cursor.moveToNext());
             }
             cursor.close();
