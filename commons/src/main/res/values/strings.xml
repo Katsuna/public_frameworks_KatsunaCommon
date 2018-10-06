@@ -240,6 +240,8 @@
     <!-- "Homescreen widget" Katsuna app name -->
     <string name="common_katsuna_homescreen_widget">Katsuna Homescreen widget</string>
 
+    <!-- "Clock" Katsuna app name (use the same translation as used in the name of the Clock app) -->
+    <string name="common_katsuna_clock">Clock</string>
 
     <!-- Common "Download" button title --> 
     <string name="common_download">Download</string>

@@ -23,6 +23,7 @@ public class KatsunaUtils {
     public static final String KATSUNA_CALLS_PACKAGE = "com.katsuna.calls";
     public static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
     public static final String KATSUNA_HOMESCREEN_WIDGET_PACKAGE = "com.katsuna.widgets";
+    public static final String KATSUNA_CLOCK_PACKAGE = "com.katsuna.clock";
 
     public static final String PROP_KATSUNA_VERSION = "ro.katsuna.version";
 
@@ -52,6 +53,9 @@ public class KatsunaUtils {
 
         apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_homescreen_widget),
                 KATSUNA_HOMESCREEN_WIDGET_PACKAGE, R.mipmap.common_widgets_icon));
+
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_clock),
+                KATSUNA_CLOCK_PACKAGE, R.drawable.common_clock_icon));
 
         return apps;
     }
