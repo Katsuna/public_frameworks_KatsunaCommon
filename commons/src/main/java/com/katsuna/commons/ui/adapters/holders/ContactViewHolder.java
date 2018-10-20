@@ -42,13 +42,13 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
     public ContactViewHolder(View itemView, IContactListener contactListener) {
         super(itemView);
-        mContactName = (TextView) itemView.findViewById(R.id.contact_name);
-        mContactDesc = (TextView) itemView.findViewById(R.id.contact_desc);
+        mContactName = itemView.findViewById(R.id.contact_name);
+        mContactDesc = itemView.findViewById(R.id.contact_desc);
         mActionButtonsContainer = itemView.findViewById(R.id.action_buttons_container);
         mListener = contactListener;
 
-        mButtonsWrapper = (ViewGroup) itemView.findViewById(R.id.action_buttons_wrapper);
-        mMoreActionsContainer =  (ViewGroup) itemView.findViewById(R.id.more_actions_container);
+        mButtonsWrapper = itemView.findViewById(R.id.action_buttons_wrapper);
+        mMoreActionsContainer = itemView.findViewById(R.id.more_actions_container);
     }
 
     public void bind(final Contact contact, final int position,
@@ -136,9 +136,9 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void bindActionButtonsControls(final Contact contact) {
-        mCallButton = (Button) itemView.findViewById(R.id.button_call);
-        mMessageButton = (Button) itemView.findViewById(R.id.button_message);
-        mMoreText = (TextView) itemView.findViewById(R.id.txt_more);
+        mCallButton = itemView.findViewById(R.id.button_call);
+        mMessageButton = itemView.findViewById(R.id.button_message);
+        mMoreText = itemView.findViewById(R.id.txt_more);
 
         mCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,8 +166,8 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void bindEditControls(final Contact contact) {
-        mEditContactText = (TextView) itemView.findViewById(R.id.edit_contact_text);
-        mDeleteContactText = (TextView) itemView.findViewById(R.id.delete_contact_text);
+        mEditContactText = itemView.findViewById(R.id.edit_contact_text);
+        mDeleteContactText = itemView.findViewById(R.id.delete_contact_text);
 
         mEditContactText.setOnClickListener(new View.OnClickListener() {
             @Override
