@@ -1,5 +1,6 @@
 package com.katsuna.commons.ui.adapters.holders;
 
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.data.ContactDescriptionResolver;
+import com.katsuna.commons.data.ContactPhoneResolver;
 import com.katsuna.commons.domain.Contact;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.ColorProfileKeyV2;
@@ -29,6 +31,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView mContactName;
     private final TextView mContactDesc;
+    private final TextView mContactPhone;
     private final View mActionButtonsContainer;
     private final IContactListener mListener;
     private Button mCallButton;
@@ -44,6 +47,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         mContactName = itemView.findViewById(R.id.contact_name);
         mContactDesc = itemView.findViewById(R.id.contact_desc);
+        mContactPhone = itemView.findViewById(R.id.contact_phone);
         mActionButtonsContainer = itemView.findViewById(R.id.action_buttons_container);
         mListener = contactListener;
 
@@ -53,17 +57,21 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(final Contact contact, final int position,
                      final ContactsGroupState contactsGroupState) {
+        Context ctx = itemView.getContext();
         mUserProfile = mListener.getUserProfileContainer().getActiveUserProfile();
 
         mContactName.setText(contact.getDisplayName());
 
-        String contactDesc = ContactDescriptionResolver.getDescription(itemView.getContext(), contact);
+        String contactDesc = ContactDescriptionResolver.getDescription(ctx, contact);
         if (TextUtils.isEmpty(contactDesc)) {
             mContactDesc.setVisibility(View.GONE);
         } else {
             mContactDesc.setText(contactDesc);
             mContactDesc.setVisibility(View.VISIBLE);
         }
+
+        String contactPhone = ContactPhoneResolver.getPrimaryPhone(ctx, contact);
+        mContactPhone.setText(contactPhone);
 
         if (contact.getId() == contactsGroupState.getContactId() &&
                 contactsGroupState.isFocused()) {
@@ -75,17 +83,16 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
         }
 
         ColorProfile colorProfile = mUserProfile.colorProfile;
-        int secondaryColor1 = ColorCalcV2.getColor(itemView.getContext(),
-                ColorProfileKeyV2.SECONDARY_COLOR_1, colorProfile);
-        int secondaryColor2 = ColorCalcV2.getColor(itemView.getContext(),
-                ColorProfileKeyV2.SECONDARY_COLOR_2, colorProfile);
-        int greyColor2 = ColorCalcV2.getColor(itemView.getContext(),
-                ColorProfileKeyV2.SECONDARY_GREY_2, colorProfile);
+        int secondaryColor1 = ColorCalcV2.getColor(ctx, ColorProfileKeyV2.SECONDARY_COLOR_1,
+                colorProfile);
+        int secondaryColor2 = ColorCalcV2.getColor(ctx, ColorProfileKeyV2.SECONDARY_COLOR_2,
+                colorProfile);
+        int greyColor2 = ColorCalcV2.getColor(ctx, ColorProfileKeyV2.SECONDARY_GREY_2,
+                colorProfile);
 
         int colorForTextFields;
         int colorForBackground;
-        int elevation = itemView.getContext().getResources()
-                .getDimensionPixelSize(R.dimen.common_selection_elevation);
+        int elevation = ctx.getResources().getDimensionPixelSize(R.dimen.common_selection_elevation);
         itemView.setElevation(0);
         if (contactsGroupState.isFocused()) {
             if (contact.getId() == contactsGroupState.getContactId() ||
@@ -101,15 +108,13 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
             } else {
                 // we have a contact selected in this contacts group but not this contact
                 colorForTextFields = R.color.common_black34;
-                colorForBackground = ContextCompat.getColor(itemView.getContext(),
-                        R.color.common_transparent);
+                colorForBackground = ContextCompat.getColor(ctx, R.color.common_transparent);
             }
         } else {
             if (contactsGroupState.getContactId() > 0) {
                 // we have a contact selected but not in this contacts group
                 colorForTextFields = R.color.common_black34;
-                colorForBackground = ContextCompat.getColor(itemView.getContext(),
-                        R.color.common_transparent);
+                colorForBackground = ContextCompat.getColor(ctx, R.color.common_transparent);
             } else {
                 // we have no contact selected
                 colorForTextFields = R.color.common_black87;
@@ -120,7 +125,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         }
-        mContactName.setTextColor(ContextCompat.getColor(itemView.getContext(), colorForTextFields));
+        mContactName.setTextColor(ContextCompat.getColor(ctx, colorForTextFields));
         itemView.setBackgroundColor(colorForBackground);
 
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -195,6 +200,9 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
         opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.SUBHEADING_1, sizeProfile);
         SizeAdjuster.adjustText(itemView.getContext(), mContactDesc, opticalParams);
 
+        // contact phone
+        SizeAdjuster.adjustText(itemView.getContext(), mContactPhone, opticalParams);
+
         // adjust buttons
         opticalParams = SizeCalcV2.getOpticalParams(SizeProfileKeyV2.BUTTON, sizeProfile);
         if (mCallButton != null) {
@@ -232,7 +240,6 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
             mMoreText.setText(R.string.common_less);
         } else {
             mMoreActionsContainer.setVisibility(View.GONE);
-            addEditControls(contact);
             mMoreText.setText(R.string.common_more);
         }
     }

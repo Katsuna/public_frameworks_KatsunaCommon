@@ -27,13 +27,12 @@ import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.data.ContactDescriptionResolver;
+import com.katsuna.commons.data.ContactPhoneResolver;
 import com.katsuna.commons.domain.Contact;
 import com.katsuna.commons.domain.Phone;
 import com.katsuna.commons.entities.KatsunaConstants;
@@ -194,35 +193,35 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
 
     private void initControls() {
         setupToolbar();
-        mLettersList = (RecyclerView) findViewById(R.id.letters_list);
+        mLettersList = findViewById(R.id.letters_list);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.contacts_list);
+        mRecyclerView = findViewById(R.id.contacts_list);
         mRecyclerView.setItemAnimator(null);
 
         mRecyclerView.setItemViewCacheSize(100);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         mLastTouchTimestamp = System.currentTimeMillis();
         initPopupActionHandler();
 
         initDeselectionActionHandler();
 
-        mNoResultsView = (TextView) findViewById(R.id.no_results);
+        mNoResultsView = findViewById(R.id.no_results);
 
-        mPopupFrame = (FrameLayout) findViewById(R.id.popup_frame);
+        mPopupFrame = findViewById(R.id.popup_frame);
         mPopupFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPopup(false);
             }
         });
-        mFabContainer = (LinearLayout) findViewById(R.id.fab_container);
+        mFabContainer = findViewById(R.id.fab_container);
 
         setupPopupButtons();
 
         mFabToolbar = findViewById(R.id.fab_toolbar);
-        mNextButton = (ImageButton) findViewById(R.id.next_page_button);
+        mNextButton = findViewById(R.id.next_page_button);
         mNextButton.setOnTouchListener(new View.OnTouchListener() {
             private Handler mHandler;
             final Runnable mAction = new Runnable() {
@@ -252,7 +251,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
             }
         });
 
-        mPrevButton = (ImageButton) findViewById(R.id.prev_page_button);
+        mPrevButton = findViewById(R.id.prev_page_button);
         mPrevButton.setOnTouchListener(new View.OnTouchListener() {
             private Handler mHandler;
             final Runnable mAction = new Runnable() {
@@ -283,7 +282,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
         });
 
         mViewPagerContainer = findViewById(R.id.viewpager_container);
-        mFabToolbarContainer = (FrameLayout) findViewById(R.id.fab_toolbar_container);
+        mFabToolbarContainer = findViewById(R.id.fab_toolbar_container);
     }
 
     protected abstract void setupPopupButtons();
@@ -427,6 +426,8 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
 
         // load descriptions into cache
         ContactDescriptionResolver.getDescriptions(this, contactList);
+        // load primary phones too
+        ContactPhoneResolver.getPrimaryPhones(this, contactList);
 
         mModels = ContactArranger.getContactsGroups(contactList);
         mAdapter = new ContactsGroupAdapter(mModels, this, this);

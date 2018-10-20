@@ -310,7 +310,7 @@ public class ContactProvider {
                 + " in (" + TextUtils.join(",", contactIds) + ")"
                 + " AND " + ContactsContract.Data.MIMETYPE + " = ? ";
 
-        String[] selectionParameters = selectionArgs.toArray(new String[selectionArgs.size()]);
+        String[] selectionParameters = selectionArgs.toArray(new String[0]);
 
         Cursor cursor = cr.query(baseUri, ContactNoteQuery._PROJECTION, selection, selectionParameters, null);
         if (cursor != null) {
@@ -332,6 +332,40 @@ public class ContactProvider {
         }
 
         return descriptions;
+    }
+
+    public HashMap<Long, String> getContactsPrimaryPhones(List<Contact> contacts) {
+        HashMap<Long, String> phonesMap = new LinkedHashMap<>();
+
+        List<String> contactIds = new ArrayList<>();
+        for (Contact contact: contacts) {
+            contactIds.add(String.valueOf(contact.getId()));
+        }
+
+        Uri baseUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+        String selection = ContactsContract.Data.CONTACT_ID +
+                " in (" + TextUtils.join(",", contactIds) + ")";
+
+        String orderBy = ContactsContract.CommonDataKinds.Phone.IS_PRIMARY + " DESC";
+
+        Cursor cursor = cr.query(baseUri, ContactPhotoQuery._PROJECTION, selection, null, orderBy);
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    do {
+                        long contactId = cursor.getLong(ContactPhotoQuery.CONTACT_ID);
+                        if (phonesMap.get(contactId) == null) {
+                            String phone = cursor.getString(ContactPhotoQuery.NUMBER);
+                            phonesMap.put(contactId, phone);
+                        }
+                    } while (cursor.moveToNext());
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+
+        return phonesMap;
     }
 
     private Name getName(long contactId) {
