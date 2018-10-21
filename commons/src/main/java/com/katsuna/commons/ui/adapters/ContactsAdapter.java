@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.katsuna.commons.R;
 import com.katsuna.commons.domain.Contact;
+import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.ui.adapters.holders.ContactViewHolder;
 import com.katsuna.commons.ui.adapters.models.ContactsGroupState;
 import com.katsuna.commons.ui.listeners.IContactListener;
@@ -30,8 +31,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        UserProfile userProfile = mContactListener.getUserProfileContainer().getActiveUserProfile();
+        int layout = userProfile.isRightHanded ? R.layout.common_contact_v2 :
+                R.layout.common_contact_v2_lh;
+
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.common_contact_v2, parent, false);
+        View view = inflater.inflate(layout, parent, false);
         return new ContactViewHolder(view, mContactListener);
     }
 

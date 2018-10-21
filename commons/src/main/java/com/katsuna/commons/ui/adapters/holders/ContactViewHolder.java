@@ -261,9 +261,10 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void addEditControls(Contact contact) {
+        int layout = mUserProfile.isRightHanded ? R.layout.common_edit_contact_actions :
+                R.layout.common_edit_contact_actions_lh;
         LayoutInflater inflater = LayoutInflater.from(itemView.getContext());
-        View editControlsView = inflater.inflate(R.layout.common_edit_contact_actions,
-                mMoreActionsContainer, false);
+        View editControlsView = inflater.inflate(layout, mMoreActionsContainer, false);
 
         mMoreActionsContainer.addView(editControlsView);
 
