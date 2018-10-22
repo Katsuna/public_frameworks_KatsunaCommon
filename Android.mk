@@ -36,7 +36,8 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 LOCAL_STATIC_JAVA_LIBRARIES := \
     jodatime \
     android-support-constraint-layout \
-    android-support-constraint-layout-solver
+    android-support-constraint-layout-solver \
+    commonslang3
 
 LOCAL_STATIC_JAVA_AAR_LIBRARIES += \
     fabtransformation
