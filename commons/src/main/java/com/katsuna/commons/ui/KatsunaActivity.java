@@ -109,6 +109,10 @@ public abstract class KatsunaActivity extends AppCompatActivity {
             // adjust fab size
             mAdjuster.adjustFabSize(mFab1, mFab2);
             adjustToolbar();
+        } else {
+            if (mAdjuster == null) {
+                mAdjuster = new Adjuster(this, mUserProfileContainer.getActiveUserProfile());
+            }
         }
 
         refreshLastTouchTimestamp();
@@ -206,7 +210,7 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     }
 
     protected void initToolbar(Integer drawableResId) {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
         ActionBar actionBar = getSupportActionBar();
