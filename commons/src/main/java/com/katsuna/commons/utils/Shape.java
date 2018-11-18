@@ -2,6 +2,7 @@ package com.katsuna.commons.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 
@@ -58,5 +59,13 @@ public class Shape {
     private static float getCommonRadius(Context context) {
         Resources r = context.getResources();
         return r.getDimension(R.dimen.common_corner_radius);
+    }
+
+    public static Drawable getCircle(int color, int size) {
+        GradientDrawable shape = new GradientDrawable();
+        shape.setShape(GradientDrawable.OVAL);
+        shape.setSize(size, size);
+        shape.setColor(color);
+        return shape;
     }
 }
