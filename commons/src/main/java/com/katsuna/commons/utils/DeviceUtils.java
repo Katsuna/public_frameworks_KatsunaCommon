@@ -2,6 +2,7 @@ package com.katsuna.commons.utils;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
@@ -41,6 +42,18 @@ public class DeviceUtils {
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
+    }
+
+
+    public static boolean openApp(Context context, String packageName) {
+        PackageManager manager = context.getPackageManager();
+        Intent i = manager.getLaunchIntentForPackage(packageName);
+        if (i == null) {
+            return false;
+        }
+        i.addCategory(Intent.CATEGORY_LAUNCHER);
+        context.startActivity(i);
+        return true;
     }
 
     public static String getProp(String propName) {

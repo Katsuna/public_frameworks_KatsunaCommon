@@ -243,6 +243,9 @@
     <!-- "Clock" Katsuna app name (use the same translation as used in the name of the Clock app) -->
     <string name="common_katsuna_clock">Clock</string>
 
+    <!-- "Calendar" Katsuna app name (use the same translation as used in the name of the Calendar app) -->
+    <string name="common_katsuna_calendar_app">Calendar</string>
+
     <!-- Common "Download" button title --> 
     <string name="common_download">Download</string>
 

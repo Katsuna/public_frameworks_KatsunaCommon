@@ -24,6 +24,7 @@ public class KatsunaUtils {
     public static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
     public static final String KATSUNA_HOMESCREEN_WIDGET_PACKAGE = "com.katsuna.widgets";
     public static final String KATSUNA_CLOCK_PACKAGE = "com.katsuna.clock";
+    public static final String KATSUNA_CALENDAR_PACKAGE = "com.katsuna.calendar";
 
     public static final String PROP_KATSUNA_VERSION = "ro.katsuna.version";
 
