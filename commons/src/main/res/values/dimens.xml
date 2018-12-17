@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="common_letter_spacing_v2">0.07</dimen>
     <dimen name="common_fab_margin">16dp</dimen>
     <dimen name="common_fab_vertical_margin">12dp</dimen>
     <dimen name="common_activity_margin">16dp</dimen>
@@ -113,4 +114,11 @@
     <dimen name="common_seekbar_progress_height">3dp</dimen>
     <dimen name="common_seekbar_thumb_size">32dp</dimen>
     <dimen name="common_seekbar_thumb_inset">5dp</dimen>
+
+    <dimen name="common_seekbar_height_v3">16dp</dimen>
+    <dimen name="common_seekbar_radius_v3">8dp</dimen>
+    <dimen name="common_toggle_radius_v3">8dp</dimen>
+    <dimen name="common_toggle_width_v3">56dp</dimen>
+    <dimen name="common_toggle_height_v3">36dp</dimen>
+
 </resources>
