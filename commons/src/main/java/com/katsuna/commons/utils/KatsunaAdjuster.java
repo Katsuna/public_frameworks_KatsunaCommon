@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.katsuna.commons.controls.KatsunaButton;
 import com.katsuna.commons.controls.KatsunaEditText;
 import com.katsuna.commons.controls.KatsunaImageView;
+import com.katsuna.commons.controls.KatsunaTextClock;
 import com.katsuna.commons.controls.KatsunaTextView;
 import com.katsuna.commons.controls.KatsunaToggleButton;
 
@@ -43,6 +44,24 @@ public abstract class KatsunaAdjuster {
                 KatsunaTextView katsunaTextView = (KatsunaTextView) v;
                 if (katsunaTextView.isSizeProfileEnabled()) {
                     views.add(katsunaTextView);
+                }
+            }
+        }
+        return views;
+    }
+
+    protected static List<KatsunaTextClock> getKatsunaTextClocks(ViewGroup viewGroup) {
+        ArrayList<KatsunaTextClock> views = new ArrayList<>();
+
+        final int childcount = viewGroup.getChildCount();
+        for (int i = 0; i < childcount; i++) {
+            View v = viewGroup.getChildAt(i);
+            if (v instanceof ViewGroup) {
+                views.addAll(getKatsunaTextClocks((ViewGroup) v));
+            } else if (v instanceof KatsunaTextClock) {
+                KatsunaTextClock katsunaTextClock = (KatsunaTextClock) v;
+                if (katsunaTextClock.isSizeProfileEnabled()) {
+                    views.add(katsunaTextClock);
                 }
             }
         }

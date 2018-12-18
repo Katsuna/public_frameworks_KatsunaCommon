@@ -11,11 +11,13 @@ import android.widget.TextView;
 import com.katsuna.commons.controls.KatsunaButton;
 import com.katsuna.commons.controls.KatsunaEditText;
 import com.katsuna.commons.controls.KatsunaImageView;
+import com.katsuna.commons.controls.KatsunaTextClock;
 import com.katsuna.commons.controls.KatsunaTextView;
 import com.katsuna.commons.controls.KatsunaToggleButton;
 import com.katsuna.commons.entities.OpticalParams;
 import com.katsuna.commons.entities.SizeProfile;
 import com.katsuna.commons.entities.SizeProfileKey;
+import com.katsuna.commons.entities.SizeProfileKeyV2;
 import com.katsuna.commons.entities.UserProfile;
 
 import java.util.List;
@@ -118,6 +120,35 @@ public class SizeAdjuster extends KatsunaAdjuster {
             if (key == null) continue;
             OpticalParams editTextParams = SizeCalc.getOpticalParams(key, profile);
             SizeAdjuster.adjustText(context, editText, editTextParams);
+        }
+    }
+
+    public static void applySizeProfileV2(Context context, ViewGroup viewGroup, SizeProfile profile) {
+        // adjust all text views
+        List<KatsunaTextView> katsunaTextViews = getKatsunaTextViews(viewGroup);
+        for (KatsunaTextView tv : katsunaTextViews) {
+            SizeProfileKeyV2 key = tv.getSizeProfileKeyV2();
+            if (key == null) continue;
+            OpticalParams tvParams = SizeCalcV2.getOpticalParams(key, profile);
+            SizeAdjuster.adjustText(context, tv, tvParams);
+        }
+
+        // adjust all buttons
+        List<KatsunaButton> buttons = getKatsunaButtons(viewGroup);
+        for (KatsunaButton button : buttons) {
+            SizeProfileKeyV2 key = button.getSizeProfileKeyV2();
+            if (key == null) continue;
+            OpticalParams buttonParams = SizeCalcV2.getOpticalParams(key, profile);
+            SizeAdjuster.adjustText(context, button, buttonParams);
+        }
+
+        // adjust all textClocks
+        List<KatsunaTextClock> textClocks = getKatsunaTextClocks(viewGroup);
+        for (KatsunaTextClock textClock : textClocks) {
+            SizeProfileKeyV2 key = textClock.getSizeProfileKeyV2();
+            if (key == null) continue;
+            OpticalParams buttonParams = SizeCalcV2.getOpticalParams(key, profile);
+            SizeAdjuster.adjustText(context, textClock, buttonParams);
         }
     }
 }
