@@ -94,6 +94,7 @@
     <dimen name="common_8dp">8dp</dimen>
     <dimen name="common_5dp">5dp</dimen>
     <dimen name="common_4dp">4dp</dimen>
+    <dimen name="common_1dp">1dp</dimen>
     <!-- v2 redesign additions end -->
 
     <dimen name="design_navigation_icon_padding" tools:override="true">10dp</dimen>
