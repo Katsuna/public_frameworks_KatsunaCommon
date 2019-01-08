@@ -1,6 +1,7 @@
 package com.katsuna.commons.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -72,6 +73,8 @@ public class SeekBarUtils {
 
     public static void adjustSeekbarV3(Context context, SeekBar seekBar, UserProfile profile,
                                        int thumbResId, int progressResId) {
+        Resources res = context.getResources();
+
 
         int pColor1 = ColorCalcV2.getColor(context, ColorProfileKeyV2.PRIMARY_COLOR_1,
             profile.colorProfile);
@@ -81,8 +84,7 @@ public class SeekBarUtils {
 
         LayerDrawable layerDrawable = (LayerDrawable) context.getDrawable(progressResId);
 
-        int progressRadius = context.getResources()
-            .getDimensionPixelSize(R.dimen.common_seekbar_radius_v3);
+        int progressRadius = res.getDimensionPixelSize(R.dimen.common_seekbar_radius_v3);
 
         Drawable progressDrawable = getProgressDrawableV3(pColor1, progressRadius);
         layerDrawable.setDrawableByLayerId(android.R.id.progress, progressDrawable);
@@ -95,17 +97,14 @@ public class SeekBarUtils {
 
         // get progress drawable
         int white = ContextCompat.getColor(context, R.color.common_white);
-        int transparent = ContextCompat.getColor(context, R.color.common_transparent);
-        int black12 = ContextCompat.getColor(context, R.color.common_black12);
+        int size = res.getDimensionPixelSize(R.dimen.common_seekbar_thumb_size);
+        int inset = res.getDimensionPixelSize(R.dimen.common_seekbar_thumb_inset);
 
-        int size = context.getResources().getDimensionPixelSize(R.dimen.common_seekbar_thumb_size);
-        int inset = context.getResources().getDimensionPixelSize(R.dimen.common_seekbar_thumb_inset);
         Drawable thumbBg = getThumbCircleV3(white, size);
 
         // create and set layered progress drawable
         Drawable[] drawables = {thumbBg, thumbIcon};
         LayerDrawable thumbDrawable = new LayerDrawable(drawables);
-        //thumbDrawable.setLayerInset(0, inset, inset, inset, inset);
         thumbDrawable.setLayerInset(1, inset, inset, inset, inset);
 
         seekBar.setThumb(thumbDrawable);

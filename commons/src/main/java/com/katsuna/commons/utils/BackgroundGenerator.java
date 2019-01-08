@@ -1,6 +1,7 @@
 package com.katsuna.commons.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -76,7 +77,8 @@ public class BackgroundGenerator {
         return layerDrawable;
     }
 
-    public static Drawable createToggleBgV3(Context context, UserProfile profile) {
+    public static Drawable createToggleBgV3(Context context, UserProfile profile,
+                                            boolean strokeEnabled) {
         StateListDrawable out = new StateListDrawable();
 
         int bgColor;
@@ -90,11 +92,11 @@ public class BackgroundGenerator {
             lineColor = ColorCalcV2.getColor(context, ColorProfileKeyV2.PRIMARY_COLOR_2,
                 profile.colorProfile);
         }
-        Drawable onDrawable = getToggleBackgroundV3(context, bgColor, lineColor);
+        Drawable onDrawable = getToggleBackgroundV3(context, bgColor, lineColor, strokeEnabled);
 
         bgColor = ContextCompat.getColor(context, R.color.common_white);
         lineColor = ContextCompat.getColor(context, R.color.common_grey300);
-        Drawable offDrawable = getToggleBackgroundV3(context, bgColor, lineColor);
+        Drawable offDrawable = getToggleBackgroundV3(context, bgColor, lineColor, strokeEnabled);
 
         out.addState(new int[]{android.R.attr.state_checked}, onDrawable);
         out.addState(new int[]{-android.R.attr.state_checked}, offDrawable);
@@ -102,7 +104,8 @@ public class BackgroundGenerator {
     }
 
 
-    private static Drawable getToggleBackgroundV3(Context context, int bgColor, int lineColor) {
+    private static Drawable getToggleBackgroundV3(Context context, int bgColor, int lineColor,
+                                                  boolean strokeEnabled) {
         // create bg drawable
         GradientDrawable bg = new GradientDrawable();
         bg.setShape(GradientDrawable.RECTANGLE);
@@ -110,8 +113,16 @@ public class BackgroundGenerator {
         // set bg
         bg.setColor(bgColor);
 
+        Resources res = context.getResources();
+        // set stroke
+        if (strokeEnabled) {
+            int strokeWidth = res.getDimensionPixelSize(R.dimen.common_1dp);
+            int strokeColor = res.getColor(R.color.common_grey100);
+            bg.setStroke(strokeWidth, strokeColor);
+        }
+
         // set radius
-        int radius = context.getResources().getDimensionPixelSize(R.dimen.common_toggle_radius_v3);
+        int radius = res.getDimensionPixelSize(R.dimen.common_toggle_radius_v3);
         bg.setCornerRadius(radius);
 
         // create bg drawable
@@ -120,14 +131,14 @@ public class BackgroundGenerator {
         line.setColor(lineColor);
 
         // set size
-        int width = context.getResources().getDimensionPixelSize(R.dimen.common_toggle_indicator_width);
-        int height = context.getResources().getDimensionPixelSize(R.dimen.common_toggle_indicator_height);
+        int width = res.getDimensionPixelSize(R.dimen.common_toggle_indicator_width);
+        int height = res.getDimensionPixelSize(R.dimen.common_toggle_indicator_height);
         line.setSize(width, height);
 
         LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{bg, line});
         layerDrawable.setLayerGravity(1, Gravity.CENTER | Gravity.BOTTOM);
 
-        int bottomPadding = context.getResources().getDimensionPixelSize(R.dimen.common_8dp);
+        int bottomPadding = res.getDimensionPixelSize(R.dimen.common_8dp);
         layerDrawable.setLayerInsetBottom(1, bottomPadding);
 
         return layerDrawable;
