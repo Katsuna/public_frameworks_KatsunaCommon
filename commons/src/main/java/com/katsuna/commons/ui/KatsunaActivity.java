@@ -3,6 +3,7 @@ package com.katsuna.commons.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -23,6 +24,7 @@ import com.katsuna.commons.R;
 import com.katsuna.commons.entities.ColorProfile;
 import com.katsuna.commons.entities.OpticalParams;
 import com.katsuna.commons.entities.SizeProfileKey;
+import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.profile.Adjuster;
 import com.katsuna.commons.utils.Constants;
@@ -234,6 +236,14 @@ public abstract class KatsunaActivity extends AppCompatActivity {
     protected void refreshUserProfileContainer() {
         UserProfileContainer userProfileContainer = ProfileReader.getKatsunaUserProfile(this);
         setUserProfile(userProfileContainer);
+    }
+
+    @NonNull
+    public UserProfile getActiveUserProfile() {
+        if (mUserProfileContainer == null) {
+            refreshUserProfileContainer();
+        }
+        return mUserProfileContainer.getActiveUserProfile();
     }
 
 }
