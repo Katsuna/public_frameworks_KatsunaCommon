@@ -474,10 +474,12 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CODE_READ_CONTACTS:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length > 0 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "read contacts permission granted");
                 } else if (!shouldShowRequestPermissionRationale(permissions[0])) {
                     Log.d(TAG, "read contacts permission never ask again");
@@ -488,7 +490,8 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
                 }
                 break;
             case REQUEST_CODE_ASK_CALL_PERMISSION:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length > 0 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
                     Log.d(TAG, "call contact permission granted");
                     if (mSelectedContact != null) {
@@ -497,7 +500,8 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
                 }
                 break;
             case REQUEST_CODE_WRITE_CONTACTS_PERMISSION:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length > 0 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
                     Log.d(TAG, "write contact permission granted");
                     if (createContactRequestPending) {
