@@ -172,25 +172,6 @@ public class Adjuster {
                     mUserProfile.colorProfile);
 
             container.setBackgroundColor(primaryColor1);
-
-            int whiteResId = ContextCompat.getColor(mContext, R.color.common_white);
-            int black87ResId = ContextCompat.getColor(mContext, R.color.common_black87);
-
-            if (mUserProfile.colorProfile == ColorProfile.CONTRAST) {
-                if (prevButton != null) {
-                    DrawUtils.setColor(prevButton.getDrawable(), whiteResId);
-                }
-                if (nextButton != null) {
-                    DrawUtils.setColor(nextButton.getDrawable(), whiteResId);
-                }
-            } else {
-                if (prevButton != null) {
-                    DrawUtils.setColor(prevButton.getDrawable(), black87ResId);
-                }
-                if (nextButton != null) {
-                    DrawUtils.setColor(nextButton.getDrawable(), black87ResId);
-                }
-            }
         }
     }
 

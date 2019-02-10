@@ -11,6 +11,15 @@
         <enum name="FLOATING_BUTTON" value="5" />
         <enum name="ICON" value="6" />
     </attr>
+    <attr name="sizeProfileKeyV2">
+        <enum name="TITLE" value="0" />
+        <enum name="SUBHEADING_1" value="1" />
+        <enum name="SUBHEADING_2" value="2" />
+        <enum name="BODY_1" value="3" />
+        <enum name="BUTTON" value="4" />
+        <enum name="ICON_1" value="5" />
+        <enum name="FLOATING_BUTTON" value="6" />
+    </attr>
 
     <attr name="colorProfileKey">
         <enum name="PRIMARY_COLOR_1" value="1" />
@@ -26,30 +35,40 @@
         <attr name="sizeProfileEnabled" />
         <attr name="sizeProfileKey" />
         <attr name="colorProfileKey" />
+        <attr name="sizeProfileKeyV2" />
     </declare-styleable>
 
     <declare-styleable name="KatsunaTextView">
         <attr name="sizeProfileEnabled" />
         <attr name="sizeProfileKey" />
+        <attr name="sizeProfileKeyV2" />
     </declare-styleable>
 
     <declare-styleable name="KatsunaButton">
         <attr name="sizeProfileEnabled" />
         <attr name="sizeProfileKey" />
+        <attr name="sizeProfileKeyV2" />
     </declare-styleable>
 
     <declare-styleable name="KatsunaToggleButton">
         <attr name="sizeProfileEnabled" />
         <attr name="sizeProfileKey" />
+        <attr name="sizeProfileKeyV2" />
     </declare-styleable>
 
     <declare-styleable name="KatsunaEditText">
         <attr name="sizeProfileEnabled" />
         <attr name="sizeProfileKey" />
+        <attr name="sizeProfileKeyV2" />
     </declare-styleable>
 
     <declare-styleable name="KatsunaNavigationView">
         <attr name="customMenu" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="KatsunaTextClock">
+        <attr name="sizeProfileEnabled" />
+        <attr name="sizeProfileKeyV2" />
     </declare-styleable>
 
 </resources>

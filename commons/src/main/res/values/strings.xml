@@ -240,6 +240,11 @@
     <!-- "Homescreen widget" Katsuna app name -->
     <string name="common_katsuna_homescreen_widget">Katsuna Homescreen widget</string>
 
+    <!-- "Clock" Katsuna app name (use the same translation as used in the name of the Clock app) -->
+    <string name="common_katsuna_clock">Clock</string>
+
+    <!-- "Calendar" Katsuna app name (use the same translation as used in the name of the Calendar app) -->
+    <string name="common_katsuna_calendar_app">Calendar</string>
 
     <!-- Common "Download" button title --> 
     <string name="common_download">Download</string>
@@ -310,6 +315,8 @@
     <string name="common_volume_silent">Silent</string>
 
     <string name="common_volume_loud">Loud</string>
+
+    <string name="common_today">Today</string>
 
     <string name="common_browser_not_found">No application can handle this request. Please install a web browser</string>
 

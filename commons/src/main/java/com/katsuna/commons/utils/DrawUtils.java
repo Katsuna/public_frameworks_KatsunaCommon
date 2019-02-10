@@ -11,6 +11,12 @@ public class DrawUtils {
         drawable.mutate().setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 
+    public static void setColor(Drawable drawable, int color, PorterDuff.Mode mode) {
+        if (drawable == null) return;
+
+        drawable.mutate().setColorFilter(color, mode);
+    }
+
     public static void setDimensions(Drawable drawable, int width, int height) {
         if (drawable == null) return;
 

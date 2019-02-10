@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 
 import com.katsuna.commons.utils.LetterNormalizer;
 
+import org.apache.commons.lang3.ObjectUtils;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -74,7 +76,7 @@ public class Contact implements Comparable<Contact>, Serializable {
 
     @Override
     public int compareTo(@NonNull Contact another) {
-        int result = firstLetterNormalized.compareTo(another.getFirstLetterNormalized());
+        int result = ObjectUtils.compare(firstLetterNormalized, another.getFirstLetterNormalized());
         if (result == 0) {
             result = displayName.compareTo(another.displayName);
         }

@@ -42,7 +42,7 @@
             <!-- hand setting -->
             <TextView
                 android:id="@+id/hand_initial_container"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginEnd="8dp"
@@ -50,7 +50,7 @@
                 android:layout_marginTop="4dp"
                 android:drawablePadding="12dp"
                 android:drawableStart="@drawable/common_ic_dualpan_tool_grey600_24dp"
-                android:gravity="center"
+                android:gravity="start|center"
                 android:minHeight="48dp"
                 android:text="@string/common_hand"
                 android:textColor="@color/common_black54"
@@ -103,7 +103,7 @@
             <!-- size setting -->
             <TextView
                 android:id="@+id/size_initial_container"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginEnd="8dp"
@@ -111,7 +111,7 @@
                 android:layout_marginTop="4dp"
                 android:drawablePadding="12dp"
                 android:drawableStart="@drawable/common_ic_format_size_grey600_24dp"
-                android:gravity="center"
+                android:gravity="start|center"
                 android:minHeight="48dp"
                 android:text="@string/common_size"
                 android:textColor="@color/common_black54"
@@ -246,7 +246,7 @@
             <!-- color setting -->
             <TextView
                 android:id="@+id/color_initial_container"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginEnd="8dp"
@@ -254,7 +254,7 @@
                 android:layout_marginTop="4dp"
                 android:drawablePadding="12dp"
                 android:drawableStart="@drawable/common_ic_palette_grey600_24dp"
-                android:gravity="center"
+                android:gravity="start|center"
                 android:minHeight="48dp"
                 android:text="@string/common_profile_color"
                 android:textColor="@color/common_black54"

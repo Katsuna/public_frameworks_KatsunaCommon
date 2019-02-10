@@ -2,6 +2,7 @@ package com.katsuna.commons.utils;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.v4.content.ContextCompat;
@@ -44,20 +45,20 @@ public class ToggleButtonAdjuster {
     public static void adjustToggleButtonIcon(Context context, ToggleButton toggleButton,
                                                int iconResId, UserProfile profile) {
         int white = ContextCompat.getColor(context, R.color.common_white);
-        int black87 = ContextCompat.getColor(context, R.color.common_black87);
+        int black54 = ContextCompat.getColor(context, R.color.common_black54);
         int onColor;
         if (profile.colorProfile == ColorProfile.CONTRAST) {
             onColor = white;
         } else {
-            onColor = black87;
+            onColor = black54;
         }
 
         Drawable icon = ContextCompat.getDrawable(context, iconResId);
         Drawable onDrawable = clone(icon);
-        DrawUtils.setColor(onDrawable, onColor);
+        DrawUtils.setColor(onDrawable, onColor, PorterDuff.Mode.SRC_ATOP);
 
         Drawable offDrawable = clone(icon);
-        DrawUtils.setColor(offDrawable, black87);
+        DrawUtils.setColor(offDrawable, black54, PorterDuff.Mode.SRC_ATOP);
 
         StateListDrawable out = new StateListDrawable();
         out.addState(new int[]{android.R.attr.state_checked}, onDrawable);

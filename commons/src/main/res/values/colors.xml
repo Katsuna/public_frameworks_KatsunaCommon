@@ -7,12 +7,15 @@
     <color name="common_transparent">#00FFFFFF</color>
     <color name="common_unfocused">#FEFEFE</color>
     <color name="common_white">#FFFFFF</color>
+    <color name="common_white12">#1fffffff</color>
     <color name="common_white38">#97ffffff</color>
+    <color name="common_white54">#8Affffff</color>
     <color name="common_white70">#B2ffffff</color>
     <color name="common_white87">#DEffffff</color>
     <color name="common_grey50">#FAFAFA</color>
     <color name="common_grey100">#F5F5F5</color>
     <color name="common_grey300">#E0E0E0</color>
+    <color name="common_grey380">#CECECE</color>
     <color name="common_grey500">#9E9E9E</color>
     <color name="common_grey600">#757575</color>
     <color name="common_grey900">#212121</color>

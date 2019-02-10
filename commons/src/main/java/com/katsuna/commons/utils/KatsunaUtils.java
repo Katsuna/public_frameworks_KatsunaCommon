@@ -23,6 +23,9 @@ public class KatsunaUtils {
     public static final String KATSUNA_CALLS_PACKAGE = "com.katsuna.calls";
     public static final String KATSUNA_KEYBOARD_PACKAGE = "com.katsuna.keyboard";
     public static final String KATSUNA_HOMESCREEN_WIDGET_PACKAGE = "com.katsuna.widgets";
+    public static final String KATSUNA_CLOCK_PACKAGE = "com.katsuna.clock";
+    public static final String KATSUNA_CALENDAR_PACKAGE = "com.katsuna.calendar";
+    public static final String KATSUNA_INFOSERVICES_PACKAGE = "com.katsuna.infoservices";
 
     public static final String PROP_KATSUNA_VERSION = "ro.katsuna.version";
 
@@ -38,20 +41,19 @@ public class KatsunaUtils {
     public static List<KatsunaApp> getKatsunaApps(Context context) {
         List<KatsunaApp> apps = new ArrayList<>();
 
-        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_contacts_app),
-                KATSUNA_CONTACTS_PACKAGE, R.mipmap.common_contacts_icon));
-
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_contacts_app), KATSUNA_CONTACTS_PACKAGE,
+            R.mipmap.ic_contacts_launcher));
         apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_messages_app), KATSUNA_MESSAGES_PACKAGE,
-                R.mipmap.common_messages_icon));
-
-        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_calls_app), KATSUNA_CALLS_PACKAGE,
-                R.mipmap.common_calls_icon));
-
-        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_keyboard_app),
-                KATSUNA_KEYBOARD_PACKAGE, R.mipmap.common_keyboard_icon));
-
-        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_homescreen_widget),
-                KATSUNA_HOMESCREEN_WIDGET_PACKAGE, R.mipmap.common_widgets_icon));
+            R.mipmap.ic_messages_launcher));
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_calls_app), KATSUNA_CALLS_PACKAGE, R.mipmap.ic_calls_launcher));
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_keyboard_app), KATSUNA_KEYBOARD_PACKAGE,
+            R.mipmap.ic_keyboard_launcher));
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_homescreen_widget), KATSUNA_HOMESCREEN_WIDGET_PACKAGE,
+            R.mipmap.common_widgets_icon));
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_clock),
+            KATSUNA_CLOCK_PACKAGE, R.mipmap.ic_clock_launcher));
+        apps.add(new KatsunaApp(context.getString(R.string.common_katsuna_calendar_app),
+            KATSUNA_CALENDAR_PACKAGE, R.mipmap.ic_calendar_launcher));
 
         return apps;
     }

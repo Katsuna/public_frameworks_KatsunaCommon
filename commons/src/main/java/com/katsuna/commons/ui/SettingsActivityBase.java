@@ -397,10 +397,10 @@ public abstract class SettingsActivityBase extends KatsunaActivity {
     public void refreshControlsVisibility() {
         if (mHandControlsExpanded) {
             mHandExpandedContainer.setVisibility(View.VISIBLE);
-            mHandDivider.setVisibility(View.VISIBLE);
+            mHandDivider.setVisibility(View.GONE);
         } else {
             mHandExpandedContainer.setVisibility(View.GONE);
-            mHandDivider.setVisibility(View.GONE);
+            mHandDivider.setVisibility(View.VISIBLE);
         }
 
         if (mSizeControlsExpanded) {
