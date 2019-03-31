@@ -478,14 +478,16 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
                                            @NonNull int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CODE_READ_CONTACTS:
-                if (grantResults.length > 0 &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "read contacts permission granted");
-                } else if (!shouldShowRequestPermissionRationale(permissions[0])) {
-                    Log.d(TAG, "read contacts permission never ask again");
-                    // User selected the Never Ask Again Option
-                    mReadContactsPermissionDontAsk = true;
-                } else {
+                if (grantResults.length > 0) {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        Log.d(TAG, "read contacts permission granted");
+                    } else if (!shouldShowRequestPermissionRationale(permissions[0])) {
+                        Log.d(TAG, "read contacts permission never ask again");
+                        // User selected the Never Ask Again Option
+                        mReadContactsPermissionDontAsk = true;
+                    }
+                }
+                else {
                     Log.d(TAG, "read contacts permission denied");
                 }
                 break;
