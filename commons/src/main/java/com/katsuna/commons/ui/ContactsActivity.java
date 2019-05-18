@@ -46,6 +46,7 @@ import com.katsuna.commons.ui.listeners.IContactsGroupListener;
 import com.katsuna.commons.utils.Constants;
 import com.katsuna.commons.utils.ContactArranger;
 import com.katsuna.commons.utils.KatsunaAlertBuilder;
+import com.katsuna.commons.utils.KeyboardUtils;
 import com.konifar.fab_transformation.FabTransformation;
 
 import java.util.List;
@@ -72,11 +73,12 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
     private boolean mReadContactsPermissionDontAsk = false;
     private boolean reloadData = true;
     private String numberToAddToExistingContact;
-    private boolean mSearchMode;
     private SearchView mSearchView;
     protected boolean createContactRequestPending = false;
     protected long mContactIdForEdit = 0;
     private boolean mSelectContactNumberMode;
+    private boolean mSearchModeOn;
+    protected View mFabsTopContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +114,9 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
+                    if (mItemSelected) {
+                        deselectItem();
+                    }
                     search(newText);
                     return false;
                 }
@@ -119,21 +124,28 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
             mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
                 @Override
                 public boolean onClose() {
-                    mSearchMode = false;
                     if (mAdapter != null) {
                         mAdapter.resetFilter();
                     }
                     return false;
                 }
             });
-            mSearchView.setOnSearchClickListener(new View.OnClickListener() {
+
+            mSearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
-                public void onClick(View v) {
-                    mSearchMode = true;
-                    showPopup(false);
-                    showFabToolbar(false);
+                public void onFocusChange(View v, boolean hasFocus) {
+                    mSearchModeOn = hasFocus;
+                    if (hasFocus) {
+                        mFabsTopContainer.setVisibility(View.GONE);
+                        showPopup(false);
+                        showFabToolbar(false);
+                    } else {
+                        refreshLastTouchTimestamp();
+                        mFabsTopContainer.setVisibility(View.VISIBLE);
+                    }
                 }
             });
+
         }
 
         return true;
@@ -297,7 +309,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
             //don't show popup if menu drawer is open or toolbar search is enabled
             // or contact is selected or search with letters is shown.
             if (!drawerLayout.isDrawerOpen(GravityCompat.START)
-                    && !mSearchMode
+                    && !mSearchModeOn
                     && !mItemSelected
                     && !mFabToolbarOn) {
                 mPopupFrame.setVisibility(View.VISIBLE);
@@ -341,7 +353,7 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
             showPopup(false);
         } else if (mItemSelected) {
             deselectItem();
-        } else if (mSearchMode) {
+        } else if (mSearchModeOn) {
             mSearchView.onActionViewCollapsed();
         } else {
             super.onBackPressed();
@@ -541,6 +553,8 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
 
     @Override
     public void selectContact(int contactGroupPosition, String letter, Contact contact, int pos) {
+        KeyboardUtils.hideKeyboard(this);
+
         if (mSelectContactNumberMode) {
             sendSMS(contact);
         } else {
@@ -585,6 +599,8 @@ public abstract class ContactsActivity extends SearchBarActivity implements ICon
     }
 
     private void focusOnContactGroup(int position, int offset) {
+        KeyboardUtils.hideKeyboard(this);
+
         if (mFabToolbarOn) {
             showFabToolbar(false);
         }
