@@ -13,6 +13,7 @@ import com.katsuna.commons.entities.SizeProfile;
 import com.katsuna.commons.entities.UserProfile;
 import com.katsuna.commons.entities.UserProfileContainer;
 import com.katsuna.commons.providers.PreferenceProvider;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,8 @@ import java.util.List;
  */
 
 public class ProfileReader {
+
+    private static final String TAG = "ProfileReader";
 
     public static UserProfileContainer getKatsunaUserProfile(Context context) {
         UserProfile userProfileFromKatsunaServices = getUserProfileFromKatsunaServices(context);
@@ -56,7 +59,7 @@ public class ProfileReader {
                 }
             }
         } catch (SecurityException se) {
-            Log.d(context, "SecurityException! The app doesn't have the required permissions"
+            Log.e(TAG, "SecurityException! The app doesn't have the required permissions"
                     + " to access the Katsuna ContentProvider!");
         }
 
